@@ -15,30 +15,47 @@ struct ContentView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
-
+    
+    
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
-                    }
-                }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-            Text("Select an item")
+        VStack{
+            Text("Title 1")
+                .modifier(MFont.Title1())
+            Text("Title 2")
+                .modifier(MFont.Title2())
+            Text("Headline")
+                .modifier(MFont.Headline())
+            Text("Body")
+                .modifier(MFont.Body())
+            Text("Caption 1")
+                .modifier(MFont.Caption1())
+            Text("Caption 2")
+                .modifier(MFont.Caption2())
+
+
+//            NavigationView {
+//                List {
+//                    ForEach(items) { item in
+//                        NavigationLink {
+//                            Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+//                        } label: {
+//                            Text(item.timestamp!, formatter: itemFormatter)
+//                        }
+//                    }
+//                    .onDelete(perform: deleteItems)
+//                }
+//                .toolbar {
+//                    ToolbarItem(placement: .navigationBarTrailing) {
+//                        EditButton()
+//                    }
+//                    ToolbarItem {
+//                        Button(action: addItem) {
+//                            Label("Add Item", systemImage: "plus")
+//                        }
+//                    }
+//                }
+//                Text("Select an item")
+//            }
         }
     }
 
