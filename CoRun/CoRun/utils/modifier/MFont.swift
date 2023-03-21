@@ -15,7 +15,23 @@ class MFont{
     struct Hero:ViewModifier{
         var isItalic : Bool = false
         let font = "SFProDisplay-Bold"
-        var size = 42
+        var size = 64
+        
+        func body(content:Content) -> some View{
+            if(isItalic){
+                content
+                    .font(.custom(String(font+"Italic"), size: CGFloat(size),relativeTo: .headline))
+            }else{
+                content
+                    .font(.custom(String(font), size: CGFloat(size),relativeTo: .headline))
+            }
+        }
+    }
+    ///Bold - 48
+    struct Title:ViewModifier{
+        var isItalic : Bool = false
+        let font = "SFProDisplay-Bold"
+        var size = 48
         
         func body(content:Content) -> some View{
             if(isItalic){

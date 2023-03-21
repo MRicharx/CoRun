@@ -11,20 +11,20 @@ import SwiftUI
 ///This modifier return foreground color for view component
 class MColor{
     ///Define all used color in the app
-    private struct ColorPalette{
-        let alert = Color("Alert")
-        let danger = Color("Danger")
-        
-        let base=Color("Base")
-        let card = Color("Card")
-        let shade = Color("Shade")
-        let separator = Color("Separator")
-        
-        let primary = Color("Primary")
-        
-        let textDefault = Color("TextDefault")
-        let textDisabled = Color("TextDisabled")
-    }
+    struct ColorPalette{
+    let alert = Color("Alert")
+    let danger = Color("Danger")
+    
+    let base=Color("Base")
+    let card = Color("Card")
+    let shade = Color("Shade")
+    let separator = Color("Separator")
+    
+    let primary = Color("Primary")
+    
+    let textDefault = Color("TextDefault")
+    let textDisabled = Color("TextDisabled")
+}
     
     ///View Default Background Color
     struct Base:ViewModifier{
