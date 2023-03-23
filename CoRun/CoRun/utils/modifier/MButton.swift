@@ -23,7 +23,7 @@ class MButton{
                     .background(MColor.ColorPalette().primary)
                     .foregroundColor(MColor.ColorPalette().base)
                     .cornerRadius(10)
-                    .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
+                    .scaleEffect(configuration.isPressed ? 0.98 : 1.0)
             }
             else{
                 configuration.label
@@ -33,7 +33,7 @@ class MButton{
                     .background(MColor.ColorPalette().shade)
                     .foregroundColor(MColor.ColorPalette().textDisabled)
                     .cornerRadius(10)
-                    .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
+                    .scaleEffect(configuration.isPressed ? 0.98 : 1.0)
             }
         }
     }

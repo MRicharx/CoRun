@@ -7,16 +7,19 @@
 
 import SwiftUI
 
-struct CheckBox: View {
+///CCheckbox - Custom CheckBox
+///Custom component in form of check box
+///Parameter consist of checkbox title, description, and avaiable option
+struct CCheckBox: View {
     ///Textfield title on top left
     let title:String
     ///Textfield title on top right
     var desc:String = ""
     ///Checkbox option
-    var option:[String] = []
+    var option:[String]
     
     ///Binded option
-    @Binding var input:String
+    @Binding var selected:String
     
     var body: some View {
         VStack(alignment: .leading,spacing: 8){
@@ -30,9 +33,10 @@ struct CheckBox: View {
                 .modifier(MFont.Caption1())
             }
             
+            //MARK: List Generation
             HStack{
                 ForEach(option, id: \.self){ opt in
-                    if(opt == input){
+                    if(opt == selected){
                         Button{
                             //TODO: Do function
                             ///Do NOTHING I GUESS
@@ -48,7 +52,7 @@ struct CheckBox: View {
                     else{
                         Button{
                             //TODO: Do function
-                            input = opt
+                            selected = opt
                         } label:{
                             Circle()
                                 .strokeBorder(MColor.ColorPalette().textDisabled, lineWidth: 2)

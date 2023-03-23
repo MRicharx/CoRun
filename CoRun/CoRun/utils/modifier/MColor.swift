@@ -21,6 +21,7 @@ class MColor{
     let separator = Color("Separator")
     
     let primary = Color("Primary")
+    let primaryDisabled = Color("DisabledPrimary")
     
     let textDefault = Color("TextDefault")
     let textDisabled = Color("TextDisabled")
@@ -73,6 +74,13 @@ class MColor{
         func body(content:Content) -> some View{
             content
                 .foregroundColor(ColorPalette().primary)
+        }
+    }
+    ///Primary disabled green color
+    struct DisabledPrimary:ViewModifier{
+        func body(content:Content) -> some View{
+            content
+                .foregroundColor(ColorPalette().primaryDisabled)
         }
     }
     ///Text Color

@@ -35,6 +35,8 @@ protocol TDateProtocol{
     
     ///Return duration in HH(Int) mm(Int) ss(Int) format from seconds(Double)
     func secondToHMS(seconds:Double)->(Int,Int,Int)
+    ///Return duration in mm'ss"(String) format from seconds(Double)
+    func secondToPace(seconds:Double)->String
     ///Return date in Date Format
     func stringToDate(date:String)->Date
     ///Return date in String Format
@@ -84,7 +86,7 @@ struct TDate:TDateProtocol{
     //TODO: Test This
     func getFirstDayOfMonth(month: Date) -> Date {
         ///Define Component
-        var comp: DateComponents = Calendar.current.dateComponents([.year, .month], from: month)
+        let comp: DateComponents = Calendar.current.dateComponents([.year, .month], from: month)
         return Calendar.current.date(from: comp)!
     }
     //TODO: Test This
@@ -100,7 +102,7 @@ struct TDate:TDateProtocol{
     //TODO: Test This
     func getFirstDayOfYear(year: Date) -> Date {
         ///Define component
-        var comp:DateComponents = Calendar.current.dateComponents([.year], from: year)
+        let comp:DateComponents = Calendar.current.dateComponents([.year], from: year)
         return Calendar.current.date(from: comp)!
     }
     //TODO: Test This
@@ -128,13 +130,23 @@ struct TDate:TDateProtocol{
         var hour = 0
         var min = 0
         var sec = 0
-        var time = Int(seconds)
+        let time = Int(seconds)
         
         hour = time / 3600
         min = time % 3600 / 60
         sec = time % 3600 % 60
         
         return (hour,min,sec)
+    }
+    func secondToPace(seconds: Double) -> String {
+        var min = 0
+        var sec = 0
+        let time = Int(seconds)
+        
+        min = time / 60
+        sec = time % 3600 % 60
+        
+        return String(min) + "\'" + String(sec) + "\""
     }
     func stringToDate(date:String)->Date{
         ///Formating string to Date Format

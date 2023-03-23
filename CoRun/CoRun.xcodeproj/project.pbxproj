@@ -16,15 +16,23 @@
 		83D31B7F29C70E9F00B47F8C /* TQr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D31B7E29C70E9F00B47F8C /* TQr.swift */; };
 		83D31B8129C8366700B47F8C /* TUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D31B8029C8366700B47F8C /* TUserDefault.swift */; };
 		83DCE18129C846FF0007E73D /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE18029C846FF0007E73D /* SplashView.swift */; };
-		83DCE18629C847DB0007E73D /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE18529C847DB0007E73D /* TextField.swift */; };
+		83DCE18629C847DB0007E73D /* CTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE18529C847DB0007E73D /* CTextField.swift */; };
 		83DCE18829C84CDD0007E73D /* AssessmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE18729C84CDD0007E73D /* AssessmentView.swift */; };
-		83DCE18B29C850CC0007E73D /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE18A29C850CC0007E73D /* CheckBox.swift */; };
+		83DCE18B29C850CC0007E73D /* CCheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE18A29C850CC0007E73D /* CCheckBox.swift */; };
 		83DCE19029C85AB80007E73D /* MButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE18F29C85AB80007E73D /* MButton.swift */; };
-		83DCE19229C867F70007E73D /* Assessment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE19129C867F70007E73D /* Assessment.swift */; };
+		83DCE19229C867F70007E73D /* AssessmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE19129C867F70007E73D /* AssessmentModel.swift */; };
 		83DCE19429C868060007E73D /* AssessmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE19329C868060007E73D /* AssessmentViewModel.swift */; };
 		83DCE19729C8684F0007E73D /* HealthPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE19629C8684F0007E73D /* HealthPermissionView.swift */; };
-		83DCE19929C8685C0007E73D /* HealthPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE19829C8685C0007E73D /* HealthPermission.swift */; };
+		83DCE19929C8685C0007E73D /* HealthPermissionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE19829C8685C0007E73D /* HealthPermissionModel.swift */; };
 		83DCE19B29C8686C0007E73D /* HealthPermissionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE19A29C8686C0007E73D /* HealthPermissionViewModel.swift */; };
+		83DCE19E29CC98290007E73D /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE19D29CC98290007E73D /* SummaryView.swift */; };
+		83DCE1A029CC98360007E73D /* SummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE19F29CC98360007E73D /* SummaryViewModel.swift */; };
+		83DCE1A229CC98410007E73D /* SummaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1A129CC98410007E73D /* SummaryModel.swift */; };
+		83DCE1A529CC98D90007E73D /* CSegmented.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1A429CC98D90007E73D /* CSegmented.swift */; };
+		83DCE1A929CC9F850007E73D /* CSummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1A829CC9F850007E73D /* CSummaryCard.swift */; };
+		83DCE1AB29CCA6C30007E73D /* CDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1AA29CCA6C30007E73D /* CDivider.swift */; };
+		83DCE1AD29CCBC450007E73D /* CPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1AC29CCBC450007E73D /* CPageView.swift */; };
+		83DCE1AF29CCBE6F0007E73D /* CActivityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1AE29CCBE6F0007E73D /* CActivityCard.swift */; };
 		83EA9FEE29C8459D000B7A02 /* HealthTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EA9FED29C8459D000B7A02 /* HealthTemplate.swift */; };
 		83F2C81929C30187004E3270 /* CoRunApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F2C81829C30187004E3270 /* CoRunApp.swift */; };
 		83F2C81B29C30187004E3270 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F2C81A29C30187004E3270 /* ContentView.swift */; };
@@ -83,15 +91,23 @@
 		83D31B7E29C70E9F00B47F8C /* TQr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TQr.swift; sourceTree = "<group>"; };
 		83D31B8029C8366700B47F8C /* TUserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TUserDefault.swift; sourceTree = "<group>"; };
 		83DCE18029C846FF0007E73D /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
-		83DCE18529C847DB0007E73D /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		83DCE18529C847DB0007E73D /* CTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTextField.swift; sourceTree = "<group>"; };
 		83DCE18729C84CDD0007E73D /* AssessmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentView.swift; sourceTree = "<group>"; };
-		83DCE18A29C850CC0007E73D /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		83DCE18A29C850CC0007E73D /* CCheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCheckBox.swift; sourceTree = "<group>"; };
 		83DCE18F29C85AB80007E73D /* MButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MButton.swift; sourceTree = "<group>"; };
-		83DCE19129C867F70007E73D /* Assessment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assessment.swift; sourceTree = "<group>"; };
+		83DCE19129C867F70007E73D /* AssessmentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentModel.swift; sourceTree = "<group>"; };
 		83DCE19329C868060007E73D /* AssessmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentViewModel.swift; sourceTree = "<group>"; };
 		83DCE19629C8684F0007E73D /* HealthPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthPermissionView.swift; sourceTree = "<group>"; };
-		83DCE19829C8685C0007E73D /* HealthPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthPermission.swift; sourceTree = "<group>"; };
+		83DCE19829C8685C0007E73D /* HealthPermissionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthPermissionModel.swift; sourceTree = "<group>"; };
 		83DCE19A29C8686C0007E73D /* HealthPermissionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthPermissionViewModel.swift; sourceTree = "<group>"; };
+		83DCE19D29CC98290007E73D /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
+		83DCE19F29CC98360007E73D /* SummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewModel.swift; sourceTree = "<group>"; };
+		83DCE1A129CC98410007E73D /* SummaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryModel.swift; sourceTree = "<group>"; };
+		83DCE1A429CC98D90007E73D /* CSegmented.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSegmented.swift; sourceTree = "<group>"; };
+		83DCE1A829CC9F850007E73D /* CSummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSummaryCard.swift; sourceTree = "<group>"; };
+		83DCE1AA29CCA6C30007E73D /* CDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDivider.swift; sourceTree = "<group>"; };
+		83DCE1AC29CCBC450007E73D /* CPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPageView.swift; sourceTree = "<group>"; };
+		83DCE1AE29CCBE6F0007E73D /* CActivityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CActivityCard.swift; sourceTree = "<group>"; };
 		83EA9FED29C8459D000B7A02 /* HealthTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTemplate.swift; sourceTree = "<group>"; };
 		83F2C81529C30187004E3270 /* CoRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83F2C81829C30187004E3270 /* CoRunApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoRunApp.swift; sourceTree = "<group>"; };
@@ -174,36 +190,51 @@
 			isa = PBXGroup;
 			children = (
 				83DCE18729C84CDD0007E73D /* AssessmentView.swift */,
-				83DCE19129C867F70007E73D /* Assessment.swift */,
+				83DCE19129C867F70007E73D /* AssessmentModel.swift */,
 				83DCE19329C868060007E73D /* AssessmentViewModel.swift */,
 			);
 			path = assessment;
-			sourceTree = "<group>";
-		};
-		83DCE18329C847B70007E73D /* textfield */ = {
-			isa = PBXGroup;
-			children = (
-				83DCE18529C847DB0007E73D /* TextField.swift */,
-			);
-			path = textfield;
-			sourceTree = "<group>";
-		};
-		83DCE18929C850BF0007E73D /* checkbox */ = {
-			isa = PBXGroup;
-			children = (
-				83DCE18A29C850CC0007E73D /* CheckBox.swift */,
-			);
-			path = checkbox;
 			sourceTree = "<group>";
 		};
 		83DCE19529C868190007E73D /* health-permission */ = {
 			isa = PBXGroup;
 			children = (
 				83DCE19629C8684F0007E73D /* HealthPermissionView.swift */,
-				83DCE19829C8685C0007E73D /* HealthPermission.swift */,
+				83DCE19829C8685C0007E73D /* HealthPermissionModel.swift */,
 				83DCE19A29C8686C0007E73D /* HealthPermissionViewModel.swift */,
 			);
 			path = "health-permission";
+			sourceTree = "<group>";
+		};
+		83DCE19C29CC97FA0007E73D /* summary */ = {
+			isa = PBXGroup;
+			children = (
+				83DCE1A129CC98410007E73D /* SummaryModel.swift */,
+				83DCE19D29CC98290007E73D /* SummaryView.swift */,
+				83DCE19F29CC98360007E73D /* SummaryViewModel.swift */,
+			);
+			path = summary;
+			sourceTree = "<group>";
+		};
+		83DCE1A629CC9F380007E73D /* custom-component */ = {
+			isa = PBXGroup;
+			children = (
+				83DCE18A29C850CC0007E73D /* CCheckBox.swift */,
+				83DCE18529C847DB0007E73D /* CTextField.swift */,
+				83DCE1A429CC98D90007E73D /* CSegmented.swift */,
+				83DCE1AA29CCA6C30007E73D /* CDivider.swift */,
+				83DCE1AC29CCBC450007E73D /* CPageView.swift */,
+			);
+			path = "custom-component";
+			sourceTree = "<group>";
+		};
+		83DCE1A729CC9F430007E73D /* view-component */ = {
+			isa = PBXGroup;
+			children = (
+				83DCE1A829CC9F850007E73D /* CSummaryCard.swift */,
+				83DCE1AE29CCBE6F0007E73D /* CActivityCard.swift */,
+			);
+			path = "view-component";
 			sourceTree = "<group>";
 		};
 		83F2C80C29C30187004E3270 = {
@@ -315,8 +346,8 @@
 		83F2C84A29C3037F004E3270 /* component */ = {
 			isa = PBXGroup;
 			children = (
-				83DCE18929C850BF0007E73D /* checkbox */,
-				83DCE18329C847B70007E73D /* textfield */,
+				83DCE1A729CC9F430007E73D /* view-component */,
+				83DCE1A629CC9F380007E73D /* custom-component */,
 			);
 			path = component;
 			sourceTree = "<group>";
@@ -355,9 +386,10 @@
 		83F2C84E29C30416004E3270 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				83DCE19529C868190007E73D /* health-permission */,
 				83DCE18229C8473D0007E73D /* assessment */,
+				83DCE19529C868190007E73D /* health-permission */,
 				83DCE17F29C846E50007E73D /* splash */,
+				83DCE19C29CC97FA0007E73D /* summary */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -523,28 +555,36 @@
 			buildActionMask = 2147483647;
 			files = (
 				83F2C82229C30190004E3270 /* Persistence.swift in Sources */,
-				83DCE19929C8685C0007E73D /* HealthPermission.swift in Sources */,
+				83DCE19929C8685C0007E73D /* HealthPermissionModel.swift in Sources */,
 				83DCE18829C84CDD0007E73D /* AssessmentView.swift in Sources */,
 				83DCE19429C868060007E73D /* AssessmentViewModel.swift in Sources */,
-				83DCE18B29C850CC0007E73D /* CheckBox.swift in Sources */,
+				83DCE18B29C850CC0007E73D /* CCheckBox.swift in Sources */,
 				83DCE19B29C8686C0007E73D /* HealthPermissionViewModel.swift in Sources */,
 				83F2C85329C328A7004E3270 /* MFont.swift in Sources */,
+				83DCE1A029CC98360007E73D /* SummaryViewModel.swift in Sources */,
 				83DCE18129C846FF0007E73D /* SplashView.swift in Sources */,
-				83DCE18629C847DB0007E73D /* TextField.swift in Sources */,
+				83DCE18629C847DB0007E73D /* CTextField.swift in Sources */,
 				83D31B7B29C70DED00B47F8C /* HHealth.swift in Sources */,
 				83D31B8129C8366700B47F8C /* TUserDefault.swift in Sources */,
 				83F2C82529C30190004E3270 /* CoRun.xcdatamodeld in Sources */,
-				83DCE19229C867F70007E73D /* Assessment.swift in Sources */,
+				83DCE19229C867F70007E73D /* AssessmentModel.swift in Sources */,
 				834DD25629C6F51A00CD59EB /* HNetwork.swift in Sources */,
 				83C6FC5029C455EF00B0026C /* MColor.swift in Sources */,
+				83DCE1AD29CCBC450007E73D /* CPageView.swift in Sources */,
 				83F2C81B29C30187004E3270 /* ContentView.swift in Sources */,
+				83DCE1A229CC98410007E73D /* SummaryModel.swift in Sources */,
 				83D31B7F29C70E9F00B47F8C /* TQr.swift in Sources */,
+				83DCE1A929CC9F850007E73D /* CSummaryCard.swift in Sources */,
 				83EA9FEE29C8459D000B7A02 /* HealthTemplate.swift in Sources */,
+				83DCE1AB29CCA6C30007E73D /* CDivider.swift in Sources */,
 				83F2C81929C30187004E3270 /* CoRunApp.swift in Sources */,
+				83DCE1AF29CCBE6F0007E73D /* CActivityCard.swift in Sources */,
 				83C6FC5229C45B5B00B0026C /* MView.swift in Sources */,
 				83DCE19029C85AB80007E73D /* MButton.swift in Sources */,
 				83DCE19729C8684F0007E73D /* HealthPermissionView.swift in Sources */,
+				83DCE19E29CC98290007E73D /* SummaryView.swift in Sources */,
 				83D31B7D29C70DFC00B47F8C /* TDate.swift in Sources */,
+				83DCE1A529CC98D90007E73D /* CSegmented.swift in Sources */,
 				834DD25A29C6FAA500CD59EB /* HApiREST.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

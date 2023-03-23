@@ -7,7 +7,10 @@
 
 import SwiftUI
 
-struct Textfield: View {
+///CTextFiield - Custom TextField
+///Custom component for textfield
+///Parameter consist of textfield title, description, hint and unit, all of these are optional except title
+struct CTextfield: View {
     ///Textfield title on top left
     let title:String
     ///Textfield title on top right
