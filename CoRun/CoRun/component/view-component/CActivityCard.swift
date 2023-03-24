@@ -9,6 +9,10 @@ import SwiftUI
 
 struct CActivityCard: View {
     ///Define completion status
+    ///1 - Goal not reached,
+    ///2 - Some Goal reached,
+    ///3 - All goal reached,
+    ///else - Activity yet to be done
     @State var status:Int = 0
     ///Define activity date value
     @State var date:String = "NaN"
@@ -23,10 +27,6 @@ struct CActivityCard: View {
     var body: some View {
         HStack(spacing: 24){
             ///Check completion status
-            ///1 - Goal not reached
-            ///2 - Some Goal reached
-            ///3 - All goal reached
-            ///else - Activity yet to be done
             Group{
                 switch status{
                 case 1:

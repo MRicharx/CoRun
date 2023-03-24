@@ -15,7 +15,10 @@ struct CSegmented: View {
     var option:[String]
     
     ///Binded option
-    @State var selected:String
+    @Binding var selected:String
+    
+    ///Define how option will be show (as string or sfsymbol)
+    var isSFSymbol:Bool = false
     
     var body: some View {
         HStack{
@@ -26,9 +29,16 @@ struct CSegmented: View {
                         ///DO NOTHING
                     }label: {
                         VStack{
-                            Text(opt)
-                                .modifier(MFont.SubBody())
-                                .modifier(MColor.Base())
+                            Group{
+                                if(isSFSymbol){
+                                    Image(systemName: opt)
+                                }
+                                else{
+                                    Text(opt)
+                                }
+                            }
+                            .modifier(MFont.SubBody())
+                            .modifier(MColor.Base())
                         }
                         .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
                         .modifier(MView.FillFrame())
@@ -42,9 +52,16 @@ struct CSegmented: View {
                         selected = opt
                     }label: {
                         VStack{
-                            Text(opt)
-                                .modifier(MFont.SubBody())
-                                .modifier(MColor.DisabledText())
+                            Group{
+                                if(isSFSymbol){
+                                    Image(systemName: opt)
+                                }
+                                else{
+                                    Text(opt)
+                                }
+                            }
+                            .modifier(MFont.SubBody())
+                            .modifier(MColor.DisabledText())
                         }
                         .padding(EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8))
                         .modifier(MView.FillFrame())
@@ -59,8 +76,8 @@ struct CSegmented: View {
     }
 }
 
-struct Segmented_Previews: PreviewProvider {
-    static var previews: some View {
-        CSegmented(option: ["Week","Month","Year"], selected: "Week")
-    }
-}
+//struct Segmented_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CSegmented(option: ["Week","Month","Year"], selected: "Week")
+//    }
+//}

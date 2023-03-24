@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct SummaryView: View {
+    ///Define selected option
+    @State var displayOption:String = "Week"
+    
     var body: some View {
         ZStack{
             Color("base")
@@ -22,7 +25,7 @@ struct SummaryView: View {
                         .modifier(MFont.Title())
                     
                     //MARK: Segmented Control
-                    CSegmented(option: ["Week","Month","Year"], selected: "Week")
+                    CSegmented(option: ["Week","Month","Year"], selected: $displayOption)
                     
                     //MARK: Tab Navigator
                     //TODO: Implement this

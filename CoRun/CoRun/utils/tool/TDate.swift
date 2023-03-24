@@ -10,17 +10,6 @@ import Foundation
 ///TDate - Date Tool
 ///This Protocol contain list of func to help handling date format
 protocol TDateProtocol{
-    ///Return duration between 2 date in seconds (Double)
-    ///With String as parameter
-    func getTimeBetweenDate(start:String, end:String)->Double
-    ///Return duration between 2 date in seconds (Double)
-    ///With Date as parameter
-    func getTimeBetweenDate(start:Date, end:Date)->Double
-    ///Return remaining time till midnight in seconds (Double)
-    func getDurationTillMidnight()->Double
-    ///Return remaining time till next monday in days (Int)
-    func getDurationTillNextMonday()->Double
-    
     ///Return first date of selected month
     func getFirstDayOfMonth(month:Date)->Date
     ///Return last date of selected month
@@ -30,8 +19,8 @@ protocol TDateProtocol{
     ///Return last date of selected year
     func getLastDayOfYear(year:Date)->Date
     
-    ///Return Array of Date for selected Month
-    func generateDate(month:Int)->[Int]
+    ///Compare 2 date data with dateformatter as comparrasion
+    func compare(first:Date,second:Date, format:String)->Bool
     
     ///Return duration in HH(Int) mm(Int) ss(Int) format from seconds(Double)
     func secondToHMS(seconds:Double)->(Int,Int,Int)
@@ -45,42 +34,18 @@ protocol TDateProtocol{
 ///This Struct define function declared at TDateProtocol
 struct TDate:TDateProtocol{
     ///Default Date Format that will be used
-    let dateFormatter: () = DateFormatter().dateFormat = "yyyy-MM-dd' 'HH:mm:ss"
+    let dateFormatter: () = DateFormatter().dateFormat = "yyyy-MM-dd HH:mm:ss"
     
-    func getTimeBetweenDate(start:String, end:String)->Double{
-        ///Formating string to Date Format
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd' 'HH:mm:ss"
+    func compare(first: Date, second: Date, format: String) -> Bool {
+        let comparasionFormat = DateFormatter()
+        comparasionFormat.dateFormat = format
         
-        ///Translate String to Date
-        let startDate = dateFormatter.date(from:start)
-        let endDate = dateFormatter.date(from:end)
-        
-        return endDate?.timeIntervalSince(startDate ?? Date.now) ?? 0
-    }
-    func getTimeBetweenDate(start:Date, end:Date)->Double{
-        return end.timeIntervalSince(start)
-    }
-    func getDurationTillMidnight()->Double{
-        let calendar = Calendar(identifier: .gregorian)
-        let start = Date.now
-        
-        ///Define next midnight
-        ///Which current date 00.00 incremented by 1 day
-        var dateComponent = DateComponents()
-        dateComponent.day = 1
-        let end = Calendar.current.date(byAdding: dateComponent, to: calendar.startOfDay(for: Date.now))
-        
-        ///Calculate and return interval
-        return Double(TDate.init().getTimeBetweenDate(start: start, end: end ?? Date.now))
-    }
-    func getDurationTillNextMonday() -> Double {
-        let start = Date.now
-        let end = Date.today().next(.monday)
-        
-        ///Calculate and return interval
-        return Double(TDate.init().getTimeBetweenDate(start: start, end: end))
-
+        if(comparasionFormat.string(from: first) == comparasionFormat.string(from: second)){
+           return true
+        }
+        else{
+            return false
+        }
     }
     
     //TODO: Test This
@@ -114,16 +79,6 @@ struct TDate:TDateProtocol{
         
         ///Increment first day of year with date component and return value
         return Calendar.current.date(byAdding: comp, to: getFirstDayOfYear(year: year)) ?? Date.now
-    }
-    
-    //TODO: Create solution for this
-    func generateDate(month: Int) -> [Int] {
-        ///Define used format
-        let format: () = DateFormatter().dateFormat = "yyyy-MM-dd"
-        ///Define returned array of date
-        var date: [Int] = []
-        
-        return [0]
     }
     
     func secondToHMS(seconds:Double)->(Int,Int,Int){
@@ -212,7 +167,6 @@ extension Date {
 
     return date!
   }
-
 }
 
 extension Date {

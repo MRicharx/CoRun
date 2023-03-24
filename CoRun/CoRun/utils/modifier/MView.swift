@@ -37,6 +37,24 @@ class MView{
         }
     }
     
+    ///Set view background
+    struct Background:ViewModifier{
+        ///Define translation on drop shadow effect
+        var color:Color
+        ///Define card corner radius
+        var cornerRadius:CGFloat = 24
+        ///Define padding
+        var padding:EdgeInsets = EdgeInsets(top: 24, leading: 24, bottom: 24, trailing: 24)
+        func body(content: Content) -> some View {
+            content
+                .frame(minWidth:0,maxWidth: .infinity)
+                .padding(padding)
+                .background(color)
+                .cornerRadius(cornerRadius)
+
+        }
+    }
+    
     ///Set safe area for view
     struct safePadding:ViewModifier{
         func body(content: Content) -> some View {
