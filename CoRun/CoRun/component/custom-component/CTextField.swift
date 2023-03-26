@@ -29,11 +29,12 @@ struct CTextfield: View {
             HStack{
                 Group{
                     Text(title)
+                        .modifier(MFont.Headline(size:16))
                     Spacer()
                     Text(desc)
+                        .modifier(MFont.Caption1())
                 }
                 .modifier(MColor.DisabledText())
-                .modifier(MFont.Caption1())
             }
             
             ZStack{

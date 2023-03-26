@@ -23,7 +23,7 @@ class MButton{
                         .padding(CGFloat(padding))
                         .frame(minWidth:0,maxWidth: .infinity)
         //                .background(configuration.isPressed ? MColor.ColorPalette().primary : ColorPalette.init().accentOrange)
-                        .background(MColor.ColorPalette().base)
+                        .background(MColor.ColorPalette().card)
                         .foregroundColor(MColor.ColorPalette().primary)
                         .cornerRadius(10)
                         .overlay(
@@ -61,7 +61,7 @@ class MButton{
                         .padding(CGFloat(padding))
                         .frame(minWidth:0,maxWidth: .infinity)
         //                .background(configuration.isPressed ? MColor.ColorPalette().primary : ColorPalette.init().accentOrange)
-                        .background(MColor.ColorPalette().shade)
+                        .background(MColor.ColorPalette().base)
                         .foregroundColor(MColor.ColorPalette().shade)
                         .cornerRadius(10)
                 }

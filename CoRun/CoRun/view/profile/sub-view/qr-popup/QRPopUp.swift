@@ -8,7 +8,7 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
-struct ProfileQRPopUp: View {
+struct QRPopUp: View {
     let qr = TQR()
     
     ///Define user coach id
@@ -74,7 +74,10 @@ struct ProfileQRPopUp: View {
             }
             .padding(24)
             .modifier(MView.Card())
+            
+            Spacer()
         }
+        .padding(24)
         .alert(
             "ID Copied",
             isPresented: $showCopiedToast){
@@ -88,8 +91,8 @@ struct ProfileQRPopUp: View {
     }
 }
 
-struct ProfileQRPopUp_Previews: PreviewProvider {
+struct QRPopUp_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileQRPopUp(id:"youtube.com")
+        QRPopUp(id:"youtube.com")
     }
 }

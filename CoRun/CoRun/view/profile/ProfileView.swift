@@ -8,6 +8,18 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @Environment(\.dismiss) var dismiss
+    
+    ///State Edit Biodata Pop Up Status
+    @State var showEditData = false
+    ///State User Coach QR Pop Up Status
+    @State var showQRPopUp = false
+    ///State Assign Coach Pop Up Status
+    @State var showScanQR = false
+    
+    ///Define current assigned coach
+    @State var currentCoach = ""
+    
     var body: some View {
         ScrollView{
             VStack(alignment:.leading,spacing: 24){
@@ -18,10 +30,13 @@ struct ProfileView: View {
                     .modifier(MFont.Title())
                 
                 //MARK: Biodata
-                CProfileBiodata()
+                CProfileBiodata(
+                    showQR: $showQRPopUp,
+                    showEdit: $showEditData
+                )
                 
                 //MARK: Coach
-                CProfileCoach(coach: "Budi")
+                CProfileCoach(showScanQR: $showScanQR, coach: currentCoach)
                 
                 //MARK: Reminder
                 CProfileReminder()
@@ -50,6 +65,21 @@ struct ProfileView: View {
                     }.modifier(MView.FillFrame())
                 }
             }
+        }
+        //MARK: Edit Controller
+        .sheet(isPresented: $showEditData){
+            //TODO: Create proper edit data passement
+            EditBiodataPopUp()
+        }
+        //MARK: QR Controller
+        .sheet(isPresented: $showQRPopUp){
+            //TODO: Create proper id passement
+            QRPopUp(id: "Youtube.com")
+        }
+        //MARK: ScanQR Controller
+        .fullScreenCover(isPresented: $showScanQR){
+            //TODO: Create proper model
+            ScanQRPopUp()
         }
     }
 }

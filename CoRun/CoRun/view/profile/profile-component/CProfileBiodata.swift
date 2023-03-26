@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct CProfileBiodata: View {
+    ///Define QR pop up display behavior
+    @Binding var showQR:Bool
+    //Define edit biodata pop up display behavior
+    @Binding var showEdit:Bool
+    
     var body: some View {
         VStack(spacing: 16){
             //MARK: Username
@@ -18,7 +23,6 @@ struct CProfileBiodata: View {
                 Text("Budiman")
                     .modifier(MFont.Body())
                     .modifier(MColor.Text())
-                
             }.modifier(MView.FillToLeftFrame())
             
             //MARK: Email
@@ -28,7 +32,7 @@ struct CProfileBiodata: View {
                     .modifier(MColor.DisabledText())
                 Text("email@mail.com")
                     .modifier(MFont.Body())
-                    .foregroundColor(MColor.ColorPalette().textDefault)
+                    .tint(MColor.ColorPalette().textDefault)
             }.modifier(MView.FillToLeftFrame())
             
             //MARK: Data
@@ -69,7 +73,7 @@ struct CProfileBiodata: View {
             
             //MARK: Edit Button
             Button{
-                //TODO: Show Edit View
+                showEdit=true
             }label:{
                 Text("Edit")
                     .modifier(MFont.Headline(size:18))
@@ -77,7 +81,7 @@ struct CProfileBiodata: View {
             
             //MARK: ShowQR Button
             Button{
-                //TODO: ShowQR View
+                showQR=true
             }label:{
                 HStack{
                     Group{
@@ -92,8 +96,8 @@ struct CProfileBiodata: View {
     }
 }
 
-struct CProfileBiodata_Previews: PreviewProvider {
-    static var previews: some View {
-        CProfileBiodata()
-    }
-}
+//struct CProfileBiodata_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CProfileBiodata()
+//    }
+//}

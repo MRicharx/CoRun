@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct CProfileCoach: View {
+    ///Define scanQR popUp display behavior
+    @Binding var showScanQR:Bool
+    
     ///Define coach name
     @State var coach:String
     
@@ -33,7 +36,7 @@ struct CProfileCoach: View {
                     
                     //MARK: Assign Coach Button
                     Button{
-                        //TODO: Show Assign Coach View
+                        showScanQR = true
                     }label:{
                         Text("Assign Coach")
                             .modifier(MFont.Headline(size:18))
@@ -53,8 +56,8 @@ struct CProfileCoach: View {
     }
 }
 
-struct CProfileCoach_Previews: PreviewProvider {
-    static var previews: some View {
-        CProfileCoach(coach: "Budiman")
-    }
-}
+//struct CProfileCoach_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CProfileCoach(coach: "")
+//    }
+//}

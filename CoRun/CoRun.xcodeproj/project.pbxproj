@@ -52,7 +52,9 @@
 		83DCE1D729D03D4E0007E73D /* CProfileBiodata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1D629D03D4E0007E73D /* CProfileBiodata.swift */; };
 		83DCE1D929D043500007E73D /* CProfileCoach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1D829D043500007E73D /* CProfileCoach.swift */; };
 		83DCE1DB29D0450D0007E73D /* CProfileReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1DA29D0450D0007E73D /* CProfileReminder.swift */; };
-		83DCE1DF29D048AA0007E73D /* ProfileQRPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1DE29D048AA0007E73D /* ProfileQRPopUp.swift */; };
+		83DCE1DF29D048AA0007E73D /* QRPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1DE29D048AA0007E73D /* QRPopUp.swift */; };
+		83DCE1E329D055250007E73D /* EditBiodataPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1E229D055250007E73D /* EditBiodataPopUp.swift */; };
+		83DCE1E629D0631F0007E73D /* ScanQRPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1E529D0631F0007E73D /* ScanQRPopUp.swift */; };
 		83EA9FEE29C8459D000B7A02 /* HealthTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EA9FED29C8459D000B7A02 /* HealthTemplate.swift */; };
 		83F2C81929C30187004E3270 /* CoRunApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F2C81829C30187004E3270 /* CoRunApp.swift */; };
 		83F2C81B29C30187004E3270 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F2C81A29C30187004E3270 /* ContentView.swift */; };
@@ -147,7 +149,9 @@
 		83DCE1D629D03D4E0007E73D /* CProfileBiodata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CProfileBiodata.swift; sourceTree = "<group>"; };
 		83DCE1D829D043500007E73D /* CProfileCoach.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CProfileCoach.swift; sourceTree = "<group>"; };
 		83DCE1DA29D0450D0007E73D /* CProfileReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CProfileReminder.swift; sourceTree = "<group>"; };
-		83DCE1DE29D048AA0007E73D /* ProfileQRPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileQRPopUp.swift; sourceTree = "<group>"; };
+		83DCE1DE29D048AA0007E73D /* QRPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPopUp.swift; sourceTree = "<group>"; };
+		83DCE1E229D055250007E73D /* EditBiodataPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBiodataPopUp.swift; sourceTree = "<group>"; };
+		83DCE1E529D0631F0007E73D /* ScanQRPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRPopUp.swift; sourceTree = "<group>"; };
 		83EA9FED29C8459D000B7A02 /* HealthTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTemplate.swift; sourceTree = "<group>"; };
 		83F2C81529C30187004E3270 /* CoRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83F2C81829C30187004E3270 /* CoRunApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoRunApp.swift; sourceTree = "<group>"; };
@@ -272,8 +276,6 @@
 			isa = PBXGroup;
 			children = (
 				83DCE1E029D049170007E73D /* pop-up */,
-				83DCE1D529D03D060007E73D /* profile-component */,
-				83DCE1C529CDB62D0007E73D /* session-detail-component */,
 				83DCE1BB29CD8AFA0007E73D /* calendar-view-component */,
 				83DCE1A829CC9F850007E73D /* CSummaryCard.swift */,
 				83DCE1AE29CCBE6F0007E73D /* CActivityCard.swift */,
@@ -304,6 +306,7 @@
 		83DCE1BE29CDAE970007E73D /* session-detail */ = {
 			isa = PBXGroup;
 			children = (
+				83DCE1C529CDB62D0007E73D /* session-detail-component */,
 				83DCE1BF29CDAEA50007E73D /* SessionDetailView.swift */,
 				83DCE1C129CDAEB30007E73D /* SessionDetailModel.swift */,
 				83DCE1C329CDAEBC0007E73D /* SessionDetailViewModel.swift */,
@@ -325,6 +328,7 @@
 		83DCE1CE29D03C9A0007E73D /* profile */ = {
 			isa = PBXGroup;
 			children = (
+				83DCE1D529D03D060007E73D /* profile-component */,
 				83DCE1DC29D048880007E73D /* sub-view */,
 				83DCE1CF29D03CAC0007E73D /* ProfileView.swift */,
 				83DCE1D129D03CC90007E73D /* ProfileViewModel.swift */,
@@ -346,6 +350,8 @@
 		83DCE1DC29D048880007E73D /* sub-view */ = {
 			isa = PBXGroup;
 			children = (
+				83DCE1E429D062470007E73D /* scan-qr */,
+				83DCE1E129D0550C0007E73D /* edit-biodata */,
 				83DCE1DD29D048920007E73D /* qr-popup */,
 			);
 			path = "sub-view";
@@ -354,7 +360,7 @@
 		83DCE1DD29D048920007E73D /* qr-popup */ = {
 			isa = PBXGroup;
 			children = (
-				83DCE1DE29D048AA0007E73D /* ProfileQRPopUp.swift */,
+				83DCE1DE29D048AA0007E73D /* QRPopUp.swift */,
 			);
 			path = "qr-popup";
 			sourceTree = "<group>";
@@ -364,6 +370,22 @@
 			children = (
 			);
 			path = "pop-up";
+			sourceTree = "<group>";
+		};
+		83DCE1E129D0550C0007E73D /* edit-biodata */ = {
+			isa = PBXGroup;
+			children = (
+				83DCE1E229D055250007E73D /* EditBiodataPopUp.swift */,
+			);
+			path = "edit-biodata";
+			sourceTree = "<group>";
+		};
+		83DCE1E429D062470007E73D /* scan-qr */ = {
+			isa = PBXGroup;
+			children = (
+				83DCE1E529D0631F0007E73D /* ScanQRPopUp.swift */,
+			);
+			path = "scan-qr";
 			sourceTree = "<group>";
 		};
 		83F2C80C29C30187004E3270 = {
@@ -689,7 +711,7 @@
 				83DCE1BD29CD8B270007E73D /* CCalendarCardViewModel.swift in Sources */,
 				83DCE1BA29CCD80C0007E73D /* CCalendarCard.swift in Sources */,
 				83F2C82229C30190004E3270 /* Persistence.swift in Sources */,
-				83DCE1DF29D048AA0007E73D /* ProfileQRPopUp.swift in Sources */,
+				83DCE1DF29D048AA0007E73D /* QRPopUp.swift in Sources */,
 				83DCE1C229CDAEB30007E73D /* SessionDetailModel.swift in Sources */,
 				83DCE19929C8685C0007E73D /* HealthPermissionModel.swift in Sources */,
 				83DCE1B829CCC94D0007E73D /* CSessionCard.swift in Sources */,
@@ -724,6 +746,7 @@
 				83D31B7F29C70E9F00B47F8C /* TQr.swift in Sources */,
 				83DCE1A929CC9F850007E73D /* CSummaryCard.swift in Sources */,
 				83DCE1B429CCC4440007E73D /* TrainingPlanModel.swift in Sources */,
+				83DCE1E629D0631F0007E73D /* ScanQRPopUp.swift in Sources */,
 				83EA9FEE29C8459D000B7A02 /* HealthTemplate.swift in Sources */,
 				83DCE1AB29CCA6C30007E73D /* CDivider.swift in Sources */,
 				83F2C81929C30187004E3270 /* CoRunApp.swift in Sources */,
@@ -736,6 +759,7 @@
 				83DCE19E29CC98290007E73D /* SummaryView.swift in Sources */,
 				83D31B7D29C70DFC00B47F8C /* TDate.swift in Sources */,
 				83DCE1A529CC98D90007E73D /* CSegmented.swift in Sources */,
+				83DCE1E329D055250007E73D /* EditBiodataPopUp.swift in Sources */,
 				83DCE1C029CDAEA50007E73D /* SessionDetailView.swift in Sources */,
 				834DD25A29C6FAA500CD59EB /* HApiREST.swift in Sources */,
 			);
@@ -903,6 +927,7 @@
 				INFOPLIST_FILE = CoRun/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CoRun;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Your camera will be used to scan QR Code";
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Your workout data, and health data related to running and general fitness will be accessed, compared to your training plan and calculated to provide summary";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Your workout data, and health data related to running and general fitness will be able to be accessed by your coach and this application as reference";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -941,6 +966,7 @@
 				INFOPLIST_FILE = CoRun/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CoRun;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Your camera will be used to scan QR Code";
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Your workout data, and health data related to running and general fitness will be accessed, compared to your training plan and calculated to provide summary";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Your workout data, and health data related to running and general fitness will be able to be accessed by your coach and this application as reference";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
