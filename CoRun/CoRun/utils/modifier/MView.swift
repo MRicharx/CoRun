@@ -77,5 +77,12 @@ class MView{
                 .frame(minWidth:0,maxWidth: .infinity,alignment: .leading)
         }
     }
+    ///Set view to fill frame horizontally and align the content to right
+    struct FillToRightFrame:ViewModifier{
+        func body(content: Content) -> some View {
+            content
+                .frame(minWidth:0,maxWidth: .infinity,alignment: .trailing)
+        }
+    }
     
 }

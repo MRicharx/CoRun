@@ -42,6 +42,17 @@
 		83DCE1C029CDAEA50007E73D /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1BF29CDAEA50007E73D /* SessionDetailView.swift */; };
 		83DCE1C229CDAEB30007E73D /* SessionDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1C129CDAEB30007E73D /* SessionDetailModel.swift */; };
 		83DCE1C429CDAEBC0007E73D /* SessionDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1C329CDAEBC0007E73D /* SessionDetailViewModel.swift */; };
+		83DCE1C729CDB6650007E73D /* CSessionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1C629CDB6650007E73D /* CSessionTitle.swift */; };
+		83DCE1C929CDB6720007E73D /* CSessionGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1C829CDB6720007E73D /* CSessionGoal.swift */; };
+		83DCE1CB29CDB6810007E73D /* CSessionFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1CA29CDB6810007E73D /* CSessionFeedback.swift */; };
+		83DCE1CD29CDB68C0007E73D /* CSessionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1CC29CDB68C0007E73D /* CSessionResult.swift */; };
+		83DCE1D029D03CAC0007E73D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1CF29D03CAC0007E73D /* ProfileView.swift */; };
+		83DCE1D229D03CC90007E73D /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1D129D03CC90007E73D /* ProfileViewModel.swift */; };
+		83DCE1D429D03CD30007E73D /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1D329D03CD30007E73D /* ProfileModel.swift */; };
+		83DCE1D729D03D4E0007E73D /* CProfileBiodata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1D629D03D4E0007E73D /* CProfileBiodata.swift */; };
+		83DCE1D929D043500007E73D /* CProfileCoach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1D829D043500007E73D /* CProfileCoach.swift */; };
+		83DCE1DB29D0450D0007E73D /* CProfileReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1DA29D0450D0007E73D /* CProfileReminder.swift */; };
+		83DCE1DF29D048AA0007E73D /* ProfileQRPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1DE29D048AA0007E73D /* ProfileQRPopUp.swift */; };
 		83EA9FEE29C8459D000B7A02 /* HealthTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EA9FED29C8459D000B7A02 /* HealthTemplate.swift */; };
 		83F2C81929C30187004E3270 /* CoRunApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F2C81829C30187004E3270 /* CoRunApp.swift */; };
 		83F2C81B29C30187004E3270 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F2C81A29C30187004E3270 /* ContentView.swift */; };
@@ -126,6 +137,17 @@
 		83DCE1BF29CDAEA50007E73D /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
 		83DCE1C129CDAEB30007E73D /* SessionDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailModel.swift; sourceTree = "<group>"; };
 		83DCE1C329CDAEBC0007E73D /* SessionDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailViewModel.swift; sourceTree = "<group>"; };
+		83DCE1C629CDB6650007E73D /* CSessionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSessionTitle.swift; sourceTree = "<group>"; };
+		83DCE1C829CDB6720007E73D /* CSessionGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSessionGoal.swift; sourceTree = "<group>"; };
+		83DCE1CA29CDB6810007E73D /* CSessionFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSessionFeedback.swift; sourceTree = "<group>"; };
+		83DCE1CC29CDB68C0007E73D /* CSessionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSessionResult.swift; sourceTree = "<group>"; };
+		83DCE1CF29D03CAC0007E73D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		83DCE1D129D03CC90007E73D /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		83DCE1D329D03CD30007E73D /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		83DCE1D629D03D4E0007E73D /* CProfileBiodata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CProfileBiodata.swift; sourceTree = "<group>"; };
+		83DCE1D829D043500007E73D /* CProfileCoach.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CProfileCoach.swift; sourceTree = "<group>"; };
+		83DCE1DA29D0450D0007E73D /* CProfileReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CProfileReminder.swift; sourceTree = "<group>"; };
+		83DCE1DE29D048AA0007E73D /* ProfileQRPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileQRPopUp.swift; sourceTree = "<group>"; };
 		83EA9FED29C8459D000B7A02 /* HealthTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTemplate.swift; sourceTree = "<group>"; };
 		83F2C81529C30187004E3270 /* CoRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83F2C81829C30187004E3270 /* CoRunApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoRunApp.swift; sourceTree = "<group>"; };
@@ -249,6 +271,9 @@
 		83DCE1A729CC9F430007E73D /* view-component */ = {
 			isa = PBXGroup;
 			children = (
+				83DCE1E029D049170007E73D /* pop-up */,
+				83DCE1D529D03D060007E73D /* profile-component */,
+				83DCE1C529CDB62D0007E73D /* session-detail-component */,
 				83DCE1BB29CD8AFA0007E73D /* calendar-view-component */,
 				83DCE1A829CC9F850007E73D /* CSummaryCard.swift */,
 				83DCE1AE29CCBE6F0007E73D /* CActivityCard.swift */,
@@ -284,6 +309,61 @@
 				83DCE1C329CDAEBC0007E73D /* SessionDetailViewModel.swift */,
 			);
 			path = "session-detail";
+			sourceTree = "<group>";
+		};
+		83DCE1C529CDB62D0007E73D /* session-detail-component */ = {
+			isa = PBXGroup;
+			children = (
+				83DCE1C629CDB6650007E73D /* CSessionTitle.swift */,
+				83DCE1C829CDB6720007E73D /* CSessionGoal.swift */,
+				83DCE1CA29CDB6810007E73D /* CSessionFeedback.swift */,
+				83DCE1CC29CDB68C0007E73D /* CSessionResult.swift */,
+			);
+			path = "session-detail-component";
+			sourceTree = "<group>";
+		};
+		83DCE1CE29D03C9A0007E73D /* profile */ = {
+			isa = PBXGroup;
+			children = (
+				83DCE1DC29D048880007E73D /* sub-view */,
+				83DCE1CF29D03CAC0007E73D /* ProfileView.swift */,
+				83DCE1D129D03CC90007E73D /* ProfileViewModel.swift */,
+				83DCE1D329D03CD30007E73D /* ProfileModel.swift */,
+			);
+			path = profile;
+			sourceTree = "<group>";
+		};
+		83DCE1D529D03D060007E73D /* profile-component */ = {
+			isa = PBXGroup;
+			children = (
+				83DCE1D629D03D4E0007E73D /* CProfileBiodata.swift */,
+				83DCE1D829D043500007E73D /* CProfileCoach.swift */,
+				83DCE1DA29D0450D0007E73D /* CProfileReminder.swift */,
+			);
+			path = "profile-component";
+			sourceTree = "<group>";
+		};
+		83DCE1DC29D048880007E73D /* sub-view */ = {
+			isa = PBXGroup;
+			children = (
+				83DCE1DD29D048920007E73D /* qr-popup */,
+			);
+			path = "sub-view";
+			sourceTree = "<group>";
+		};
+		83DCE1DD29D048920007E73D /* qr-popup */ = {
+			isa = PBXGroup;
+			children = (
+				83DCE1DE29D048AA0007E73D /* ProfileQRPopUp.swift */,
+			);
+			path = "qr-popup";
+			sourceTree = "<group>";
+		};
+		83DCE1E029D049170007E73D /* pop-up */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "pop-up";
 			sourceTree = "<group>";
 		};
 		83F2C80C29C30187004E3270 = {
@@ -435,6 +515,7 @@
 		83F2C84E29C30416004E3270 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				83DCE1CE29D03C9A0007E73D /* profile */,
 				83DCE1BE29CDAE970007E73D /* session-detail */,
 				83DCE1B029CCC4250007E73D /* training-plan */,
 				83DCE18229C8473D0007E73D /* assessment */,
@@ -608,26 +689,36 @@
 				83DCE1BD29CD8B270007E73D /* CCalendarCardViewModel.swift in Sources */,
 				83DCE1BA29CCD80C0007E73D /* CCalendarCard.swift in Sources */,
 				83F2C82229C30190004E3270 /* Persistence.swift in Sources */,
+				83DCE1DF29D048AA0007E73D /* ProfileQRPopUp.swift in Sources */,
 				83DCE1C229CDAEB30007E73D /* SessionDetailModel.swift in Sources */,
 				83DCE19929C8685C0007E73D /* HealthPermissionModel.swift in Sources */,
 				83DCE1B829CCC94D0007E73D /* CSessionCard.swift in Sources */,
 				83DCE18829C84CDD0007E73D /* AssessmentView.swift in Sources */,
 				83DCE19429C868060007E73D /* AssessmentViewModel.swift in Sources */,
+				83DCE1D029D03CAC0007E73D /* ProfileView.swift in Sources */,
 				83DCE18B29C850CC0007E73D /* CCheckBox.swift in Sources */,
 				83DCE19B29C8686C0007E73D /* HealthPermissionViewModel.swift in Sources */,
 				83F2C85329C328A7004E3270 /* MFont.swift in Sources */,
 				83DCE1A029CC98360007E73D /* SummaryViewModel.swift in Sources */,
 				83DCE18129C846FF0007E73D /* SplashView.swift in Sources */,
 				83DCE18629C847DB0007E73D /* CTextField.swift in Sources */,
+				83DCE1D429D03CD30007E73D /* ProfileModel.swift in Sources */,
 				83D31B7B29C70DED00B47F8C /* HHealth.swift in Sources */,
 				83D31B8129C8366700B47F8C /* TUserDefault.swift in Sources */,
+				83DCE1D929D043500007E73D /* CProfileCoach.swift in Sources */,
+				83DCE1C929CDB6720007E73D /* CSessionGoal.swift in Sources */,
+				83DCE1CD29CDB68C0007E73D /* CSessionResult.swift in Sources */,
 				83F2C82529C30190004E3270 /* CoRun.xcdatamodeld in Sources */,
 				83DCE19229C867F70007E73D /* AssessmentModel.swift in Sources */,
 				834DD25629C6F51A00CD59EB /* HNetwork.swift in Sources */,
+				83DCE1D229D03CC90007E73D /* ProfileViewModel.swift in Sources */,
 				83C6FC5029C455EF00B0026C /* MColor.swift in Sources */,
+				83DCE1CB29CDB6810007E73D /* CSessionFeedback.swift in Sources */,
 				83DCE1AD29CCBC450007E73D /* CPageView.swift in Sources */,
+				83DCE1D729D03D4E0007E73D /* CProfileBiodata.swift in Sources */,
 				83F2C81B29C30187004E3270 /* ContentView.swift in Sources */,
 				83DCE1B629CCC4510007E73D /* TrainingPlanViewModel.swift in Sources */,
+				83DCE1DB29D0450D0007E73D /* CProfileReminder.swift in Sources */,
 				83DCE1A229CC98410007E73D /* SummaryModel.swift in Sources */,
 				83DCE1B229CCC4360007E73D /* TrainingPlanView.swift in Sources */,
 				83D31B7F29C70E9F00B47F8C /* TQr.swift in Sources */,
@@ -640,6 +731,7 @@
 				83C6FC5229C45B5B00B0026C /* MView.swift in Sources */,
 				83DCE19029C85AB80007E73D /* MButton.swift in Sources */,
 				83DCE1C429CDAEBC0007E73D /* SessionDetailViewModel.swift in Sources */,
+				83DCE1C729CDB6650007E73D /* CSessionTitle.swift in Sources */,
 				83DCE19729C8684F0007E73D /* HealthPermissionView.swift in Sources */,
 				83DCE19E29CC98290007E73D /* SummaryView.swift in Sources */,
 				83D31B7D29C70DFC00B47F8C /* TDate.swift in Sources */,

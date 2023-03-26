@@ -29,7 +29,7 @@ struct CDivider: View {
         }else{
             Rectangle()
                 .fill(color)
-                .frame(minWidth:CGFloat(weight), maxWidth:CGFloat(weight),minHeight: 0,maxHeight: .infinity)
+                .frame(minWidth:CGFloat(weight), maxWidth:CGFloat(weight))
                 .cornerRadius(cornerRadius)
         }
     }

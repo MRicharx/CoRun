@@ -27,15 +27,12 @@ protocol TDateProtocol{
     ///Return duration in mm'ss"(String) format from seconds(Double)
     func secondToPace(seconds:Double)->String
     ///Return date in Date Format
-    func stringToDate(date:String)->Date
+    func stringToDate(date:String, format:String)->Date
     ///Return date in String Format
-    func dateToString(date:Date)->String
+    func dateToString(date:Date, format:String)->String
 }
 ///This Struct define function declared at TDateProtocol
 struct TDate:TDateProtocol{
-    ///Default Date Format that will be used
-    let dateFormatter: () = DateFormatter().dateFormat = "yyyy-MM-dd HH:mm:ss"
-    
     func compare(first: Date, second: Date, format: String) -> Bool {
         let comparasionFormat = DateFormatter()
         comparasionFormat.dateFormat = format
@@ -103,17 +100,17 @@ struct TDate:TDateProtocol{
         
         return String(min) + "\'" + String(sec) + "\""
     }
-    func stringToDate(date:String)->Date{
+    func stringToDate(date:String,format:String)->Date{
         ///Formating string to Date Format
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd' 'HH:mm:ss"
+        dateFormatter.dateFormat = format
         
         return dateFormatter.date(from: date) ?? Date.now
     }
-    func dateToString(date:Date)->String{
+    func dateToString(date:Date,format:String = "yyyy-MM-dd HH:mm:ss")->String{
         ///Formating string to Date Format
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd' 'HH:mm:ss"
+        dateFormatter.dateFormat = format
         
         return dateFormatter.string(from: date)
     }
