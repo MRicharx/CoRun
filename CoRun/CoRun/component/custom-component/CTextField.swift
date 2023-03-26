@@ -42,7 +42,7 @@ struct CTextfield: View {
                     ZStack{
                         if(input==""){
                             Text(hint)
-                                .modifier(MColor.Shade())
+                                .modifier(MColor.DisabledText())
                                 .modifier(MFont.Body())
                                 .modifier(MView.FillToLeftFrame())
                         }

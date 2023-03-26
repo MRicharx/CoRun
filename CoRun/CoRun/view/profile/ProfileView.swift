@@ -16,6 +16,8 @@ struct ProfileView: View {
     @State var showQRPopUp = false
     ///State Assign Coach Pop Up Status
     @State var showScanQR = false
+    ///Define Sign Out Alert Behavior
+    @State var showSignOUtAlert = false
     
     ///Define current assigned coach
     @State var currentCoach = ""
@@ -62,7 +64,7 @@ struct ProfileView: View {
                 
                 //MARK: Sign Out
                 Button{
-                    //TODO: Sign Out Button
+                    showSignOUtAlert = true
                 }label:{
                     VStack{
                         Text("Sign Out")
@@ -87,6 +89,14 @@ struct ProfileView: View {
             //TODO: Create proper model
             ScanQRPopUp()
         }
+        //MARK: SignOut Alert
+        .alert(
+            "Are you sure want to SIGN OUT",
+            isPresented: $showSignOUtAlert){
+                Button("SIGN OUT", role:.destructive){
+                    //TODO: Create SIGN OUT feature
+                }
+            }
     }
 }
 

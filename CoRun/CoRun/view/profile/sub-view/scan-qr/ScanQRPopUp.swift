@@ -15,8 +15,11 @@ struct ScanQRPopUp: View {
     ///Define Coach ID from Scanner Input
     @State var scanResult = ""
     
-    ///Define scan result alert behavior
-    @State var showScanResult = false
+    ///Define Target Coach
+    @State var coachName = "Budiman"
+    
+    ///Define Request Alert Behavior
+    @State var showRequestAlert = false
     
     var body: some View {
         ZStack{
@@ -72,15 +75,18 @@ struct ScanQRPopUp: View {
             .padding(8)
             //MARK: Scan Result Alert
             .onChange(of: scanResult,perform: { _ in
-                showScanResult = true
+                //TODO: Check if coach Exist
+                if(!(coachName.isEmpty)){
+                    coachName = scanResult
+                    showRequestAlert = true
+                }
             })
-            .alert(
-                "Search with \(scanResult)",
-                isPresented: $showScanResult){
-                    Button("Proceed"){
-                        //TODO: Search Coach
+            //MARK: Send Request Alert
+                .alert("Send request to\nCoach \(coachName)", isPresented: $showRequestAlert){
+                    Button("Send"){
+                        //TODO: Send Request Feature
                     }
-                    Button("Re-Scan",role:.cancel){
+                    Button("Cancel",role: .cancel){
                         scanResult = ""
                     }
                 }
