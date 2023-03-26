@@ -19,6 +19,10 @@ struct ProfileView: View {
     
     ///Define current assigned coach
     @State var currentCoach = ""
+    ///Define current reminder status
+    @State var isReminderActive = true
+    ///Define reminder value
+    @State var reminderValue = Date.now
     
     var body: some View {
         ScrollView{
@@ -39,7 +43,9 @@ struct ProfileView: View {
                 CProfileCoach(showScanQR: $showScanQR, coach: currentCoach)
                 
                 //MARK: Reminder
-                CProfileReminder()
+                CProfileReminder(
+                    isReminderActive: $isReminderActive,
+                    currentReminder: $reminderValue)
                 
                 //MARK: Trainee List
                 VStack{
