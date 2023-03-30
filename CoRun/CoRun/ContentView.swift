@@ -57,7 +57,9 @@ struct ContentView: View {
 ////                Text("Select an item")
 ////            }
 //        }
-        ScanQRPopUp()
+        //ScanQRPopUp()
+        CCalendarCard()
+
     }
 
     private func addItem() {

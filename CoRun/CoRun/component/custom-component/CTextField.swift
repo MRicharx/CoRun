@@ -20,6 +20,9 @@ struct CTextfield: View {
     ///Textfield input unit
     var unit:String = ""
     
+    ///Define keyboard type
+    @State var isKeyboardDefault: Bool = true
+    
     ///Binded input value
     @Binding var input:String
     
@@ -46,7 +49,14 @@ struct CTextfield: View {
                                 .modifier(MFont.Body())
                                 .modifier(MView.FillToLeftFrame())
                         }
-                        TextField("", text: $input)
+                        Group{
+                            if(isKeyboardDefault){
+                                TextField("", text: $input)
+                            }else{
+                                TextField("", text: $input)
+                                .keyboardType(.numberPad)
+                            }
+                        }
                         .textFieldStyle(PlainTextFieldStyle())
                         .disableAutocorrection(true)
                         .accentColor(MColor.ColorPalette().primary)

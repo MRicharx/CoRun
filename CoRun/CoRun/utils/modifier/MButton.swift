@@ -68,4 +68,63 @@ class MButton{
             }
         }
     }
+    
+    ///Set button to fill frame horizontally with Danger color
+    struct DangerButton: ButtonStyle {
+        let isActive:Bool
+        var invert:Bool = false
+        var padding:Int = 18
+        
+        func makeBody(configuration: Configuration) -> some View {
+            if(isActive){
+                if(invert){
+                    configuration.label
+                        .padding(CGFloat(padding))
+                        .frame(minWidth:0,maxWidth: .infinity)
+        //                .background(configuration.isPressed ? MColor.ColorPalette().primary : ColorPalette.init().accentOrange)
+                        .background(MColor.ColorPalette().card)
+                        .foregroundColor(MColor.ColorPalette().danger)
+                        .cornerRadius(10)
+                        .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(MColor.ColorPalette().danger, lineWidth: 2)
+                            )
+                        .scaleEffect(configuration.isPressed ? 0.98 : 1.0)
+                }else{
+                    configuration.label
+                        .padding(CGFloat(padding))
+                        .frame(minWidth:0,maxWidth: .infinity)
+        //                .background(configuration.isPressed ? MColor.ColorPalette().primary : ColorPalette.init().accentOrange)
+                        .background(MColor.ColorPalette().danger)
+                        .foregroundColor(MColor.ColorPalette().base)
+                        .cornerRadius(10)
+                        .scaleEffect(configuration.isPressed ? 0.98 : 1.0)
+                }
+            }
+            else{
+                if(invert){
+                    configuration.label
+                        .padding(CGFloat(padding))
+                        .frame(minWidth:0,maxWidth: .infinity)
+        //                .background(configuration.isPressed ? MColor.ColorPalette().primary : ColorPalette.init().accentOrange)
+                        .background(MColor.ColorPalette().base)
+                        .foregroundColor(MColor.ColorPalette().shade)
+                        .cornerRadius(10)
+                        .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(MColor.ColorPalette().shade, lineWidth: 2)
+                            )
+                    
+                }else{
+                    configuration.label
+                        .padding(CGFloat(padding))
+                        .frame(minWidth:0,maxWidth: .infinity)
+        //                .background(configuration.isPressed ? MColor.ColorPalette().primary : ColorPalette.init().accentOrange)
+                        .background(MColor.ColorPalette().base)
+                        .foregroundColor(MColor.ColorPalette().shade)
+                        .cornerRadius(10)
+                }
+            }
+        }
+    }
 }

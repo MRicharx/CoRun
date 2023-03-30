@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		834DD25629C6F51A00CD59EB /* HNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834DD25529C6F51A00CD59EB /* HNetwork.swift */; };
 		834DD25A29C6FAA500CD59EB /* HApiREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834DD25929C6FAA500CD59EB /* HApiREST.swift */; };
+		8368FFD329D423DA007DBCDF /* TraineeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8368FFD229D423DA007DBCDF /* TraineeListView.swift */; };
+		8368FFD529D423E6007DBCDF /* TraineeListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8368FFD429D423E6007DBCDF /* TraineeListModel.swift */; };
+		8368FFD729D423F3007DBCDF /* TraineeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8368FFD629D423F3007DBCDF /* TraineeListViewModel.swift */; };
+		8368FFD929D42418007DBCDF /* CTraineeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8368FFD829D42418007DBCDF /* CTraineeCard.swift */; };
+		8368FFDB29D428F3007DBCDF /* CSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8368FFDA29D428F3007DBCDF /* CSearchBar.swift */; };
+		8368FFDD29D42FDF007DBCDF /* TraineeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8368FFDC29D42FDF007DBCDF /* TraineeView.swift */; };
+		8368FFDF29D42FF3007DBCDF /* TraineeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8368FFDE29D42FF3007DBCDF /* TraineeModel.swift */; };
+		8368FFE129D43000007DBCDF /* TraineeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8368FFE029D43000007DBCDF /* TraineeViewModel.swift */; };
+		8368FFE429D59412007DBCDF /* CDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8368FFE329D59412007DBCDF /* CDashboardView.swift */; };
+		8368FFE629D5A6BD007DBCDF /* HNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8368FFE529D5A6BD007DBCDF /* HNavigation.swift */; };
 		83C6FC5029C455EF00B0026C /* MColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6FC4F29C455EF00B0026C /* MColor.swift */; };
 		83C6FC5229C45B5B00B0026C /* MView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6FC5129C45B5B00B0026C /* MView.swift */; };
 		83D31B7B29C70DED00B47F8C /* HHealth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D31B7A29C70DED00B47F8C /* HHealth.swift */; };
@@ -106,6 +116,16 @@
 /* Begin PBXFileReference section */
 		834DD25529C6F51A00CD59EB /* HNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNetwork.swift; sourceTree = "<group>"; };
 		834DD25929C6FAA500CD59EB /* HApiREST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HApiREST.swift; sourceTree = "<group>"; };
+		8368FFD229D423DA007DBCDF /* TraineeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeListView.swift; sourceTree = "<group>"; };
+		8368FFD429D423E6007DBCDF /* TraineeListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeListModel.swift; sourceTree = "<group>"; };
+		8368FFD629D423F3007DBCDF /* TraineeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeListViewModel.swift; sourceTree = "<group>"; };
+		8368FFD829D42418007DBCDF /* CTraineeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTraineeCard.swift; sourceTree = "<group>"; };
+		8368FFDA29D428F3007DBCDF /* CSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSearchBar.swift; sourceTree = "<group>"; };
+		8368FFDC29D42FDF007DBCDF /* TraineeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeView.swift; sourceTree = "<group>"; };
+		8368FFDE29D42FF3007DBCDF /* TraineeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeModel.swift; sourceTree = "<group>"; };
+		8368FFE029D43000007DBCDF /* TraineeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeViewModel.swift; sourceTree = "<group>"; };
+		8368FFE329D59412007DBCDF /* CDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDashboardView.swift; sourceTree = "<group>"; };
+		8368FFE529D5A6BD007DBCDF /* HNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNavigation.swift; sourceTree = "<group>"; };
 		83C6FC4F29C455EF00B0026C /* MColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MColor.swift; sourceTree = "<group>"; };
 		83C6FC5129C45B5B00B0026C /* MView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MView.swift; sourceTree = "<group>"; };
 		83D31B7A29C70DED00B47F8C /* HHealth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HHealth.swift; sourceTree = "<group>"; };
@@ -214,6 +234,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8368FFD029D42234007DBCDF /* trainee */ = {
+			isa = PBXGroup;
+			children = (
+				8368FFDC29D42FDF007DBCDF /* TraineeView.swift */,
+				8368FFDE29D42FF3007DBCDF /* TraineeModel.swift */,
+				8368FFE029D43000007DBCDF /* TraineeViewModel.swift */,
+			);
+			path = trainee;
+			sourceTree = "<group>";
+		};
+		8368FFD129D42247007DBCDF /* trainee-list */ = {
+			isa = PBXGroup;
+			children = (
+				8368FFD229D423DA007DBCDF /* TraineeListView.swift */,
+				8368FFD429D423E6007DBCDF /* TraineeListModel.swift */,
+				8368FFD629D423F3007DBCDF /* TraineeListViewModel.swift */,
+			);
+			path = "trainee-list";
+			sourceTree = "<group>";
+		};
+		8368FFE229D593E2007DBCDF /* dashboard-view */ = {
+			isa = PBXGroup;
+			children = (
+				8368FFE329D59412007DBCDF /* CDashboardView.swift */,
+			);
+			path = "dashboard-view";
+			sourceTree = "<group>";
+		};
 		83D08B1229C6FC5000114509 /* HApi */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,6 +316,7 @@
 				83DCE1A429CC98D90007E73D /* CSegmented.swift */,
 				83DCE1AA29CCA6C30007E73D /* CDivider.swift */,
 				83DCE1AC29CCBC450007E73D /* CPageView.swift */,
+				8368FFDA29D428F3007DBCDF /* CSearchBar.swift */,
 			);
 			path = "custom-component";
 			sourceTree = "<group>";
@@ -275,11 +324,12 @@
 		83DCE1A729CC9F430007E73D /* view-component */ = {
 			isa = PBXGroup;
 			children = (
-				83DCE1E029D049170007E73D /* pop-up */,
+				8368FFE229D593E2007DBCDF /* dashboard-view */,
 				83DCE1BB29CD8AFA0007E73D /* calendar-view-component */,
 				83DCE1A829CC9F850007E73D /* CSummaryCard.swift */,
 				83DCE1AE29CCBE6F0007E73D /* CActivityCard.swift */,
 				83DCE1B729CCC94D0007E73D /* CSessionCard.swift */,
+				8368FFD829D42418007DBCDF /* CTraineeCard.swift */,
 			);
 			path = "view-component";
 			sourceTree = "<group>";
@@ -350,6 +400,7 @@
 		83DCE1DC29D048880007E73D /* sub-view */ = {
 			isa = PBXGroup;
 			children = (
+				8368FFD129D42247007DBCDF /* trainee-list */,
 				83DCE1E429D062470007E73D /* scan-qr */,
 				83DCE1E129D0550C0007E73D /* edit-biodata */,
 				83DCE1DD29D048920007E73D /* qr-popup */,
@@ -363,13 +414,6 @@
 				83DCE1DE29D048AA0007E73D /* QRPopUp.swift */,
 			);
 			path = "qr-popup";
-			sourceTree = "<group>";
-		};
-		83DCE1E029D049170007E73D /* pop-up */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "pop-up";
 			sourceTree = "<group>";
 		};
 		83DCE1E129D0550C0007E73D /* edit-biodata */ = {
@@ -530,6 +574,7 @@
 				834DD25529C6F51A00CD59EB /* HNetwork.swift */,
 				83D31B7A29C70DED00B47F8C /* HHealth.swift */,
 				83EA9FED29C8459D000B7A02 /* HealthTemplate.swift */,
+				8368FFE529D5A6BD007DBCDF /* HNavigation.swift */,
 			);
 			path = handler;
 			sourceTree = "<group>";
@@ -537,6 +582,7 @@
 		83F2C84E29C30416004E3270 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				8368FFD029D42234007DBCDF /* trainee */,
 				83DCE1CE29D03C9A0007E73D /* profile */,
 				83DCE1BE29CDAE970007E73D /* session-detail */,
 				83DCE1B029CCC4250007E73D /* training-plan */,
@@ -712,13 +758,17 @@
 				83DCE1BA29CCD80C0007E73D /* CCalendarCard.swift in Sources */,
 				83F2C82229C30190004E3270 /* Persistence.swift in Sources */,
 				83DCE1DF29D048AA0007E73D /* QRPopUp.swift in Sources */,
+				8368FFE629D5A6BD007DBCDF /* HNavigation.swift in Sources */,
 				83DCE1C229CDAEB30007E73D /* SessionDetailModel.swift in Sources */,
 				83DCE19929C8685C0007E73D /* HealthPermissionModel.swift in Sources */,
 				83DCE1B829CCC94D0007E73D /* CSessionCard.swift in Sources */,
+				8368FFD329D423DA007DBCDF /* TraineeListView.swift in Sources */,
 				83DCE18829C84CDD0007E73D /* AssessmentView.swift in Sources */,
 				83DCE19429C868060007E73D /* AssessmentViewModel.swift in Sources */,
+				8368FFDB29D428F3007DBCDF /* CSearchBar.swift in Sources */,
 				83DCE1D029D03CAC0007E73D /* ProfileView.swift in Sources */,
 				83DCE18B29C850CC0007E73D /* CCheckBox.swift in Sources */,
+				8368FFDF29D42FF3007DBCDF /* TraineeModel.swift in Sources */,
 				83DCE19B29C8686C0007E73D /* HealthPermissionViewModel.swift in Sources */,
 				83F2C85329C328A7004E3270 /* MFont.swift in Sources */,
 				83DCE1A029CC98360007E73D /* SummaryViewModel.swift in Sources */,
@@ -728,7 +778,9 @@
 				83D31B7B29C70DED00B47F8C /* HHealth.swift in Sources */,
 				83D31B8129C8366700B47F8C /* TUserDefault.swift in Sources */,
 				83DCE1D929D043500007E73D /* CProfileCoach.swift in Sources */,
+				8368FFD729D423F3007DBCDF /* TraineeListViewModel.swift in Sources */,
 				83DCE1C929CDB6720007E73D /* CSessionGoal.swift in Sources */,
+				8368FFD529D423E6007DBCDF /* TraineeListModel.swift in Sources */,
 				83DCE1CD29CDB68C0007E73D /* CSessionResult.swift in Sources */,
 				83F2C82529C30190004E3270 /* CoRun.xcdatamodeld in Sources */,
 				83DCE19229C867F70007E73D /* AssessmentModel.swift in Sources */,
@@ -739,7 +791,9 @@
 				83DCE1AD29CCBC450007E73D /* CPageView.swift in Sources */,
 				83DCE1D729D03D4E0007E73D /* CProfileBiodata.swift in Sources */,
 				83F2C81B29C30187004E3270 /* ContentView.swift in Sources */,
+				8368FFE429D59412007DBCDF /* CDashboardView.swift in Sources */,
 				83DCE1B629CCC4510007E73D /* TrainingPlanViewModel.swift in Sources */,
+				8368FFE129D43000007DBCDF /* TraineeViewModel.swift in Sources */,
 				83DCE1DB29D0450D0007E73D /* CProfileReminder.swift in Sources */,
 				83DCE1A229CC98410007E73D /* SummaryModel.swift in Sources */,
 				83DCE1B229CCC4360007E73D /* TrainingPlanView.swift in Sources */,
@@ -755,6 +809,7 @@
 				83DCE19029C85AB80007E73D /* MButton.swift in Sources */,
 				83DCE1C429CDAEBC0007E73D /* SessionDetailViewModel.swift in Sources */,
 				83DCE1C729CDB6650007E73D /* CSessionTitle.swift in Sources */,
+				8368FFD929D42418007DBCDF /* CTraineeCard.swift in Sources */,
 				83DCE19729C8684F0007E73D /* HealthPermissionView.swift in Sources */,
 				83DCE19E29CC98290007E73D /* SummaryView.swift in Sources */,
 				83D31B7D29C70DFC00B47F8C /* TDate.swift in Sources */,
@@ -762,6 +817,7 @@
 				83DCE1E329D055250007E73D /* EditBiodataPopUp.swift in Sources */,
 				83DCE1C029CDAEA50007E73D /* SessionDetailView.swift in Sources */,
 				834DD25A29C6FAA500CD59EB /* HApiREST.swift in Sources */,
+				8368FFDD29D42FDF007DBCDF /* TraineeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
