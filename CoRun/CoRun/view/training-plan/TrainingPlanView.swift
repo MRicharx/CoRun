@@ -15,57 +15,59 @@ struct TrainingPlanView: View {
             Color("base")
                 .ignoresSafeArea()
             
-            VStack(alignment:.leading, spacing: 28){
-                //MARK: Title
-                Text("Training\nPlan")
-                    .modifier(MView.safePadding())
-                    .modifier(MColor.Text())
-                    .modifier(MFont.Title())
-                
-                //MARK: Segmented Control
-                CSegmented(option: ["rectangle.grid.1x2","rectangle.grid.3x2"], selected: $displayOption,isSFSymbol: true)
-                
-                //MARK: Tab Navigator
-                //TODO: Implement this
-                HStack{
-                    Group{
-                        Button{
-                            //TODO: Implement Previous Navigation
-                        }label: {
-                            Image(systemName: "chevron.left")
-                                .modifier(MColor.Primary())
+            ScrollView{
+                VStack(alignment:.leading, spacing: 28){
+                    //MARK: Title
+                    Text("Training\nPlan")
+                        .modifier(MView.safePadding())
+                        .modifier(MColor.Text())
+                        .modifier(MFont.Title())
+                    
+                    //MARK: Segmented Control
+                    CSegmented(option: ["rectangle.grid.1x2","rectangle.grid.3x2"], selected: $displayOption,isSFSymbol: true)
+                    
+                    //MARK: Tab Navigator
+                    //TODO: Implement this
+                    HStack{
+                        Group{
+                            Button{
+                                //TODO: Implement Previous Navigation
+                            }label: {
+                                Image(systemName: "chevron.left")
+                                    .modifier(MColor.Primary())
+                            }
+                            
+                            Text("This Week")
+                                .modifier(MColor.Text())
+                                .modifier(MView.FillFrame())
+                            
+                            Button{
+                                //TODO: Implement Next Navigation
+                            }label: {
+                                Image(systemName: "chevron.right")
+                                    .modifier(MColor.Primary())
+                            }
+                        }.modifier(MFont.Headline(size: 18))
+                    }.modifier(MView.safePadding())
+                    
+                    //MARK: Training Plan View
+                    if(displayOption == "rectangle.grid.1x2"){
+                        VStack(spacing:18){
+                            CSessionCard()
+                            CSessionCard()
+                            CSessionCard()
                         }
-                        
-                        Text("This Week")
-                            .modifier(MColor.Text())
-                            .modifier(MView.FillFrame())
-                        
-                        Button{
-                            //TODO: Implement Next Navigation
-                        }label: {
-                            Image(systemName: "chevron.right")
-                                .modifier(MColor.Primary())
-                        }
-                    }.modifier(MFont.Headline(size: 18))
-                }.modifier(MView.safePadding())
-                
-                //MARK: Training Plan View
-                if(displayOption == "rectangle.grid.1x2"){
-                    VStack(spacing:18){
-                        CSessionCard()
-                        CSessionCard()
-                        CSessionCard()
-                    }
 
-                }else{
-                    VStack(spacing: 24){
-                        CCalendarCard()
-                        
-                        CSessionCard()
+                    }else{
+                        VStack(spacing: 24){
+                            CCalendarCard()
+                            
+                            CSessionCard()
+                        }
                     }
-                }
-                
-            }.modifier(MView.FillFrame())
+                    
+                }.modifier(MView.FillFrame())
+            }
         }
     }
 }

@@ -104,7 +104,7 @@ struct Day:View{
             }
             else{
                 Circle()
-                    .fill(MColor.ColorPalette().base)
+                    .fill(MColor.ColorPalette().card)
             }
             
             //MARK: Content
@@ -132,7 +132,7 @@ struct Day:View{
                             .modifier(MFont.Headline(size:14))
                             .modifier(MColor.DisabledText())
                         Circle()
-                            .fill(MColor.ColorPalette().base)
+                            .fill(MColor.ColorPalette().card)
                             .frame(width: 8,height: 8)
                     }else{
                         Text(day)
@@ -142,7 +142,7 @@ struct Day:View{
                         switch planStatus{
                         case 0:
                             Circle()
-                                .fill(MColor.ColorPalette().base)
+                                .fill(MColor.ColorPalette().card)
                                 .frame(width: 8,height: 8)
                         case 1:
                             Circle()
@@ -158,7 +158,7 @@ struct Day:View{
                                 .frame(width: 8,height: 8)
                         default:
                             Circle()
-                                .fill(MColor.ColorPalette().shade)
+                                .fill(MColor.ColorPalette().card)
                                 .frame(width: 8,height: 8)
                         }
                     }

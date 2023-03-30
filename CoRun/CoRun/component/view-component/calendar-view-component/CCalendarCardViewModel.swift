@@ -16,10 +16,15 @@ class CCalendarCardViewModel:ObservableObject{
         ///Define start of the interval
         let monthFirstWeek = calendar.dateInterval(of: .weekOfMonth, for: monthInterval?.start ?? date)
         ///Define end of the interval
-//        let monthLastWeek = calendar.dateInterval(of: .weekOfMonth, for: monthInterval?.end ?? date)
+        let monthLastWeek = calendar.dateInterval(of: .weekOfMonth, for: monthInterval?.end ?? date)
 //        let monthLastWeek = calendar.dateInterval(of: .weekOfMonth, for: monthInterval?.end.next(.saturday) ?? date)
         
-        return DateInterval(start: monthFirstWeek?.start ?? date, end: monthInterval?.end.next(.saturday) ?? date)
+        if(TDate().dateToString(date: monthLastWeek?.end ?? date,format: "EEEE") == "Sunday"){
+            return DateInterval(start: monthFirstWeek?.start ?? date, end: monthLastWeek?.end.previous(.saturday) ?? date)
+        }
+        else{
+            return DateInterval(start: monthFirstWeek?.start ?? date, end: monthInterval?.end.next(.saturday) ?? date)
+        }
     }
     
     ///Generate Date to be loaded on card

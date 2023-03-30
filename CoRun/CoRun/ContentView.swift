@@ -18,48 +18,20 @@ struct ContentView: View {
     
     
     var body: some View {
-//        VStack{
-//            Text("Title 1")
-//                .modifier(MFont.Title1())
-//            Text("Title 2")
-//                .modifier(MFont.Title2())
-//            Text("Headline")
-//                .modifier(MFont.Headline())
-//            Text("Body")
-//                .modifier(MFont.Body())
-//            Text("Caption 1")
-//                .modifier(MFont.Caption1())
-//            Text("Caption 2")
-//                .modifier(MFont.Caption2())
-//
-//
-////            NavigationView {
-////                List {
-////                    ForEach(items) { item in
-////                        NavigationLink {
-////                            Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-////                        } label: {
-////                            Text(item.timestamp!, formatter: itemFormatter)
-////                        }
-////                    }
-////                    .onDelete(perform: deleteItems)
-////                }
-////                .toolbar {
-////                    ToolbarItem(placement: .navigationBarTrailing) {
-////                        EditButton()
-////                    }
-////                    ToolbarItem {
-////                        Button(action: addItem) {
-////                            Label("Add Item", systemImage: "plus")
-////                        }
-////                    }
-////                }
-////                Text("Select an item")
-////            }
-//        }
-        //ScanQRPopUp()
-        CCalendarCard()
-
+        TabView{
+            SummaryView()
+                .tabItem{
+                    Label("Summary",systemImage: "figure.run")
+                }
+            TrainingPlanView()
+                .tabItem{
+                    Label("Training Plan",systemImage: "calendar")
+                }
+            ProfileView()
+                .tabItem{
+                    Label("Profile",systemImage: "person.fill")
+                }
+        }
     }
 
     private func addItem() {
