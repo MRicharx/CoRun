@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		832AB22229D9806000904AA3 /* SessionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832AB22129D9806000904AA3 /* SessionResult.swift */; };
 		834DD25629C6F51A00CD59EB /* HNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834DD25529C6F51A00CD59EB /* HNetwork.swift */; };
 		834DD25A29C6FAA500CD59EB /* HApiREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834DD25929C6FAA500CD59EB /* HApiREST.swift */; };
 		8368FFD329D423DA007DBCDF /* TraineeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8368FFD229D423DA007DBCDF /* TraineeListView.swift */; };
@@ -114,6 +115,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		832AB22129D9806000904AA3 /* SessionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionResult.swift; sourceTree = "<group>"; };
 		834DD25529C6F51A00CD59EB /* HNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNetwork.swift; sourceTree = "<group>"; };
 		834DD25929C6FAA500CD59EB /* HApiREST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HApiREST.swift; sourceTree = "<group>"; };
 		8368FFD229D423DA007DBCDF /* TraineeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeListView.swift; sourceTree = "<group>"; };
@@ -234,6 +236,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		832AB22329D981FB00904AA3 /* data-model */ = {
+			isa = PBXGroup;
+			children = (
+				832AB22129D9806000904AA3 /* SessionResult.swift */,
+			);
+			path = "data-model";
+			sourceTree = "<group>";
+		};
+		832AB22429D9820800904AA3 /* data-display */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "data-display";
+			sourceTree = "<group>";
+		};
 		8368FFD029D42234007DBCDF /* trainee */ = {
 			isa = PBXGroup;
 			children = (
@@ -534,6 +551,8 @@
 		83F2C84929C30365004E3270 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				832AB22429D9820800904AA3 /* data-display */,
+				832AB22329D981FB00904AA3 /* data-model */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -774,6 +793,7 @@
 				83DCE1A029CC98360007E73D /* SummaryViewModel.swift in Sources */,
 				83DCE18129C846FF0007E73D /* SplashView.swift in Sources */,
 				83DCE18629C847DB0007E73D /* CTextField.swift in Sources */,
+				832AB22229D9806000904AA3 /* SessionResult.swift in Sources */,
 				83DCE1D429D03CD30007E73D /* ProfileModel.swift in Sources */,
 				83D31B7B29C70DED00B47F8C /* HHealth.swift in Sources */,
 				83D31B8129C8366700B47F8C /* TUserDefault.swift in Sources */,

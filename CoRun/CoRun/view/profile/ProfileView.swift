@@ -27,50 +27,55 @@ struct ProfileView: View {
     @State var reminderValue = Date.now
     
     var body: some View {
-        ScrollView{
-            VStack(alignment:.leading,spacing: 24){
-                //MARK: Title
-                Text("My Profile")
-                    .modifier(MView.safePadding())
-                    .modifier(MColor.Text())
-                    .modifier(MFont.Title())
-                
-                //MARK: Biodata
-                CProfileBiodata(
-                    showQR: $showQRPopUp,
-                    showEdit: $showEditData
-                )
-                
-                //MARK: Coach
-                CProfileCoach(showScanQR: $showScanQR, coach: currentCoach)
-                
-                //MARK: Reminder
-                CProfileReminder(
-                    isReminderActive: $isReminderActive,
-                    currentReminder: $reminderValue)
-                
-                //MARK: Trainee List
-                VStack{
-                    HStack{
-                        Group{
-                            Image(systemName: "person.crop.rectangle.stack.fill")
-                                .modifier(MColor.Primary())
-                            Text("My Trainee List")
-                                .modifier(MColor.Text())
-                        }.modifier(MFont.Headline())
-                    }.modifier(MView.FillToLeftFrame())
-                }.padding(18)
-                .modifier(MView.Card())
-                
-                //MARK: Sign Out
-                Button{
-                    showSignOUtAlert = true
-                }label:{
+        ZStack{
+            Color("Base")
+                .ignoresSafeArea()
+            
+            ScrollView{
+                VStack(alignment:.leading,spacing: 24){
+                    //MARK: Title
+                    Text("My Profile")
+                        .modifier(MView.safePadding())
+                        .modifier(MColor.Text())
+                        .modifier(MFont.Title())
+                    
+                    //MARK: Biodata
+                    CProfileBiodata(
+                        showQR: $showQRPopUp,
+                        showEdit: $showEditData
+                    )
+                    
+                    //MARK: Coach
+                    CProfileCoach(showScanQR: $showScanQR, coach: currentCoach)
+                    
+                    //MARK: Reminder
+                    CProfileReminder(
+                        isReminderActive: $isReminderActive,
+                        currentReminder: $reminderValue)
+                    
+                    //MARK: Trainee List
                     VStack{
-                        Text("Sign Out")
-                            .modifier(MFont.Headline(size: 18))
-                            .modifier(MColor.Danger())
-                    }.modifier(MView.FillFrame())
+                        HStack{
+                            Group{
+                                Image(systemName: "person.crop.rectangle.stack.fill")
+                                    .modifier(MColor.Primary())
+                                Text("My Trainee List")
+                                    .modifier(MColor.Text())
+                            }.modifier(MFont.Headline())
+                        }.modifier(MView.FillToLeftFrame())
+                    }.padding(18)
+                    .modifier(MView.Card())
+                    
+                    //MARK: Sign Out
+                    Button{
+                        showSignOUtAlert = true
+                    }label:{
+                        VStack{
+                            Text("Sign Out")
+                                .modifier(MFont.Headline(size: 18))
+                                .modifier(MColor.Danger())
+                        }.modifier(MView.FillFrame())
+                    }
                 }
             }
         }

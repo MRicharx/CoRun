@@ -12,7 +12,7 @@ struct TrainingPlanView: View {
     
     var body: some View {
         ZStack{
-            Color("base")
+            Color("Base")
                 .ignoresSafeArea()
             
             ScrollView{
