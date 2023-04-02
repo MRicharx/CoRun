@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8316301229D993F200B3322E /* SplashModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316301129D993F200B3322E /* SplashModel.swift */; };
+		8316301429D993FB00B3322E /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316301329D993FB00B3322E /* SplashViewModel.swift */; };
 		832AB22229D9806000904AA3 /* SessionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832AB22129D9806000904AA3 /* SessionResult.swift */; };
+		832AB22629D991BD00904AA3 /* CSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832AB22529D991BD00904AA3 /* CSignInButton.swift */; };
 		834DD25629C6F51A00CD59EB /* HNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834DD25529C6F51A00CD59EB /* HNetwork.swift */; };
 		834DD25A29C6FAA500CD59EB /* HApiREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834DD25929C6FAA500CD59EB /* HApiREST.swift */; };
 		8368FFD329D423DA007DBCDF /* TraineeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8368FFD229D423DA007DBCDF /* TraineeListView.swift */; };
@@ -115,7 +118,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8316301129D993F200B3322E /* SplashModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashModel.swift; sourceTree = "<group>"; };
+		8316301329D993FB00B3322E /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		832AB22129D9806000904AA3 /* SessionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionResult.swift; sourceTree = "<group>"; };
+		832AB22529D991BD00904AA3 /* CSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSignInButton.swift; sourceTree = "<group>"; };
 		834DD25529C6F51A00CD59EB /* HNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNetwork.swift; sourceTree = "<group>"; };
 		834DD25929C6FAA500CD59EB /* HApiREST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HApiREST.swift; sourceTree = "<group>"; };
 		8368FFD229D423DA007DBCDF /* TraineeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeListView.swift; sourceTree = "<group>"; };
@@ -291,6 +297,8 @@
 			isa = PBXGroup;
 			children = (
 				83DCE18029C846FF0007E73D /* SplashView.swift */,
+				8316301129D993F200B3322E /* SplashModel.swift */,
+				8316301329D993FB00B3322E /* SplashViewModel.swift */,
 			);
 			path = splash;
 			sourceTree = "<group>";
@@ -328,6 +336,7 @@
 		83DCE1A629CC9F380007E73D /* custom-component */ = {
 			isa = PBXGroup;
 			children = (
+				832AB22529D991BD00904AA3 /* CSignInButton.swift */,
 				83DCE18A29C850CC0007E73D /* CCheckBox.swift */,
 				83DCE18529C847DB0007E73D /* CTextField.swift */,
 				83DCE1A429CC98D90007E73D /* CSegmented.swift */,
@@ -784,6 +793,7 @@
 				8368FFD329D423DA007DBCDF /* TraineeListView.swift in Sources */,
 				83DCE18829C84CDD0007E73D /* AssessmentView.swift in Sources */,
 				83DCE19429C868060007E73D /* AssessmentViewModel.swift in Sources */,
+				8316301429D993FB00B3322E /* SplashViewModel.swift in Sources */,
 				8368FFDB29D428F3007DBCDF /* CSearchBar.swift in Sources */,
 				83DCE1D029D03CAC0007E73D /* ProfileView.swift in Sources */,
 				83DCE18B29C850CC0007E73D /* CCheckBox.swift in Sources */,
@@ -812,6 +822,7 @@
 				83DCE1D729D03D4E0007E73D /* CProfileBiodata.swift in Sources */,
 				83F2C81B29C30187004E3270 /* ContentView.swift in Sources */,
 				8368FFE429D59412007DBCDF /* CDashboardView.swift in Sources */,
+				8316301229D993F200B3322E /* SplashModel.swift in Sources */,
 				83DCE1B629CCC4510007E73D /* TrainingPlanViewModel.swift in Sources */,
 				8368FFE129D43000007DBCDF /* TraineeViewModel.swift in Sources */,
 				83DCE1DB29D0450D0007E73D /* CProfileReminder.swift in Sources */,
@@ -836,6 +847,7 @@
 				83DCE1A529CC98D90007E73D /* CSegmented.swift in Sources */,
 				83DCE1E329D055250007E73D /* EditBiodataPopUp.swift in Sources */,
 				83DCE1C029CDAEA50007E73D /* SessionDetailView.swift in Sources */,
+				832AB22629D991BD00904AA3 /* CSignInButton.swift in Sources */,
 				834DD25A29C6FAA500CD59EB /* HApiREST.swift in Sources */,
 				8368FFDD29D42FDF007DBCDF /* TraineeView.swift in Sources */,
 			);
