@@ -45,13 +45,11 @@ struct TDate:TDateProtocol{
         }
     }
     
-    //TODO: Test This
     func getFirstDayOfMonth(month: Date) -> Date {
         ///Define Component
         let comp: DateComponents = Calendar.current.dateComponents([.year, .month], from: month)
         return Calendar.current.date(from: comp)!
     }
-    //TODO: Test This
     func getLastDayOfMonth(month: Date) -> Date {
         ///Define Component
         var comp = DateComponents()
@@ -61,13 +59,11 @@ struct TDate:TDateProtocol{
         ///Increment first day of month with date component and return the value
         return Calendar.current.date(byAdding: comp, to: getFirstDayOfMonth(month: month)) ?? Date.now
     }
-    //TODO: Test This
     func getFirstDayOfYear(year: Date) -> Date {
         ///Define component
         let comp:DateComponents = Calendar.current.dateComponents([.year], from: year)
         return Calendar.current.date(from: comp)!
     }
-    //TODO: Test This
     func getLastDayOfYear(year: Date) -> Date {
         ///Define Component
         var comp = DateComponents()

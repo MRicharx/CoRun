@@ -10,6 +10,7 @@ import SwiftUI
 ///MButton - Modifier Button
 ///This modifier return modifier for button style
 class MButton{
+    
     ///Set button to fill frame horizontally with accent color
     struct DefaultButton: ButtonStyle {
         let isActive:Bool
@@ -61,7 +62,7 @@ class MButton{
                         .padding(CGFloat(padding))
                         .frame(minWidth:0,maxWidth: .infinity)
         //                .background(configuration.isPressed ? MColor.ColorPalette().primary : ColorPalette.init().accentOrange)
-                        .background(MColor.ColorPalette().base)
+                        .background(MColor.ColorPalette().primaryDisabled)
                         .foregroundColor(MColor.ColorPalette().shade)
                         .cornerRadius(10)
                 }

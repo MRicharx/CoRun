@@ -1,15 +1,45 @@
 //
-//  CCalendarCardViewModel.swift
+//  CalendarViewModel.swift
 //  CoRun
 //
-//  Created by Marselus Richard on 24/03/23.
+//  Created by Marselus Richard on 12/04/23.
 //
 
-import SwiftUI
+import Foundation
 
-class CCalendarCardViewModel:ObservableObject{
+class CalendarViewModel:ObservableObject{
+    ///Define displayed month
+    @Published var curMonth = Date.now
+    ///Define date
+    @Published var date:[Date] = [Date]()
+    
+    ///Generate date
+    func getDate(){
+        date = generateDate(month: curMonth)
+    }
+    
+    ///Increment date to next month
+    func nextMonth(){
+        var comp = DateComponents()
+        comp.month = 1
+        
+        curMonth = Calendar.current.date(byAdding: comp, to: curMonth) ?? Date.now
+        
+        getDate()
+    }
+    
+    ///Decrement date to last month
+    func lastMonth(){
+        var comp = DateComponents()
+        comp.month = -1
+        
+        curMonth = Calendar.current.date(byAdding: comp, to: curMonth) ?? Date.now
+        
+        getDate()
+    }
+    
     ///Define DateInterval for current month
-    func defineDateInterval(date:Date)->DateInterval{
+    private func defineDateInterval(date:Date)->DateInterval{
         let calendar = Calendar.current
 
         let monthInterval = calendar.dateInterval(of: .month, for: date)

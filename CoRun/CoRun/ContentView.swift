@@ -18,21 +18,20 @@ struct ContentView: View {
     
     
     var body: some View {
-        AssessmentView()
-//        TabView{
-//            SummaryView()
-//                .tabItem{
-//                    Label("Summary",systemImage: "figure.run")
-//                }
-//            TrainingPlanView()
-//                .tabItem{
-//                    Label("Training Plan",systemImage: "calendar")
-//                }
-//            ProfileView()
-//                .tabItem{
-//                    Label("Profile",systemImage: "person.fill")
-//                }
-//        }
+        ZStack{
+            Color("Base")
+                .ignoresSafeArea()
+            TabView{
+                TrainingView()
+                    .tabItem{
+                        Label("Training",systemImage: "figure.run")
+                    }
+                ProfileView()
+                    .tabItem{
+                        Label("Profile",systemImage: "person.fill")
+                    }
+            }
+        }
     }
 
     private func addItem() {

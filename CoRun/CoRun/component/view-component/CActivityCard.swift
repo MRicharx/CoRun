@@ -58,7 +58,7 @@ struct CActivityCard: View {
                 .modifier(MColor.Text())
         }
         .padding(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
-        .modifier(MView.Card(cornerRadius: 12))
+        .modifier(MView.Card())
     }
 }
 

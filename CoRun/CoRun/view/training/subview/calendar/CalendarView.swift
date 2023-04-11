@@ -1,13 +1,13 @@
 //
-//  CCalendarCard.swift
+//  CalendarView.swift
 //  CoRun
 //
-//  Created by Marselus Richard on 24/03/23.
+//  Created by Marselus Richard on 12/04/23.
 //
 
 import SwiftUI
 
-struct CCalendarCard: View {
+struct CalendarView: View {
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -18,58 +18,76 @@ struct CCalendarCard: View {
         GridItem(.flexible())
     ]
     
-    ///Define current date
-    @State var month:Date = Date.now
     ///Define selected date
     @State var selected:Date = Date.now
-    ///Define date
-    @State var date:[Date] = [Date]()
     
     ///Define current view's view model
-    @StateObject var vm = CCalendarCardViewModel()
+    @StateObject var vm = CalendarViewModel()
+    
     
     var body: some View {
-        VStack{
+        VStack(spacing: 24){
+            //MARK: Navigator
             HStack{
                 Group{
-                    Text("Su")
-                    Text("M")
-                    Text("Tu")
-                    Text("W")
-                    Text("Th")
-                    Text("F")
-                    Text("Sa")
-                }
-                .modifier(MFont.Headline(size:18))
-                .modifier(MColor.Base())
-                .modifier(MView.FillFrame())
-            }
-            .modifier(MView.Background(color: MColor.ColorPalette().primary,cornerRadius: 12, padding: EdgeInsets(top: 6, leading: 8, bottom: 6, trailing: 8)))
+                    Image(systemName: "chevron.left")
+                        .onTapGesture{
+                            vm.lastMonth()
+                        }
+                        .modifier(MColor.Primary())
+                    Text(TDate().dateToString(date: vm.curMonth, format: "MMMM YYYY"))
+                        .modifier(MView.FillFrame())
+                    Image(systemName: "chevron.right")
+                        .onTapGesture{
+                            vm.nextMonth()
+                        }
+                        .modifier(MColor.Primary())
+                }.modifier(MFont.SubBody())
+            }.padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
             
-            //MARK: Calendar Implementation
-            LazyVGrid(columns: columns){
-                ForEach(date,id:\.self){date in
+            VStack{
+                //MARK: Day Name
+                HStack{
                     Group{
-                        if(TDate().compare(first: date, second: selected, format: "yyyy-MM-dd")){
-                            Day(date:date,isSelected: true)
-                        }
-                        else if(TDate().compare(first: date, second: month, format: "MM")){
-                            Day(date:date)
-                        }
-                        else{
-                            Day(date:date,isDisabled: true)
-                        }
+                        Text("Su")
+                        Text("M")
+                        Text("Tu")
+                        Text("W")
+                        Text("Th")
+                        Text("F")
+                        Text("Sa")
                     }
-                    .onTapGesture{
-                        selected = date
+                    .modifier(MFont.Headline(size:12))
+                    .modifier(MColor.DisabledText())
+                    .modifier(MView.FillFrame())
+                }
+                
+                //MARK: Calendar Implementation
+                LazyVGrid(columns: columns){
+                    ForEach(vm.date,id:\.self){date in
+                        Group{
+                            if(TDate().compare(first: date, second: selected, format: "yyyy-MM-dd")){
+                                Day(date:date,isSelected: true)
+                            }
+                            else if(TDate().compare(first: date, second: vm.curMonth, format: "MM")){
+                                Day(date:date)
+                            }
+                            else{
+                                Day(date:date,isDisabled: true)
+                            }
+                        }
+                        .onTapGesture{
+                            selected = date
+                        }
                     }
                 }
+            
             }
-        }
+            }
         .padding(18)
         .modifier(MView.Card())
         .onAppear{
-            date = vm.generateDate(month: month)
+            vm.getDate()
         }
     }
 }
@@ -167,7 +185,7 @@ struct Day:View{
             .padding(4)
         }
         .onAppear{
-            var dateFormatter = DateFormatter()
+            let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "d"
 
             day = dateFormatter.string(from: date)
@@ -175,8 +193,8 @@ struct Day:View{
     }
 }
 
-struct CCalendarCard_Previews: PreviewProvider {
+struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        CCalendarCard()
+        CalendarView()
     }
 }

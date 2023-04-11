@@ -47,7 +47,7 @@ struct TraineeView: View {
 
                             }else{
                                 VStack(spacing: 24){
-                                    CCalendarCard()
+                                    CalendarView()
                                     
                                     CSessionCard()
                                 }
