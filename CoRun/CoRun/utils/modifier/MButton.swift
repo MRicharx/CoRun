@@ -14,7 +14,7 @@ class MButton{
     struct DefaultButton: ButtonStyle {
         let isActive:Bool
         var invert:Bool = false
-        var padding:Int = 18
+        var padding:Int = 8
         
         func makeBody(configuration: Configuration) -> some View {
             if(isActive){
@@ -73,7 +73,7 @@ class MButton{
     struct DangerButton: ButtonStyle {
         let isActive:Bool
         var invert:Bool = false
-        var padding:Int = 18
+        var padding:Int = 8
         
         func makeBody(configuration: Configuration) -> some View {
             if(isActive){
@@ -86,7 +86,7 @@ class MButton{
                         .foregroundColor(MColor.ColorPalette().danger)
                         .cornerRadius(10)
                         .overlay(
-                                RoundedRectangle(cornerRadius: 10)
+                                RoundedRectangle(cornerRadius: 8)
                                     .stroke(MColor.ColorPalette().danger, lineWidth: 2)
                             )
                         .scaleEffect(configuration.isPressed ? 0.98 : 1.0)
@@ -111,7 +111,7 @@ class MButton{
                         .foregroundColor(MColor.ColorPalette().shade)
                         .cornerRadius(10)
                         .overlay(
-                                RoundedRectangle(cornerRadius: 10)
+                                RoundedRectangle(cornerRadius: 8)
                                     .stroke(MColor.ColorPalette().shade, lineWidth: 2)
                             )
                     

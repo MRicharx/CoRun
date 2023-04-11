@@ -32,7 +32,7 @@ struct CTextfield: View {
             HStack{
                 Group{
                     Text(title)
-                        .modifier(MFont.Headline(size:16))
+                        .modifier(MFont.Caption1())
                     Spacer()
                     Text(desc)
                         .modifier(MFont.Caption1())
@@ -40,7 +40,7 @@ struct CTextfield: View {
                 .modifier(MColor.DisabledText())
             }
             
-            ZStack{
+            VStack(spacing:2){
                 HStack{
                     ZStack{
                         if(input==""){
@@ -49,12 +49,15 @@ struct CTextfield: View {
                                 .modifier(MFont.Body())
                                 .modifier(MView.FillToLeftFrame())
                         }
+                        
                         Group{
                             if(isKeyboardDefault){
                                 TextField("", text: $input)
+                                    .modifier(MFont.Body())
                             }else{
                                 TextField("", text: $input)
                                 .keyboardType(.numberPad)
+                                .modifier(MFont.Body())
                             }
                         }
                         .textFieldStyle(PlainTextFieldStyle())
@@ -63,20 +66,60 @@ struct CTextfield: View {
                         .modifier(MFont.Body())
                         .modifier(MColor.Text())
                     }
-                    .modifier(MView.FillToLeftFrame())
                     
                     Text(unit)
                         .modifier(MColor.DisabledText())
                         .modifier(MFont.Headline())
                 }
+                
+                CDivider(weight: 1,color: MColor.ColorPalette().primaryDisabled,cornerRadius: 1)
             }
-            .modifier(MView.FillFrame())
-            .padding(10)
-            .overlay(
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(MColor.ColorPalette().textDisabled, lineWidth: 2)
-            )
-        }.modifier(MView.FillFrame())
+            
+            ///Deprecated version
+//            ZStack{
+//                HStack{
+//                    ZStack{
+//                        if(input==""){
+//                            Text(hint)
+//                                .modifier(MColor.DisabledText())
+//                                .modifier(MFont.Body())
+//                                .modifier(MView.FillToLeftFrame())
+//                        }
+//                        Group{
+//                            if(isKeyboardDefault){
+//                                TextField("", text: $input)
+//                            }else{
+//                                TextField("", text: $input)
+//                                .keyboardType(.numberPad)
+//                            }
+//                        }
+//                        .textFieldStyle(PlainTextFieldStyle())
+//                        .disableAutocorrection(true)
+//                        .accentColor(MColor.ColorPalette().primary)
+//                        .modifier(MFont.Body())
+//                        .modifier(MColor.Text())
+//                    }
+//                    .modifier(MView.FillToLeftFrame())
+//
+//                    Text(unit)
+//                        .modifier(MColor.DisabledText())
+//                        .modifier(MFont.Headline())
+//                }
+//            }
+//            .modifier(MView.FillFrame())
+//            .padding(10)
+//            .overlay(
+//                RoundedRectangle(cornerRadius: 12)
+//                    .stroke(MColor.ColorPalette().textDisabled, lineWidth: 2)
+//            )
+        }
+        .modifier(MView.FillFrame())
+        .onChange(of: input){ new in
+            ///Max Char Limit
+            if(new.count>12){
+                
+            }
+        }
     }
 }
 
