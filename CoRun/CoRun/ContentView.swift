@@ -18,20 +18,21 @@ struct ContentView: View {
     
     
     var body: some View {
-        TabView{
-            SummaryView()
-                .tabItem{
-                    Label("Summary",systemImage: "figure.run")
-                }
-            TrainingPlanView()
-                .tabItem{
-                    Label("Training Plan",systemImage: "calendar")
-                }
-            ProfileView()
-                .tabItem{
-                    Label("Profile",systemImage: "person.fill")
-                }
-        }
+        AssessmentView()
+//        TabView{
+//            SummaryView()
+//                .tabItem{
+//                    Label("Summary",systemImage: "figure.run")
+//                }
+//            TrainingPlanView()
+//                .tabItem{
+//                    Label("Training Plan",systemImage: "calendar")
+//                }
+//            ProfileView()
+//                .tabItem{
+//                    Label("Profile",systemImage: "person.fill")
+//                }
+//        }
     }
 
     private func addItem() {

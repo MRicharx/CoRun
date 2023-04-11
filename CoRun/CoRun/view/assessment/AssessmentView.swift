@@ -19,7 +19,7 @@ struct AssessmentView: View {
     
     var body: some View {
         ZStack{
-            Color("base")
+            Color("Base")
                 .ignoresSafeArea()
             
             VStack(alignment:.leading, spacing: 36){
@@ -28,17 +28,17 @@ struct AssessmentView: View {
                     .modifier(MColor.Text())
                     .modifier(MFont.Title())
                 
-                VStack(spacing: 10){
+                VStack(spacing: 24){
                     //MARK: Username TF
-                    CTextfield(title: "Username", desc: "Need to contain 4-12 characters", hint: "Username", input: $username)
+                    CTextfield(title: "Username", desc: "Need to contain 4-12 characters", hint: "Username",maxChar: 12, input: $username)
                     
                     //MARK: Gender Checkbox
                     CCheckBox(title: "Gender",option: ["Male","Female"] , selected: $gender)
                     
                     //MARK: Height TF
-                    CTextfield(title: "Height", hint: "160", unit: "CM", input: $height)
+                    CTextfield(title: "Height", hint: "160", unit: "cm", type: .number,input: $height)
                     //MARK: Weight TF
-                    CTextfield(title: "Weight", hint: "65", unit: "KG", input: $weight)
+                    CTextfield(title: "Weight", hint: "65", unit: "kg", type:.number,input: $weight)
                 }
                 
                 Spacer()

@@ -33,18 +33,18 @@ struct CDashboardView: View {
             .modifier(MView.FillToLeftFrame())
             
             //MARK: Target Distance
-            CTextfield(title: "Target Distance",hint:"--",unit: "km",isKeyboardDefault: false, input: $targetDistance)
+            CTextfield(title: "Target Distance",hint:"--",unit: "km",type: .number, input: $targetDistance)
             
             HStack{
                 //MARK: Target Pace
-                CTextfield(title: "Target Distance",hint:"--",unit: "\'",isKeyboardDefault: false, input: $targetPaceMin)
+                CTextfield(title: "Target Distance",hint:"--",unit: "\'",type: .number, input: $targetPaceMin)
                 
                 //MARK: Target Distance
-                CTextfield(title: "",hint:"--",unit: "\"",isKeyboardDefault: false, input: $targetPaceSec)
+                CTextfield(title: "",hint:"--",unit: "\"",type: .number, input: $targetPaceSec)
             }
             
             //MARK: Target Intensity
-            CTextfield(title: "Target Intensity",hint:"--",unit: "%",isKeyboardDefault: false, input: $targetIntensity)
+            CTextfield(title: "Target Intensity",hint:"--",unit: "%",type: .number, input: $targetIntensity)
             
             //MARK: Button List
             VStack(spacing: 18){

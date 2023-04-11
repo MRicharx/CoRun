@@ -19,13 +19,20 @@ struct CTextfield: View {
     var hint:String = ""
     ///Textfield input unit
     var unit:String = ""
+    ///Define max char limit
+    var maxChar = -1
+    
     
     ///Define keyboard type
-    @State var isKeyboardDefault: Bool = true
+    @State var type: KeyboardType = .normal
     
     ///Binded input value
     @Binding var input:String
     
+    enum KeyboardType{
+        case normal
+        case number
+    }
     
     var body: some View {
         VStack(alignment: .leading,spacing: 8){
@@ -51,10 +58,11 @@ struct CTextfield: View {
                         }
                         
                         Group{
-                            if(isKeyboardDefault){
+                            switch(type){
+                            case .normal:
                                 TextField("", text: $input)
                                     .modifier(MFont.Body())
-                            }else{
+                            case .number:
                                 TextField("", text: $input)
                                 .keyboardType(.numberPad)
                                 .modifier(MFont.Body())
@@ -116,8 +124,9 @@ struct CTextfield: View {
         .modifier(MView.FillFrame())
         .onChange(of: input){ new in
             ///Max Char Limit
-            if(new.count>12){
-                
+            if(maxChar>=0){
+                input = String(new.prefix(maxChar))
+
             }
         }
     }
