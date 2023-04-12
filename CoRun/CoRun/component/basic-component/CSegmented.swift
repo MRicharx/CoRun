@@ -17,9 +17,6 @@ struct CSegmented: View {
     ///Binded option
     @Binding var selected:String
     
-    ///Define how option will be show (as string or sfsymbol)
-    var isSFSymbol:Bool = false
-    
     var body: some View {
         HStack{
             ForEach(option, id:\.self){ opt in
@@ -29,14 +26,7 @@ struct CSegmented: View {
                         ///DO NOTHING
                     }label: {
                         VStack{
-                            Group{
-                                if(isSFSymbol){
-                                    Image(systemName: opt)
-                                }
-                                else{
-                                    Text(opt)
-                                }
-                            }
+                            Text(opt)
                             .modifier(MFont.SubBody())
                             .modifier(MColor.Base())
                         }
@@ -52,14 +42,7 @@ struct CSegmented: View {
                         selected = opt
                     }label: {
                         VStack{
-                            Group{
-                                if(isSFSymbol){
-                                    Image(systemName: opt)
-                                }
-                                else{
-                                    Text(opt)
-                                }
-                            }
+                            Text(opt)
                             .modifier(MFont.SubBody())
                             .modifier(MColor.DisabledText())
                         }
@@ -70,9 +53,12 @@ struct CSegmented: View {
             }
         }
         .modifier(MView.FillFrame())
-        .background(MColor.ColorPalette().primaryDisabled)
         .cornerRadius(8)
-        .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
+        .background(
+            RoundedRectangle(cornerRadius: 8)
+                    .stroke(MColor.ColorPalette().separator, lineWidth: 2)
+                    .padding(EdgeInsets(top: 0, leading: 2, bottom: 0, trailing: 2)
+            ))
     }
 }
 

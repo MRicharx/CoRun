@@ -16,69 +16,70 @@ struct TraineeView: View {
     @State var filterOption:String = "Week"
     
     var body: some View {
-        ZStack{
-            Color("base")
-                .ignoresSafeArea()
-            
-            ScrollView{
-                VStack(alignment:.leading, spacing: 28){
-                    //MARK: Title
-                    Text("Trainee\nUsername")
-                        .modifier(MView.safePadding())
-                        .modifier(MColor.Text())
-                        .modifier(MFont.Title())
-                    
-                    //MARK: Tab Segmented Control
-                    CSegmented(option: ["Training Plan","Summary"], selected: $viewOption)
-                    
-                    VStack{
-                        //MARK: Training Plan
-                        if(viewOption == "Training Plan"){
-                            //MARK: Display Option
-                            CSegmented(option: ["rectangle.grid.1x2","rectangle.grid.3x2"], selected: $displayOption,isSFSymbol: true)
-                            
-                            //MARK: Training Plan View
-                            if(displayOption == "rectangle.grid.1x2"){
-                                VStack(spacing:18){
-//                                    CSessionCard()
-//                                    CSessionCard()
-//                                    CSessionCard()
-                                }
-
-                            }else{
-                                VStack(spacing: 24){
-                                    CalendarView()
-                                    
-//                                    CSessionCard()
-                                }
-                            }
-                        }
-                        //MARK: Summary
-                        else{
-                            //MARK: Segmented Control
-                            CSegmented(option: ["Week","Month","Year"], selected: $filterOption)
-                            
-                            //MARK: Summary Card
-                            //TODO: Handle the data passing
-                            CSummaryCard()
-                            
-                            //MARK: Activity Record
-                            VStack(alignment:.leading,spacing:18){
-                                Text("Activity Record")
-                                    .modifier(MView.safePadding())
-                                    .modifier(MFont.Headline())
-                                    .modifier(MColor.Text())
-                                
-                                //TODO: Implement for loop for this component
-                                CActivityCard()
-                                CActivityCard()
-                                CActivityCard()
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        Text("NaN")
+//        ZStack{
+//            Color("base")
+//                .ignoresSafeArea()
+//
+//            ScrollView{
+//                VStack(alignment:.leading, spacing: 28){
+//                    //MARK: Title
+//                    Text("Trainee\nUsername")
+//                        .modifier(MView.safePadding())
+//                        .modifier(MColor.Text())
+//                        .modifier(MFont.Title())
+//
+//                    //MARK: Tab Segmented Control
+//                    CSegmented(option: ["Training Plan","Summary"], selected: $viewOption)
+//
+//                    VStack{
+//                        //MARK: Training Plan
+//                        if(viewOption == "Training Plan"){
+//                            //MARK: Display Option
+//                            CSegmented(option: ["rectangle.grid.1x2","rectangle.grid.3x2"], selected: $displayOption,isSFSymbol: true)
+//
+//                            //MARK: Training Plan View
+//                            if(displayOption == "rectangle.grid.1x2"){
+//                                VStack(spacing:18){
+////                                    CSessionCard()
+////                                    CSessionCard()
+////                                    CSessionCard()
+//                                }
+//
+//                            }else{
+//                                VStack(spacing: 24){
+//                                    CalendarView()
+//
+////                                    CSessionCard()
+//                                }
+//                            }
+//                        }
+//                        //MARK: Summary
+//                        else{
+//                            //MARK: Segmented Control
+//                            CSegmented(option: ["Week","Month","Year"], selected: $filterOption)
+//
+//                            //MARK: Summary Card
+//                            //TODO: Handle the data passing
+//                            //CSummaryCard()
+//
+//                            //MARK: Activity Record
+//                            VStack(alignment:.leading,spacing:18){
+//                                Text("Activity Record")
+//                                    .modifier(MView.safePadding())
+//                                    .modifier(MFont.Headline())
+//                                    .modifier(MColor.Text())
+//
+//                                //TODO: Implement for loop for this component
+//                                CActivityCard()
+//                                CActivityCard()
+//                                CActivityCard()
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
     }
 }
 

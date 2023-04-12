@@ -23,6 +23,8 @@ struct CCalendarView: View {
     
     ///Define current view's view model
     @StateObject var vm = CCalendarViewModel()
+    ///State DatePicker Display Behavior
+    @State var showPicker = false
     
     var body: some View {
         VStack(spacing: 24){
@@ -34,8 +36,11 @@ struct CCalendarView: View {
                             vm.lastMonth()
                         }
                         .modifier(MColor.Primary())
+                    
+                    //TODO: IMPLEMENT Date Picker
                     Text(TDate().dateToString(date: vm.curMonth, format: "MMMM YYYY"))
                         .modifier(MView.FillFrame())
+                    
                     Image(systemName: "chevron.right")
                         .onTapGesture{
                             vm.nextMonth()

@@ -30,6 +30,7 @@
 		8369323829E6B9A5007994D6 /* CCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369323729E6B9A5007994D6 /* CCalendarView.swift */; };
 		8369323A29E6B9AF007994D6 /* CCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369323929E6B9AF007994D6 /* CCalendarViewModel.swift */; };
 		8369323E29E6BD1F007994D6 /* SelectedDateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369323D29E6BD1F007994D6 /* SelectedDateKey.swift */; };
+		8369324329E73047007994D6 /* CGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369324229E73047007994D6 /* CGraph.swift */; };
 		83A4223529E5AF4000D4DE8F /* CompletionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A4223429E5AF4000D4DE8F /* CompletionStatus.swift */; };
 		83A4223A29E5B1F400D4DE8F /* TrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A4223929E5B1F400D4DE8F /* TrainingView.swift */; };
 		83A4223C29E5B33000D4DE8F /* CTabControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A4223B29E5B33000D4DE8F /* CTabControl.swift */; };
@@ -53,7 +54,6 @@
 		83DCE1A029CC98360007E73D /* SummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE19F29CC98360007E73D /* SummaryViewModel.swift */; };
 		83DCE1A229CC98410007E73D /* SummaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1A129CC98410007E73D /* SummaryModel.swift */; };
 		83DCE1A529CC98D90007E73D /* CSegmented.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1A429CC98D90007E73D /* CSegmented.swift */; };
-		83DCE1A929CC9F850007E73D /* CSummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1A829CC9F850007E73D /* CSummaryCard.swift */; };
 		83DCE1AB29CCA6C30007E73D /* CDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1AA29CCA6C30007E73D /* CDivider.swift */; };
 		83DCE1AF29CCBE6F0007E73D /* CActivityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1AE29CCBE6F0007E73D /* CActivityCard.swift */; };
 		83DCE1B229CCC4360007E73D /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1B129CCC4360007E73D /* PlanView.swift */; };
@@ -148,6 +148,7 @@
 		8369323729E6B9A5007994D6 /* CCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCalendarView.swift; sourceTree = "<group>"; };
 		8369323929E6B9AF007994D6 /* CCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCalendarViewModel.swift; sourceTree = "<group>"; };
 		8369323D29E6BD1F007994D6 /* SelectedDateKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedDateKey.swift; sourceTree = "<group>"; };
+		8369324229E73047007994D6 /* CGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGraph.swift; sourceTree = "<group>"; };
 		83A4223429E5AF4000D4DE8F /* CompletionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionStatus.swift; sourceTree = "<group>"; };
 		83A4223929E5B1F400D4DE8F /* TrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingView.swift; sourceTree = "<group>"; };
 		83A4223B29E5B33000D4DE8F /* CTabControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTabControl.swift; sourceTree = "<group>"; };
@@ -171,7 +172,6 @@
 		83DCE19F29CC98360007E73D /* SummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewModel.swift; sourceTree = "<group>"; };
 		83DCE1A129CC98410007E73D /* SummaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryModel.swift; sourceTree = "<group>"; };
 		83DCE1A429CC98D90007E73D /* CSegmented.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSegmented.swift; sourceTree = "<group>"; };
-		83DCE1A829CC9F850007E73D /* CSummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSummaryCard.swift; sourceTree = "<group>"; };
 		83DCE1AA29CCA6C30007E73D /* CDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDivider.swift; sourceTree = "<group>"; };
 		83DCE1AE29CCBE6F0007E73D /* CActivityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CActivityCard.swift; sourceTree = "<group>"; };
 		83DCE1B129CCC4360007E73D /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
@@ -411,6 +411,7 @@
 				83DCE1A429CC98D90007E73D /* CSegmented.swift */,
 				83DCE1AA29CCA6C30007E73D /* CDivider.swift */,
 				8368FFDA29D428F3007DBCDF /* CSearchBar.swift */,
+				8369324229E73047007994D6 /* CGraph.swift */,
 			);
 			path = "basic-component";
 			sourceTree = "<group>";
@@ -420,7 +421,6 @@
 			children = (
 				8369323629E6B958007994D6 /* calendar */,
 				8368FFE229D593E2007DBCDF /* dashboard */,
-				83DCE1A829CC9F850007E73D /* CSummaryCard.swift */,
 				83DCE1AE29CCBE6F0007E73D /* CActivityCard.swift */,
 				83DCE1B729CCC94D0007E73D /* CSessionCard.swift */,
 				8368FFD829D42418007DBCDF /* CTraineeCard.swift */,
@@ -852,6 +852,7 @@
 				83DCE1B829CCC94D0007E73D /* CSessionCard.swift in Sources */,
 				8368FFD329D423DA007DBCDF /* TraineeListView.swift in Sources */,
 				83DCE18829C84CDD0007E73D /* AssessmentView.swift in Sources */,
+				8369324329E73047007994D6 /* CGraph.swift in Sources */,
 				83DCE19429C868060007E73D /* AssessmentViewModel.swift in Sources */,
 				8369323A29E6B9AF007994D6 /* CCalendarViewModel.swift in Sources */,
 				8316301429D993FB00B3322E /* SplashViewModel.swift in Sources */,
@@ -894,7 +895,6 @@
 				83DCE1A229CC98410007E73D /* SummaryModel.swift in Sources */,
 				83DCE1B229CCC4360007E73D /* PlanView.swift in Sources */,
 				83D31B7F29C70E9F00B47F8C /* TQr.swift in Sources */,
-				83DCE1A929CC9F850007E73D /* CSummaryCard.swift in Sources */,
 				8369322D29E5E594007994D6 /* CalendarView.swift in Sources */,
 				83DCE1B429CCC4440007E73D /* PlanViewModel.swift in Sources */,
 				83DCE1E629D0631F0007E73D /* ScanQRPopUp.swift in Sources */,

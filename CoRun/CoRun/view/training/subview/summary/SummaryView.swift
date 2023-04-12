@@ -8,69 +8,100 @@
 import SwiftUI
 
 struct SummaryView: View {
-    ///Define selected option
-    @State var displayOption:String = "Week"
+    ///Define distance ran value
+    @State var distanceRan: String = "NaN"
+    ///Define total run value
+    @State var totalRun: String = "NaN"
+    ///Define average pace value
+    @State var avgPace: String = "NaN"
+    ///Define total run time value
+    @State var runTime: String = "NaN"
+    ///Define average intensity value
+    @State var avgIntensity: String = "NaN"
+    ///Define average bpm value
+    @State var avgBPM: String = "NaN"
+    
+    
+    ///Define View's ViewModel
+    @StateObject var vm = SummaryViewModel()
     
     var body: some View {
-        ZStack{
-            Color("base")
-                .ignoresSafeArea()
-            
-            ScrollView(){
-                VStack(alignment:.leading, spacing: 28){
-                    //MARK: Title
-                    Text("My Run\nSummary")
-                        .modifier(MView.safePadding())
-                        .modifier(MColor.Text())
-                        .modifier(MFont.Title())
-                    
-                    //MARK: Segmented Control
-                    CSegmented(option: ["Week","Month","Year"], selected: $displayOption)
-                    
-                    //MARK: Tab Navigator
-                    //TODO: Implement this
-                    HStack{
+        VStack(spacing:12){
+            VStack(spacing:24){
+                //MARK: Segmented Control
+                CSegmented(option: vm.listOption, selected: $vm.displayOption)
+                
+                //MARK: Navigator
+                HStack{
+                    Group{
+                        Image(systemName: "chevron.left")
+                            .onTapGesture{
+                                vm.prev()
+                            }
+                            .modifier(MColor.Primary())
+                        
                         Group{
-                            Button{
-                                //TODO: Implement Previous Navigation
-                            }label: {
-                                Image(systemName: "chevron.left")
-                                    .modifier(MColor.Primary())
+                            switch(vm.displayOption){
+                            case "Week":
+                                Text(vm.weekRange())
+                            case "Month":
+                                Text(TDate().dateToString(date: vm.currentDate,format:"MMMM YYYY"))
+                            case "Year":
+                                Text(TDate().dateToString(date: vm.currentDate,format:"YYYY"))
+                            default:
+                                Text("Overall Data")
                             }
-                            
-                            Text("This Month")
-                                .modifier(MColor.Text())
-                                .modifier(MView.FillFrame())
-                            
-                            Button{
-                                //TODO: Implement Next Navigation
-                            }label: {
-                                Image(systemName: "chevron.right")
-                                    .modifier(MColor.Primary())
+                        }.modifier(MView.FillFrame())
+                        
+                        Image(systemName: "chevron.right")
+                            .onTapGesture{
+                                vm.next()
                             }
-                        }.modifier(MFont.Headline(size: 18))
-                    }.modifier(MView.safePadding())
-                    
-                    //MARK: Summary Card
-                    //TODO: Handle the data passing
-                    CSummaryCard()
-                    
-                    //MARK: Activity Record
-                    VStack(alignment:.leading,spacing:18){
-                        Text("Activity Record")
-                            .modifier(MView.safePadding())
+                            .modifier(MColor.Primary())
+                    }.modifier(MFont.SubBody())
+                }.padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
+                
+                //MARK: Summary Data
+                HStack{
+                    //MARK: Total Run
+                    VStack{
+                        Text(String(totalRun))
                             .modifier(MFont.Headline())
                             .modifier(MColor.Text())
-                        
-                        //TODO: Implement for loop for this component
-                        CActivityCard()
-                        CActivityCard()
-                        CActivityCard()
-                    }
+                        Text("Total Run")
+                            .modifier(MFont.SubBody())
+                            .modifier(MColor.DisabledText())
+                    }.modifier(MView.FillFrame())
                     
+                    //MARK: Avg Pace
+                    VStack{
+                        Text(String(totalRun))
+                            .modifier(MFont.Headline())
+                            .modifier(MColor.Text())
+                        Text("Avg. Pace")
+                            .modifier(MFont.SubBody())
+                            .modifier(MColor.DisabledText())
+                    }.modifier(MView.FillFrame())
+                    
+                    //MARK: Run Time
+                    VStack{
+                        Text(String(totalRun))
+                            .modifier(MFont.Headline())
+                            .modifier(MColor.Text())
+                        Text("Run Time")
+                            .modifier(MFont.SubBody())
+                            .modifier(MColor.DisabledText())
+                    }.modifier(MView.FillFrame())
                 }
-                .modifier(MView.FillFrame())
+                
+                //MARK: Distance Graph
+                CGraph(data: vm.graphData)
+                    .frame(maxHeight: 360)
             }
+            .padding(24)
+            .modifier(MView.Card())
+            
+            Spacer()
         }
     }
 }
