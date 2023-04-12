@@ -11,7 +11,7 @@ struct CSessionCard: View {
     ///Define completion status
     @StateObject var status:CompletionStatus = CompletionStatus()
     ///Define time when activity need to be done value
-    @State var time:String = "NaN"
+    @Binding var time:Date
     ///Define activity tyoe name value
     @State var activityName:String = "NaN"
     
@@ -30,7 +30,7 @@ struct CSessionCard: View {
             
             //MARK: Session description
             VStack(alignment:.leading){
-                Text(time)
+                Text(TDate().dateToString(date: time,format:"dd MMMM YYYY"))
                     .modifier(MFont.Headline(size: 18))
                     .modifier(MColor.DisabledText())
                 
@@ -132,9 +132,9 @@ struct CSessionCard: View {
     }
 }
 
-struct CSessionCard_Previews: PreviewProvider {
-    static var previews: some View {
-//        CSessionCard(target: [["Target Distance","10 kM"],["Target Pace","6\'0\""],["Target Intensity","70%"]])
-        CSessionCard()
-    }
-}
+//struct CSessionCard_Previews: PreviewProvider {
+//    static var previews: some View {
+////        CSessionCard(target: [["Target Distance","10 kM"],["Target Pace","6\'0\""],["Target Intensity","70%"]])
+//        CSessionCard()
+//    }
+//}

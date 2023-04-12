@@ -40,16 +40,16 @@ struct TraineeView: View {
                             //MARK: Training Plan View
                             if(displayOption == "rectangle.grid.1x2"){
                                 VStack(spacing:18){
-                                    CSessionCard()
-                                    CSessionCard()
-                                    CSessionCard()
+//                                    CSessionCard()
+//                                    CSessionCard()
+//                                    CSessionCard()
                                 }
 
                             }else{
                                 VStack(spacing: 24){
                                     CalendarView()
                                     
-                                    CSessionCard()
+//                                    CSessionCard()
                                 }
                             }
                         }

@@ -26,7 +26,7 @@ struct PlanView: View {
                 }
                 HStack{
                     ForEach(0...5,id:\.self){ i in
-                        CDivider(weight:4,color: MColor.ColorPalette().textDisabled)
+                        CDivider(weight:4,color: MColor.ColorPalette().textDisabled, cornerRadius: 4)
                     }
                 }
             }

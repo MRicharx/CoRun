@@ -27,6 +27,9 @@
 		8369322F29E5E63E007994D6 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369322E29E5E63E007994D6 /* CalendarViewModel.swift */; };
 		8369323129E5E64B007994D6 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369323029E5E64B007994D6 /* CalendarModel.swift */; };
 		8369323329E5E7B1007994D6 /* CalendarStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369323229E5E7B1007994D6 /* CalendarStatus.swift */; };
+		8369323829E6B9A5007994D6 /* CCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369323729E6B9A5007994D6 /* CCalendarView.swift */; };
+		8369323A29E6B9AF007994D6 /* CCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369323929E6B9AF007994D6 /* CCalendarViewModel.swift */; };
+		8369323E29E6BD1F007994D6 /* SelectedDateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369323D29E6BD1F007994D6 /* SelectedDateKey.swift */; };
 		83A4223529E5AF4000D4DE8F /* CompletionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A4223429E5AF4000D4DE8F /* CompletionStatus.swift */; };
 		83A4223A29E5B1F400D4DE8F /* TrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A4223929E5B1F400D4DE8F /* TrainingView.swift */; };
 		83A4223C29E5B33000D4DE8F /* CTabControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A4223B29E5B33000D4DE8F /* CTabControl.swift */; };
@@ -142,6 +145,9 @@
 		8369322E29E5E63E007994D6 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		8369323029E5E64B007994D6 /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
 		8369323229E5E7B1007994D6 /* CalendarStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarStatus.swift; sourceTree = "<group>"; };
+		8369323729E6B9A5007994D6 /* CCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCalendarView.swift; sourceTree = "<group>"; };
+		8369323929E6B9AF007994D6 /* CCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCalendarViewModel.swift; sourceTree = "<group>"; };
+		8369323D29E6BD1F007994D6 /* SelectedDateKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedDateKey.swift; sourceTree = "<group>"; };
 		83A4223429E5AF4000D4DE8F /* CompletionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionStatus.swift; sourceTree = "<group>"; };
 		83A4223929E5B1F400D4DE8F /* TrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingView.swift; sourceTree = "<group>"; };
 		83A4223B29E5B33000D4DE8F /* CTabControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTabControl.swift; sourceTree = "<group>"; };
@@ -285,12 +291,29 @@
 			path = "trainee-list";
 			sourceTree = "<group>";
 		};
-		8368FFE229D593E2007DBCDF /* dashboard-view */ = {
+		8368FFE229D593E2007DBCDF /* dashboard */ = {
 			isa = PBXGroup;
 			children = (
 				8368FFE329D59412007DBCDF /* CDashboardView.swift */,
 			);
-			path = "dashboard-view";
+			path = dashboard;
+			sourceTree = "<group>";
+		};
+		8369323629E6B958007994D6 /* calendar */ = {
+			isa = PBXGroup;
+			children = (
+				8369323729E6B9A5007994D6 /* CCalendarView.swift */,
+				8369323929E6B9AF007994D6 /* CCalendarViewModel.swift */,
+			);
+			path = calendar;
+			sourceTree = "<group>";
+		};
+		8369323C29E6BD0B007994D6 /* data-environment */ = {
+			isa = PBXGroup;
+			children = (
+				8369323D29E6BD1F007994D6 /* SelectedDateKey.swift */,
+			);
+			path = "data-environment";
 			sourceTree = "<group>";
 		};
 		83A4223329E5AF2700D4DE8F /* data-enum */ = {
@@ -379,7 +402,7 @@
 			path = summary;
 			sourceTree = "<group>";
 		};
-		83DCE1A629CC9F380007E73D /* custom-component */ = {
+		83DCE1A629CC9F380007E73D /* basic-component */ = {
 			isa = PBXGroup;
 			children = (
 				832AB22529D991BD00904AA3 /* CSignInButton.swift */,
@@ -389,13 +412,14 @@
 				83DCE1AA29CCA6C30007E73D /* CDivider.swift */,
 				8368FFDA29D428F3007DBCDF /* CSearchBar.swift */,
 			);
-			path = "custom-component";
+			path = "basic-component";
 			sourceTree = "<group>";
 		};
 		83DCE1A729CC9F430007E73D /* view-component */ = {
 			isa = PBXGroup;
 			children = (
-				8368FFE229D593E2007DBCDF /* dashboard-view */,
+				8369323629E6B958007994D6 /* calendar */,
+				8368FFE229D593E2007DBCDF /* dashboard */,
 				83DCE1A829CC9F850007E73D /* CSummaryCard.swift */,
 				83DCE1AE29CCBE6F0007E73D /* CActivityCard.swift */,
 				83DCE1B729CCC94D0007E73D /* CSessionCard.swift */,
@@ -596,6 +620,7 @@
 		83F2C84929C30365004E3270 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				8369323C29E6BD0B007994D6 /* data-environment */,
 				83A4223329E5AF2700D4DE8F /* data-enum */,
 				832AB22429D9820800904AA3 /* data-display */,
 				832AB22329D981FB00904AA3 /* data-model */,
@@ -607,7 +632,7 @@
 			isa = PBXGroup;
 			children = (
 				83DCE1A729CC9F430007E73D /* view-component */,
-				83DCE1A629CC9F380007E73D /* custom-component */,
+				83DCE1A629CC9F380007E73D /* basic-component */,
 			);
 			path = component;
 			sourceTree = "<group>";
@@ -819,6 +844,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83F2C82229C30190004E3270 /* Persistence.swift in Sources */,
+				8369323829E6B9A5007994D6 /* CCalendarView.swift in Sources */,
 				83DCE1DF29D048AA0007E73D /* QRPopUp.swift in Sources */,
 				8368FFE629D5A6BD007DBCDF /* HNavigation.swift in Sources */,
 				83DCE1C229CDAEB30007E73D /* SessionDetailModel.swift in Sources */,
@@ -827,6 +853,7 @@
 				8368FFD329D423DA007DBCDF /* TraineeListView.swift in Sources */,
 				83DCE18829C84CDD0007E73D /* AssessmentView.swift in Sources */,
 				83DCE19429C868060007E73D /* AssessmentViewModel.swift in Sources */,
+				8369323A29E6B9AF007994D6 /* CCalendarViewModel.swift in Sources */,
 				8316301429D993FB00B3322E /* SplashViewModel.swift in Sources */,
 				83A4223A29E5B1F400D4DE8F /* TrainingView.swift in Sources */,
 				8368FFDB29D428F3007DBCDF /* CSearchBar.swift in Sources */,
@@ -862,6 +889,7 @@
 				8316301229D993F200B3322E /* SplashModel.swift in Sources */,
 				83DCE1B629CCC4510007E73D /* PlanModel.swift in Sources */,
 				8368FFE129D43000007DBCDF /* TraineeViewModel.swift in Sources */,
+				8369323E29E6BD1F007994D6 /* SelectedDateKey.swift in Sources */,
 				83DCE1DB29D0450D0007E73D /* CProfileReminder.swift in Sources */,
 				83DCE1A229CC98410007E73D /* SummaryModel.swift in Sources */,
 				83DCE1B229CCC4360007E73D /* PlanView.swift in Sources */,
