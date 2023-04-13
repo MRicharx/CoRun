@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct SessionDetailView: View {
+    ///State Full Feedback visibility
+    @State var showAllFeedback = false
+    
     var body: some View {
         ZStack{
             Color("Base")
@@ -20,10 +23,12 @@ struct SessionDetailView: View {
                     VStack(spacing: 12){
                         CSessionGoal()
                         CSessionResult()
-                        CSessionFeedback()
+                        CSessionFeedback(showAll: $showAllFeedback)
                     }.padding(EdgeInsets(top: 12, leading: 0, bottom: 12, trailing: 0))
                 }
             }
+        }.sheet(isPresented: $showAllFeedback){
+            CChatView(displayOption: .full)
         }
     }
 }

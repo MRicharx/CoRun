@@ -61,7 +61,7 @@ struct CChatView: View {
                                 }
                             }
                         }
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 18, trailing: 0))
+                        .padding(EdgeInsets(top: 0, leading: 24, bottom: 18, trailing: 24))
                         .frame(minHeight: proxy.size.height)
                     }
                 }

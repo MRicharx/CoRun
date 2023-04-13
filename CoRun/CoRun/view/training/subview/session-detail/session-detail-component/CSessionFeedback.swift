@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CSessionFeedback: View {
+    @Binding var showAll:Bool
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 18){
             HStack(alignment:.firstTextBaseline){
@@ -20,7 +22,9 @@ struct CSessionFeedback: View {
                     .modifier(MFont.Headline(size: 14))
                     .modifier(MColor.Primary())
                     .onTapGesture {
-                        //TODO: Show All Feature
+                        withAnimation{
+                            showAll.toggle()
+                        }
                     }
             }
             
@@ -35,8 +39,8 @@ struct CSessionFeedback: View {
     }
 }
 
-struct CSessionFeedback_Previews: PreviewProvider {
-    static var previews: some View {
-        CSessionFeedback()
-    }
-}
+//struct CSessionFeedback_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CSessionFeedback()
+//    }
+//}
