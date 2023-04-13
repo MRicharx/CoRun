@@ -28,8 +28,8 @@ struct CChatView: View {
         case .widget:
             VStack(spacing:24){
                 //MARK: Message List
-                ForEach(messageList.indices){i in
-                    VStack(spacing:12){
+                VStack(spacing:12){
+                    ForEach(messageList.indices){i in
                         if(i>=messageList.count-3){
                             if(messageSender[i]=="Me"){
                                 CChatBubble(sender: messageSender[i], time: messageDate[i], message: messageList[i], style: .home)
@@ -45,13 +45,41 @@ struct CChatView: View {
                 CChatSendBar()
             }
         case .full:
-            Text("NaN")
+            VStack(spacing: 0){
+                //MARK: Message List
+                ///Set content to bottom up orientation
+                GeometryReader{ proxy in
+                    ScrollView{
+                        VStack(spacing:12){
+                            Spacer()
+                            ForEach(messageList.indices){i in
+                                if(messageSender[i]=="Me"){
+                                    CChatBubble(sender: messageSender[i], time: messageDate[i], message: messageList[i], style: .home)
+                                }
+                                else{
+                                    CChatBubble(sender: messageSender[i], time: messageDate[i], message: messageList[i], style: .away)
+                                }
+                            }
+                        }
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 18, trailing: 0))
+                        .frame(minHeight: proxy.size.height)
+                    }
+                }
+                
+                
+                //MARK: Send Bar
+                VStack{
+                    CChatSendBar()
+                }
+                .padding(EdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 24))
+                .modifier(MView.Card())
+            }
         }
     }
 }
 
 struct CChatView_Previews: PreviewProvider {
     static var previews: some View {
-        CChatView(displayOption: .widget)
+        CChatView(displayOption: .full)
     }
 }
