@@ -13,14 +13,14 @@ struct CSessionTitle: View {
     ///2 - Some Goal reached,
     ///3 - All goal reached,
     ///else - Activity yet to be done
-    @State var status:Int = 0
+    @StateObject var status = CompletionStatus()
     
     ///Define session name
     @State var name:String = "NaN"
     ///Define session date
     @State var date:String = "NaN"
     ///Define session time done
-    @State var time:String = "--:--:--"
+    @State var time:String = "dd:MMMM:YYYY"
     ///Define session creator
     @State var creator:String = "NaN"
     
@@ -29,55 +29,52 @@ struct CSessionTitle: View {
     var body: some View {
         HStack{
             VStack(alignment:.leading){
+                Text(name)
+                    .modifier(MFont.Headline(size:24))
+                    .modifier(MColor.Text())
                 Group{
-                    HStack{
-                        Text(name)
-                            .modifier(MFont.Headline(size:16))
-                        Text("- "+date)
-                            .modifier(MFont.Body(size:16))
-                    }
                     Text(time)
                         .modifier(MFont.Headline(size:14))
                     Text("by "+creator)
-                        .modifier(MFont.Body(size:14))
+                        .modifier(MFont.Body(size:12))
                 }.modifier(MColor.DisabledText())
             }.modifier(MView.FillToLeftFrame())
             
             HStack{
-                switch status{
-                case 1:
+                switch status.enume{
+                case .planNotReachGoal:
+                    Group{
+                        Text("Goal Not Reached")
+                        Image(systemName: "xmark.seal.fill")
+                    }
+                    .modifier(MFont.Headline(size: 18))
+                    .modifier(MColor.Danger())
+                case .planNotDone:
                     Group{
                         Text("Not Completed")
                         Image(systemName: "xmark.seal.fill")
                     }
                     .modifier(MFont.Headline(size: 18))
-                    .modifier(MColor.Danger())
-                case 2:
+                    .modifier(MColor.DisabledText())
+                case .planPartlyReachGoal:
                     Group{
                         Text("Partly Completed")
                         Image(systemName: "checkmark.seal.fill")
                     }
                     .modifier(MFont.Headline(size: 18))
                     .modifier(MColor.Alert())
-                case 3:
+                case .planReachAllGoal:
                     Group{
                         Text("Completed")
                         Image(systemName: "checkmark.seal.fill")
                     }
                     .modifier(MFont.Headline(size: 18))
                     .modifier(MColor.Primary())
-                default:
-                    Group{
-                        Text("Not Completed")
-                        Image(systemName: "seal.fill")
-                    }
-                    .modifier(MFont.Headline(size: 18))
-                    .modifier(MColor.Shade())
                 }
             }
             .modifier(MView.FillToRightFrame())
         }
-        .padding(EdgeInsets(top: 14, leading: 18, bottom: 14, trailing: 18))
+        .padding(EdgeInsets(top: 0, leading: 24, bottom: 18, trailing: 24))
         .modifier(MView.Card())
     }
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 
+///Class containing calendar status in enum and int
 class CalendarStatus:ObservableObject{
     ///Define status
     ///0 - plan did not exist,

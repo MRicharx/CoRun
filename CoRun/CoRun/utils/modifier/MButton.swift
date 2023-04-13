@@ -129,6 +129,30 @@ class MButton{
         }
     }
     
+    ///Set button to squared shape with accent color
+    struct SquareButton: ButtonStyle {
+        let isActive:Bool
+        var padding:Int = 12
+        
+        func makeBody(configuration: Configuration) -> some View {
+            if(isActive){
+                configuration.label
+                    .padding(CGFloat(padding))
+                    .background(MColor.ColorPalette().primary)
+                    .foregroundColor(MColor.ColorPalette().base)
+                    .cornerRadius(12)
+                    .scaleEffect(configuration.isPressed ? 0.98 : 1.0)
+            }
+            else{
+                configuration.label
+                    .padding(CGFloat(padding))
+                    .background(MColor.ColorPalette().primaryDisabled)
+                    .foregroundColor(MColor.ColorPalette().shade)
+                    .cornerRadius(12)
+            }
+        }
+    }
+    
     ///Set button with list style effect
     struct ListButton:ButtonStyle{
         var padding:CGFloat = 8

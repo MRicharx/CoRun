@@ -31,6 +31,10 @@
 		8369323A29E6B9AF007994D6 /* CCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369323929E6B9AF007994D6 /* CCalendarViewModel.swift */; };
 		8369323E29E6BD1F007994D6 /* SelectedDateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369323D29E6BD1F007994D6 /* SelectedDateKey.swift */; };
 		8369324329E73047007994D6 /* CGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369324229E73047007994D6 /* CGraph.swift */; };
+		8369324629E7DFD0007994D6 /* CChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369324529E7DFD0007994D6 /* CChatView.swift */; };
+		8369324929E7E225007994D6 /* CChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369324829E7E225007994D6 /* CChatBubble.swift */; };
+		8369324B29E7E3FF007994D6 /* CRRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369324A29E7E3FF007994D6 /* CRRectangle.swift */; };
+		8369324D29E7E63F007994D6 /* CChatSendBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369324C29E7E63F007994D6 /* CChatSendBar.swift */; };
 		83A4223529E5AF4000D4DE8F /* CompletionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A4223429E5AF4000D4DE8F /* CompletionStatus.swift */; };
 		83A4223A29E5B1F400D4DE8F /* TrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A4223929E5B1F400D4DE8F /* TrainingView.swift */; };
 		83A4223C29E5B33000D4DE8F /* CTabControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A4223B29E5B33000D4DE8F /* CTabControl.swift */; };
@@ -149,6 +153,10 @@
 		8369323929E6B9AF007994D6 /* CCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCalendarViewModel.swift; sourceTree = "<group>"; };
 		8369323D29E6BD1F007994D6 /* SelectedDateKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedDateKey.swift; sourceTree = "<group>"; };
 		8369324229E73047007994D6 /* CGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGraph.swift; sourceTree = "<group>"; };
+		8369324529E7DFD0007994D6 /* CChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CChatView.swift; sourceTree = "<group>"; };
+		8369324829E7E225007994D6 /* CChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CChatBubble.swift; sourceTree = "<group>"; };
+		8369324A29E7E3FF007994D6 /* CRRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRRectangle.swift; sourceTree = "<group>"; };
+		8369324C29E7E63F007994D6 /* CChatSendBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CChatSendBar.swift; sourceTree = "<group>"; };
 		83A4223429E5AF4000D4DE8F /* CompletionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionStatus.swift; sourceTree = "<group>"; };
 		83A4223929E5B1F400D4DE8F /* TrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingView.swift; sourceTree = "<group>"; };
 		83A4223B29E5B33000D4DE8F /* CTabControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTabControl.swift; sourceTree = "<group>"; };
@@ -316,6 +324,24 @@
 			path = "data-environment";
 			sourceTree = "<group>";
 		};
+		8369324429E7DFC5007994D6 /* chat */ = {
+			isa = PBXGroup;
+			children = (
+				8369324729E7E206007994D6 /* component */,
+				8369324529E7DFD0007994D6 /* CChatView.swift */,
+			);
+			path = chat;
+			sourceTree = "<group>";
+		};
+		8369324729E7E206007994D6 /* component */ = {
+			isa = PBXGroup;
+			children = (
+				8369324829E7E225007994D6 /* CChatBubble.swift */,
+				8369324C29E7E63F007994D6 /* CChatSendBar.swift */,
+			);
+			path = component;
+			sourceTree = "<group>";
+		};
 		83A4223329E5AF2700D4DE8F /* data-enum */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,6 +373,7 @@
 		83A4223829E5B1DF00D4DE8F /* subview */ = {
 			isa = PBXGroup;
 			children = (
+				83DCE1BE29CDAE970007E73D /* session-detail */,
 				83A4223729E5B1D300D4DE8F /* calendar */,
 				83DCE19C29CC97FA0007E73D /* summary */,
 				83DCE1B029CCC4250007E73D /* plan */,
@@ -412,6 +439,7 @@
 				83DCE1AA29CCA6C30007E73D /* CDivider.swift */,
 				8368FFDA29D428F3007DBCDF /* CSearchBar.swift */,
 				8369324229E73047007994D6 /* CGraph.swift */,
+				8369324A29E7E3FF007994D6 /* CRRectangle.swift */,
 			);
 			path = "basic-component";
 			sourceTree = "<group>";
@@ -419,6 +447,7 @@
 		83DCE1A729CC9F430007E73D /* view-component */ = {
 			isa = PBXGroup;
 			children = (
+				8369324429E7DFC5007994D6 /* chat */,
 				8369323629E6B958007994D6 /* calendar */,
 				8368FFE229D593E2007DBCDF /* dashboard */,
 				83DCE1AE29CCBE6F0007E73D /* CActivityCard.swift */,
@@ -675,7 +704,6 @@
 				83A4223629E5B1B300D4DE8F /* training */,
 				8368FFD029D42234007DBCDF /* trainee */,
 				83DCE1CE29D03C9A0007E73D /* profile */,
-				83DCE1BE29CDAE970007E73D /* session-detail */,
 				83DCE18229C8473D0007E73D /* assessment */,
 				83DCE19529C868190007E73D /* health-permission */,
 				83DCE17F29C846E50007E73D /* splash */,
@@ -844,6 +872,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83F2C82229C30190004E3270 /* Persistence.swift in Sources */,
+				8369324629E7DFD0007994D6 /* CChatView.swift in Sources */,
 				8369323829E6B9A5007994D6 /* CCalendarView.swift in Sources */,
 				83DCE1DF29D048AA0007E73D /* QRPopUp.swift in Sources */,
 				8368FFE629D5A6BD007DBCDF /* HNavigation.swift in Sources */,
@@ -901,6 +930,7 @@
 				83EA9FEE29C8459D000B7A02 /* HealthTemplate.swift in Sources */,
 				83DCE1AB29CCA6C30007E73D /* CDivider.swift in Sources */,
 				83F2C81929C30187004E3270 /* CoRunApp.swift in Sources */,
+				8369324D29E7E63F007994D6 /* CChatSendBar.swift in Sources */,
 				8369323129E5E64B007994D6 /* CalendarModel.swift in Sources */,
 				83DCE1AF29CCBE6F0007E73D /* CActivityCard.swift in Sources */,
 				83A4223529E5AF4000D4DE8F /* CompletionStatus.swift in Sources */,
@@ -912,11 +942,13 @@
 				83DCE19729C8684F0007E73D /* HealthPermissionView.swift in Sources */,
 				83DCE19E29CC98290007E73D /* SummaryView.swift in Sources */,
 				83D31B7D29C70DFC00B47F8C /* TDate.swift in Sources */,
+				8369324B29E7E3FF007994D6 /* CRRectangle.swift in Sources */,
 				83DCE1A529CC98D90007E73D /* CSegmented.swift in Sources */,
 				83DCE1E329D055250007E73D /* EditBiodataPopUp.swift in Sources */,
 				83DCE1C029CDAEA50007E73D /* SessionDetailView.swift in Sources */,
 				832AB22629D991BD00904AA3 /* CSignInButton.swift in Sources */,
 				834DD25A29C6FAA500CD59EB /* HApiREST.swift in Sources */,
+				8369324929E7E225007994D6 /* CChatBubble.swift in Sources */,
 				8368FFDD29D42FDF007DBCDF /* TraineeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

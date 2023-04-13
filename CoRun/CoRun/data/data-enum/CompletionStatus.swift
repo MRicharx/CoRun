@@ -7,6 +7,7 @@
 
 import Foundation
 
+///Class containing session completion status in enum and int
 class CompletionStatus:ObservableObject{
     ///Define status
     ///0 - Goal not reached,
@@ -18,7 +19,7 @@ class CompletionStatus:ObservableObject{
     
     init(){
         int = 0
-        enume = .planNotReachGoal
+        enume = .planNotDone
     }
     
     func set(newStatus:enumCompletionStatus){
