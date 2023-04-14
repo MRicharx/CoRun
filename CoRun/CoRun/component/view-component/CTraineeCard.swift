@@ -12,7 +12,7 @@ struct CTraineeCard: View {
     @State var isRequest = false
     
     var body: some View {
-        VStack(alignment:.leading,spacing: 18){
+        HStack(spacing: 24){
             VStack(alignment:.leading,spacing:2){
                 Text("Name")
                     .modifier(MFont.Headline())
@@ -26,37 +26,32 @@ struct CTraineeCard: View {
             //MARK: Show Request Response Option
             if(isRequest)
             {
-                HStack(spacing: 18){
+                HStack(spacing:12){
                     //MARK: Decline
                     Button{
                         //TODO: Decline Function
                     }label: {
-                        Text("Decline")
+                        Image(systemName: "xmark")
                             .modifier(MFont.Headline(size:18))
-                    }.buttonStyle(MButton.DangerButton(isActive: true,invert: true,padding: 8))
+                            .modifier(MColor.Base())
+                    }.buttonStyle(MButton.SquareButton(isActive: true,color: MColor.ColorPalette().danger))
                     
                     //MARK: Accept
                     Button{
                         //TODO: Accept Function
-                    }label:{
-                        //MARK: Decline
-                        Button{
-                            //TODO: Decline Function
-                        }label: {
-                            Text("Accept")
-                                .modifier(MFont.Headline(size:18))
-                        }.buttonStyle(MButton.DefaultButton(isActive: true,padding: 8))
-                    }
+                    }label: {
+                        Image(systemName: "checkmark")
+                            .modifier(MFont.Headline(size:18))
+                    }.buttonStyle(MButton.SquareButton(isActive: true))
                 }
             }
         }
-        .padding(18)
-        .modifier(MView.Card())
     }
 }
 
 struct CTraineeCard_Previews: PreviewProvider {
     static var previews: some View {
-        CTraineeCard()
+        CTraineeCard(isRequest: false)
+        CTraineeCard(isRequest: true)
     }
 }

@@ -33,8 +33,7 @@ struct QRPopUp: View {
                 }
                 .modifier(MFont.Headline(size:18))
                     .modifier(MColor.Text())
-            }.padding(18)
-                .modifier(MView.Card())
+            }
             
             //MARK: Divider
             HStack(spacing: 18){
@@ -63,6 +62,7 @@ struct QRPopUp: View {
                         }label:{
                             Image(systemName: "doc.on.clipboard.fill")
                                 .modifier(MColor.Primary())
+                                .modifier(MFont.Body())
                         }
                     }
                     .modifier(MFont.Title(size:28))
@@ -72,10 +72,6 @@ struct QRPopUp: View {
                     .modifier(MFont.Headline(size:18))
                     .modifier(MColor.Text())
             }
-            .padding(24)
-            .modifier(MView.Card())
-            
-            Spacer()
         }
         .padding(24)
         .alert(

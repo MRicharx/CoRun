@@ -62,6 +62,8 @@ struct EditBiodataPopUp: View {
                 CTextfield(title: "Weight",unit: "kg", input: $weight)
             }
             
+            Spacer()
+            
             //MARK: Button
             VStack(spacing:12){
                 //MARK: Update Button
@@ -85,7 +87,6 @@ struct EditBiodataPopUp: View {
             }
         }
         .padding(24)
-        .modifier(MView.Card())
         //MARK: Save Alert
         .alert(
             "Do you want to update you data?",

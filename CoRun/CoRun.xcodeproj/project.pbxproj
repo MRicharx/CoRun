@@ -36,6 +36,8 @@
 		8369324B29E7E3FF007994D6 /* CRRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369324A29E7E3FF007994D6 /* CRRectangle.swift */; };
 		8369324D29E7E63F007994D6 /* CChatSendBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369324C29E7E63F007994D6 /* CChatSendBar.swift */; };
 		8369324F29E7FF30007994D6 /* CPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369324E29E7FF30007994D6 /* CPicker.swift */; };
+		8369325729E97D1E007994D6 /* TraineeSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369325629E97D1E007994D6 /* TraineeSummaryView.swift */; };
+		8369325929E97D30007994D6 /* TraineeCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369325829E97D30007994D6 /* TraineeCalendarView.swift */; };
 		83A4223529E5AF4000D4DE8F /* CompletionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A4223429E5AF4000D4DE8F /* CompletionStatus.swift */; };
 		83A4223A29E5B1F400D4DE8F /* TrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A4223929E5B1F400D4DE8F /* TrainingView.swift */; };
 		83A4223C29E5B33000D4DE8F /* CTabControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A4223B29E5B33000D4DE8F /* CTabControl.swift */; };
@@ -159,6 +161,8 @@
 		8369324A29E7E3FF007994D6 /* CRRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRRectangle.swift; sourceTree = "<group>"; };
 		8369324C29E7E63F007994D6 /* CChatSendBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CChatSendBar.swift; sourceTree = "<group>"; };
 		8369324E29E7FF30007994D6 /* CPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPicker.swift; sourceTree = "<group>"; };
+		8369325629E97D1E007994D6 /* TraineeSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeSummaryView.swift; sourceTree = "<group>"; };
+		8369325829E97D30007994D6 /* TraineeCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeCalendarView.swift; sourceTree = "<group>"; };
 		83A4223429E5AF4000D4DE8F /* CompletionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionStatus.swift; sourceTree = "<group>"; };
 		83A4223929E5B1F400D4DE8F /* TrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingView.swift; sourceTree = "<group>"; };
 		83A4223B29E5B33000D4DE8F /* CTabControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTabControl.swift; sourceTree = "<group>"; };
@@ -284,6 +288,7 @@
 		8368FFD029D42234007DBCDF /* trainee */ = {
 			isa = PBXGroup;
 			children = (
+				8369325329E97C04007994D6 /* subview */,
 				8368FFDC29D42FDF007DBCDF /* TraineeView.swift */,
 				8368FFDE29D42FF3007DBCDF /* TraineeModel.swift */,
 				8368FFE029D43000007DBCDF /* TraineeViewModel.swift */,
@@ -342,6 +347,31 @@
 				8369324C29E7E63F007994D6 /* CChatSendBar.swift */,
 			);
 			path = component;
+			sourceTree = "<group>";
+		};
+		8369325329E97C04007994D6 /* subview */ = {
+			isa = PBXGroup;
+			children = (
+				8369325529E97C1C007994D6 /* summary */,
+				8369325429E97C16007994D6 /* calendar */,
+			);
+			path = subview;
+			sourceTree = "<group>";
+		};
+		8369325429E97C16007994D6 /* calendar */ = {
+			isa = PBXGroup;
+			children = (
+				8369325829E97D30007994D6 /* TraineeCalendarView.swift */,
+			);
+			path = calendar;
+			sourceTree = "<group>";
+		};
+		8369325529E97C1C007994D6 /* summary */ = {
+			isa = PBXGroup;
+			children = (
+				8369325629E97D1E007994D6 /* TraineeSummaryView.swift */,
+			);
+			path = summary;
 			sourceTree = "<group>";
 		};
 		83A4223329E5AF2700D4DE8F /* data-enum */ = {
@@ -890,6 +920,7 @@
 				8316301429D993FB00B3322E /* SplashViewModel.swift in Sources */,
 				83A4223A29E5B1F400D4DE8F /* TrainingView.swift in Sources */,
 				8368FFDB29D428F3007DBCDF /* CSearchBar.swift in Sources */,
+				8369325729E97D1E007994D6 /* TraineeSummaryView.swift in Sources */,
 				83DCE1D029D03CAC0007E73D /* ProfileView.swift in Sources */,
 				83DCE18B29C850CC0007E73D /* CCheckBox.swift in Sources */,
 				8368FFDF29D42FF3007DBCDF /* TraineeModel.swift in Sources */,
@@ -918,6 +949,7 @@
 				83DCE1D729D03D4E0007E73D /* CProfileBiodata.swift in Sources */,
 				83F2C81B29C30187004E3270 /* ContentView.swift in Sources */,
 				8368FFE429D59412007DBCDF /* CDashboardView.swift in Sources */,
+				8369325929E97D30007994D6 /* TraineeCalendarView.swift in Sources */,
 				83A4223C29E5B33000D4DE8F /* CTabControl.swift in Sources */,
 				8316301229D993F200B3322E /* SplashModel.swift in Sources */,
 				83DCE1B629CCC4510007E73D /* PlanModel.swift in Sources */,

@@ -133,12 +133,13 @@ class MButton{
     struct SquareButton: ButtonStyle {
         let isActive:Bool
         var padding:Int = 12
+        var color:Color = MColor.ColorPalette().primary
         
         func makeBody(configuration: Configuration) -> some View {
             if(isActive){
                 configuration.label
                     .padding(CGFloat(padding))
-                    .background(MColor.ColorPalette().primary)
+                    .background(color)
                     .foregroundColor(MColor.ColorPalette().base)
                     .cornerRadius(12)
                     .scaleEffect(configuration.isPressed ? 0.98 : 1.0)
@@ -149,6 +150,33 @@ class MButton{
                     .background(MColor.ColorPalette().primaryDisabled)
                     .foregroundColor(MColor.ColorPalette().shade)
                     .cornerRadius(12)
+            }
+        }
+    }
+    
+    ///Set button to wrap frame
+    struct WrapButton: ButtonStyle {
+        let isActive:Bool
+        var color:Color = MColor.ColorPalette().primary
+        var padding:Int = 12
+        var cornerRadius:CGFloat = 12
+        
+        func makeBody(configuration: Configuration) -> some View {
+            if(isActive){
+                configuration.label
+                    .padding(CGFloat(padding))
+                    .background(color)
+                    .foregroundColor(MColor.ColorPalette().base)
+                    .cornerRadius(cornerRadius)
+                    .scaleEffect(configuration.isPressed ? 0.98 : 1.0)
+            }
+            else{
+                configuration.label
+                    .padding(CGFloat(padding))
+                    .background(MColor.ColorPalette().primaryDisabled)
+                    .foregroundColor(MColor.ColorPalette().shade)
+                    .scaleEffect(configuration.isPressed ? 0.98 : 1.0)
+                    .cornerRadius(cornerRadius)
             }
         }
     }

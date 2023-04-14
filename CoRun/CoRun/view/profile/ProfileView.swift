@@ -47,7 +47,8 @@ struct ProfileView: View {
                 VStack(spacing:0){
                     //MARK: Edit
                     Button{
-                        //TODO: Navigate to Feedback
+                        //TODO: Navigate to Edit
+                        showEditData=true
                     }label:{
                         HStack(spacing:12){
                             Image(systemName: "square.and.pencil.circle.fill")
@@ -66,7 +67,8 @@ struct ProfileView: View {
                     
                     //MARK: Show QR
                     Button{
-                        //TODO: Navigate to Feedback
+                        //TODO: Navigate to QR
+                        showQRPopUp=true
                     }label:{
                         HStack(spacing:12){
                             Image(systemName: "qrcode")
@@ -98,7 +100,8 @@ struct ProfileView: View {
                 VStack(spacing:0){
                     //MARK: My Coach
                     Button{
-                        //TODO: Navigate to Feedback
+                        //TODO: Navigate to My Coach
+                        showScanQR=true
                     }label:{
                         HStack(spacing:12){
                             Image(systemName: "person.circle.fill")
@@ -117,7 +120,7 @@ struct ProfileView: View {
                     
                     //MARK: Daily Reminder
                     Button{
-                        //TODO: Navigate to Feedback
+                        //TODO: Update scheduler
                         isReminderActive.toggle()
                     }label:{
                         HStack(alignment:.top, spacing:12){
@@ -139,7 +142,7 @@ struct ProfileView: View {
                     
                     //MARK: Apple Health
                     Button{
-                        //TODO: Navigate to Feedback
+                        //TODO: Toggle health permission
                         isHealthAllowed.toggle()
                     }label:{
                         HStack(spacing:12){
@@ -161,9 +164,9 @@ struct ProfileView: View {
             
             //MARK: My Trainee
             VStack{
-                //MARK: Daily Reminder
                 Button{
-                    //TODO: Navigate to Feedback
+                    //TODO: Navigate to My Trainee
+                    
                 }label:{
                     HStack(spacing:12){
                         Image(systemName: "person.crop.rectangle.stack.fill")
@@ -193,59 +196,6 @@ struct ProfileView: View {
                         .modifier(MFont.Headline(size: 18))
                         .modifier(MColor.Danger())
                 }.modifier(MView.FillFrame())
-            }
-        }
-        
-        ZStack{
-            Color("Base")
-                .ignoresSafeArea()
-            
-            ScrollView{
-                VStack(alignment:.leading,spacing: 24){
-                    //MARK: Title
-                    Text("My Profile")
-                        .modifier(MView.safePadding())
-                        .modifier(MColor.Text())
-                        .modifier(MFont.Title())
-                    
-                    //MARK: Biodata
-                    CProfileBiodata(
-                        showQR: $showQRPopUp,
-                        showEdit: $showEditData
-                    )
-                    
-                    //MARK: Coach
-                    CProfileCoach(showScanQR: $showScanQR, coach: currentCoach)
-                    
-                    //MARK: Reminder
-                    CProfileReminder(
-                        isReminderActive: $isReminderActive,
-                        currentReminder: $reminderValue)
-                    
-                    //MARK: Trainee List
-                    VStack{
-                        HStack{
-                            Group{
-                                Image(systemName: "person.crop.rectangle.stack.fill")
-                                    .modifier(MColor.Primary())
-                                Text("My Trainee List")
-                                    .modifier(MColor.Text())
-                            }.modifier(MFont.Headline())
-                        }.modifier(MView.FillToLeftFrame())
-                    }.padding(18)
-                    .modifier(MView.Card())
-                    
-                    //MARK: Sign Out
-                    Button{
-                        showSignOUtAlert = true
-                    }label:{
-                        VStack{
-                            Text("Sign Out")
-                                .modifier(MFont.Headline(size: 18))
-                                .modifier(MColor.Danger())
-                        }.modifier(MView.FillFrame())
-                    }
-                }
             }
         }
         //MARK: Edit Controller

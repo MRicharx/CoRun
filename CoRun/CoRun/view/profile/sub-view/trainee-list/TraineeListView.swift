@@ -11,75 +11,76 @@ struct TraineeListView: View {
     ///Define search value
     @State var searchInput:String = ""
     ///Define request section visibility
-    @State var requestVisibility:Bool = true
+    @State var showAllRequest:Bool = true
     
     var body: some View {
-        ScrollView{
-            VStack(alignment: .leading, spacing: 24){
-                //MARK: Title
-                Text("My Trainee")
-                    .modifier(MView.safePadding())
-                    .modifier(MColor.Text())
-                    .modifier(MFont.Title())
-                
-                //MARK: Search Bar
+        VStack{
+            //MARK: Search Bar
+            VStack{
                 CSearchBar(hint: "Find Trainee",input: $searchInput)
-                    .modifier(MView.safePadding())
-                
-                //MARK: Request Section
-                VStack{
-                    HStack(alignment:.firstTextBaseline){
-                        Text("Request")
-                            .modifier(MFont.Headline())
+            }
+            .padding(EdgeInsets(top: 0, leading: 24, bottom: 18, trailing: 24))
+            .modifier(MView.Card())
+            
+            //MARK: Request Section
+            VStack{
+                Button{
+                    withAnimation{
+                        showAllRequest.toggle()
+                    }
+                }label:{
+                    HStack(){
+                        Text("Request (X)")
+                            .modifier(MFont.SubBody())
                             .modifier(MColor.Text())
                             .modifier(MView.FillToLeftFrame())
                         
-                        //MARK: Request visibility trigger
-                        Button{
-                            withAnimation{
-                                requestVisibility.toggle()
+                        Group{
+                            if(showAllRequest){
+                                Text("Hide")
+                            }else{
+                                Text("Show All")
                             }
-                        }label: {
-                            Group{
-                                if(requestVisibility){
-                                    Text("Hide")
-                                }else{
-                                    Text("Show All Request")
-                                }
-                            }.modifier(MColor.Primary())
                         }
+                        .modifier(MFont.SubBody())
+                        .modifier(MColor.Primary())
                     }
-                    .modifier(MView.safePadding())
-                    
-                    //MARK: Request List
-                    //TODO: Load Request List
-                    if(requestVisibility){
-                        VStack(spacing: 18){
+                }.buttonStyle(MButton.ListButton())
+                
+                if(showAllRequest){
+                    VStack(){
+                        Group{
                             CTraineeCard(isRequest: true)
+                            CDivider()
                             CTraineeCard(isRequest: true)
+                            CDivider()
                             CTraineeCard(isRequest: true)
+                            CDivider()
                         }
-                    }
+                    }.padding(24)
                 }
-                
-                //MARK: Trainee Section
-                VStack{
-                    Text("Trainee")
-                        .modifier(MFont.Headline())
-                        .modifier(MColor.Text())
-                        .modifier(MView.FillToLeftFrame())
-                        .modifier(MView.safePadding())
-                    
-                    //MARK: Trainee List
-                    VStack(spacing: 18){
-                        CTraineeCard()
-                        CTraineeCard()
-                        CTraineeCard()
-                    }
-                }
-                
             }
-        }.modifier(MView.FillToLeftFrame())
+            .modifier(MView.Card())
+            
+            //MARK: Trainee List
+            VStack{
+                ScrollView{
+                    Group{
+                        CTraineeCard()
+                        CDivider()
+                        CTraineeCard()
+                        CDivider()
+                        CTraineeCard()
+                        CDivider()
+                        CTraineeCard()
+                        CDivider()
+                        CTraineeCard()
+                        CDivider()
+                    }.padding(24)
+                }
+            }
+            .modifier(MView.Card())
+        }
     }
 }
 

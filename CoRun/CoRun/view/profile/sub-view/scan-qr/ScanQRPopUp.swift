@@ -37,7 +37,7 @@ struct ScanQRPopUp: View {
                 
                 Spacer()
                 
-                VStack(spacing:24){
+                VStack(spacing:12){
                     //MARK: Divider
                     HStack(spacing: 18){
                         CDivider(color: MColor.ColorPalette().textDisabled)
@@ -69,10 +69,10 @@ struct ScanQRPopUp: View {
                         }.buttonStyle(MButton.DefaultButton(isActive: true,invert:true, padding: 12))
                     }
                 }
-                .padding(16)
+                .padding(24)
                 .modifier(MView.Card())
             }
-            .padding(8)
+            .padding(0)
             //MARK: Scan Result Alert
             .onChange(of: scanResult,perform: { _ in
                 //TODO: Check if coach Exist

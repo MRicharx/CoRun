@@ -96,7 +96,7 @@ struct SummaryView: View {
                 
                 //MARK: Distance Graph
                 CGraph(data: vm.graphData)
-                    .frame(maxHeight: 360)
+                    .frame(minHeight: 360,maxHeight: 360)
             }
             .padding(24)
             .modifier(MView.Card())

@@ -17,6 +17,8 @@ enum TabList{
 struct CTabControl: View {
     ///Define selected tab
     @Binding var tab:String
+    ///Define tab title
+    @State var title:String = "Training"
     ///Define tab list
     @State var tabList = ["Plan","Calendar","Summary"]
     
@@ -28,7 +30,7 @@ struct CTabControl: View {
     var body: some View {
         VStack(spacing:18){
             //MARK: Title
-            Text("Training")
+            Text(title)
                 .modifier(MFont.Headline())
                 .modifier(MColor.Text())
                 .modifier(MView.FillToLeftFrame())

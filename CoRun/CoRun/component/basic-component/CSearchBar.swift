@@ -26,21 +26,21 @@ struct CSearchBar: View {
                         if(input==""){
                             Text(hint)
                                 .modifier(MColor.DisabledText())
-                                .modifier(MFont.Body())
+                                .modifier(MFont.SubBody())
                                 .modifier(MView.FillToLeftFrame())
                         }
                         TextField("", text: $input)
                         .textFieldStyle(PlainTextFieldStyle())
                         .disableAutocorrection(true)
                         .accentColor(MColor.ColorPalette().primary)
-                        .modifier(MFont.Body())
+                        .modifier(MFont.SubBody())
                         .modifier(MColor.Text())
                     }
                     .modifier(MView.FillToLeftFrame())
                     
                     Image(systemName: "magnifyingglass")
                         .modifier(MColor.Primary())
-                        .modifier(MFont.Body())
+                        .modifier(MFont.SubBody())
                 }
             }
             .modifier(MView.FillFrame())
