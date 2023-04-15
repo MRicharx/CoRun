@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+///Store currently selected date for calender view
 private struct SelectedDateKey:EnvironmentKey{
     static let defaultValue:Binding<Date> = .constant(Date.now)
 }

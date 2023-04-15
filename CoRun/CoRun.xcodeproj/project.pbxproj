@@ -38,6 +38,9 @@
 		8369324F29E7FF30007994D6 /* CPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369324E29E7FF30007994D6 /* CPicker.swift */; };
 		8369325729E97D1E007994D6 /* TraineeSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369325629E97D1E007994D6 /* TraineeSummaryView.swift */; };
 		8369325929E97D30007994D6 /* TraineeCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369325829E97D30007994D6 /* TraineeCalendarView.swift */; };
+		8369325C29EAD3DE007994D6 /* SharedToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369325B29EAD3DE007994D6 /* SharedToken.swift */; };
+		8369325E29EAD80E007994D6 /* SplashStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369325D29EAD80E007994D6 /* SplashStatus.swift */; };
+		8369326029EB141B007994D6 /* SelectedViewKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369325F29EB141B007994D6 /* SelectedViewKey.swift */; };
 		83A4223529E5AF4000D4DE8F /* CompletionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A4223429E5AF4000D4DE8F /* CompletionStatus.swift */; };
 		83A4223A29E5B1F400D4DE8F /* TrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A4223929E5B1F400D4DE8F /* TrainingView.swift */; };
 		83A4223C29E5B33000D4DE8F /* CTabControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A4223B29E5B33000D4DE8F /* CTabControl.swift */; };
@@ -77,9 +80,6 @@
 		83DCE1D029D03CAC0007E73D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1CF29D03CAC0007E73D /* ProfileView.swift */; };
 		83DCE1D229D03CC90007E73D /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1D129D03CC90007E73D /* ProfileViewModel.swift */; };
 		83DCE1D429D03CD30007E73D /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1D329D03CD30007E73D /* ProfileModel.swift */; };
-		83DCE1D729D03D4E0007E73D /* CProfileBiodata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1D629D03D4E0007E73D /* CProfileBiodata.swift */; };
-		83DCE1D929D043500007E73D /* CProfileCoach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1D829D043500007E73D /* CProfileCoach.swift */; };
-		83DCE1DB29D0450D0007E73D /* CProfileReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1DA29D0450D0007E73D /* CProfileReminder.swift */; };
 		83DCE1DF29D048AA0007E73D /* QRPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1DE29D048AA0007E73D /* QRPopUp.swift */; };
 		83DCE1E329D055250007E73D /* EditBiodataPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1E229D055250007E73D /* EditBiodataPopUp.swift */; };
 		83DCE1E629D0631F0007E73D /* ScanQRPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1E529D0631F0007E73D /* ScanQRPopUp.swift */; };
@@ -163,6 +163,9 @@
 		8369324E29E7FF30007994D6 /* CPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPicker.swift; sourceTree = "<group>"; };
 		8369325629E97D1E007994D6 /* TraineeSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeSummaryView.swift; sourceTree = "<group>"; };
 		8369325829E97D30007994D6 /* TraineeCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeCalendarView.swift; sourceTree = "<group>"; };
+		8369325B29EAD3DE007994D6 /* SharedToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedToken.swift; sourceTree = "<group>"; };
+		8369325D29EAD80E007994D6 /* SplashStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashStatus.swift; sourceTree = "<group>"; };
+		8369325F29EB141B007994D6 /* SelectedViewKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedViewKey.swift; sourceTree = "<group>"; };
 		83A4223429E5AF4000D4DE8F /* CompletionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionStatus.swift; sourceTree = "<group>"; };
 		83A4223929E5B1F400D4DE8F /* TrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingView.swift; sourceTree = "<group>"; };
 		83A4223B29E5B33000D4DE8F /* CTabControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTabControl.swift; sourceTree = "<group>"; };
@@ -202,9 +205,6 @@
 		83DCE1CF29D03CAC0007E73D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		83DCE1D129D03CC90007E73D /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		83DCE1D329D03CD30007E73D /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
-		83DCE1D629D03D4E0007E73D /* CProfileBiodata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CProfileBiodata.swift; sourceTree = "<group>"; };
-		83DCE1D829D043500007E73D /* CProfileCoach.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CProfileCoach.swift; sourceTree = "<group>"; };
-		83DCE1DA29D0450D0007E73D /* CProfileReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CProfileReminder.swift; sourceTree = "<group>"; };
 		83DCE1DE29D048AA0007E73D /* QRPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPopUp.swift; sourceTree = "<group>"; };
 		83DCE1E229D055250007E73D /* EditBiodataPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBiodataPopUp.swift; sourceTree = "<group>"; };
 		83DCE1E529D0631F0007E73D /* ScanQRPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRPopUp.swift; sourceTree = "<group>"; };
@@ -327,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				8369323D29E6BD1F007994D6 /* SelectedDateKey.swift */,
+				8369325F29EB141B007994D6 /* SelectedViewKey.swift */,
 			);
 			path = "data-environment";
 			sourceTree = "<group>";
@@ -374,11 +375,29 @@
 			path = summary;
 			sourceTree = "<group>";
 		};
+		8369325A29EAD3B5007994D6 /* data-shared */ = {
+			isa = PBXGroup;
+			children = (
+				8369325B29EAD3DE007994D6 /* SharedToken.swift */,
+			);
+			path = "data-shared";
+			sourceTree = "<group>";
+		};
+		8369326129EB1B44007994D6 /* subview */ = {
+			isa = PBXGroup;
+			children = (
+				83DCE18229C8473D0007E73D /* assessment */,
+				83DCE19529C868190007E73D /* health-permission */,
+			);
+			path = subview;
+			sourceTree = "<group>";
+		};
 		83A4223329E5AF2700D4DE8F /* data-enum */ = {
 			isa = PBXGroup;
 			children = (
 				83A4223429E5AF4000D4DE8F /* CompletionStatus.swift */,
 				8369323229E5E7B1007994D6 /* CalendarStatus.swift */,
+				8369325D29EAD80E007994D6 /* SplashStatus.swift */,
 			);
 			path = "data-enum";
 			sourceTree = "<group>";
@@ -424,6 +443,7 @@
 		83DCE17F29C846E50007E73D /* splash */ = {
 			isa = PBXGroup;
 			children = (
+				8369326129EB1B44007994D6 /* subview */,
 				83DCE18029C846FF0007E73D /* SplashView.swift */,
 				8316301129D993F200B3322E /* SplashModel.swift */,
 				8316301329D993FB00B3322E /* SplashViewModel.swift */,
@@ -526,23 +546,12 @@
 		83DCE1CE29D03C9A0007E73D /* profile */ = {
 			isa = PBXGroup;
 			children = (
-				83DCE1D529D03D060007E73D /* profile-component */,
 				83DCE1DC29D048880007E73D /* sub-view */,
 				83DCE1CF29D03CAC0007E73D /* ProfileView.swift */,
 				83DCE1D129D03CC90007E73D /* ProfileViewModel.swift */,
 				83DCE1D329D03CD30007E73D /* ProfileModel.swift */,
 			);
 			path = profile;
-			sourceTree = "<group>";
-		};
-		83DCE1D529D03D060007E73D /* profile-component */ = {
-			isa = PBXGroup;
-			children = (
-				83DCE1D629D03D4E0007E73D /* CProfileBiodata.swift */,
-				83DCE1D829D043500007E73D /* CProfileCoach.swift */,
-				83DCE1DA29D0450D0007E73D /* CProfileReminder.swift */,
-			);
-			path = "profile-component";
 			sourceTree = "<group>";
 		};
 		83DCE1DC29D048880007E73D /* sub-view */ = {
@@ -682,6 +691,7 @@
 		83F2C84929C30365004E3270 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				8369325A29EAD3B5007994D6 /* data-shared */,
 				8369323C29E6BD0B007994D6 /* data-environment */,
 				83A4223329E5AF2700D4DE8F /* data-enum */,
 				832AB22429D9820800904AA3 /* data-display */,
@@ -737,8 +747,6 @@
 				83A4223629E5B1B300D4DE8F /* training */,
 				8368FFD029D42234007DBCDF /* trainee */,
 				83DCE1CE29D03C9A0007E73D /* profile */,
-				83DCE18229C8473D0007E73D /* assessment */,
-				83DCE19529C868190007E73D /* health-permission */,
 				83DCE17F29C846E50007E73D /* splash */,
 			);
 			path = view;
@@ -924,6 +932,7 @@
 				83DCE1D029D03CAC0007E73D /* ProfileView.swift in Sources */,
 				83DCE18B29C850CC0007E73D /* CCheckBox.swift in Sources */,
 				8368FFDF29D42FF3007DBCDF /* TraineeModel.swift in Sources */,
+				8369325C29EAD3DE007994D6 /* SharedToken.swift in Sources */,
 				83DCE19B29C8686C0007E73D /* HealthPermissionViewModel.swift in Sources */,
 				83F2C85329C328A7004E3270 /* MFont.swift in Sources */,
 				83DCE1A029CC98360007E73D /* SummaryViewModel.swift in Sources */,
@@ -934,10 +943,10 @@
 				83DCE1D429D03CD30007E73D /* ProfileModel.swift in Sources */,
 				83D31B7B29C70DED00B47F8C /* HHealth.swift in Sources */,
 				83D31B8129C8366700B47F8C /* TUserDefault.swift in Sources */,
-				83DCE1D929D043500007E73D /* CProfileCoach.swift in Sources */,
 				8368FFD729D423F3007DBCDF /* TraineeListViewModel.swift in Sources */,
 				83DCE1C929CDB6720007E73D /* CSessionGoal.swift in Sources */,
 				8368FFD529D423E6007DBCDF /* TraineeListModel.swift in Sources */,
+				8369325E29EAD80E007994D6 /* SplashStatus.swift in Sources */,
 				8369323329E5E7B1007994D6 /* CalendarStatus.swift in Sources */,
 				83DCE1CD29CDB68C0007E73D /* CSessionResult.swift in Sources */,
 				83F2C82529C30190004E3270 /* CoRun.xcdatamodeld in Sources */,
@@ -946,7 +955,6 @@
 				83DCE1D229D03CC90007E73D /* ProfileViewModel.swift in Sources */,
 				83C6FC5029C455EF00B0026C /* MColor.swift in Sources */,
 				83DCE1CB29CDB6810007E73D /* CSessionFeedback.swift in Sources */,
-				83DCE1D729D03D4E0007E73D /* CProfileBiodata.swift in Sources */,
 				83F2C81B29C30187004E3270 /* ContentView.swift in Sources */,
 				8368FFE429D59412007DBCDF /* CDashboardView.swift in Sources */,
 				8369325929E97D30007994D6 /* TraineeCalendarView.swift in Sources */,
@@ -955,7 +963,6 @@
 				83DCE1B629CCC4510007E73D /* PlanModel.swift in Sources */,
 				8368FFE129D43000007DBCDF /* TraineeViewModel.swift in Sources */,
 				8369323E29E6BD1F007994D6 /* SelectedDateKey.swift in Sources */,
-				83DCE1DB29D0450D0007E73D /* CProfileReminder.swift in Sources */,
 				83DCE1A229CC98410007E73D /* SummaryModel.swift in Sources */,
 				83DCE1B229CCC4360007E73D /* PlanView.swift in Sources */,
 				83D31B7F29C70E9F00B47F8C /* TQr.swift in Sources */,
@@ -980,6 +987,7 @@
 				83D31B7D29C70DFC00B47F8C /* TDate.swift in Sources */,
 				8369324B29E7E3FF007994D6 /* CRRectangle.swift in Sources */,
 				83DCE1A529CC98D90007E73D /* CSegmented.swift in Sources */,
+				8369326029EB141B007994D6 /* SelectedViewKey.swift in Sources */,
 				83DCE1E329D055250007E73D /* EditBiodataPopUp.swift in Sources */,
 				83DCE1C029CDAEA50007E73D /* SessionDetailView.swift in Sources */,
 				832AB22629D991BD00904AA3 /* CSignInButton.swift in Sources */,

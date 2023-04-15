@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct HealthPermissionView: View {
+    @Environment(\.selectedView) var curView
+    
+    //Define self view model
+    @StateObject var vm = HealthPermissionViewModel()
+    
     var body: some View {
         ZStack{
-            Color("base")
+            Color("Base")
                 .ignoresSafeArea()
             
             VStack(spacing: 24){
@@ -37,10 +42,27 @@ struct HealthPermissionView: View {
                 
                 Button{
                     //TODO: DO Thing
+                    if !(vm.isLoading){
+                        vm.requestHealthPermission{ status in
+                            if status{
+                                curView.wrappedValue = vm.defineNextView()
+                            }else{
+                                print(">> HealthKit request permission ERROR")
+                            }
+                            vm.toggleLoading()
+                        }
+                    }
                 }label:{
-                    Text("Grant Access")
-                        .modifier(MFont.Headline())
-                        .modifier(MColor.Base())
+                    Group{
+                        if vm.isLoading{
+                            ProgressView()
+                                .progressViewStyle(.circular)
+                        }else{
+                            Text("Grant Access")
+                                .modifier(MColor.Base())
+                        }
+                    }
+                    .modifier(MFont.Headline())
                 }.buttonStyle(MButton.DefaultButton(isActive: true))
             }
         }

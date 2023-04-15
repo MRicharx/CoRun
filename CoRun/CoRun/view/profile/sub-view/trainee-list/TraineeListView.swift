@@ -11,7 +11,7 @@ struct TraineeListView: View {
     ///Define search value
     @State var searchInput:String = ""
     ///Define request section visibility
-    @State var showAllRequest:Bool = true
+    @State var showAllRequest:Bool = false
     
     var body: some View {
         VStack{

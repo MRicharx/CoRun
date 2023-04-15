@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AssessmentView: View {
+    @Environment(\.selectedView) var curView
+    
     ///Username input
     @State var username:String = ""
     ///Gender Choice
@@ -16,6 +18,9 @@ struct AssessmentView: View {
     @State var height:String = ""
     ///Weight input
     @State var weight:String = ""
+    
+    ///Define current view model
+    @StateObject var vm = AssessmentViewModel()
     
     var body: some View {
         ZStack{
@@ -26,7 +31,7 @@ struct AssessmentView: View {
                 //MARK: Title
                 Text("My Personal\nInformation")
                     .modifier(MColor.Text())
-                    .modifier(MFont.Title())
+                    .modifier(MFont.Title2())
                 
                 VStack(spacing: 24){
                     //MARK: Username TF
@@ -44,9 +49,9 @@ struct AssessmentView: View {
                 Spacer()
                 
                 //MARK: Confirm Button
-                if(username == "" || height == "" || weight == ""){
+                if(username == "" || height == "" || weight == "" ){
                     Button{
-                        //TODO: Set Function here
+                        ///Do NOTHING
                     }label:{
                         Text("Confirm")
                             .modifier(MFont.Headline())
@@ -54,16 +59,29 @@ struct AssessmentView: View {
                     }.buttonStyle(MButton.DefaultButton(isActive: false))
                 }else{
                     Button{
-                        //TODO: Set Function here
+                        if !(vm.isLoading){
+                            //TODO: Set Function here
+                            vm.setPersonalData()
+                            
+                            curView.wrappedValue = vm.defineNextView()
+                        }
                     }label:{
-                        Text("Confirm")
-                            .modifier(MFont.Headline())
-                            .modifier(MColor.Base())
+                        if vm.isLoading{
+                            ProgressView()
+                                .progressViewStyle(.circular)
+                        }else{
+                            Text("Confirm")
+                                .modifier(MFont.Headline())
+                                .modifier(MColor.Base())
+                        }
                     }.buttonStyle(MButton.DefaultButton(isActive: true))
                 }
             }
             .padding(EdgeInsets(top: 0, leading: 24, bottom: 24, trailing: 24))
             .modifier(MView.FillFrame())
+        }
+        .onAppear {
+            curView.wrappedValue = vm.defineNextView()
         }
     }
 }

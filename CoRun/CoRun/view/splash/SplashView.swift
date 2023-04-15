@@ -8,43 +8,63 @@
 import SwiftUI
 
 struct SplashView: View {
-    ///Define current view state
-    /// 0 - Booting App,
-    /// 1- Signing In,
-    /// 2 - Directing to Assestment,
-    /// 3 - Checking HealthKit Permission,
-    /// else - Directing to Home (All requirement fulfilled)
-    @State var viewState = 0
+    @Environment(\.selectedView) private var curView
+
+    
+    ///Define sign in behavior
+    @State private var showSignInButton = false
+    ///Define Self ViewModel
+    @State private var vm = SplashViewModel()
     
     var body: some View {
-        ZStack{
-            Color("Base")
-                .ignoresSafeArea()
-            
-            VStack(spacing: 36){
-                //MARK: App Logo
-                Circle()
-                    .modifier(MColor.Primary())
-                
-                if(viewState == 1){
-                    //MARK: Sign In Button
+        NavigationStack{
+            VStack(spacing: 72){
+                VStack(spacing: 0){
+                    //MARK: App Logo
+                    Image("LogoCropped")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: 120)
+                    
+                    Text("CoRun")
+                        .modifier(MFont.Title(size: 36))
+                        .modifier(MColor.Primary())
+                }
+
+                if (showSignInButton){
                     CSignInButton()
-                        .frame(minWidth: 0, maxWidth: .infinity, maxHeight: 64)
-                        .onTapGesture {
+                        .frame(maxHeight: 48)
+                        .onTapGesture{
                             //TODO: Sign In Feature
+                            vm.signIn()
+                            
+                            curView.wrappedValue = vm.defineNextView()
                         }
+                }else{
+                    ProgressView()
+                        .progressViewStyle(.circular)
                 }
             }
-        }
-        .padding(24)
-        .onAppear{
-            //TODO: Check is Signed and requirement thing
+            .task{
+                vm.toggleLoading()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
+                    if !(vm.isSignedIn()){
+                        withAnimation{
+                            showSignInButton = true
+                        }
+                    }
+                    else{
+                        curView.wrappedValue = vm.defineNextView()
+                    }
+                }
+            }
+            .padding(36)
         }
     }
 }
 
-struct SplashView_Previews: PreviewProvider {
-    static var previews: some View {
-        SplashView()
-    }
-}
+//struct SplashView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SplashView()
+//    }
+//}

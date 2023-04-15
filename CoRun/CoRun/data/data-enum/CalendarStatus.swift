@@ -23,6 +23,24 @@ class CalendarStatus:ObservableObject{
         enume = .noPlan
     }
     
+    init(status:Int){
+        int = status
+        enume = .noPlan
+        
+        switch(int){
+        case 0:
+            enume = .noPlan
+        case 1:
+            enume = .planNotReachGoal
+        case 2:
+            enume = .planPartlyReachGoal
+        case 3:
+            enume = .planReachAllGoal
+        default :
+            enume = .planNotDone
+        }
+    }
+    
     func set(newStatus:enumCalendarStatus){
         enume = newStatus
         

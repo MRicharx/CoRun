@@ -20,7 +20,7 @@ struct ProfileView: View {
     @State var showSignOUtAlert = false
     
     ///Define current assigned coach
-    @State var currentCoach = ""
+    @State var currentCoach = "No Coach"
     ///Define current reminder status
     @State var isReminderActive = true
     ///Define current health status
@@ -103,16 +103,20 @@ struct ProfileView: View {
                         //TODO: Navigate to My Coach
                         showScanQR=true
                     }label:{
-                        HStack(spacing:12){
+                        HStack(alignment:.top, spacing:12){
                             Image(systemName: "person.circle.fill")
                                 .modifier(MColor.Primary())
                                 .modifier(MFont.Body())
                             Group{
-                                Text("My Coach")
-                                    .modifier(MColor.Text())
-                                    .modifier(MView.FillToLeftFrame())
-                                Image(systemName: "chevron.right")
-                                    .modifier(MColor.DisabledText())
+                                VStack(alignment:.leading,spacing: 8){
+                                    Text("My Coach")
+                                        .modifier(MColor.Text())
+                                        .modifier(MView.FillToLeftFrame())
+                                    Text(currentCoach)
+                                        .modifier(MFont.Headline())
+                                        .modifier(MColor.Text())
+                                        .modifier(MView.FillToLeftFrame())
+                                }
                             }
                             .modifier(MFont.SubBody())
                         }

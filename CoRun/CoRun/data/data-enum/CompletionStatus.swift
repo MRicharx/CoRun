@@ -22,6 +22,22 @@ class CompletionStatus:ObservableObject{
         enume = .planNotDone
     }
     
+    init(status:Int){
+        int = status
+        enume = .planNotReachGoal
+        
+        switch(int){
+        case 0:
+            enume = .planNotReachGoal
+        case 1:
+            enume = .planPartlyReachGoal
+        case 2:
+            enume = .planReachAllGoal
+        default :
+            enume = .planNotDone
+        }
+    }
+    
     func set(newStatus:enumCompletionStatus){
         enume = newStatus
         
