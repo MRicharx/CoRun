@@ -8,6 +8,8 @@
 import Foundation
 
 class SummaryViewModel: ObservableObject{
+    var model = SummaryModel()
+    
     ///Define selected option
     @Published var displayOption:String = "Week"
     ///Define list of display option

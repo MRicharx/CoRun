@@ -83,6 +83,12 @@
 		83DCE1DF29D048AA0007E73D /* QRPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1DE29D048AA0007E73D /* QRPopUp.swift */; };
 		83DCE1E329D055250007E73D /* EditBiodataPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1E229D055250007E73D /* EditBiodataPopUp.swift */; };
 		83DCE1E629D0631F0007E73D /* ScanQRPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCE1E529D0631F0007E73D /* ScanQRPopUp.swift */; };
+		83E4335D29EC135A00D00AFC /* TrainingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4335C29EC135A00D00AFC /* TrainingViewModel.swift */; };
+		83E4335F29EC136600D00AFC /* TrainingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4335E29EC136600D00AFC /* TrainingModel.swift */; };
+		83E4336229EC17BD00D00AFC /* CoreUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4336129EC17BD00D00AFC /* CoreUser.swift */; };
+		83E4336429EC1D7300D00AFC /* ProfileDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4336329EC1D7300D00AFC /* ProfileDisplayData.swift */; };
+		83E4336629EC1FD600D00AFC /* SharedReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4336529EC1FD600D00AFC /* SharedReminder.swift */; };
+		83E4336929EC31A900D00AFC /* SharedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4336829EC31A900D00AFC /* SharedUser.swift */; };
 		83EA9FEE29C8459D000B7A02 /* HealthTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EA9FED29C8459D000B7A02 /* HealthTemplate.swift */; };
 		83F2C81929C30187004E3270 /* CoRunApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F2C81829C30187004E3270 /* CoRunApp.swift */; };
 		83F2C81B29C30187004E3270 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F2C81A29C30187004E3270 /* ContentView.swift */; };
@@ -208,6 +214,12 @@
 		83DCE1DE29D048AA0007E73D /* QRPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPopUp.swift; sourceTree = "<group>"; };
 		83DCE1E229D055250007E73D /* EditBiodataPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBiodataPopUp.swift; sourceTree = "<group>"; };
 		83DCE1E529D0631F0007E73D /* ScanQRPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRPopUp.swift; sourceTree = "<group>"; };
+		83E4335C29EC135A00D00AFC /* TrainingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingViewModel.swift; sourceTree = "<group>"; };
+		83E4335E29EC136600D00AFC /* TrainingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingModel.swift; sourceTree = "<group>"; };
+		83E4336129EC17BD00D00AFC /* CoreUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreUser.swift; sourceTree = "<group>"; };
+		83E4336329EC1D7300D00AFC /* ProfileDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileDisplayData.swift; path = "CoRun/data/data-core/ProfileDisplayData.swift"; sourceTree = SOURCE_ROOT; };
+		83E4336529EC1FD600D00AFC /* SharedReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedReminder.swift; sourceTree = "<group>"; };
+		83E4336829EC31A900D00AFC /* SharedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedUser.swift; sourceTree = "<group>"; };
 		83EA9FED29C8459D000B7A02 /* HealthTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTemplate.swift; sourceTree = "<group>"; };
 		83F2C81529C30187004E3270 /* CoRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83F2C81829C30187004E3270 /* CoRunApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoRunApp.swift; sourceTree = "<group>"; };
@@ -281,6 +293,7 @@
 		832AB22429D9820800904AA3 /* data-display */ = {
 			isa = PBXGroup;
 			children = (
+				83E4336329EC1D7300D00AFC /* ProfileDisplayData.swift */,
 			);
 			path = "data-display";
 			sourceTree = "<group>";
@@ -379,6 +392,8 @@
 			isa = PBXGroup;
 			children = (
 				8369325B29EAD3DE007994D6 /* SharedToken.swift */,
+				83E4336529EC1FD600D00AFC /* SharedReminder.swift */,
+				83E4336829EC31A900D00AFC /* SharedUser.swift */,
 			);
 			path = "data-shared";
 			sourceTree = "<group>";
@@ -407,6 +422,8 @@
 			children = (
 				83A4223829E5B1DF00D4DE8F /* subview */,
 				83A4223929E5B1F400D4DE8F /* TrainingView.swift */,
+				83E4335C29EC135A00D00AFC /* TrainingViewModel.swift */,
+				83E4335E29EC136600D00AFC /* TrainingModel.swift */,
 			);
 			path = training;
 			sourceTree = "<group>";
@@ -589,6 +606,14 @@
 			path = "scan-qr";
 			sourceTree = "<group>";
 		};
+		83E4336029EC178E00D00AFC /* data-core */ = {
+			isa = PBXGroup;
+			children = (
+				83E4336129EC17BD00D00AFC /* CoreUser.swift */,
+			);
+			path = "data-core";
+			sourceTree = "<group>";
+		};
 		83F2C80C29C30187004E3270 = {
 			isa = PBXGroup;
 			children = (
@@ -691,6 +716,7 @@
 		83F2C84929C30365004E3270 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				83E4336029EC178E00D00AFC /* data-core */,
 				8369325A29EAD3B5007994D6 /* data-shared */,
 				8369323C29E6BD0B007994D6 /* data-environment */,
 				83A4223329E5AF2700D4DE8F /* data-enum */,
@@ -925,6 +951,7 @@
 				8369324329E73047007994D6 /* CGraph.swift in Sources */,
 				83DCE19429C868060007E73D /* AssessmentViewModel.swift in Sources */,
 				8369323A29E6B9AF007994D6 /* CCalendarViewModel.swift in Sources */,
+				83E4335D29EC135A00D00AFC /* TrainingViewModel.swift in Sources */,
 				8316301429D993FB00B3322E /* SplashViewModel.swift in Sources */,
 				83A4223A29E5B1F400D4DE8F /* TrainingView.swift in Sources */,
 				8368FFDB29D428F3007DBCDF /* CSearchBar.swift in Sources */,
@@ -933,6 +960,7 @@
 				83DCE18B29C850CC0007E73D /* CCheckBox.swift in Sources */,
 				8368FFDF29D42FF3007DBCDF /* TraineeModel.swift in Sources */,
 				8369325C29EAD3DE007994D6 /* SharedToken.swift in Sources */,
+				83E4336429EC1D7300D00AFC /* ProfileDisplayData.swift in Sources */,
 				83DCE19B29C8686C0007E73D /* HealthPermissionViewModel.swift in Sources */,
 				83F2C85329C328A7004E3270 /* MFont.swift in Sources */,
 				83DCE1A029CC98360007E73D /* SummaryViewModel.swift in Sources */,
@@ -954,6 +982,7 @@
 				834DD25629C6F51A00CD59EB /* HNetwork.swift in Sources */,
 				83DCE1D229D03CC90007E73D /* ProfileViewModel.swift in Sources */,
 				83C6FC5029C455EF00B0026C /* MColor.swift in Sources */,
+				83E4335F29EC136600D00AFC /* TrainingModel.swift in Sources */,
 				83DCE1CB29CDB6810007E73D /* CSessionFeedback.swift in Sources */,
 				83F2C81B29C30187004E3270 /* ContentView.swift in Sources */,
 				8368FFE429D59412007DBCDF /* CDashboardView.swift in Sources */,
@@ -966,7 +995,9 @@
 				83DCE1A229CC98410007E73D /* SummaryModel.swift in Sources */,
 				83DCE1B229CCC4360007E73D /* PlanView.swift in Sources */,
 				83D31B7F29C70E9F00B47F8C /* TQr.swift in Sources */,
+				83E4336929EC31A900D00AFC /* SharedUser.swift in Sources */,
 				8369322D29E5E594007994D6 /* CalendarView.swift in Sources */,
+				83E4336629EC1FD600D00AFC /* SharedReminder.swift in Sources */,
 				83DCE1B429CCC4440007E73D /* PlanViewModel.swift in Sources */,
 				83DCE1E629D0631F0007E73D /* ScanQRPopUp.swift in Sources */,
 				83EA9FEE29C8459D000B7A02 /* HealthTemplate.swift in Sources */,
@@ -989,6 +1020,7 @@
 				83DCE1A529CC98D90007E73D /* CSegmented.swift in Sources */,
 				8369326029EB141B007994D6 /* SelectedViewKey.swift in Sources */,
 				83DCE1E329D055250007E73D /* EditBiodataPopUp.swift in Sources */,
+				83E4336229EC17BD00D00AFC /* CoreUser.swift in Sources */,
 				83DCE1C029CDAEA50007E73D /* SessionDetailView.swift in Sources */,
 				832AB22629D991BD00904AA3 /* CSignInButton.swift in Sources */,
 				834DD25A29C6FAA500CD59EB /* HApiREST.swift in Sources */,

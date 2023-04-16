@@ -9,17 +9,13 @@ import SwiftUI
 
 struct EditBiodataPopUp: View {
     @Environment(\.dismiss) var dismiss
+    ///Define parent vm
+    @ObservedObject var vm:ProfileViewModel
     
-    ///Define Email
-    @State var email:String = ""
-    ///Define Gender
-    @State var gender:String = ""
-    ///Define Username
-    @State var username:String = "Ricat"
-    ///Define height
-    @State var height:String = "175"
-    ///Define weight
-    @State var weight:String = "72"
+    @State var newUsername = ""
+    @State var newHeight = ""
+    @State var newWeight = ""
+    
     
     ///Define save alert display behavior
     @State var showSaveAlert = false
@@ -35,7 +31,7 @@ struct EditBiodataPopUp: View {
                     Text("Email")
                         .modifier(MFont.Headline(size:16))
                         .modifier(MColor.DisabledText())
-                    Text("Buid@imel.kom")
+                    Text(vm.profileDD.email)
                         .modifier(MFont.Headline())
                         .tint(MColor.ColorPalette().textDefault)
 //                        .modifier(MColor.Text())
@@ -47,19 +43,19 @@ struct EditBiodataPopUp: View {
                     Text("Gender")
                         .modifier(MFont.Headline(size:16))
                         .modifier(MColor.DisabledText())
-                    Text("Male")
+                    Text(vm.profileDD.gender)
                         .modifier(MFont.Headline())
                         .modifier(MColor.Text())
                 }.modifier(MView.FillToLeftFrame())
                 
                 //MARK: Username TF
-                CTextfield(title: "Username",input: $username)
+                CTextfield(title: "Username",input: $newUsername)
                 
                 //MARK: Height TF
-                CTextfield(title: "Height",unit: "cm", input: $height)
+                CTextfield(title: "Height",unit: "cm", input: $newHeight)
                 
                 //MARK: Weight TF
-                CTextfield(title: "Weight",unit: "kg", input: $weight)
+                CTextfield(title: "Weight",unit: "kg", input: $newWeight)
             }
             
             Spacer()
@@ -86,6 +82,12 @@ struct EditBiodataPopUp: View {
                 }.buttonStyle(MButton.DefaultButton(isActive: true,invert: true,padding:14))
             }
         }
+        .onAppear{
+            ///Initialize
+            newUsername = vm.profileDD.username
+            newHeight = String(vm.profileDD.height)
+            newWeight = String(vm.profileDD.weight)
+        }
         .padding(24)
         //MARK: Save Alert
         .alert(
@@ -93,7 +95,13 @@ struct EditBiodataPopUp: View {
             isPresented: $showSaveAlert){
                 //MARK: Proceed
                 Button{
-                    //TODO: Update biodata
+                    //TODO: Update biodata at endpoint and local
+                    vm.profileDD.username = newUsername
+                    vm.profileDD.height = Int(newHeight) ?? 99
+                    vm.profileDD.weight = Int(newWeight) ?? 99
+                    
+                    vm.updateUserData()
+                    dismiss()
                 }label:{
                     Text("Update")
                     
@@ -119,8 +127,8 @@ struct EditBiodataPopUp: View {
     }
 }
 
-struct EditBiodataPopUp_Previews: PreviewProvider {
-    static var previews: some View {
-        EditBiodataPopUp()
-    }
-}
+//struct EditBiodataPopUp_Previews: PreviewProvider {
+//    static var previews: some View {
+//        EditBiodataPopUp()
+//    }
+//}

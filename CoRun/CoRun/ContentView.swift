@@ -15,7 +15,6 @@ struct ContentView: View {
 //        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
 //        animation: .default)
 //    private var items: FetchedResults<Item>
-    @StateObject var splashStatus = SplashStatus()
     
     ///Define selected View
     @State var curView = ViewList.splash
@@ -45,9 +44,6 @@ struct ContentView: View {
             }
         }
         .environment(\.selectedView, $curView)
-        .onAppear{
-            splashStatus.set(newStatus: .splash)
-        }
     }
 
 //    private func addItem() {

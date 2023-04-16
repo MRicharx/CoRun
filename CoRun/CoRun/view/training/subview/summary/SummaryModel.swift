@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+class SummaryModel:ObservableObject{
+    var hk:HHealth
+    
+    init(){
+        hk = HHealth()
+    }
+    
+    
+    
+}

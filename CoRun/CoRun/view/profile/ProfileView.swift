@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @Environment(\.selectedView) var curView
     @Environment(\.dismiss) var dismiss
     
     ///State Edit Biodata Pop Up Status
@@ -19,14 +20,7 @@ struct ProfileView: View {
     ///Define Sign Out Alert Behavior
     @State var showSignOUtAlert = false
     
-    ///Define current assigned coach
-    @State var currentCoach = "No Coach"
-    ///Define current reminder status
-    @State var isReminderActive = true
-    ///Define current health status
-    @State var isHealthAllowed = true
-    ///Define reminder value
-    @State var reminderValue = Date.now
+    @StateObject var vm = ProfileViewModel()
     
     var body: some View {
         VStack(spacing:12){
@@ -34,10 +28,10 @@ struct ProfileView: View {
             VStack{
                 //MARK: Data
                 VStack(alignment:.leading,spacing:8){
-                    Text("Username")
+                    Text(vm.profileDD.username)
                         .modifier(MFont.Headline())
                         .modifier(MColor.Text())
-                    Text("Mail@mail.com")
+                    Text(vm.profileDD.email)
                         .tint(MColor.ColorPalette().textDisabled)
                         .modifier(MFont.SubBody())
                 }.modifier(MView.FillToLeftFrame())
@@ -112,7 +106,7 @@ struct ProfileView: View {
                                     Text("My Coach")
                                         .modifier(MColor.Text())
                                         .modifier(MView.FillToLeftFrame())
-                                    Text(currentCoach)
+                                    Text(vm.profileDD.coachName)
                                         .modifier(MFont.Headline())
                                         .modifier(MColor.Text())
                                         .modifier(MView.FillToLeftFrame())
@@ -125,7 +119,7 @@ struct ProfileView: View {
                     //MARK: Daily Reminder
                     Button{
                         //TODO: Update scheduler
-                        isReminderActive.toggle()
+                        vm.toggleReminder()
                     }label:{
                         HStack(alignment:.top, spacing:12){
                             Image(systemName: "alarm.fill")
@@ -136,9 +130,9 @@ struct ProfileView: View {
                                     Text("Daily Reminder")
                                         .modifier(MColor.Text())
                                         .modifier(MView.FillToLeftFrame())
-                                    CPicker(isReminderActive: $isReminderActive, currentReminder: $reminderValue)
+                                    CPicker(isReminderActive: $vm.profileDD.isReminderActive, currentReminder: $vm.profileDD.reminderValue)
                                 }
-                                Toggle("",isOn: $isReminderActive)
+                                Toggle("",isOn: $vm.profileDD.isReminderActive)
                             }
                             .modifier(MFont.SubBody())
                         }
@@ -147,7 +141,7 @@ struct ProfileView: View {
                     //MARK: Apple Health
                     Button{
                         //TODO: Toggle health permission
-                        isHealthAllowed.toggle()
+                        vm.toggleHealthPermission()
                     }label:{
                         HStack(spacing:12){
                             Image("health")
@@ -158,7 +152,7 @@ struct ProfileView: View {
                                 Text("Apple Health")
                                     .modifier(MColor.Text())
                                     .modifier(MView.FillToLeftFrame())
-                                Toggle("",isOn: $isHealthAllowed)
+                                Toggle("",isOn: $vm.profileDD.isHealthAllowed)
                             }
                             .modifier(MFont.SubBody())
                         }
@@ -205,12 +199,12 @@ struct ProfileView: View {
         //MARK: Edit Controller
         .sheet(isPresented: $showEditData){
             //TODO: Create proper edit data passement
-            EditBiodataPopUp()
+            EditBiodataPopUp(vm:vm)
         }
         //MARK: QR Controller
         .sheet(isPresented: $showQRPopUp){
             //TODO: Create proper id passement
-            QRPopUp(id: "Youtube.com")
+            QRPopUp(id: vm.profileDD.id)
         }
         //MARK: ScanQR Controller
         .fullScreenCover(isPresented: $showScanQR){
@@ -223,6 +217,8 @@ struct ProfileView: View {
             isPresented: $showSignOUtAlert){
                 Button("SIGN OUT", role:.destructive){
                     //TODO: Create SIGN OUT feature
+                    vm.deleteToken()
+                    curView.wrappedValue = ViewList.splash
                 }
             }
     }

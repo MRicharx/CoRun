@@ -88,9 +88,6 @@ class HHealth{
         if(session.isEmpty){
             print(">> HHealth: getSessionResult Resulted with NIL")
         }
-        else{
-            
-        }
         completion(session)
     }
     
