@@ -57,10 +57,10 @@ class HHealth{
     }//Check n Request HealthKit Permission
     
     ///Return All Session Result from workout data
-    func getSessionResult(start:Date, end:Date,completion: @escaping ((_ data: [SessionResult]) -> Void)){
+    func getSessionResult(start:Date, end:Date,completion: @escaping ((_ data: [SessionResultData]) -> Void)){
         
         ///Define returned array
-        var session = [SessionResult]()
+        var session = [SessionResultData]()
         
         getWorkoutData(start: start, end: end){ workoutData in
             workoutData?.forEach{ data in
@@ -70,7 +70,7 @@ class HHealth{
                 let elev = meta?["HKElevationAscended"] as? HKQuantity
                 
                 ///Append data to returned array
-                session.append(SessionResult(
+                session.append(SessionResultData(
                     start: data.startDate,
                     end: data.endDate,
                     distance: data.statistics(for: HKQuantityType.init(HKQuantityTypeIdentifier.distanceWalkingRunning))?.sumQuantity()?.doubleValue(for: HKUnit.meter()),

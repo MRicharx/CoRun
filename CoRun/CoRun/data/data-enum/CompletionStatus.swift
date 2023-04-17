@@ -8,12 +8,12 @@
 import Foundation
 
 ///Class containing session completion status in enum and int
+///Define status
+///0 - Goal not reached,
+///1 - Some Goal reached,
+///2 - All goal reached,
+///3 - Activity yet to be done
 class CompletionStatus:ObservableObject{
-    ///Define status
-    ///0 - Goal not reached,
-    ///1 - Some Goal reached,
-    ///2 - All goal reached,
-    ///3 - Activity yet to be done
     @Published var int:Int
     @Published var enume:enumCompletionStatus
     
