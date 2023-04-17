@@ -16,7 +16,7 @@ class SharedReminder{
     
     var isReminderActive: Bool {
         get {
-            var result = true
+            var result = false
             if let r = UserDefaults.standard.bool(forKey: "isReminderActive") as Bool? {
                 result = r
             }

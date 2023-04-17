@@ -35,7 +35,7 @@
 		8369324929E7E225007994D6 /* CChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369324829E7E225007994D6 /* CChatBubble.swift */; };
 		8369324B29E7E3FF007994D6 /* CRRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369324A29E7E3FF007994D6 /* CRRectangle.swift */; };
 		8369324D29E7E63F007994D6 /* CChatSendBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369324C29E7E63F007994D6 /* CChatSendBar.swift */; };
-		8369324F29E7FF30007994D6 /* CPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369324E29E7FF30007994D6 /* CPicker.swift */; };
+		8369324F29E7FF30007994D6 /* CPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369324E29E7FF30007994D6 /* CPickerView.swift */; };
 		8369325729E97D1E007994D6 /* TraineeSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369325629E97D1E007994D6 /* TraineeSummaryView.swift */; };
 		8369325929E97D30007994D6 /* TraineeCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369325829E97D30007994D6 /* TraineeCalendarView.swift */; };
 		8369325C29EAD3DE007994D6 /* SharedToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369325B29EAD3DE007994D6 /* SharedToken.swift */; };
@@ -89,6 +89,9 @@
 		83E4336429EC1D7300D00AFC /* ProfileDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4336329EC1D7300D00AFC /* ProfileDisplayData.swift */; };
 		83E4336629EC1FD600D00AFC /* SharedReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4336529EC1FD600D00AFC /* SharedReminder.swift */; };
 		83E4336929EC31A900D00AFC /* SharedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4336829EC31A900D00AFC /* SharedUser.swift */; };
+		83E4336B29EC75B200D00AFC /* HNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4336A29EC75B200D00AFC /* HNotification.swift */; };
+		83E4336E29ED1D5C00D00AFC /* CPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4336D29ED1D5C00D00AFC /* CPickerViewModel.swift */; };
+		83E4337029ED285F00D00AFC /* NotificationPermissionAlertKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4336F29ED285F00D00AFC /* NotificationPermissionAlertKey.swift */; };
 		83EA9FEE29C8459D000B7A02 /* HealthTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EA9FED29C8459D000B7A02 /* HealthTemplate.swift */; };
 		83F2C81929C30187004E3270 /* CoRunApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F2C81829C30187004E3270 /* CoRunApp.swift */; };
 		83F2C81B29C30187004E3270 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F2C81A29C30187004E3270 /* ContentView.swift */; };
@@ -166,7 +169,7 @@
 		8369324829E7E225007994D6 /* CChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CChatBubble.swift; sourceTree = "<group>"; };
 		8369324A29E7E3FF007994D6 /* CRRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRRectangle.swift; sourceTree = "<group>"; };
 		8369324C29E7E63F007994D6 /* CChatSendBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CChatSendBar.swift; sourceTree = "<group>"; };
-		8369324E29E7FF30007994D6 /* CPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPicker.swift; sourceTree = "<group>"; };
+		8369324E29E7FF30007994D6 /* CPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPickerView.swift; sourceTree = "<group>"; };
 		8369325629E97D1E007994D6 /* TraineeSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeSummaryView.swift; sourceTree = "<group>"; };
 		8369325829E97D30007994D6 /* TraineeCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeCalendarView.swift; sourceTree = "<group>"; };
 		8369325B29EAD3DE007994D6 /* SharedToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedToken.swift; sourceTree = "<group>"; };
@@ -220,6 +223,9 @@
 		83E4336329EC1D7300D00AFC /* ProfileDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileDisplayData.swift; path = "CoRun/data/data-core/ProfileDisplayData.swift"; sourceTree = SOURCE_ROOT; };
 		83E4336529EC1FD600D00AFC /* SharedReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedReminder.swift; sourceTree = "<group>"; };
 		83E4336829EC31A900D00AFC /* SharedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedUser.swift; sourceTree = "<group>"; };
+		83E4336A29EC75B200D00AFC /* HNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNotification.swift; sourceTree = "<group>"; };
+		83E4336D29ED1D5C00D00AFC /* CPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPickerViewModel.swift; sourceTree = "<group>"; };
+		83E4336F29ED285F00D00AFC /* NotificationPermissionAlertKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermissionAlertKey.swift; sourceTree = "<group>"; };
 		83EA9FED29C8459D000B7A02 /* HealthTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTemplate.swift; sourceTree = "<group>"; };
 		83F2C81529C30187004E3270 /* CoRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83F2C81829C30187004E3270 /* CoRunApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoRunApp.swift; sourceTree = "<group>"; };
@@ -341,6 +347,7 @@
 			children = (
 				8369323D29E6BD1F007994D6 /* SelectedDateKey.swift */,
 				8369325F29EB141B007994D6 /* SelectedViewKey.swift */,
+				83E4336F29ED285F00D00AFC /* NotificationPermissionAlertKey.swift */,
 			);
 			path = "data-environment";
 			sourceTree = "<group>";
@@ -509,7 +516,6 @@
 				8368FFDA29D428F3007DBCDF /* CSearchBar.swift */,
 				8369324229E73047007994D6 /* CGraph.swift */,
 				8369324A29E7E3FF007994D6 /* CRRectangle.swift */,
-				8369324E29E7FF30007994D6 /* CPicker.swift */,
 			);
 			path = "basic-component";
 			sourceTree = "<group>";
@@ -517,6 +523,7 @@
 		83DCE1A729CC9F430007E73D /* view-component */ = {
 			isa = PBXGroup;
 			children = (
+				83E4336C29ED1D3600D00AFC /* picker */,
 				8369324429E7DFC5007994D6 /* chat */,
 				8369323629E6B958007994D6 /* calendar */,
 				8368FFE229D593E2007DBCDF /* dashboard */,
@@ -612,6 +619,15 @@
 				83E4336129EC17BD00D00AFC /* CoreUser.swift */,
 			);
 			path = "data-core";
+			sourceTree = "<group>";
+		};
+		83E4336C29ED1D3600D00AFC /* picker */ = {
+			isa = PBXGroup;
+			children = (
+				8369324E29E7FF30007994D6 /* CPickerView.swift */,
+				83E4336D29ED1D5C00D00AFC /* CPickerViewModel.swift */,
+			);
+			path = picker;
 			sourceTree = "<group>";
 		};
 		83F2C80C29C30187004E3270 = {
@@ -763,6 +779,7 @@
 				83D31B7A29C70DED00B47F8C /* HHealth.swift */,
 				83EA9FED29C8459D000B7A02 /* HealthTemplate.swift */,
 				8368FFE529D5A6BD007DBCDF /* HNavigation.swift */,
+				83E4336A29EC75B200D00AFC /* HNotification.swift */,
 			);
 			path = handler;
 			sourceTree = "<group>";
@@ -953,6 +970,7 @@
 				8369323A29E6B9AF007994D6 /* CCalendarViewModel.swift in Sources */,
 				83E4335D29EC135A00D00AFC /* TrainingViewModel.swift in Sources */,
 				8316301429D993FB00B3322E /* SplashViewModel.swift in Sources */,
+				83E4337029ED285F00D00AFC /* NotificationPermissionAlertKey.swift in Sources */,
 				83A4223A29E5B1F400D4DE8F /* TrainingView.swift in Sources */,
 				8368FFDB29D428F3007DBCDF /* CSearchBar.swift in Sources */,
 				8369325729E97D1E007994D6 /* TraineeSummaryView.swift in Sources */,
@@ -964,6 +982,7 @@
 				83DCE19B29C8686C0007E73D /* HealthPermissionViewModel.swift in Sources */,
 				83F2C85329C328A7004E3270 /* MFont.swift in Sources */,
 				83DCE1A029CC98360007E73D /* SummaryViewModel.swift in Sources */,
+				83E4336E29ED1D5C00D00AFC /* CPickerViewModel.swift in Sources */,
 				83DCE18129C846FF0007E73D /* SplashView.swift in Sources */,
 				83DCE18629C847DB0007E73D /* CTextField.swift in Sources */,
 				832AB22229D9806000904AA3 /* SessionResult.swift in Sources */,
@@ -1001,7 +1020,7 @@
 				83DCE1B429CCC4440007E73D /* PlanViewModel.swift in Sources */,
 				83DCE1E629D0631F0007E73D /* ScanQRPopUp.swift in Sources */,
 				83EA9FEE29C8459D000B7A02 /* HealthTemplate.swift in Sources */,
-				8369324F29E7FF30007994D6 /* CPicker.swift in Sources */,
+				8369324F29E7FF30007994D6 /* CPickerView.swift in Sources */,
 				83DCE1AB29CCA6C30007E73D /* CDivider.swift in Sources */,
 				83F2C81929C30187004E3270 /* CoRunApp.swift in Sources */,
 				8369324D29E7E63F007994D6 /* CChatSendBar.swift in Sources */,
@@ -1016,6 +1035,7 @@
 				83DCE19729C8684F0007E73D /* HealthPermissionView.swift in Sources */,
 				83DCE19E29CC98290007E73D /* SummaryView.swift in Sources */,
 				83D31B7D29C70DFC00B47F8C /* TDate.swift in Sources */,
+				83E4336B29EC75B200D00AFC /* HNotification.swift in Sources */,
 				8369324B29E7E3FF007994D6 /* CRRectangle.swift in Sources */,
 				83DCE1A529CC98D90007E73D /* CSegmented.swift in Sources */,
 				8369326029EB141B007994D6 /* SelectedViewKey.swift in Sources */,

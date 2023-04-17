@@ -25,9 +25,6 @@ class ProfileViewModel:ObservableObject{
         }else{
             loadDummy()
         }
-        
-        profileDD.isReminderActive = SharedReminder.shared.isReminderActive
-        profileDD.reminderValue = SharedReminder.shared.ReminderValue
     }
     
     func updateUserData(){
@@ -43,9 +40,9 @@ class ProfileViewModel:ObservableObject{
         
         SharedUser.shared.UserData = local
     }
-    func toggleReminder(){
-        profileDD.isReminderActive.toggle()
-        SharedReminder.shared.isReminderActive = profileDD.isReminderActive
+    func dismissCoach(){
+        profileDD.coachName = ""
+        updateUserData()
     }
     func toggleHealthPermission(){
         profileDD.isHealthAllowed.toggle()

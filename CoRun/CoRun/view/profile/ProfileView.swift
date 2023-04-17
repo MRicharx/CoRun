@@ -15,10 +15,14 @@ struct ProfileView: View {
     @State var showEditData = false
     ///State User Coach QR Pop Up Status
     @State var showQRPopUp = false
-    ///State Assign Coach Pop Up Status
+    ///State Scan QR View  Status
     @State var showScanQR = false
     ///Define Sign Out Alert Behavior
     @State var showSignOUtAlert = false
+    ///State Coach status alert
+    @State var showCoachAlert = false
+    ///State Notification Permission is denied alert
+    @State var showPermissionAlert = false
     
     @StateObject var vm = ProfileViewModel()
     
@@ -95,7 +99,11 @@ struct ProfileView: View {
                     //MARK: My Coach
                     Button{
                         //TODO: Navigate to My Coach
-                        showScanQR=true
+                        if vm.profileDD.coachName == ""{
+                            showScanQR=true
+                        }else{
+                            showCoachAlert=true
+                        }
                     }label:{
                         HStack(alignment:.top, spacing:12){
                             Image(systemName: "person.circle.fill")
@@ -106,10 +114,18 @@ struct ProfileView: View {
                                     Text("My Coach")
                                         .modifier(MColor.Text())
                                         .modifier(MView.FillToLeftFrame())
-                                    Text(vm.profileDD.coachName)
-                                        .modifier(MFont.Headline())
-                                        .modifier(MColor.Text())
-                                        .modifier(MView.FillToLeftFrame())
+                                    if vm.profileDD.coachName == ""{
+                                        Text("Assign coach here")
+                                            .modifier(MFont.Body())
+                                            .modifier(MColor.DisabledText())
+                                            .modifier(MView.FillToLeftFrame())
+                                    }else{
+                                        Text(vm.profileDD.coachName)
+                                            .modifier(MFont.Headline())
+                                            .modifier(MColor.Text())
+                                            .modifier(MView.FillToLeftFrame())
+                                    }
+                                    
                                 }
                             }
                             .modifier(MFont.SubBody())
@@ -117,26 +133,7 @@ struct ProfileView: View {
                     }.buttonStyle(MButton.ListButton())
                     
                     //MARK: Daily Reminder
-                    Button{
-                        //TODO: Update scheduler
-                        vm.toggleReminder()
-                    }label:{
-                        HStack(alignment:.top, spacing:12){
-                            Image(systemName: "alarm.fill")
-                                .modifier(MColor.Primary())
-                                .modifier(MFont.Body())
-                            Group{
-                                VStack(alignment:.leading,spacing: 8){
-                                    Text("Daily Reminder")
-                                        .modifier(MColor.Text())
-                                        .modifier(MView.FillToLeftFrame())
-                                    CPicker(isReminderActive: $vm.profileDD.isReminderActive, currentReminder: $vm.profileDD.reminderValue)
-                                }
-                                Toggle("",isOn: $vm.profileDD.isReminderActive)
-                            }
-                            .modifier(MFont.SubBody())
-                        }
-                    }.buttonStyle(MButton.ListButton())
+                    CPickerView()
                     
                     //MARK: Apple Health
                     Button{
@@ -164,7 +161,6 @@ struct ProfileView: View {
             VStack{
                 Button{
                     //TODO: Navigate to My Trainee
-                    
                 }label:{
                     HStack(spacing:12){
                         Image(systemName: "person.crop.rectangle.stack.fill")
@@ -196,6 +192,7 @@ struct ProfileView: View {
                 }.modifier(MView.FillFrame())
             }
         }
+        .environment(\.notificationPermissionAlert, $showPermissionAlert)
         //MARK: Edit Controller
         .sheet(isPresented: $showEditData){
             //TODO: Create proper edit data passement
@@ -211,6 +208,13 @@ struct ProfileView: View {
             //TODO: Create proper model
             ScanQRPopUp()
         }
+        //MARK: Permission alert
+        .alert(
+            "Please enable notification permission on your device setting",isPresented: $showPermissionAlert){
+                Button("OK",role: .cancel){
+                    /// DO NOTHING
+                }
+            }
         //MARK: SignOut Alert
         .alert(
             "Are you sure want to SIGN OUT",
@@ -219,6 +223,14 @@ struct ProfileView: View {
                     //TODO: Create SIGN OUT feature
                     vm.deleteToken()
                     curView.wrappedValue = ViewList.splash
+                }
+            }
+        //MARK: Coach Alert
+        .alert(
+            "Currently your coach is:\n\(vm.profileDD.coachName)",isPresented: $showCoachAlert){
+                Button("DISMISS COACH",role: .destructive){
+                    //TODO: Dismiss coach feature
+                    vm.dismissCoach()
                 }
             }
     }

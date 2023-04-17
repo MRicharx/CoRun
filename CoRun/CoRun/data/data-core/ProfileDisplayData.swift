@@ -15,8 +15,6 @@ class ProfileDisplayData:ObservableObject{
     @Published var height:Int
     @Published var weight:Int
     @Published var coachName:String
-    @Published var isReminderActive:Bool
-    @Published var reminderValue:Date
     @Published var isHealthAllowed:Bool
     
     init() {
@@ -27,8 +25,6 @@ class ProfileDisplayData:ObservableObject{
         self.weight = 99
         self.gender = "NaN"
         self.coachName = "NaN"
-        self.isReminderActive = true
-        self.reminderValue = Calendar.current.date(bySettingHour: 7, minute: 00, second: 0, of: Date())!
         self.isHealthAllowed = true
     }
     
