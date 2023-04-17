@@ -10,7 +10,6 @@ import CoreData
 
 struct CoreUser:Codable{
     var id:String
-    var refreshToken:String
     var gender:String
     var email:String
     var username:String
@@ -20,7 +19,6 @@ struct CoreUser:Codable{
     
     init(){
         id = ""
-        refreshToken = ""
         gender = ""
         email = ""
         username = ""

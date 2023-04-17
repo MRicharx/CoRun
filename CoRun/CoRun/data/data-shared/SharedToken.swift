@@ -43,4 +43,19 @@ class SharedToken{
             UserDefaults.standard.synchronize()
         }
     }
+    
+    var RefreshToken: String {
+        get {
+            var result = ""
+            if let r = UserDefaults.standard.string(forKey: "RefreshToken") as String? {
+                result = r
+            }
+            return result
+        }
+        
+        set(_token) {
+            UserDefaults.standard.set(_token, forKey: "RefreshToken")
+            UserDefaults.standard.synchronize()
+        }
+    }
 }

@@ -14,22 +14,21 @@ class SharedUser{
     
     let userDefaults = UserDefaults.standard
     
-    var UserData: CoreUser {
+    var UserData: ProfileData {
         get {
-            if let data = UserDefaults.standard.data(forKey: "UserData"){
+            if let data = UserDefaults.standard.data(forKey: "ProfileData"){
                 do {
                     // Create JSON Decoder
                     let decoder = JSONDecoder()
                     // Decode Note
-                    let result = try decoder.decode(CoreUser.self, from: data)
+                    let result = try decoder.decode(ProfileData.self, from: data)
                     
                     return result
                 } catch {
                     print("Unable to Decode Note (\(error))")
                 }
             }
-            
-            return CoreUser()
+            return ProfileData()
         }
         
         set(_data) {
@@ -39,7 +38,7 @@ class SharedUser{
                 // Encode Note
                 let data = try encoder.encode(_data)
                 // Write Data
-                UserDefaults.standard.set(data, forKey: "UserData")
+                UserDefaults.standard.set(data, forKey: "ProfileData")
                 UserDefaults.standard.synchronize()
             } catch {
                 print("Unable to Encode Note (\(error))")

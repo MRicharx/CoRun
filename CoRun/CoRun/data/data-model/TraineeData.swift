@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TraineeData:Decodable{
+class TraineeData:Codable{
     var id = ""
     var name = ""
     var gender = ""

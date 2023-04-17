@@ -39,6 +39,7 @@ class ProfileViewModel:ObservableObject{
             profileDD.height = local.height
             profileDD.weight = local.weight
             profileDD.gender = local.gender
+            profileDD.birthday = TDate().stringToDate(date: local.dateOfBirth)
 
             profileDD.coachName = local.coachName
         }else{
@@ -51,7 +52,7 @@ class ProfileViewModel:ObservableObject{
         local.id = profileDD.id
         local.email = profileDD.email
         local.gender = profileDD.gender
-        local.refreshToken = "Empty Token"
+        local.dateOfBirth = TDate().dateToString(date: profileDD.birthday)
         local.username = profileDD.username
         local.weight = profileDD.weight
         local.height = profileDD.height

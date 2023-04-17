@@ -96,7 +96,7 @@ struct TDate:TDateProtocol{
         
         return String(min) + "\'" + String(sec) + "\""
     }
-    func stringToDate(date:String,format:String)->Date{
+    func stringToDate(date:String,format:String = "yyyy-MM-dd HH:mm:ss")->Date{
         ///Formating string to Date Format
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format

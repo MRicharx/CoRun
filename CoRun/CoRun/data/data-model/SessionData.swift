@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SessionData:Decodable{
+class SessionData:Codable{
     ///Define session id
     var id = ""
     ///Define session creator
@@ -28,7 +28,7 @@ class SessionData:Decodable{
     var result = SessionResultData()
 }
 
-class SessionTarget:Decodable{
+class SessionTarget:Codable{
     var targetType = -1
     var amount = Double(0)
 }

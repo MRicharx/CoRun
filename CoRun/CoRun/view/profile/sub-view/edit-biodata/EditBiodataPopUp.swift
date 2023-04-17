@@ -15,6 +15,7 @@ struct EditBiodataPopUp: View {
     @State var newUsername = ""
     @State var newHeight = ""
     @State var newWeight = ""
+    @State var newBirthday = Date.now
     
     
     ///Define save alert display behavior
@@ -47,6 +48,9 @@ struct EditBiodataPopUp: View {
                         .modifier(MFont.Headline())
                         .modifier(MColor.Text())
                 }.modifier(MView.FillToLeftFrame())
+                
+                //MARK: Birthday Picker
+                CDatePicker(title: "Birthday", input: $newBirthday,textColor: MColor.ColorPalette().textDefault)
                 
                 //MARK: Username TF
                 CTextfield(title: "Username",input: $newUsername)
@@ -87,6 +91,7 @@ struct EditBiodataPopUp: View {
             newUsername = vm.profileDD.username
             newHeight = String(vm.profileDD.height)
             newWeight = String(vm.profileDD.weight)
+            newBirthday = vm.profileDD.birthday
         }
         .padding(24)
         //MARK: Save Alert
@@ -99,6 +104,7 @@ struct EditBiodataPopUp: View {
                     vm.profileDD.username = newUsername
                     vm.profileDD.height = Int(newHeight) ?? 99
                     vm.profileDD.weight = Int(newWeight) ?? 99
+                    vm.profileDD.birthday = newBirthday
                     
                     vm.updateUserData()
                     dismiss()

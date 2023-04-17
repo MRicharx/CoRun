@@ -8,7 +8,7 @@
 import Foundation
 
 ///Define an object that contain result of workout
-struct SessionResultData : Decodable{
+struct SessionResultData : Codable{
     var start:Date?
     var end:Date?
     ///Distance run in meter

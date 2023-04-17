@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FeedbackData:Decodable{
+class FeedbackData:Codable{
     ///Define feedback id
     var id = ""
     ///Define feedback sender id

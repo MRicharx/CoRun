@@ -10,15 +10,6 @@ import SwiftUI
 struct AssessmentView: View {
     @Environment(\.selectedView) var curView
     
-    ///Username input
-    @State var username:String = ""
-    ///Gender Choice
-    @State var gender:String = "Male"
-    ///Height input
-    @State var height:String = ""
-    ///Weight input
-    @State var weight:String = ""
-    
     ///Define current view model
     @StateObject var vm = AssessmentViewModel()
     
@@ -35,21 +26,24 @@ struct AssessmentView: View {
                 
                 VStack(spacing: 24){
                     //MARK: Username TF
-                    CTextfield(title: "Username", desc: "Need to contain 4-12 characters", hint: "Username",maxChar: 12, input: $username)
+                    CTextfield(title: "Username", desc: "Need to contain 4-12 characters", hint: "Username",maxChar: 12, input: $vm.username)
                     
                     //MARK: Gender Checkbox
-                    CCheckBox(title: "Gender",option: ["Male","Female"] , selected: $gender)
+                    CCheckBox(title: "Gender",option: ["Male","Female"] , selected: $vm.gender)
+                    
+                    //MARK: Birthday Picker
+                    CDatePicker(title: "Birthday", input: $vm.dateOfBirth)
                     
                     //MARK: Height TF
-                    CTextfield(title: "Height", hint: "160", unit: "cm", type: .number,input: $height)
+                    CTextfield(title: "Height", hint: "160", unit: "cm", type: .number,input: $vm.height)
                     //MARK: Weight TF
-                    CTextfield(title: "Weight", hint: "65", unit: "kg", type:.number,input: $weight)
+                    CTextfield(title: "Weight", hint: "65", unit: "kg", type:.number,input: $vm.weight)
                 }
                 
                 Spacer()
                 
                 //MARK: Confirm Button
-                if(username == "" || height == "" || weight == "" ){
+                if(vm.username == "" || vm.height == "" || vm.weight == "" ){
                     Button{
                         ///Do NOTHING
                     }label:{
