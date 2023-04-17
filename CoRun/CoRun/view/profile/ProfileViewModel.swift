@@ -9,7 +9,26 @@ import Foundation
 import SwiftUI
 
 class ProfileViewModel:ObservableObject{
+    var health = HHealth()
     @Published var profileDD = ProfileDisplayData()
+    
+    ///State Edit Biodata Pop Up Status
+    @Published var showEditData = false
+    ///State User Coach QR Pop Up Status
+    @Published var showQRPopUp = false
+    ///State Scan QR View  Status
+    @Published var showScanQR = false
+    ///Define Sign Out Alert Behavior
+    @Published var showSignOUtAlert = false
+    ///State Coach status alert
+    @Published var showCoachAlert = false
+    ///State Notification Permission is denied alert
+    @Published var showPermissionAlert = false
+    ///State Health Permission is requested
+    @Published var showHealthAlert = false
+    ///Define Health Alert message
+    @Published var healthAlertMessage = ""
+    @Published var isHealthPermissionLoading = false
     
     init(){
         let local = SharedUser.shared.UserData
@@ -44,17 +63,23 @@ class ProfileViewModel:ObservableObject{
         profileDD.coachName = ""
         updateUserData()
     }
-    func toggleHealthPermission(){
-        profileDD.isHealthAllowed.toggle()
+    func requestHealthPermission(completion: @escaping ((_ status: Bool) -> Void)){
         //TODO: Toggle Health Permission
+        isHealthPermissionLoading = true
+        health.requestPermission{ result in
+            if result{
+                self.healthAlertMessage = "Permission have been requested"
+            }
+            else{
+                self.healthAlertMessage = "Error have occured"
+            }
+            self.isHealthPermissionLoading = false
+            completion(true)
+        }
     }
     func deleteToken(){
         SharedToken.shared.SignInToken = ""
         SharedToken.shared.NotificationToken = ""
-    }
-    private func getHealthPermissionStatus()->Bool{
-        //MARK: Check current health permission status
-        return true
     }
     
     private func loadDummy(){
@@ -67,6 +92,5 @@ class ProfileViewModel:ObservableObject{
         profileDD.gender = "Male"
         
         profileDD.coachName = "Bambang"
-        profileDD.isHealthAllowed = getHealthPermissionStatus()
     }
 }

@@ -11,19 +11,6 @@ struct ProfileView: View {
     @Environment(\.selectedView) var curView
     @Environment(\.dismiss) var dismiss
     
-    ///State Edit Biodata Pop Up Status
-    @State var showEditData = false
-    ///State User Coach QR Pop Up Status
-    @State var showQRPopUp = false
-    ///State Scan QR View  Status
-    @State var showScanQR = false
-    ///Define Sign Out Alert Behavior
-    @State var showSignOUtAlert = false
-    ///State Coach status alert
-    @State var showCoachAlert = false
-    ///State Notification Permission is denied alert
-    @State var showPermissionAlert = false
-    
     @StateObject var vm = ProfileViewModel()
     
     var body: some View {
@@ -46,7 +33,7 @@ struct ProfileView: View {
                     //MARK: Edit
                     Button{
                         //TODO: Navigate to Edit
-                        showEditData=true
+                        vm.showEditData=true
                     }label:{
                         HStack(spacing:12){
                             Image(systemName: "square.and.pencil.circle.fill")
@@ -66,7 +53,7 @@ struct ProfileView: View {
                     //MARK: Show QR
                     Button{
                         //TODO: Navigate to QR
-                        showQRPopUp=true
+                        vm.showQRPopUp=true
                     }label:{
                         HStack(spacing:12){
                             Image(systemName: "qrcode")
@@ -100,9 +87,9 @@ struct ProfileView: View {
                     Button{
                         //TODO: Navigate to My Coach
                         if vm.profileDD.coachName == ""{
-                            showScanQR=true
+                            vm.showScanQR=true
                         }else{
-                            showCoachAlert=true
+                            vm.showCoachAlert=true
                         }
                     }label:{
                         HStack(alignment:.top, spacing:12){
@@ -138,7 +125,7 @@ struct ProfileView: View {
                     //MARK: Apple Health
                     Button{
                         //TODO: Toggle health permission
-                        vm.toggleHealthPermission()
+                        vm.requestHealthPermission{_ in }
                     }label:{
                         HStack(spacing:12){
                             Image("health")
@@ -149,9 +136,12 @@ struct ProfileView: View {
                                 Text("Apple Health")
                                     .modifier(MColor.Text())
                                     .modifier(MView.FillToLeftFrame())
-                                Toggle("",isOn: $vm.profileDD.isHealthAllowed)
                             }
                             .modifier(MFont.SubBody())
+                            if vm.isHealthPermissionLoading{
+                                ProgressView()
+                                    .progressViewStyle(.circular)
+                            }
                         }
                     }.buttonStyle(MButton.ListButton())
                 }
@@ -183,7 +173,7 @@ struct ProfileView: View {
             
             //MARK: Sign Out
             Button{
-                showSignOUtAlert = true
+                vm.showSignOUtAlert = true
             }label:{
                 VStack{
                     Text("Sign Out")
@@ -192,33 +182,37 @@ struct ProfileView: View {
                 }.modifier(MView.FillFrame())
             }
         }
-        .environment(\.notificationPermissionAlert, $showPermissionAlert)
+        .environment(\.notificationPermissionAlert, $vm.showPermissionAlert)
         //MARK: Edit Controller
-        .sheet(isPresented: $showEditData){
+        .sheet(isPresented: $vm.showEditData){
             //TODO: Create proper edit data passement
             EditBiodataPopUp(vm:vm)
         }
         //MARK: QR Controller
-        .sheet(isPresented: $showQRPopUp){
+        .sheet(isPresented: $vm.showQRPopUp){
             //TODO: Create proper id passement
             QRPopUp(id: vm.profileDD.id)
         }
         //MARK: ScanQR Controller
-        .fullScreenCover(isPresented: $showScanQR){
+        .fullScreenCover(isPresented: $vm.showScanQR){
             //TODO: Create proper model
             ScanQRPopUp()
         }
         //MARK: Permission alert
         .alert(
-            "Please enable notification permission on your device setting",isPresented: $showPermissionAlert){
+            "Please enable notification permission on your device setting",isPresented: $vm.showPermissionAlert){
                 Button("OK",role: .cancel){
                     /// DO NOTHING
                 }
             }
+        //MARK: Health Alert
+            .alert(isPresented: $vm.showHealthAlert){
+                Alert(title: Text(vm.healthAlertMessage), message: Text("If health feature not working properly, you may check permission for CoRun"), dismissButton: .default(Text("Ok")))
+            }
         //MARK: SignOut Alert
         .alert(
             "Are you sure want to SIGN OUT",
-            isPresented: $showSignOUtAlert){
+            isPresented: $vm.showSignOUtAlert){
                 Button("SIGN OUT", role:.destructive){
                     //TODO: Create SIGN OUT feature
                     vm.deleteToken()
@@ -227,7 +221,7 @@ struct ProfileView: View {
             }
         //MARK: Coach Alert
         .alert(
-            "Currently your coach is:\n\(vm.profileDD.coachName)",isPresented: $showCoachAlert){
+            "Currently your coach is:\n\(vm.profileDD.coachName)",isPresented: $vm.showCoachAlert){
                 Button("DISMISS COACH",role: .destructive){
                     //TODO: Dismiss coach feature
                     vm.dismissCoach()

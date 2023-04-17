@@ -15,7 +15,6 @@ class ProfileDisplayData:ObservableObject{
     @Published var height:Int
     @Published var weight:Int
     @Published var coachName:String
-    @Published var isHealthAllowed:Bool
     
     init() {
         self.id = "NaN"
@@ -25,7 +24,6 @@ class ProfileDisplayData:ObservableObject{
         self.weight = 99
         self.gender = "NaN"
         self.coachName = "NaN"
-        self.isHealthAllowed = true
     }
     
 }
