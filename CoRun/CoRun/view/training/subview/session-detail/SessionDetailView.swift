@@ -17,17 +17,21 @@ struct SessionDetailView: View {
                 .ignoresSafeArea()
             
             VStack(spacing:12){
-                CSessionTitle()
+                CSessionTitle(data:data)
                 
                 ScrollView{
                     VStack(spacing: 12){
-                        CSessionGoal()
-                        CSessionResult(result: data.result)
+                        CSessionGoal(data: data)
+                        CSessionResult(vm:vm, result: data.result)
                         CSessionFeedback(showAll: $vm.showAllFeedback)
                     }.padding(EdgeInsets(top: 12, leading: 0, bottom: 12, trailing: 0))
                 }
             }
-        }.sheet(isPresented: $vm.showAllFeedback){
+        }
+        .onAppear{
+            vm.checkResult(data: data)
+        }
+        .sheet(isPresented: $vm.showAllFeedback){
             CChatView(displayOption: .full)
         }
     }

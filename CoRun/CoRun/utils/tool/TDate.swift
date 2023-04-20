@@ -44,6 +44,14 @@ struct TDate:TDateProtocol{
             return false
         }
     }
+    func getUserAge(birth:Date) ->Int{
+        let calendar = Calendar.current
+
+        let ageComponents = calendar.dateComponents([.year], from: birth, to: Date.now)
+        let age = ageComponents.year!
+        
+        return age
+    }
     
     func getFirstDayOfMonth(month: Date) -> Date {
         ///Define Component
@@ -74,6 +82,10 @@ struct TDate:TDateProtocol{
         return Calendar.current.date(byAdding: comp, to: getFirstDayOfYear(year: year)) ?? Date.now
     }
     
+    func getSecondBetweenDate(start: Date, end: Date)->Double{
+        return end.timeIntervalSince(start)
+    }
+    
     func secondToHMS(seconds:Double)->(Int,Int,Int){
         var hour = 0
         var min = 0
@@ -85,6 +97,18 @@ struct TDate:TDateProtocol{
         sec = time % 3600 % 60
         
         return (hour,min,sec)
+    }
+    func getStringinHMS(seconds:Double)->String{
+        var hour = 0
+        var min = 0
+        var sec = 0
+        let time = Int(seconds)
+        
+        hour = time / 3600
+        min = time % 3600 / 60
+        sec = time % 3600 % 60
+        
+        return "\(hour):\(min):\(sec)"
     }
     func secondToPace(seconds: Double) -> String {
         var min = 0

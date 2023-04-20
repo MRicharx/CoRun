@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct CSessionResult: View {
-    @State var result = ResultDisplayData()
+    @ObservedObject var vm:SessionDetailViewModel
+    @ObservedObject var result : ResultDisplayData
     
     var body: some View {
         VStack(alignment: .leading, spacing: 18){
@@ -19,7 +20,7 @@ struct CSessionResult: View {
             VStack(spacing: 12){
                 //MARK: Duration
                 VStack(alignment:.leading){
-                    Text("1:20:58")
+                    Text(TDate().getStringinHMS(seconds: TDate().getSecondBetweenDate(start: result.start, end: result.end)))
                         .modifier(MFont.Headline())
                         .modifier(MColor.Text())
                     Text("Duration")
@@ -32,7 +33,7 @@ struct CSessionResult: View {
                 HStack{
                     //MARK: Distance
                     VStack(alignment:.leading){
-                        Text("10 kM")
+                        Text("\(result.distance, specifier: "%.2f") km")
                             .modifier(MFont.Headline())
                             .modifier(MColor.Text())
                         Text("Distance")
@@ -42,10 +43,10 @@ struct CSessionResult: View {
                     
                     //MARK: Elevation
                     VStack(alignment:.leading){
-                        Text("100 M")
+                        Text("\(result.elevGain) m")
                             .modifier(MFont.Headline())
                             .modifier(MColor.Text())
-                        Text("Distance")
+                        Text("Elevation Gain")
                             .modifier(MFont.SubBody())
                             .modifier(MColor.DisabledText())
                     }.modifier(MView.FillToLeftFrame())
@@ -56,7 +57,7 @@ struct CSessionResult: View {
                 HStack{
                     //MARK: Avg BPM
                     VStack(alignment:.leading){
-                        Text("160")
+                        Text(String(result.avgBPM))
                             .modifier(MFont.Headline())
                             .modifier(MColor.Text())
                         Text("Avg. BPM")
@@ -66,7 +67,7 @@ struct CSessionResult: View {
                     
                     //MARK: Intensity
                     VStack(alignment:.leading){
-                        Text("70 %")
+                        Text("\(vm.intensity) %")
                             .modifier(MFont.Headline())
                             .modifier(MColor.Text())
                         Text("Avg. Intensity")
@@ -80,7 +81,7 @@ struct CSessionResult: View {
                 HStack{
                     //MARK: VO2Max
                     VStack(alignment:.leading){
-                        Text("30")
+                        Text("\(result.vo2M , specifier: "%.1f")")
                             .modifier(MFont.Headline())
                             .modifier(MColor.Text())
                         Text("VO2 Max")
@@ -90,7 +91,7 @@ struct CSessionResult: View {
                     
                     //MARK: Vertical Oscillation
                     VStack(alignment:.leading){
-                        Text("60 cM")
+                        Text("\(result.verticalOsc , specifier: "%.1f") cM")
                             .modifier(MFont.Headline())
                             .modifier(MColor.Text())
                         Text("Vertical Oscillation")
@@ -104,7 +105,7 @@ struct CSessionResult: View {
                 HStack{
                     //MARK: Stride
                     VStack(alignment:.leading){
-                        Text("60 cM")
+                        Text("\(result.stride, specifier: "%.1f") cM")
                             .modifier(MFont.Headline())
                             .modifier(MColor.Text())
                         Text("Stride")
@@ -114,7 +115,7 @@ struct CSessionResult: View {
                     
                     //MARK: Ground Time
                     VStack(alignment:.leading){
-                        Text("10 ms")
+                        Text("\(result.groundTime, specifier: "%.1f") ms")
                             .modifier(MFont.Headline())
                             .modifier(MColor.Text())
                         Text("Ground Time")
@@ -130,8 +131,8 @@ struct CSessionResult: View {
     }
 }
 
-struct CSessionResult_Previews: PreviewProvider {
-    static var previews: some View {
-        CSessionResult()
-    }
-}
+//struct CSessionResult_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CSessionResult()
+//    }
+//}

@@ -8,40 +8,25 @@
 import SwiftUI
 
 struct CSessionTitle: View {
-    ///Define session status
-    ///1 - Goal not reached,
-    ///2 - Some Goal reached,
-    ///3 - All goal reached,
-    ///else - Activity yet to be done
-    @StateObject var status = CompletionStatus()
-    
-    ///Define session name
-    @State var name:String = "NaN"
-    ///Define session date
-    @State var date:String = "NaN"
-    ///Define session time done
-    @State var time:String = "dd:MMMM:YYYY"
-    ///Define session creator
-    @State var creator:String = "NaN"
-    
+    @ObservedObject var data:SessionDisplayData
     
     
     var body: some View {
         HStack{
             VStack(alignment:.leading){
-                Text(name)
+                Text(data.activityName)
                     .modifier(MFont.Headline(size:24))
                     .modifier(MColor.Text())
                 Group{
-                    Text(time)
+                    Text(TDate().dateToString(date: data.date, format: "dd MMMM YYYY"))
                         .modifier(MFont.Headline(size:14))
-                    Text("by "+creator)
+                    Text("by "+data.coachName)
                         .modifier(MFont.Body(size:12))
                 }.modifier(MColor.DisabledText())
             }.modifier(MView.FillToLeftFrame())
             
             HStack{
-                switch status.enume{
+                switch data.status.enume{
                 case .planNotReachGoal:
                     Group{
                         Text("Goal Not Reached")
@@ -78,9 +63,9 @@ struct CSessionTitle: View {
         .modifier(MView.Card())
     }
 }
-
-struct CSessionTitle_Previews: PreviewProvider {
-    static var previews: some View {
-        CSessionTitle()
-    }
-}
+//
+//struct CSessionTitle_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CSessionTitle()
+//    }
+//}

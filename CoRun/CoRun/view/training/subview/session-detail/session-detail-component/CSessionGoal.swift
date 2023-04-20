@@ -8,14 +8,7 @@
 import SwiftUI
 
 struct CSessionGoal: View {
-    ///Define session goal
-    @State var goal: [String] = ["NaN","NaN","NaN"]
-    ///Define session result
-    @State var result:[String] = ["-","-","-"]
-    ///Define activity status
-    @State var status = [CompletionStatus(),CompletionStatus(),CompletionStatus()]
-    ///Define session description
-    @State var desc = "Lorem ipsum"
+    @ObservedObject var data:SessionDisplayData
     
     var body: some View {
         VStack(alignment: .leading, spacing: 18){
@@ -24,15 +17,33 @@ struct CSessionGoal: View {
                 .modifier(MColor.DisabledText())
             
             //MARK: Goal List
-            VStack(spacing: 12){
-                ForEach(goal, id:\.self){ data in
+            VStack(alignment: .leading, spacing: 12){
+                ForEach(data.target.indices, id:\.self){ i in
                     HStack(spacing: 12){
                         Group{
-                            Image(systemName: "circle.fill")
-                            Text(data)
-                            
-                            Text("Status")
-                        }.modifier(MFont.Body(size: 20))
+                            switch data.target[i].type.enume{
+                            case .free:
+                                Image(systemName: "figure.run")
+                                    .modifier(MColor.Primary())
+                                Text("Free Run")
+                            case .distance:
+                                Image(systemName: "ruler.fill")
+                                    .modifier(MColor.Primary())
+                                Text("\(data.target[i].amount, specifier: "%.2f") km")
+                            case .pace:
+                                Image(systemName: "bolt.fill")
+                                    .modifier(MColor.Primary())
+                                Text(TDate().secondToPace(seconds: data.target[i].amount))
+                            case .duration:
+                                Image(systemName: "clock.fill")
+                                    .modifier(MColor.Primary())
+                                Text(TDate().getStringinHMS(seconds: data.target[i].amount))
+                            case .intensity:
+                                Image(systemName: "flame.fill")
+                                    .modifier(MColor.Primary())
+                                Text("\(data.target[i].amount, specifier: "%.2f") %")
+                            }
+                        }.modifier(MFont.Body(size: 18))
                     }
                 }
             }
@@ -41,7 +52,7 @@ struct CSessionGoal: View {
                 Text("Desc")
                     .modifier(MFont.Headline(size: 18))
                     .modifier(MColor.DisabledText())
-                Text(desc)
+                Text(data.desc)
                     .modifier(MFont.Body(size: 18))
                     .modifier(MColor.Text())
             }
@@ -52,8 +63,8 @@ struct CSessionGoal: View {
     }
 }
 
-struct CSessionGoal_Previews: PreviewProvider {
-    static var previews: some View {
-        CSessionGoal()
-    }
-}
+//struct CSessionGoal_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CSessionGoal()
+//    }
+//}

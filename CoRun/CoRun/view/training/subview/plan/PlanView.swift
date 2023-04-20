@@ -38,28 +38,28 @@ struct PlanView: View {
             .modifier(MView.Card())
             
             //MARK: Session List
-            NavigationStack{
-                ScrollView{
-                    VStack(spacing: 24){
-                        Spacer()
-                            .frame(height:6)
-                        
-                        ForEach(vm.sessionDD.indices, id: \.self){ i in
-                            NavigationLink{
-                                SessionDetailView(data: vm.sessionDD[i])
-                            }label: {
-                                CSessionCard(data:vm.sessionDD[i])
-                            }
+            ScrollView{
+                VStack(spacing: 24){
+                    Spacer()
+                        .frame(height:6)
+                    
+                    ForEach(vm.sessionDD.indices, id: \.self){ i in
+                        NavigationLink{
+                            SessionDetailView(data: vm.sessionDD[i])
+                        }label: {
+                            CSessionCard(data:vm.sessionDD[i])
                         }
-                        Spacer()
                     }
-                    .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
+                    Spacer()
                 }
-                .modifier(MView.Card())
+                .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
             }
+            .modifier(MView.Card())
         }
         .onAppear{
-            vm.loadSession()
+            if vm.sessionDD.count == 0{
+                vm.loadSession()
+            }
         }
     }
 }
