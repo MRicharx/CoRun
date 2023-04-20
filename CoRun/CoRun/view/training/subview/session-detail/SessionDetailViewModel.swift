@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+class SessionDetailViewModel:ObservableObject{
+    ///State Full Feedback visibility
+    @Published var showAllFeedback = false
+    
+    
+}

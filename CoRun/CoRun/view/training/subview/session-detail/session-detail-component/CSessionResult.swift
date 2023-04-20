@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CSessionResult: View {
+    @State var result = ResultDisplayData()
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 18){
             Text("Result")

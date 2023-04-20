@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PlanView: View {
-    //@State var displayOption:String = "rectangle.grid.1x2"
+    @StateObject var vm = PlanViewModel()
     
     var body: some View {
         VStack(spacing: 12){
@@ -20,13 +20,17 @@ struct PlanView: View {
                         .modifier(MColor.Text())
                         .modifier(MView.FillToLeftFrame())
                     
-                    Text("Completed x of X")
+                    Text("Completed \(vm.sessionPassed) of \(vm.sessionThisWeek)")
                         .modifier(MFont.Caption1())
                         .modifier(MColor.DisabledText())
                 }
                 HStack{
-                    ForEach(0...5,id:\.self){ i in
-                        CDivider(weight:4,color: MColor.ColorPalette().textDisabled, cornerRadius: 4)
+                    ForEach(0...vm.sessionThisWeek,id:\.self){ i in
+                        if i <= vm.sessionPassed{
+                            CDivider(weight:4,color: MColor.ColorPalette().primary, cornerRadius: 4)
+                        }else{
+                            CDivider(weight:4,color: MColor.ColorPalette().textDisabled, cornerRadius: 4)
+                        }
                     }
                 }
             }
@@ -34,13 +38,28 @@ struct PlanView: View {
             .modifier(MView.Card())
             
             //MARK: Session List
-            VStack{
-                //CSessionCard()
-                
-                Spacer()
+            NavigationStack{
+                ScrollView{
+                    VStack(spacing: 24){
+                        Spacer()
+                            .frame(height:6)
+                        
+                        ForEach(vm.sessionDD.indices, id: \.self){ i in
+                            NavigationLink{
+                                SessionDetailView(data: vm.sessionDD[i])
+                            }label: {
+                                CSessionCard(data:vm.sessionDD[i])
+                            }
+                        }
+                        Spacer()
+                    }
+                    .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
+                }
+                .modifier(MView.Card())
             }
-            .padding(24)
-            .modifier(MView.Card())
+        }
+        .onAppear{
+            vm.loadSession()
         }
     }
 }

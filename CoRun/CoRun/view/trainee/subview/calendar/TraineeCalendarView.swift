@@ -20,7 +20,7 @@ struct TraineeCalendarView: View {
             VStack{
                 //MARK: Session Detail
                 VStack{
-                    CSessionCard(time: $selectedDate)
+                    //CSessionCard(time: $selectedDate)
                 }
                 .padding(24)
                 

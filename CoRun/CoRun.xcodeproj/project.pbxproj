@@ -99,6 +99,11 @@
 		83E4338529ED79DA00D00AFC /* FeedbackData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4338429ED79DA00D00AFC /* FeedbackData.swift */; };
 		83E4338729ED7B4600D00AFC /* TraineeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4338629ED7B4600D00AFC /* TraineeData.swift */; };
 		83E4338929ED7E2200D00AFC /* CDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4338829ED7E2200D00AFC /* CDatePicker.swift */; };
+		83E4338B29F15EF400D00AFC /* PlanDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4338A29F15EF400D00AFC /* PlanDisplayData.swift */; };
+		83E4338D29F15FDD00D00AFC /* SessionDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4338C29F15FDD00D00AFC /* SessionDisplayData.swift */; };
+		83E4338F29F160EC00D00AFC /* ResultDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4338E29F160EC00D00AFC /* ResultDisplayData.swift */; };
+		83E4339129F1610300D00AFC /* TargetDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4339029F1610300D00AFC /* TargetDisplayData.swift */; };
+		83E4339429F172F200D00AFC /* CSessionCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4339329F172F200D00AFC /* CSessionCardViewModel.swift */; };
 		83EA9FEE29C8459D000B7A02 /* HealthTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EA9FED29C8459D000B7A02 /* HealthTemplate.swift */; };
 		83F2C81929C30187004E3270 /* CoRunApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F2C81829C30187004E3270 /* CoRunApp.swift */; };
 		83F2C81B29C30187004E3270 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F2C81A29C30187004E3270 /* ContentView.swift */; };
@@ -240,6 +245,11 @@
 		83E4338429ED79DA00D00AFC /* FeedbackData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackData.swift; sourceTree = "<group>"; };
 		83E4338629ED7B4600D00AFC /* TraineeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeData.swift; sourceTree = "<group>"; };
 		83E4338829ED7E2200D00AFC /* CDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDatePicker.swift; sourceTree = "<group>"; };
+		83E4338A29F15EF400D00AFC /* PlanDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDisplayData.swift; sourceTree = "<group>"; };
+		83E4338C29F15FDD00D00AFC /* SessionDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDisplayData.swift; sourceTree = "<group>"; };
+		83E4338E29F160EC00D00AFC /* ResultDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDisplayData.swift; sourceTree = "<group>"; };
+		83E4339029F1610300D00AFC /* TargetDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetDisplayData.swift; sourceTree = "<group>"; };
+		83E4339329F172F200D00AFC /* CSessionCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSessionCardViewModel.swift; sourceTree = "<group>"; };
 		83EA9FED29C8459D000B7A02 /* HealthTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTemplate.swift; sourceTree = "<group>"; };
 		83F2C81529C30187004E3270 /* CoRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83F2C81829C30187004E3270 /* CoRunApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoRunApp.swift; sourceTree = "<group>"; };
@@ -536,12 +546,12 @@
 		83DCE1A729CC9F430007E73D /* view-component */ = {
 			isa = PBXGroup;
 			children = (
+				83E4339229F172D800D00AFC /* session-card */,
 				83E4336C29ED1D3600D00AFC /* picker */,
 				8369324429E7DFC5007994D6 /* chat */,
 				8369323629E6B958007994D6 /* calendar */,
 				8368FFE229D593E2007DBCDF /* dashboard */,
 				83DCE1AE29CCBE6F0007E73D /* CActivityCard.swift */,
-				83DCE1B729CCC94D0007E73D /* CSessionCard.swift */,
 				8368FFD829D42418007DBCDF /* CTraineeCard.swift */,
 				83A4223B29E5B33000D4DE8F /* CTabControl.swift */,
 			);
@@ -647,8 +657,21 @@
 			isa = PBXGroup;
 			children = (
 				83E4336329EC1D7300D00AFC /* ProfileDisplayData.swift */,
+				83E4338A29F15EF400D00AFC /* PlanDisplayData.swift */,
+				83E4338C29F15FDD00D00AFC /* SessionDisplayData.swift */,
+				83E4338E29F160EC00D00AFC /* ResultDisplayData.swift */,
+				83E4339029F1610300D00AFC /* TargetDisplayData.swift */,
 			);
 			path = "data-display";
+			sourceTree = "<group>";
+		};
+		83E4339229F172D800D00AFC /* session-card */ = {
+			isa = PBXGroup;
+			children = (
+				83DCE1B729CCC94D0007E73D /* CSessionCard.swift */,
+				83E4339329F172F200D00AFC /* CSessionCardViewModel.swift */,
+			);
+			path = "session-card";
 			sourceTree = "<group>";
 		};
 		83F2C80C29C30187004E3270 = {
@@ -996,8 +1019,10 @@
 				83A4223A29E5B1F400D4DE8F /* TrainingView.swift in Sources */,
 				8368FFDB29D428F3007DBCDF /* CSearchBar.swift in Sources */,
 				83E4337929ED6C1D00D00AFC /* SessionData.swift in Sources */,
+				83E4338B29F15EF400D00AFC /* PlanDisplayData.swift in Sources */,
 				8369325729E97D1E007994D6 /* TraineeSummaryView.swift in Sources */,
 				83DCE1D029D03CAC0007E73D /* ProfileView.swift in Sources */,
+				83E4338D29F15FDD00D00AFC /* SessionDisplayData.swift in Sources */,
 				83DCE18B29C850CC0007E73D /* CCheckBox.swift in Sources */,
 				8368FFDF29D42FF3007DBCDF /* TraineeModel.swift in Sources */,
 				8369325C29EAD3DE007994D6 /* SharedToken.swift in Sources */,
@@ -1031,8 +1056,10 @@
 				83E4338129ED750E00D00AFC /* TargetType.swift in Sources */,
 				8368FFE429D59412007DBCDF /* CDashboardView.swift in Sources */,
 				8369325929E97D30007994D6 /* TraineeCalendarView.swift in Sources */,
+				83E4339129F1610300D00AFC /* TargetDisplayData.swift in Sources */,
 				83A4223C29E5B33000D4DE8F /* CTabControl.swift in Sources */,
 				8316301229D993F200B3322E /* SplashModel.swift in Sources */,
+				83E4339429F172F200D00AFC /* CSessionCardViewModel.swift in Sources */,
 				83DCE1B629CCC4510007E73D /* PlanModel.swift in Sources */,
 				8368FFE129D43000007DBCDF /* TraineeViewModel.swift in Sources */,
 				8369323E29E6BD1F007994D6 /* SelectedDateKey.swift in Sources */,
@@ -1059,6 +1086,7 @@
 				83DCE1C729CDB6650007E73D /* CSessionTitle.swift in Sources */,
 				8368FFD929D42418007DBCDF /* CTraineeCard.swift in Sources */,
 				83DCE19729C8684F0007E73D /* HealthPermissionView.swift in Sources */,
+				83E4338F29F160EC00D00AFC /* ResultDisplayData.swift in Sources */,
 				83DCE19E29CC98290007E73D /* SummaryView.swift in Sources */,
 				83E4337B29ED6C7C00D00AFC /* SessionDataKey.swift in Sources */,
 				83D31B7D29C70DFC00B47F8C /* TDate.swift in Sources */,

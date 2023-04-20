@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct SessionDetailView: View {
-    ///State Full Feedback visibility
-    @State var showAllFeedback = false
+    @StateObject private var vm = SessionDetailViewModel()
+    @ObservedObject var data: SessionDisplayData
     
     var body: some View {
         ZStack{
@@ -22,19 +22,19 @@ struct SessionDetailView: View {
                 ScrollView{
                     VStack(spacing: 12){
                         CSessionGoal()
-                        CSessionResult()
-                        CSessionFeedback(showAll: $showAllFeedback)
+                        CSessionResult(result: data.result)
+                        CSessionFeedback(showAll: $vm.showAllFeedback)
                     }.padding(EdgeInsets(top: 12, leading: 0, bottom: 12, trailing: 0))
                 }
             }
-        }.sheet(isPresented: $showAllFeedback){
+        }.sheet(isPresented: $vm.showAllFeedback){
             CChatView(displayOption: .full)
         }
     }
 }
 
-struct SessionDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        SessionDetailView()
-    }
-}
+//struct SessionDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SessionDetailView()
+//    }
+//}

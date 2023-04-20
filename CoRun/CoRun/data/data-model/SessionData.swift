@@ -10,8 +10,10 @@ import Foundation
 class SessionData:Codable{
     ///Define session id
     var id = ""
+    ///Define session creator id
+    var coachID = ""
     ///Define session creator
-    var coach = ""
+    var coachName = ""
     ///Define session date
     var date = Date.now
     ///Define session name
@@ -31,5 +33,10 @@ class SessionData:Codable{
 class SessionTarget:Codable{
     var targetType = -1
     var amount = Double(0)
+    
+    init(targetType: Int = 1, amount: Double = Double(0)) {
+        self.targetType = targetType
+        self.amount = amount
+    }
 }
 
