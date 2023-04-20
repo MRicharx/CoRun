@@ -7,7 +7,15 @@
 
 import Foundation
 
-class SessionDisplayData:ObservableObject,Identifiable{
+class ListSessionDisplayData:ObservableObject{
+    @Published var list:[SessionDisplayData]
+    
+    init(list:[SessionDisplayData]){
+        self.list=list
+    }
+}
+
+class SessionDisplayData:ObservableObject{
     @Published var id:String
     @Published var coachName:String
     @Published var date:Date

@@ -185,17 +185,30 @@ class MButton{
     struct ListButton:ButtonStyle{
         var padding:CGFloat = 8
         var dividerWeight:CGFloat = 2
+        var isActive = true
         
         func makeBody(configuration: Configuration) -> some View {
-            configuration.label
-                .padding(EdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 24))
-                .frame(minWidth:0,maxWidth: .infinity)
-                .background(configuration.isPressed ? MColor.ColorPalette().separator:MColor.ColorPalette().card)
-                .overlay(
-                        Rectangle()
-                            .stroke(MColor.ColorPalette().separator, lineWidth: CGFloat(dividerWeight))
-                            .padding(EdgeInsets(top: 0, leading: -1*(dividerWeight), bottom: 0, trailing: -1*dividerWeight)
-                    ))
+            if isActive{
+                configuration.label
+                    .padding(EdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 24))
+                    .frame(minWidth:0,maxWidth: .infinity)
+                    .background(configuration.isPressed ? MColor.ColorPalette().separator:MColor.ColorPalette().card)
+                    .overlay(
+                            Rectangle()
+                                .stroke(MColor.ColorPalette().separator, lineWidth: CGFloat(dividerWeight))
+                                .padding(EdgeInsets(top: 0, leading: -1*(dividerWeight), bottom: 0, trailing: -1*dividerWeight)
+                        ))
+            }else{
+                configuration.label
+                    .padding(EdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 24))
+                    .frame(minWidth:0,maxWidth: .infinity)
+                    .background(MColor.ColorPalette().separator)
+                    .overlay(
+                            Rectangle()
+                                .stroke(MColor.ColorPalette().separator, lineWidth: CGFloat(dividerWeight))
+                                .padding(EdgeInsets(top: 0, leading: -1*(dividerWeight), bottom: 0, trailing: -1*dividerWeight)
+                        ))
+            }
         }
     }
 }

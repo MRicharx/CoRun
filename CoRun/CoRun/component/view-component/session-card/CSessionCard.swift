@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CSessionCard: View {
-    @State var data = SessionDisplayData()
+    @ObservedObject var data = SessionDisplayData()
     @StateObject var vm = CSessionCardViewModel()
     
     var body: some View {
@@ -37,14 +37,20 @@ struct CSessionCard: View {
                     .modifier(MFont.Headline(size: 14))
                     .modifier(MColor.DisabledText())
                 
-                Text(data.activityName)
-                    .modifier(MFont.Headline(size:18))
-                    .modifier(MColor.Text())
-                
-                Text(vm.getTargetString(target: data.target))
-                    .lineLimit(1)
-                    .modifier(MFont.SubBody(size:14))
-                    .modifier(MColor.DisabledText())
+                if data.id.isEmpty{
+                    Text("No Session")
+                        .modifier(MFont.Headline(size:18))
+                        .modifier(MColor.DisabledText())
+                }else{
+                    Text(data.activityName)
+                        .modifier(MFont.Headline(size:18))
+                        .modifier(MColor.Text())
+                    
+                    Text(vm.getTargetString(target: data.target))
+                        .lineLimit(1)
+                        .modifier(MFont.SubBody(size:14))
+                        .modifier(MColor.DisabledText())
+                }
             }.modifier(MView.FillToLeftFrame())
         }
     }

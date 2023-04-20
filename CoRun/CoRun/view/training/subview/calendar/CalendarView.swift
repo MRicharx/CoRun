@@ -8,43 +8,52 @@
 import SwiftUI
 
 struct CalendarView: View {
-    ///Define selected date
-    @State var selectedDate = Date.now
-    ///Define list of plan
+    @StateObject var vm = CalendarViewModel()
     
     var body: some View {
         VStack(spacing:12){
-            CCalendarView()
+            CCalendarView(data: ListSessionDisplayData(list: vm.sessionDD))
             
             //MARK: Session View
             VStack{
                 //MARK: Session Detail
                 VStack{
-                    //CSessionCard(time: $selectedDate)
+                    CSessionCard(data: vm.selectedSession)
                 }
                 .padding(24)
                 
                 //MARK: Button List
-                VStack{
-                    Button{
-                        //TODO: Navigate to Feedback
-                    }label:{
-                        HStack{
-                            Text("Feedback")
-                                .modifier(MFont.SubBody())
-                                .modifier(MColor.Text())
-                                .modifier(MView.FillToLeftFrame())
-                            Image(systemName: "chevron.right")
-                                .modifier(MFont.SubBody())
-                                .modifier(MColor.DisabledText())
-                        }
-                    }.buttonStyle(MButton.ListButton())
+                if vm.isSessionExist{
+                    VStack{
+                        Button{
+                            //TODO: Navigate to Feedback
+                        }label:{
+                            HStack{
+                                Text("Feedback")
+                                    .modifier(MFont.SubBody())
+                                    .modifier(MColor.Text())
+                                    .modifier(MView.FillToLeftFrame())
+                                Image(systemName: "chevron.right")
+                                    .modifier(MFont.SubBody())
+                                    .modifier(MColor.DisabledText())
+                            }
+                        }.buttonStyle(MButton.ListButton())
+                }
                 }
             }.modifier(MView.Card())
-            
             Spacer()
             
-        }.environment(\.selectedDate, $selectedDate) //Set environment object
+        }
+        .onChange(of: vm.selectedDate){ newDate in
+            let d = newDate
+            vm.findSession(byDate: d)
+        }
+        .onAppear{
+            if vm.sessionDD.isEmpty{
+                vm.loadSession()
+            }
+        }
+        .environment(\.selectedDate, $vm.selectedDate) //Set environment object
     }
 }
 

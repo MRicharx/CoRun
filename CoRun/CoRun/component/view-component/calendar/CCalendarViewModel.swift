@@ -11,11 +11,35 @@ class CCalendarViewModel:ObservableObject{
     ///Define displayed month
     @Published var curMonth = Date.now
     ///Define date
-    @Published var date:[Date] = [Date]()
+    @Published var date = [DayData]()
+    
+    ///return session if exist
+    func findSession(data: [SessionDisplayData],byDate:Date)->CompletionStatus{
+
+        if let session = data.first(where: {TDate().compare(first: $0.date, second: byDate, format: "dd MMMM YYYY")}){
+            return session.status
+        }else{
+            return CompletionStatus(status: 4)
+        }
+    }
     
     ///Generate date
-    func getDate(){
-        date = generateDate(month: curMonth)
+    func getDate(sessionData:ListSessionDisplayData){
+        let dates = generateDate(month: curMonth)
+        date.removeAll()
+        
+        for d in dates{
+            let temp = DayData()
+            temp.date = d
+            temp.day = TDate().dateToString(date: d,format: "d")
+            temp.status = findSession(data: sessionData.list, byDate: d)
+            if TDate().compare(first: d, second: curMonth, format: "MM"){
+                temp.isDisabled=false
+            }else{
+                temp.isDisabled=true
+            }
+            date.append(temp)
+        }
     }
     
     ///Increment date to next month
@@ -24,8 +48,6 @@ class CCalendarViewModel:ObservableObject{
         comp.month = 1
         
         curMonth = Calendar.current.date(byAdding: comp, to: curMonth) ?? Date.now
-        
-        getDate()
     }
     
     ///Decrement date to last month
@@ -34,8 +56,6 @@ class CCalendarViewModel:ObservableObject{
         comp.month = -1
         
         curMonth = Calendar.current.date(byAdding: comp, to: curMonth) ?? Date.now
-        
-        getDate()
     }
     
     ///Define DateInterval for current month

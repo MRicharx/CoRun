@@ -26,7 +26,6 @@
 		8369322D29E5E594007994D6 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369322C29E5E594007994D6 /* CalendarView.swift */; };
 		8369322F29E5E63E007994D6 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369322E29E5E63E007994D6 /* CalendarViewModel.swift */; };
 		8369323129E5E64B007994D6 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369323029E5E64B007994D6 /* CalendarModel.swift */; };
-		8369323329E5E7B1007994D6 /* CalendarStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369323229E5E7B1007994D6 /* CalendarStatus.swift */; };
 		8369323829E6B9A5007994D6 /* CCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369323729E6B9A5007994D6 /* CCalendarView.swift */; };
 		8369323A29E6B9AF007994D6 /* CCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369323929E6B9AF007994D6 /* CCalendarViewModel.swift */; };
 		8369323E29E6BD1F007994D6 /* SelectedDateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369323D29E6BD1F007994D6 /* SelectedDateKey.swift */; };
@@ -172,7 +171,6 @@
 		8369322C29E5E594007994D6 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		8369322E29E5E63E007994D6 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		8369323029E5E64B007994D6 /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
-		8369323229E5E7B1007994D6 /* CalendarStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarStatus.swift; sourceTree = "<group>"; };
 		8369323729E6B9A5007994D6 /* CCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCalendarView.swift; sourceTree = "<group>"; };
 		8369323929E6B9AF007994D6 /* CCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCalendarViewModel.swift; sourceTree = "<group>"; };
 		8369323D29E6BD1F007994D6 /* SelectedDateKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedDateKey.swift; sourceTree = "<group>"; };
@@ -439,7 +437,6 @@
 			isa = PBXGroup;
 			children = (
 				83A4223429E5AF4000D4DE8F /* CompletionStatus.swift */,
-				8369323229E5E7B1007994D6 /* CalendarStatus.swift */,
 				8369325D29EAD80E007994D6 /* SplashStatus.swift */,
 				83E4338029ED750E00D00AFC /* TargetType.swift */,
 			);
@@ -1043,7 +1040,6 @@
 				83DCE1C929CDB6720007E73D /* CSessionGoal.swift in Sources */,
 				8368FFD529D423E6007DBCDF /* TraineeListModel.swift in Sources */,
 				8369325E29EAD80E007994D6 /* SplashStatus.swift in Sources */,
-				8369323329E5E7B1007994D6 /* CalendarStatus.swift in Sources */,
 				83DCE1CD29CDB68C0007E73D /* CSessionResult.swift in Sources */,
 				83F2C82529C30190004E3270 /* CoRun.xcdatamodeld in Sources */,
 				83DCE19229C867F70007E73D /* AssessmentModel.swift in Sources */,
