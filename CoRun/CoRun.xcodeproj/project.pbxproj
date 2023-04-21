@@ -103,6 +103,7 @@
 		83E4338F29F160EC00D00AFC /* ResultDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4338E29F160EC00D00AFC /* ResultDisplayData.swift */; };
 		83E4339129F1610300D00AFC /* TargetDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4339029F1610300D00AFC /* TargetDisplayData.swift */; };
 		83E4339429F172F200D00AFC /* CSessionCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4339329F172F200D00AFC /* CSessionCardViewModel.swift */; };
+		83E85A4329F29A5700ED118C /* GraphDisplayDataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E85A4229F29A5700ED118C /* GraphDisplayDataList.swift */; };
 		83EA9FEE29C8459D000B7A02 /* HealthTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EA9FED29C8459D000B7A02 /* HealthTemplate.swift */; };
 		83F2C81929C30187004E3270 /* CoRunApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F2C81829C30187004E3270 /* CoRunApp.swift */; };
 		83F2C81B29C30187004E3270 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F2C81A29C30187004E3270 /* ContentView.swift */; };
@@ -248,6 +249,7 @@
 		83E4338E29F160EC00D00AFC /* ResultDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDisplayData.swift; sourceTree = "<group>"; };
 		83E4339029F1610300D00AFC /* TargetDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetDisplayData.swift; sourceTree = "<group>"; };
 		83E4339329F172F200D00AFC /* CSessionCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSessionCardViewModel.swift; sourceTree = "<group>"; };
+		83E85A4229F29A5700ED118C /* GraphDisplayDataList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphDisplayDataList.swift; sourceTree = "<group>"; };
 		83EA9FED29C8459D000B7A02 /* HealthTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTemplate.swift; sourceTree = "<group>"; };
 		83F2C81529C30187004E3270 /* CoRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83F2C81829C30187004E3270 /* CoRunApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoRunApp.swift; sourceTree = "<group>"; };
@@ -653,6 +655,7 @@
 		83E4337729ED6BE300D00AFC /* data-display */ = {
 			isa = PBXGroup;
 			children = (
+				83E85A4229F29A5700ED118C /* GraphDisplayDataList.swift */,
 				83E4336329EC1D7300D00AFC /* ProfileDisplayData.swift */,
 				83E4338A29F15EF400D00AFC /* PlanDisplayData.swift */,
 				83E4338C29F15FDD00D00AFC /* SessionDisplayData.swift */,
@@ -1046,6 +1049,7 @@
 				834DD25629C6F51A00CD59EB /* HNetwork.swift in Sources */,
 				83DCE1D229D03CC90007E73D /* ProfileViewModel.swift in Sources */,
 				83C6FC5029C455EF00B0026C /* MColor.swift in Sources */,
+				83E85A4329F29A5700ED118C /* GraphDisplayDataList.swift in Sources */,
 				83E4335F29EC136600D00AFC /* TrainingModel.swift in Sources */,
 				83DCE1CB29CDB6810007E73D /* CSessionFeedback.swift in Sources */,
 				83F2C81B29C30187004E3270 /* ContentView.swift in Sources */,

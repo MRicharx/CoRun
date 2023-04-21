@@ -36,8 +36,10 @@ class CalendarViewModel: TrainingViewModel{
             isSessionExist = true
             selectedSession = session
         }else{
+            let temp = SessionDisplayData()
+            temp.date = selectedDate
             isSessionExist = false
-            selectedSession = SessionDisplayData()
+            selectedSession = temp
         }
     }
     

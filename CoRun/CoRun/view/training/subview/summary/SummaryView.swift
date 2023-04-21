@@ -8,20 +8,6 @@
 import SwiftUI
 
 struct SummaryView: View {
-    ///Define distance ran value
-    @State var distanceRan: String = "NaN"
-    ///Define total run value
-    @State var totalRun: String = "NaN"
-    ///Define average pace value
-    @State var avgPace: String = "NaN"
-    ///Define total run time value
-    @State var runTime: String = "NaN"
-    ///Define average intensity value
-    @State var avgIntensity: String = "NaN"
-    ///Define average bpm value
-    @State var avgBPM: String = "NaN"
-    
-    
     ///Define View's ViewModel
     @StateObject var vm = SummaryViewModel()
     
@@ -65,7 +51,7 @@ struct SummaryView: View {
                 HStack{
                     //MARK: Total Run
                     VStack{
-                        Text(String(totalRun))
+                        Text(String(vm.totalRun))
                             .modifier(MFont.Headline())
                             .modifier(MColor.Text())
                         Text("Total Run")
@@ -75,7 +61,7 @@ struct SummaryView: View {
                     
                     //MARK: Avg Pace
                     VStack{
-                        Text(String(totalRun))
+                        Text(TDate().secondToPace(seconds: vm.avgPace))
                             .modifier(MFont.Headline())
                             .modifier(MColor.Text())
                         Text("Avg. Pace")
@@ -85,7 +71,7 @@ struct SummaryView: View {
                     
                     //MARK: Run Time
                     VStack{
-                        Text(String(totalRun))
+                        Text(TDate().getStringinHMS(seconds: vm.runTime))
                             .modifier(MFont.Headline())
                             .modifier(MColor.Text())
                         Text("Run Time")
@@ -94,14 +80,35 @@ struct SummaryView: View {
                     }.modifier(MView.FillFrame())
                 }
                 
-                //MARK: Distance Graph
-                CGraph(data: vm.graphData)
-                    .frame(minHeight: 360,maxHeight: 360)
+                VStack(alignment: .leading,spacing: 12){
+                    CDivider()
+                    HStack{
+                        Text("Total Distance")
+                            .modifier(MColor.Text())
+                            .modifier(MFont.Headline(size:16))
+                        Text("(km)")
+                            .modifier(MColor.DisabledText())
+                            .modifier(MFont.Body(size:16))
+                    }
+                    Text(String(vm.distanceRan))
+                        .modifier(MFont.Headline())
+                        .modifier(MColor.Text())
+                    
+                    //MARK: Distance Graph
+                    CGraph(data: vm.graphData)
+                        .frame(minHeight: 360,maxHeight: 360)
+                }
             }
             .padding(24)
             .modifier(MView.Card())
             
             Spacer()
+        }
+        .onAppear{
+            vm.loadData()
+        }
+        .onChange(of:vm.displayOption){ new in
+            vm.updateDisplayOption(dp: new)
         }
     }
 }

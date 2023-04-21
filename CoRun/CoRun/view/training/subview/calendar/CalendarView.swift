@@ -18,7 +18,16 @@ struct CalendarView: View {
             VStack{
                 //MARK: Session Detail
                 VStack{
-                    CSessionCard(data: vm.selectedSession)
+                    if vm.selectedSession.status.int < 4{
+                        NavigationLink{
+                            SessionDetailView(data: vm.selectedSession)
+                        }label: {
+                            CSessionCard(data: vm.selectedSession)
+                        }
+                    }
+                    else{
+                        CSessionCard(data: vm.selectedSession)
+                    }
                 }
                 .padding(24)
                 

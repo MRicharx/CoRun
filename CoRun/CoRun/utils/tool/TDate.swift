@@ -108,7 +108,29 @@ struct TDate:TDateProtocol{
         min = time % 3600 / 60
         sec = time % 3600 % 60
         
-        return "\(hour):\(min):\(sec)"
+        var result = ""
+        
+        ///More than 100 hour
+        if hour>=100{
+            let day = hour/24
+            let h = hour%24
+            
+            result = "\(day)D \(h)H"
+        }
+        ///Less than 100 hour
+        else{
+            result += "\(hour):"
+            if min<10{
+                result+="0"
+            }
+            result+="\(min):"
+            if sec<10{
+                result+="0"
+            }
+            result += "\(sec)"
+        }
+        
+        return result
     }
     func secondToPace(seconds: Double) -> String {
         var min = 0
