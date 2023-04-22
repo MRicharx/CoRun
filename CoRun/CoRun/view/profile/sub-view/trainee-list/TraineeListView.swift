@@ -8,16 +8,13 @@
 import SwiftUI
 
 struct TraineeListView: View {
-    ///Define search value
-    @State var searchInput:String = ""
-    ///Define request section visibility
-    @State var showAllRequest:Bool = false
+    @StateObject var vm = TraineeListViewModel()
     
     var body: some View {
         VStack{
             //MARK: Search Bar
             VStack{
-                CSearchBar(hint: "Find Trainee",input: $searchInput)
+                CSearchBar(hint: "Find Trainee",input: $vm.searchInput)
             }
             .padding(EdgeInsets(top: 0, leading: 24, bottom: 18, trailing: 24))
             .modifier(MView.Card())
@@ -26,17 +23,17 @@ struct TraineeListView: View {
             VStack{
                 Button{
                     withAnimation{
-                        showAllRequest.toggle()
+                        vm.showAllRequest.toggle()
                     }
                 }label:{
                     HStack(){
-                        Text("Request (X)")
+                        Text("Request (\(vm.requestList.count))")
                             .modifier(MFont.SubBody())
                             .modifier(MColor.Text())
                             .modifier(MView.FillToLeftFrame())
                         
                         Group{
-                            if(showAllRequest){
+                            if(vm.showAllRequest){
                                 Text("Hide")
                             }else{
                                 Text("Show All")
@@ -47,17 +44,22 @@ struct TraineeListView: View {
                     }
                 }.buttonStyle(MButton.ListButton())
                 
-                if(showAllRequest){
-                    VStack(){
-                        Group{
-                            CTraineeCard(isRequest: true)
-                            CDivider()
-                            CTraineeCard(isRequest: true)
-                            CDivider()
-                            CTraineeCard(isRequest: true)
-                            CDivider()
+                if(vm.showAllRequest){
+                    VStack(spacing:0){
+                        ScrollView{
+                            ForEach(vm.requestList.indices, id:\.self){ i in
+                                Group{
+                                    NavigationLink{
+                                        TraineeView()
+                                    }label:{
+                                        CTraineeCard(traineeData: vm.requestList[i])
+                                    }
+                                    CDivider()
+                                }.padding(EdgeInsets(top: 4, leading: 24, bottom: 4, trailing: 24))
+                            }
                         }
-                    }.padding(24)
+                    }
+                    .frame(maxHeight: 360)
                 }
             }
             .modifier(MView.Card())
@@ -65,21 +67,22 @@ struct TraineeListView: View {
             //MARK: Trainee List
             VStack{
                 ScrollView{
-                    Group{
-                        CTraineeCard()
-                        CDivider()
-                        CTraineeCard()
-                        CDivider()
-                        CTraineeCard()
-                        CDivider()
-                        CTraineeCard()
-                        CDivider()
-                        CTraineeCard()
-                        CDivider()
-                    }.padding(24)
+                    ForEach(vm.traineeList.indices, id:\.self){ i in
+                        Group{
+                            NavigationLink{
+                                TraineeView()
+                            }label:{
+                                CTraineeCard(traineeData: vm.traineeList[i])
+                            }
+                            CDivider()
+                        }.padding(EdgeInsets(top: 4, leading: 24, bottom: 4, trailing: 24))
+                    }
                 }
             }
             .modifier(MView.Card())
+        }
+        .onAppear{
+            vm.loadData()
         }
     }
 }

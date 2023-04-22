@@ -9,22 +9,22 @@ import SwiftUI
 
 struct CTraineeCard: View {
     ///Define to display card as request or default
-    @State var isRequest = false
+    @ObservedObject var traineeData : TraineeDisplayData
     
     var body: some View {
         HStack(spacing: 24){
             VStack(alignment:.leading,spacing:2){
-                Text("Name")
+                Text(traineeData.username)
                     .modifier(MFont.Headline())
                     .modifier(MColor.Text())
-                Text("Gender - Age y/o")
+                Text("\(traineeData.gender) - \(TDate().getUserAge(birth: traineeData.birthday)) y/o")
                     .modifier(MFont.Headline(size:16))
                     .modifier(MColor.DisabledText())
             }
             .modifier(MView.FillToLeftFrame())
             
             //MARK: Show Request Response Option
-            if(isRequest)
+            if(traineeData.isRequest)
             {
                 HStack(spacing:12){
                     //MARK: Decline
@@ -49,9 +49,9 @@ struct CTraineeCard: View {
     }
 }
 
-struct CTraineeCard_Previews: PreviewProvider {
-    static var previews: some View {
-        CTraineeCard(isRequest: false)
-        CTraineeCard(isRequest: true)
-    }
-}
+//struct CTraineeCard_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CTraineeCard(isRequest: false)
+//        CTraineeCard(isRequest: true)
+//    }
+//}

@@ -48,7 +48,7 @@ class ProfileViewModel:ObservableObject{
     }
     
     func updateUserData(){
-        var local = SharedUser.shared.UserData
+        let local = SharedUser.shared.UserData
         local.id = profileDD.id
         local.email = profileDD.email
         local.gender = profileDD.gender

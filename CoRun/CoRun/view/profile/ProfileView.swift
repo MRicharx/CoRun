@@ -14,172 +14,175 @@ struct ProfileView: View {
     @StateObject var vm = ProfileViewModel()
     
     var body: some View {
-        VStack(spacing:12){
-            //MARK: Biodata Section
-            VStack{
-                //MARK: Data
-                VStack(alignment:.leading,spacing:8){
-                    Text(vm.profileDD.username)
-                        .modifier(MFont.Headline())
-                        .modifier(MColor.Text())
-                    Text(vm.profileDD.email)
-                        .tint(MColor.ColorPalette().textDisabled)
-                        .modifier(MFont.SubBody())
-                }.modifier(MView.FillToLeftFrame())
-                .padding(EdgeInsets(top: 0, leading: 24, bottom: 12, trailing: 24))
-                
-                //MARK: Button List
-                VStack(spacing:0){
-                    //MARK: Edit
-                    Button{
-                        //TODO: Navigate to Edit
-                        vm.showEditData=true
-                    }label:{
-                        HStack(spacing:12){
-                            Image(systemName: "square.and.pencil.circle.fill")
-                                .modifier(MColor.Primary())
-                                .modifier(MFont.Body())
-                            Group{
-                                Text("Edit Biodata")
-                                    .modifier(MColor.Text())
-                                    .modifier(MView.FillToLeftFrame())
-                                Image(systemName: "chevron.right")
-                                    .modifier(MColor.DisabledText())
-                            }
+        NavigationStack{
+            VStack(spacing:12){
+                //MARK: Biodata Section
+                VStack{
+                    //MARK: Data
+                    VStack(alignment:.leading,spacing:8){
+                        Text(vm.profileDD.username)
+                            .modifier(MFont.Headline())
+                            .modifier(MColor.Text())
+                        Text(vm.profileDD.email)
+                            .tint(MColor.ColorPalette().textDisabled)
                             .modifier(MFont.SubBody())
-                        }
-                    }.buttonStyle(MButton.ListButton())
+                    }.modifier(MView.FillToLeftFrame())
+                    .padding(EdgeInsets(top: 0, leading: 24, bottom: 12, trailing: 24))
                     
-                    //MARK: Show QR
-                    Button{
-                        //TODO: Navigate to QR
-                        vm.showQRPopUp=true
-                    }label:{
-                        HStack(spacing:12){
-                            Image(systemName: "qrcode")
-                                .modifier(MColor.Primary())
-                                .modifier(MFont.Body())
-                            Group{
-                                Text("Show QR")
-                                    .modifier(MColor.Text())
-                                    .modifier(MView.FillToLeftFrame())
-                                Image(systemName: "chevron.right")
-                                    .modifier(MColor.DisabledText())
-                            }
-                            .modifier(MFont.SubBody())
-                        }
-                    }.buttonStyle(MButton.ListButton())
-                }
-            }.modifier(MView.Card())
-            
-            //MARK: Setting Section
-            VStack{
-                //MARK: Title
-                Text("Setting")
-                    .padding(EdgeInsets(top: 12, leading: 24, bottom: 0, trailing: 24))
-                    .modifier(MFont.Headline(size:14))
-                    .modifier(MColor.DisabledText())
-                    .modifier(MView.FillToLeftFrame())
-                
-                //MARK: Button List
-                VStack(spacing:0){
-                    //MARK: My Coach
-                    Button{
-                        //TODO: Navigate to My Coach
-                        if vm.profileDD.coachName == ""{
-                            vm.showScanQR=true
-                        }else{
-                            vm.showCoachAlert=true
-                        }
-                    }label:{
-                        HStack(alignment:.top, spacing:12){
-                            Image(systemName: "person.circle.fill")
-                                .modifier(MColor.Primary())
-                                .modifier(MFont.Body())
-                            Group{
-                                VStack(alignment:.leading,spacing: 8){
-                                    Text("My Coach")
+                    //MARK: Button List
+                    VStack(spacing:0){
+                        //MARK: Edit
+                        Button{
+                            //TODO: Navigate to Edit
+                            vm.showEditData=true
+                        }label:{
+                            HStack(spacing:12){
+                                Image(systemName: "square.and.pencil.circle.fill")
+                                    .modifier(MColor.Primary())
+                                    .modifier(MFont.Body())
+                                Group{
+                                    Text("Edit Biodata")
                                         .modifier(MColor.Text())
                                         .modifier(MView.FillToLeftFrame())
-                                    if vm.profileDD.coachName == ""{
-                                        Text("Assign coach here")
-                                            .modifier(MFont.Body())
-                                            .modifier(MColor.DisabledText())
-                                            .modifier(MView.FillToLeftFrame())
-                                    }else{
-                                        Text(vm.profileDD.coachName)
-                                            .modifier(MFont.Headline())
+                                    Image(systemName: "chevron.right")
+                                        .modifier(MColor.DisabledText())
+                                }
+                                .modifier(MFont.SubBody())
+                            }
+                        }.buttonStyle(MButton.ListButton())
+                        
+                        //MARK: Show QR
+                        Button{
+                            //TODO: Navigate to QR
+                            vm.showQRPopUp=true
+                        }label:{
+                            HStack(spacing:12){
+                                Image(systemName: "qrcode")
+                                    .modifier(MColor.Primary())
+                                    .modifier(MFont.Body())
+                                Group{
+                                    Text("Show QR")
+                                        .modifier(MColor.Text())
+                                        .modifier(MView.FillToLeftFrame())
+                                    Image(systemName: "chevron.right")
+                                        .modifier(MColor.DisabledText())
+                                }
+                                .modifier(MFont.SubBody())
+                            }
+                        }.buttonStyle(MButton.ListButton())
+                    }
+                }.modifier(MView.Card())
+                
+                //MARK: Setting Section
+                VStack{
+                    //MARK: Title
+                    Text("Setting")
+                        .padding(EdgeInsets(top: 12, leading: 24, bottom: 0, trailing: 24))
+                        .modifier(MFont.Headline(size:14))
+                        .modifier(MColor.DisabledText())
+                        .modifier(MView.FillToLeftFrame())
+                    
+                    //MARK: Button List
+                    VStack(spacing:0){
+                        //MARK: My Coach
+                        Button{
+                            //TODO: Navigate to My Coach
+                            if vm.profileDD.coachName == ""{
+                                vm.showScanQR=true
+                            }else{
+                                vm.showCoachAlert=true
+                            }
+                        }label:{
+                            HStack(alignment:.top, spacing:12){
+                                Image(systemName: "person.circle.fill")
+                                    .modifier(MColor.Primary())
+                                    .modifier(MFont.Body())
+                                Group{
+                                    VStack(alignment:.leading,spacing: 8){
+                                        Text("My Coach")
                                             .modifier(MColor.Text())
                                             .modifier(MView.FillToLeftFrame())
+                                        if vm.profileDD.coachName == ""{
+                                            Text("Assign coach here")
+                                                .modifier(MFont.Body())
+                                                .modifier(MColor.DisabledText())
+                                                .modifier(MView.FillToLeftFrame())
+                                        }else{
+                                            Text(vm.profileDD.coachName)
+                                                .modifier(MFont.Headline())
+                                                .modifier(MColor.Text())
+                                                .modifier(MView.FillToLeftFrame())
+                                        }
+                                        
                                     }
-                                    
+                                }
+                                .modifier(MFont.SubBody())
+                            }
+                        }.buttonStyle(MButton.ListButton())
+                        
+                        //MARK: Daily Reminder
+                        CPickerView()
+                        
+                        //MARK: Apple Health
+                        Button{
+                            //TODO: Toggle health permission
+                            vm.requestHealthPermission{_ in }
+                        }label:{
+                            HStack(spacing:12){
+                                Image("health")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(maxWidth: 28)
+                                Group{
+                                    Text("Apple Health")
+                                        .modifier(MColor.Text())
+                                        .modifier(MView.FillToLeftFrame())
+                                }
+                                .modifier(MFont.SubBody())
+                                if vm.isHealthPermissionLoading{
+                                    ProgressView()
+                                        .progressViewStyle(.circular)
                                 }
                             }
-                            .modifier(MFont.SubBody())
-                        }
-                    }.buttonStyle(MButton.ListButton())
-                    
-                    //MARK: Daily Reminder
-                    CPickerView()
-                    
-                    //MARK: Apple Health
-                    Button{
-                        //TODO: Toggle health permission
-                        vm.requestHealthPermission{_ in }
-                    }label:{
+                        }.buttonStyle(MButton.ListButton())
+                    }
+                }.modifier(MView.Card())
+                
+                //MARK: My Trainee
+                NavigationLink{
+                    TraineeListView()
+                }label:{
+                    VStack{
                         HStack(spacing:12){
-                            Image("health")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(maxWidth: 28)
+                            Image(systemName: "person.crop.rectangle.stack.fill")
+                                .modifier(MColor.Primary())
+                                .modifier(MFont.Body())
                             Group{
-                                Text("Apple Health")
+                                Text("My Trainee")
                                     .modifier(MColor.Text())
                                     .modifier(MView.FillToLeftFrame())
+                                Image(systemName: "chevron.right")
+                                    .modifier(MColor.DisabledText())
                             }
                             .modifier(MFont.SubBody())
-                            if vm.isHealthPermissionLoading{
-                                ProgressView()
-                                    .progressViewStyle(.circular)
-                            }
                         }
-                    }.buttonStyle(MButton.ListButton())
-                }
-            }.modifier(MView.Card())
-            
-            //MARK: My Trainee
-            VStack{
-                Button{
-                    //TODO: Navigate to My Trainee
-                }label:{
-                    HStack(spacing:12){
-                        Image(systemName: "person.crop.rectangle.stack.fill")
-                            .modifier(MColor.Primary())
-                            .modifier(MFont.Body())
-                        Group{
-                            Text("My Trainee")
-                                .modifier(MColor.Text())
-                                .modifier(MView.FillToLeftFrame())
-                            Image(systemName: "chevron.right")
-                                .modifier(MColor.DisabledText())
-                        }
-                        .modifier(MFont.SubBody())
+                        .padding(EdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 24))
                     }
-                }.buttonStyle(MButton.ListButton())
-            }
-            .modifier(MView.Card())
-            
-            Spacer()
-            
-            //MARK: Sign Out
-            Button{
-                vm.showSignOUtAlert = true
-            }label:{
-                VStack{
-                    Text("Sign Out")
-                        .modifier(MFont.Headline(size: 18))
-                        .modifier(MColor.Danger())
-                }.modifier(MView.FillFrame())
+                    .modifier(MView.Card())
+                }
+                
+                Spacer()
+                
+                //MARK: Sign Out
+                Button{
+                    vm.showSignOUtAlert = true
+                }label:{
+                    VStack{
+                        Text("Sign Out")
+                            .modifier(MFont.Headline(size: 18))
+                            .modifier(MColor.Danger())
+                    }.modifier(MView.FillFrame())
+                }
             }
         }
         .environment(\.notificationPermissionAlert, $vm.showPermissionAlert)
