@@ -8,19 +8,17 @@
 import SwiftUI
 
 struct TraineeCalendarView: View {
-    ///Define selected date
-    @State var selectedDate = Date.now
-    ///Define list of plan
+    @StateObject var vm = TraineeCalendarViewModel()
     
     var body: some View {
         VStack(spacing:12){
-//            CCalendarView()
+            CCalendarView(data: ListSessionDisplayData(list: vm.sessionDD))
             
             //MARK: Session View
             VStack{
                 //MARK: Session Detail
                 VStack{
-                    //CSessionCard(time: $selectedDate)
+                    CSessionCard(data: vm.selectedSession)
                 }
                 .padding(24)
                 
@@ -66,10 +64,19 @@ struct TraineeCalendarView: View {
                     }.buttonStyle(MButton.ListButton())
                 }
             }.modifier(MView.Card())
-            
             Spacer()
             
-        }.environment(\.selectedDate, $selectedDate) //Set environment object
+        }
+        .onChange(of: vm.selectedDate){ newDate in
+            let d = newDate
+            vm.findSession(byDate: d)
+        }
+        .onAppear{
+            if vm.sessionDD.isEmpty{
+                vm.loadSession()
+            }
+        }
+        .environment(\.selectedDate, $vm.selectedDate) //Set environment object
     }
 }
 

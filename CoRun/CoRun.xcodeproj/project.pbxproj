@@ -105,6 +105,8 @@
 		83E4339429F172F200D00AFC /* CSessionCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4339329F172F200D00AFC /* CSessionCardViewModel.swift */; };
 		83E85A4329F29A5700ED118C /* GraphDisplayDataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E85A4229F29A5700ED118C /* GraphDisplayDataList.swift */; };
 		83E85A4529F2C29400ED118C /* TraineeDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E85A4429F2C29400ED118C /* TraineeDisplayData.swift */; };
+		83E85A4729F4021800ED118C /* TraineeSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E85A4629F4021800ED118C /* TraineeSummaryViewModel.swift */; };
+		83E85A4929F4022B00ED118C /* TraineeCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E85A4829F4022B00ED118C /* TraineeCalendarViewModel.swift */; };
 		83EA9FEE29C8459D000B7A02 /* HealthTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EA9FED29C8459D000B7A02 /* HealthTemplate.swift */; };
 		83F2C81929C30187004E3270 /* CoRunApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F2C81829C30187004E3270 /* CoRunApp.swift */; };
 		83F2C81B29C30187004E3270 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F2C81A29C30187004E3270 /* ContentView.swift */; };
@@ -252,6 +254,8 @@
 		83E4339329F172F200D00AFC /* CSessionCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSessionCardViewModel.swift; sourceTree = "<group>"; };
 		83E85A4229F29A5700ED118C /* GraphDisplayDataList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphDisplayDataList.swift; sourceTree = "<group>"; };
 		83E85A4429F2C29400ED118C /* TraineeDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeDisplayData.swift; sourceTree = "<group>"; };
+		83E85A4629F4021800ED118C /* TraineeSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeSummaryViewModel.swift; sourceTree = "<group>"; };
+		83E85A4829F4022B00ED118C /* TraineeCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeCalendarViewModel.swift; sourceTree = "<group>"; };
 		83EA9FED29C8459D000B7A02 /* HealthTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTemplate.swift; sourceTree = "<group>"; };
 		83F2C81529C30187004E3270 /* CoRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83F2C81829C30187004E3270 /* CoRunApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoRunApp.swift; sourceTree = "<group>"; };
@@ -406,6 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				8369325829E97D30007994D6 /* TraineeCalendarView.swift */,
+				83E85A4829F4022B00ED118C /* TraineeCalendarViewModel.swift */,
 			);
 			path = calendar;
 			sourceTree = "<group>";
@@ -414,6 +419,7 @@
 			isa = PBXGroup;
 			children = (
 				8369325629E97D1E007994D6 /* TraineeSummaryView.swift */,
+				83E85A4629F4021800ED118C /* TraineeSummaryViewModel.swift */,
 			);
 			path = summary;
 			sourceTree = "<group>";
@@ -1017,6 +1023,7 @@
 				8369324329E73047007994D6 /* CGraph.swift in Sources */,
 				83DCE19429C868060007E73D /* AssessmentViewModel.swift in Sources */,
 				8369323A29E6B9AF007994D6 /* CCalendarViewModel.swift in Sources */,
+				83E85A4929F4022B00ED118C /* TraineeCalendarViewModel.swift in Sources */,
 				83E4335D29EC135A00D00AFC /* TrainingViewModel.swift in Sources */,
 				8316301429D993FB00B3322E /* SplashViewModel.swift in Sources */,
 				83E4337029ED285F00D00AFC /* NotificationPermissionAlertKey.swift in Sources */,
@@ -1043,6 +1050,7 @@
 				83DCE1D429D03CD30007E73D /* ProfileModel.swift in Sources */,
 				83D31B7B29C70DED00B47F8C /* HHealth.swift in Sources */,
 				83D31B8129C8366700B47F8C /* TUserDefault.swift in Sources */,
+				83E85A4729F4021800ED118C /* TraineeSummaryViewModel.swift in Sources */,
 				8368FFD729D423F3007DBCDF /* TraineeListViewModel.swift in Sources */,
 				83DCE1C929CDB6720007E73D /* CSessionGoal.swift in Sources */,
 				8368FFD529D423E6007DBCDF /* TraineeListModel.swift in Sources */,

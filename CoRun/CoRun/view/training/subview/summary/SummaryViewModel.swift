@@ -108,7 +108,7 @@ class SummaryViewModel: ObservableObject{
     }
     
     ///Generate dummy
-    private func generateDummy(){
+    func generateDummy(){
         distanceRan = 167.5
         totalRun = 8
         avgPace = 389

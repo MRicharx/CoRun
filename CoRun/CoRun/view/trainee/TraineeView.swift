@@ -8,25 +8,24 @@
 import SwiftUI
 
 struct TraineeView: View {
-    ///Define which tab will be shown
-    @State var selectedTab:String = "Calendar"
-    ///Define trainee name
-    @State var traineeName:String = "Budi"
+    @StateObject var vm = TraineeViewModel()
     
     var body: some View {
-        VStack(spacing: 12){
-            CTabControl(tab: $selectedTab,title: "\(traineeName) Plan",tabList: ["Calendar", "Summary"])
+        VStack{
+            CTabControl(tab: $vm.selectedTab,title: "\(vm.traineeData.username) Plan",tabList: ["Calendar", "Summary"])
             
-            switch(selectedTab){
-            case "Calendar":
-                TraineeCalendarView()
-            case "Summary":
-                TraineeSummaryView()
-            default:
-                Text("NaN")
+            ScrollView{
+                switch(vm.selectedTab){
+                case "Calendar":
+                    TraineeCalendarView()
+                case "Summary":
+                    TraineeSummaryView()
+                default:
+                    Text("NaN")
+                }
+                
+                Spacer()
             }
-            
-            Spacer()
         }
     }
 }
