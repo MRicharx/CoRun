@@ -50,7 +50,7 @@ struct TraineeListView: View {
                             ForEach(vm.requestList.indices, id:\.self){ i in
                                 Group{
                                     NavigationLink{
-                                        TraineeView()
+                                        TraineeView(isDisplayingPreview: true)
                                     }label:{
                                         CTraineeCard(traineeData: vm.requestList[i])
                                     }

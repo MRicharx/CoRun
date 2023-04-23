@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TraineeView: View {
+    @State var isDisplayingPreview = false
     @StateObject var vm = TraineeViewModel()
     
     var body: some View {
@@ -17,14 +18,19 @@ struct TraineeView: View {
             ScrollView{
                 switch(vm.selectedTab){
                 case "Calendar":
-                    TraineeCalendarView()
+                    TraineeCalendarView(isPreview: $isDisplayingPreview)
                 case "Summary":
-                    TraineeSummaryView()
+                    TraineeSummaryView(isPreview: $isDisplayingPreview)
                 default:
                     Text("NaN")
                 }
                 
                 Spacer()
+            }
+        }
+        .onAppear{
+            if isDisplayingPreview == true{
+                vm.selectedTab = "Summary"
             }
         }
     }

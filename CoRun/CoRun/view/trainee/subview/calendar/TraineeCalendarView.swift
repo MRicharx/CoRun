@@ -8,64 +8,70 @@
 import SwiftUI
 
 struct TraineeCalendarView: View {
+    @Binding var isPreview : Bool
     @StateObject var vm = TraineeCalendarViewModel()
     
     var body: some View {
         VStack(spacing:12){
             CCalendarView(data: ListSessionDisplayData(list: vm.sessionDD))
             
-            //MARK: Session View
-            VStack{
-                //MARK: Session Detail
+            if !(isPreview){
+                //MARK: Session View
                 VStack{
-                    CSessionCard(data: vm.selectedSession)
-                }
-                .padding(24)
-                
-                //MARK: Button List
-                VStack(spacing:0){
-                    //MARK: Feedback
-                    Button{
-                        //TODO: Navigate to Feedback
-                    }label:{
-                        HStack{
-                            Text("Feedback")
-                                .modifier(MFont.SubBody())
-                                .modifier(MColor.Text())
-                                .modifier(MView.FillToLeftFrame())
-                            Image(systemName: "chevron.right")
-                                .modifier(MFont.SubBody())
-                                .modifier(MColor.DisabledText())
-                        }
-                    }.buttonStyle(MButton.ListButton())
+                    //MARK: Session Detail
+                    VStack{
+                        CSessionCard(data: vm.selectedSession)
+                    }
+                    .padding(24)
                     
-                    //MARK: Create/Edit
-                    Button{
-                        //TODO: Navigate to Dashboard
-                    }label:{
-                        HStack{
-                            Text("Create/Edit Session")
-                                .modifier(MFont.Headline(size:18))
-                                .modifier(MColor.Primary())
-                                .modifier(MView.FillToLeftFrame())
+                    //MARK: Button List
+                    VStack(spacing:0){
+                        if vm.selectedSession.status.enume != .planNotDone{
+                            //MARK: Feedback
+                            Button{
+                                //TODO: Navigate to Feedback
+                            }label:{
+                                HStack{
+                                    Text("Feedback")
+                                        .modifier(MFont.SubBody())
+                                        .modifier(MColor.Text())
+                                        .modifier(MView.FillToLeftFrame())
+                                    Image(systemName: "chevron.right")
+                                        .modifier(MFont.SubBody())
+                                        .modifier(MColor.DisabledText())
+                                }
+                            }.buttonStyle(MButton.ListButton())
                         }
-                    }.buttonStyle(MButton.ListButton())
-                    
-                    //MARK: Delete
-                    Button{
-                        //TODO: Delete Feature
-                    }label:{
-                        HStack{
-                            Text("Delete Session")
-                                .modifier(MFont.Headline(size:18))
-                                .modifier(MColor.Danger())
-                                .modifier(MView.FillToLeftFrame())
+                        if vm.selectedSession.status.enume != .planNotDone && vm.selectedSession.date >= Date.now{
+                            //MARK: Delete
+                            Button{
+                                //TODO: Delete Feature
+                            }label:{
+                                HStack{
+                                    Text("Delete Session")
+                                        .modifier(MFont.Headline(size:18))
+                                        .modifier(MColor.Danger())
+                                        .modifier(MView.FillToLeftFrame())
+                                }
+                            }.buttonStyle(MButton.ListButton())
                         }
-                    }.buttonStyle(MButton.ListButton())
-                }
-            }.modifier(MView.Card())
-            Spacer()
-            
+                        if vm.selectedDate >= Date.now{
+                            //MARK: Create/Edit
+                            Button{
+                                //TODO: Navigate to Dashboard
+                            }label:{
+                                HStack{
+                                    Text("Create/Edit Session")
+                                        .modifier(MFont.Headline(size:18))
+                                        .modifier(MColor.Primary())
+                                        .modifier(MView.FillToLeftFrame())
+                                }
+                            }.buttonStyle(MButton.ListButton())
+                        }
+                    }
+                }.modifier(MView.Card())
+                Spacer()
+            }
         }
         .onChange(of: vm.selectedDate){ newDate in
             let d = newDate
@@ -80,8 +86,8 @@ struct TraineeCalendarView: View {
     }
 }
 
-struct TraineeCalendarView_Previews: PreviewProvider {
-    static var previews: some View {
-        TraineeCalendarView()
-    }
-}
+//struct TraineeCalendarView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TraineeCalendarView()
+//    }
+//}

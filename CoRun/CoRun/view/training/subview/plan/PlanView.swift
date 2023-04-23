@@ -26,7 +26,7 @@ struct PlanView: View {
                 }
                 HStack{
                     ForEach(0...vm.sessionThisWeek,id:\.self){ i in
-                        if i <= vm.sessionPassed{
+                        if i < vm.sessionPassed{
                             CDivider(weight:4,color: MColor.ColorPalette().primary, cornerRadius: 4)
                         }else{
                             CDivider(weight:4,color: MColor.ColorPalette().textDisabled, cornerRadius: 4)
