@@ -11,6 +11,8 @@
 		8316301429D993FB00B3322E /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316301329D993FB00B3322E /* SplashViewModel.swift */; };
 		832AB22229D9806000904AA3 /* SessionResultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832AB22129D9806000904AA3 /* SessionResultData.swift */; };
 		832AB22629D991BD00904AA3 /* CSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832AB22529D991BD00904AA3 /* CSignInButton.swift */; };
+		8331EA2629F6E4E700CFCC18 /* CDashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8331EA2529F6E4E700CFCC18 /* CDashboardViewModel.swift */; };
+		8331EA2829F6E58300CFCC18 /* DashboardDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8331EA2729F6E58300CFCC18 /* DashboardDisplayData.swift */; };
 		834DD25629C6F51A00CD59EB /* HNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834DD25529C6F51A00CD59EB /* HNetwork.swift */; };
 		834DD25A29C6FAA500CD59EB /* HApiREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834DD25929C6FAA500CD59EB /* HApiREST.swift */; };
 		8368FFD329D423DA007DBCDF /* TraineeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8368FFD229D423DA007DBCDF /* TraineeListView.swift */; };
@@ -160,6 +162,8 @@
 		8316301329D993FB00B3322E /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		832AB22129D9806000904AA3 /* SessionResultData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionResultData.swift; sourceTree = "<group>"; };
 		832AB22529D991BD00904AA3 /* CSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSignInButton.swift; sourceTree = "<group>"; };
+		8331EA2529F6E4E700CFCC18 /* CDashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDashboardViewModel.swift; sourceTree = "<group>"; };
+		8331EA2729F6E58300CFCC18 /* DashboardDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardDisplayData.swift; sourceTree = "<group>"; };
 		834DD25529C6F51A00CD59EB /* HNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNetwork.swift; sourceTree = "<group>"; };
 		834DD25929C6FAA500CD59EB /* HApiREST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HApiREST.swift; sourceTree = "<group>"; };
 		8368FFD229D423DA007DBCDF /* TraineeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeListView.swift; sourceTree = "<group>"; };
@@ -355,6 +359,7 @@
 			isa = PBXGroup;
 			children = (
 				8368FFE329D59412007DBCDF /* CDashboardView.swift */,
+				8331EA2529F6E4E700CFCC18 /* CDashboardViewModel.swift */,
 			);
 			path = dashboard;
 			sourceTree = "<group>";
@@ -670,6 +675,7 @@
 				83E4338E29F160EC00D00AFC /* ResultDisplayData.swift */,
 				83E4339029F1610300D00AFC /* TargetDisplayData.swift */,
 				83E85A4429F2C29400ED118C /* TraineeDisplayData.swift */,
+				8331EA2729F6E58300CFCC18 /* DashboardDisplayData.swift */,
 			);
 			path = "data-display";
 			sourceTree = "<group>";
@@ -1083,6 +1089,7 @@
 				83E4336629EC1FD600D00AFC /* SharedReminder.swift in Sources */,
 				83DCE1B429CCC4440007E73D /* PlanViewModel.swift in Sources */,
 				83DCE1E629D0631F0007E73D /* ScanQRPopUp.swift in Sources */,
+				8331EA2629F6E4E700CFCC18 /* CDashboardViewModel.swift in Sources */,
 				83EA9FEE29C8459D000B7A02 /* HealthTemplate.swift in Sources */,
 				8369324F29E7FF30007994D6 /* CPickerView.swift in Sources */,
 				83DCE1AB29CCA6C30007E73D /* CDivider.swift in Sources */,
@@ -1112,6 +1119,7 @@
 				83DCE1C029CDAEA50007E73D /* SessionDetailView.swift in Sources */,
 				832AB22629D991BD00904AA3 /* CSignInButton.swift in Sources */,
 				834DD25A29C6FAA500CD59EB /* HApiREST.swift in Sources */,
+				8331EA2829F6E58300CFCC18 /* DashboardDisplayData.swift in Sources */,
 				8369324929E7E225007994D6 /* CChatBubble.swift in Sources */,
 				8368FFDD29D42FDF007DBCDF /* TraineeView.swift in Sources */,
 			);

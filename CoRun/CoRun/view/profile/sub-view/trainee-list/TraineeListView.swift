@@ -81,6 +81,7 @@ struct TraineeListView: View {
             }
             .modifier(MView.Card())
         }
+        .navigationTitle("My Trainee")
         .onAppear{
             vm.loadData()
         }

@@ -57,16 +57,19 @@ struct TraineeCalendarView: View {
                         }
                         if vm.selectedDate >= Date.now{
                             //MARK: Create/Edit
-                            Button{
-                                //TODO: Navigate to Dashboard
+                            NavigationLink{
+                                CDashboardView(date: vm.selectedDate)
                             }label:{
-                                HStack{
+                                VStack(spacing:12){
+                                    CDivider()
                                     Text("Create/Edit Session")
                                         .modifier(MFont.Headline(size:18))
                                         .modifier(MColor.Primary())
                                         .modifier(MView.FillToLeftFrame())
+                                        .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
+                                    CDivider()
                                 }
-                            }.buttonStyle(MButton.ListButton())
+                            }
                         }
                     }
                 }.modifier(MView.Card())
