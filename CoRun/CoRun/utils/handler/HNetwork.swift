@@ -14,15 +14,10 @@ class HNetwork{
     ///Account token
     var token = ""
     ///Endpoint base url
-    let baseURL = ""
+    let baseURL = "http://http://203.194.113.74/api/"
     
-    init(token: String = "") {
-        self.token = token
-    }
-    
-    ///Update API Token
-    func updateToken(newToken:String){
-        token=newToken
+    init(){
+        self.token = SharedToken.shared.SignInToken
     }
     
     ///Use when send request to API
