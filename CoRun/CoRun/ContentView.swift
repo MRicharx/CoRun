@@ -14,6 +14,7 @@ struct ContentView: View {
     
     let api = UserAPI()
     let sapi = SessionAPI()
+    let tapi = TraineeAPI()
     
     var body: some View {
         ZStack{
@@ -41,10 +42,11 @@ struct ContentView: View {
         }
         .task{
             var temp = FeedbackData()
-            temp.id = 1
-            temp.senderID = "1"
-            temp.content = "Bertaring lah dragonball"
-            temp.sentDate = "2023-10-20"
+            temp.SessionId = 1
+            temp.SenderId = "1"
+            temp.Content = "Bertaring lah dragonball"
+            temp.SentDate = "2023-10-20"
+            temp.Status = 0
             sapi.getSessionFeedback(sessionId: 1){result in
                 switch result{
                 case .failure(_):
@@ -53,7 +55,7 @@ struct ContentView: View {
                     
                     print(data.count)
                     for d in data{
-                        print(d.content)
+                        print(d.Content)
                     }
                 }
             }

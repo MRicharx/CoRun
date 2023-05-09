@@ -82,8 +82,6 @@ class HNetwork{
         }
         else{
             let data = try! JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
-            
-            let responseObject = try? JSONDecoder().decode(ProfileData.self, from: data)
 
             let task = URLSession.shared.uploadTask(with: request, from: data) { data, response, error in
                 if let responseCode = (response as? HTTPURLResponse)?.statusCode {

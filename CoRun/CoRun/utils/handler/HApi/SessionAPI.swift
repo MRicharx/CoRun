@@ -74,10 +74,10 @@ class SessionAPI: HNetwork{
         let url = "session/feedback"
         
         let jsonDictionary: [String:String] = [
-            "id": String(describing: body.id),
-            "senderId": String(describing: body.senderID),
-            "sentDate": String(describing: body.sentDate),
-            "content": String(describing: body.content),
+            "id": String(describing: body.SessionId),
+            "senderId": String(describing: body.SenderId),
+            "sentDate": String(describing: body.SentDate),
+            "content": String(describing: body.Content),
             "status": String(describing: 0)
         ]
         
