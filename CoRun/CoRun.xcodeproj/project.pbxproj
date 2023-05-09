@@ -13,8 +13,11 @@
 		832AB22629D991BD00904AA3 /* CSignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832AB22529D991BD00904AA3 /* CSignInButton.swift */; };
 		8331EA2629F6E4E700CFCC18 /* CDashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8331EA2529F6E4E700CFCC18 /* CDashboardViewModel.swift */; };
 		8331EA2829F6E58300CFCC18 /* DashboardDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8331EA2729F6E58300CFCC18 /* DashboardDisplayData.swift */; };
+		8331EA2C29FFDC3B00CFCC18 /* SignInData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8331EA2B29FFDC3B00CFCC18 /* SignInData.swift */; };
+		8331EA2E2A0919FE00CFCC18 /* SessionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8331EA2D2A0919FE00CFCC18 /* SessionAPI.swift */; };
+		8331EA302A0950DB00CFCC18 /* TraineeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8331EA2F2A0950DB00CFCC18 /* TraineeAPI.swift */; };
 		834DD25629C6F51A00CD59EB /* HNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834DD25529C6F51A00CD59EB /* HNetwork.swift */; };
-		834DD25A29C6FAA500CD59EB /* HApiREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834DD25929C6FAA500CD59EB /* HApiREST.swift */; };
+		834DD25A29C6FAA500CD59EB /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834DD25929C6FAA500CD59EB /* UserAPI.swift */; };
 		8368FFD329D423DA007DBCDF /* TraineeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8368FFD229D423DA007DBCDF /* TraineeListView.swift */; };
 		8368FFD529D423E6007DBCDF /* TraineeListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8368FFD429D423E6007DBCDF /* TraineeListModel.swift */; };
 		8368FFD729D423F3007DBCDF /* TraineeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8368FFD629D423F3007DBCDF /* TraineeListViewModel.swift */; };
@@ -164,8 +167,11 @@
 		832AB22529D991BD00904AA3 /* CSignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSignInButton.swift; sourceTree = "<group>"; };
 		8331EA2529F6E4E700CFCC18 /* CDashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDashboardViewModel.swift; sourceTree = "<group>"; };
 		8331EA2729F6E58300CFCC18 /* DashboardDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardDisplayData.swift; sourceTree = "<group>"; };
+		8331EA2B29FFDC3B00CFCC18 /* SignInData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInData.swift; sourceTree = "<group>"; };
+		8331EA2D2A0919FE00CFCC18 /* SessionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionAPI.swift; sourceTree = "<group>"; };
+		8331EA2F2A0950DB00CFCC18 /* TraineeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeAPI.swift; sourceTree = "<group>"; };
 		834DD25529C6F51A00CD59EB /* HNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNetwork.swift; sourceTree = "<group>"; };
-		834DD25929C6FAA500CD59EB /* HApiREST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HApiREST.swift; sourceTree = "<group>"; };
+		834DD25929C6FAA500CD59EB /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		8368FFD229D423DA007DBCDF /* TraineeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeListView.swift; sourceTree = "<group>"; };
 		8368FFD429D423E6007DBCDF /* TraineeListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeListModel.swift; sourceTree = "<group>"; };
 		8368FFD629D423F3007DBCDF /* TraineeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeListViewModel.swift; sourceTree = "<group>"; };
@@ -330,6 +336,7 @@
 				83E4338229ED787200D00AFC /* ProfileData.swift */,
 				83E4338429ED79DA00D00AFC /* FeedbackData.swift */,
 				83E4338629ED7B4600D00AFC /* TraineeData.swift */,
+				8331EA2B29FFDC3B00CFCC18 /* SignInData.swift */,
 			);
 			path = "data-model";
 			sourceTree = "<group>";
@@ -493,7 +500,9 @@
 		83D08B1229C6FC5000114509 /* HApi */ = {
 			isa = PBXGroup;
 			children = (
-				834DD25929C6FAA500CD59EB /* HApiREST.swift */,
+				834DD25929C6FAA500CD59EB /* UserAPI.swift */,
+				8331EA2D2A0919FE00CFCC18 /* SessionAPI.swift */,
+				8331EA2F2A0950DB00CFCC18 /* TraineeAPI.swift */,
 			);
 			path = HApi;
 			sourceTree = "<group>";
@@ -1039,6 +1048,7 @@
 				83E4338B29F15EF400D00AFC /* PlanDisplayData.swift in Sources */,
 				8369325729E97D1E007994D6 /* TraineeSummaryView.swift in Sources */,
 				83DCE1D029D03CAC0007E73D /* ProfileView.swift in Sources */,
+				8331EA2C29FFDC3B00CFCC18 /* SignInData.swift in Sources */,
 				83E4338D29F15FDD00D00AFC /* SessionDisplayData.swift in Sources */,
 				83DCE18B29C850CC0007E73D /* CCheckBox.swift in Sources */,
 				8368FFDF29D42FF3007DBCDF /* TraineeModel.swift in Sources */,
@@ -1077,6 +1087,7 @@
 				83E4339129F1610300D00AFC /* TargetDisplayData.swift in Sources */,
 				83A4223C29E5B33000D4DE8F /* CTabControl.swift in Sources */,
 				8316301229D993F200B3322E /* SplashModel.swift in Sources */,
+				8331EA302A0950DB00CFCC18 /* TraineeAPI.swift in Sources */,
 				83E4339429F172F200D00AFC /* CSessionCardViewModel.swift in Sources */,
 				83DCE1B629CCC4510007E73D /* PlanModel.swift in Sources */,
 				8368FFE129D43000007DBCDF /* TraineeViewModel.swift in Sources */,
@@ -1106,6 +1117,7 @@
 				8368FFD929D42418007DBCDF /* CTraineeCard.swift in Sources */,
 				83DCE19729C8684F0007E73D /* HealthPermissionView.swift in Sources */,
 				83E4338F29F160EC00D00AFC /* ResultDisplayData.swift in Sources */,
+				8331EA2E2A0919FE00CFCC18 /* SessionAPI.swift in Sources */,
 				83DCE19E29CC98290007E73D /* SummaryView.swift in Sources */,
 				83E4337B29ED6C7C00D00AFC /* SessionDataKey.swift in Sources */,
 				83D31B7D29C70DFC00B47F8C /* TDate.swift in Sources */,
@@ -1118,7 +1130,7 @@
 				83E4336229EC17BD00D00AFC /* CoreUser.swift in Sources */,
 				83DCE1C029CDAEA50007E73D /* SessionDetailView.swift in Sources */,
 				832AB22629D991BD00904AA3 /* CSignInButton.swift in Sources */,
-				834DD25A29C6FAA500CD59EB /* HApiREST.swift in Sources */,
+				834DD25A29C6FAA500CD59EB /* UserAPI.swift in Sources */,
 				8331EA2829F6E58300CFCC18 /* DashboardDisplayData.swift in Sources */,
 				8369324929E7E225007994D6 /* CChatBubble.swift in Sources */,
 				8368FFDD29D42FDF007DBCDF /* TraineeView.swift in Sources */,

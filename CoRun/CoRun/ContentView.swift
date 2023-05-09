@@ -12,6 +12,9 @@ struct ContentView: View {
     ///Define selected View
     @State var curView = ViewList.splash
     
+    let api = UserAPI()
+    let sapi = SessionAPI()
+    
     var body: some View {
         ZStack{
             Color("Base")
@@ -35,6 +38,34 @@ struct ContentView: View {
                         }
                 }
             }
+        }
+        .task{
+            var temp = FeedbackData()
+            temp.id = 1
+            temp.senderID = "1"
+            temp.content = "Bertaring lah dragonball"
+            temp.sentDate = "2023-10-20"
+            sapi.getSessionFeedback(sessionId: 1){result in
+                switch result{
+                case .failure(_):
+                    print("Broken")
+                case .success(let data):
+                    
+                    print(data.count)
+                    for d in data{
+                        print(d.content)
+                    }
+                }
+            }
+            
+//            sapi.getUserSession(userId:"1"){res in
+//                switch res{
+//                case .success(let data):
+//                    print(data[0].SessionId)
+//                case .failure(_):
+//                    print("Failed")
+//                }
+//            }
         }
         .environment(\.selectedView, $curView)
     }

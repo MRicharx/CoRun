@@ -11,7 +11,7 @@ import AuthenticationServices
 
 ///CSignInButton : Wrap dedicated sign in button view from UIKit
 struct CSignInButton: View{
-    var api = HApiREST()
+    var api = UserAPI()
     
     var body: some View {
         SignInWithAppleButton(.signIn) { request in

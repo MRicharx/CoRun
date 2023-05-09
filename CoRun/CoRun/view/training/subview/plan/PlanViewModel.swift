@@ -46,12 +46,12 @@ class PlanViewModel: TrainingViewModel{
             temp.coachName = "Coach \(i)"
             temp.date = Date.now
             temp.activityName = "Activity \(i)"
-            temp.target = [
-                TargetDisplayData(targetData: SessionTarget(targetType: 0, amount: Double(600*i))),
-                TargetDisplayData(targetData: SessionTarget(targetType: 1, amount: Double(i))),
-                TargetDisplayData(targetData: SessionTarget(targetType: 2, amount: Double(60*i))),
-                TargetDisplayData(targetData: SessionTarget(targetType: 3, amount: 60))
-            ]
+//            temp.target = [
+//                TargetDisplayData(targetData: SessionTarget(targetType: 0, amount: Double(600*i))),
+//                TargetDisplayData(targetData: SessionTarget(targetType: 1, amount: Double(i))),
+//                TargetDisplayData(targetData: SessionTarget(targetType: 2, amount: Double(60*i))),
+//                TargetDisplayData(targetData: SessionTarget(targetType: 3, amount: 60))
+//            ]
             
             if(i<3){
                 temp.status.set(newStatus: .planReachAllGoal)

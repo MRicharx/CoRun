@@ -8,18 +8,14 @@
 import Foundation
 
 class FeedbackData:Codable{
-    ///Define feedback id
-    var id = ""
+    ///Define session  id
+    var id = 0
     ///Define feedback sender id
     var senderID = ""
-    ///Define feedback sender role (coach or trainee)
-    var senderRole = 0
-    ///Define feedback sender name
-    var senderName = ""
     ///Define feedback sent date
-    var date = Date.now
+    var sentDate = ""
     ///Define feedback content
     var content = ""
     ///Define if feedback is read
-    var isRead = true
+    var status = false
 }

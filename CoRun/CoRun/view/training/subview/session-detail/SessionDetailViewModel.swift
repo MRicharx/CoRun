@@ -21,7 +21,7 @@ class SessionDetailViewModel:ObservableObject{
             isResultExist = false
         }else{
             ///Calculate intensity
-            let age = TDate().getUserAge(birth: TDate().stringToDate(date: SharedUser.shared.UserData.dateOfBirth))
+            let age = TDate().getUserAge(birth: TDate().stringToDate(date: SharedUser.shared.UserData.Birthday))
             intensity = Int(data.result.avgBPM / Double(220-age) * Double(100))
         }
     }

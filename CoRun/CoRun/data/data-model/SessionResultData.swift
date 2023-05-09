@@ -9,31 +9,36 @@ import Foundation
 
 ///Define an object that contain result of workout
 struct SessionResultData : Codable{
-    var start:Date?
-    var end:Date?
+    ///session id
+    var id = 0
+    ///result date
+    var resultDate = ""
+    ///Duration run in second
+    var duration = 0.0
     ///Distance run in meter
-    var distance:Double?
+    var distance = 0.0
     ///Average beat in hertz
-    var avgBPM:Double?
+    var avgBPM = 0.0
     ///Volume in lit
-    var vo2M:Double?
-    ///Vertical Oscillation in meter
-    var verOscillation:Double?
+    var avgVo2 = 0.0
     ///Stride in meter
-    var stride:Double?
+    var stride = 0.0
+    ///Vertical Oscillation in meter
+    var verOsc = 0.0
     ///Elevation gain in meter
-    var elevGain:Double?
+    var elevGain = 0.0
     ///Duration of ground time in second
-    var groundTime:Double?
+    var groundTime = 0.0
 
-    init(start: Date? = nil, end: Date? = nil, distance: Double? = nil, avgBPM: Double? = nil, vo2M: Double? = nil, verOscillation: Double? = nil, stride: Double? = nil, elevGain: Double? = nil, groundTime: Double? = nil) {
-        self.start = start
-        self.end = end
+    init(id: Int = 0, resultDate: String = "", duration: Double = 0.0, distance: Double = 0.0, avgBPM: Double = 0.0, avgVo2: Double = 0.0, stride: Double = 0.0, verOsc: Double = 0.0, elevGain: Double = 0.0, groundTime: Double = 0.0) {
+        self.id = id
+        self.resultDate = resultDate
+        self.duration = duration
         self.distance = distance
         self.avgBPM = avgBPM
-        self.vo2M = vo2M
-        self.verOscillation = verOscillation
+        self.avgVo2 = avgVo2
         self.stride = stride
+        self.verOsc = verOsc
         self.elevGain = elevGain
         self.groundTime = groundTime
     }

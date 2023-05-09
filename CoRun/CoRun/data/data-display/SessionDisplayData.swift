@@ -41,24 +41,22 @@ class SessionDisplayData:ObservableObject{
     }
     
     func initialize(sessionData:SessionData){
-        id = sessionData.id
-        coachName = sessionData.coachName
-        date = sessionData.date
-        activityName = sessionData.activityName
+        id = String(sessionData.SessionId)
+        date = TDate().stringToDate(date: sessionData.SessionDate, format: "YYYY-MM-DD")
+        activityName = sessionData.Name
         
-        target = [TargetDisplayData]()
+//        target = [TargetDisplayData]()
         
-        status = CompletionStatus(status: sessionData.status)
-        desc = sessionData.description
-        isUnread = sessionData.isFeedbackUnread
+        status = CompletionStatus(status: sessionData.Status)
+        desc = sessionData.Description
         
-        result = ResultDisplayData(resultData: sessionData.result)
+//        result = ResultDisplayData(resultData: sessionData.result)
         
-        target.removeAll()
-
-        for data in sessionData.target{
-            let t = TargetDisplayData(targetData: data)
-            target.append(t)
-        }
+//        target.removeAll()
+//
+//        for data in sessionData.target{
+//            let t = TargetDisplayData(targetData: data)
+//            target.append(t)
+//        }
     }
 }

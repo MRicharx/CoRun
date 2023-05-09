@@ -31,16 +31,16 @@ class ResultDisplayData:ObservableObject{
         elevGain = 0
         groundTime = 0
     }
-    init(resultData:SessionResultData){
-        start = resultData.start ?? Date.now
-        end = resultData.end ?? Date.now
-        
-        distance = resultData.distance ?? -1
-        avgBPM = resultData.avgBPM ?? -1
-        vo2M = resultData.vo2M ?? -1
-        verticalOsc = resultData.verOscillation ?? -1
-        stride = resultData.stride ?? -1
-        elevGain = resultData.elevGain ?? -1
-        groundTime = resultData.groundTime ?? -1
-    }
+//    init(resultData:SessionResultData){
+//        start = resultData.start ?? Date.now
+//        end = resultData.end ?? Date.now
+//        
+//        distance = resultData.distance ?? -1
+//        avgBPM = resultData.avgBPM ?? -1
+//        vo2M = resultData.vo2M ?? -1
+//        verticalOsc = resultData.verOscillation ?? -1
+//        stride = resultData.stride ?? -1
+//        elevGain = resultData.elevGain ?? -1
+//        groundTime = resultData.groundTime ?? -1
+//    }
 }

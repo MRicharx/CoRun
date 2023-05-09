@@ -9,27 +9,29 @@ import Foundation
 
 class ProfileData:Codable{
     ///Define user id
-    var id = ""
+    var UserId = ""
     ///Define user registered email
-    var email = ""
+    var Email = ""
     ///Define username
-    var username = ""
-    ///Define date of birth
-    var dateOfBirth = ""
+    var Username = ""
     ///Define gender
-    var gender = ""
+    var Gender = ""
     ///Define user height
-    var height = 99
+    var Height = 99.9
     ///Define user weight
-    var weight = 99
-    
+    var Weight = 99.9
     ///Define user's coach id
-    var coachId = ""
-    ///Define user's coach's name
-    var coachName = ""
+    var CoachId = ""
+    ///Define date of birth
+    var Birthday = ""
+//    ///Define user's coach's name
+//    var coachName = ""
+}
+
+class UserList:Codable{
+    var list = [ProfileData]()
     
-    ///Define login token
-    var signToken = ""
-    ///Define notification token for identifier
-    var notificationToken = ""
+    init(){
+        list.removeAll()
+    }
 }

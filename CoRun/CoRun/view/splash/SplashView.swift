@@ -10,7 +10,6 @@ import _AuthenticationServices_SwiftUI
 
 struct SplashView: View {
     @Environment(\.selectedView) private var curView
-    @StateObject var AuthHandler = HAuthentication()
     
     ///Define sign in behavior
     @State private var showSignInButton = false

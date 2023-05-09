@@ -11,8 +11,13 @@ class TargetDisplayData:ObservableObject{
     @Published var type:TargetType
     @Published var amount: Double
     
-    init(targetData:SessionTarget){
-        type = TargetType(status: targetData.targetType)
-        amount = targetData.amount
+    init(){
+        type = TargetType.init(status: 0)
+        amount = 0
     }
+    
+//    init(targetData:SessionTarget){
+//        type = TargetType(status: targetData.targetType)
+//        amount = targetData.amount
+//    }
 }

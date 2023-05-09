@@ -32,16 +32,16 @@ class ProfileViewModel:ObservableObject{
     
     init(){
         let local = SharedUser.shared.UserData
-        if(local.id != ""){
-            profileDD.id = local.id
-            profileDD.username = local.username
-            profileDD.email = local.email
-            profileDD.height = local.height
-            profileDD.weight = local.weight
-            profileDD.gender = local.gender
-            profileDD.birthday = TDate().stringToDate(date: local.dateOfBirth)
+        if(local.UserId != ""){
+            profileDD.id = local.UserId
+            profileDD.username = local.Username
+            profileDD.email = local.Email
+            profileDD.height = Int(local.Height)
+            profileDD.weight = Int(local.Weight)
+            profileDD.gender = local.Gender
+//            profileDD.birthday = TDate().stringToDate(date: local.Birthday)
 
-            profileDD.coachName = local.coachName
+//            profileDD.coachName = local.coachName
         }else{
             loadDummy()
         }
@@ -49,14 +49,14 @@ class ProfileViewModel:ObservableObject{
     
     func updateUserData(){
         let local = SharedUser.shared.UserData
-        local.id = profileDD.id
-        local.email = profileDD.email
-        local.gender = profileDD.gender
-        local.dateOfBirth = TDate().dateToString(date: profileDD.birthday)
-        local.username = profileDD.username
-        local.weight = profileDD.weight
-        local.height = profileDD.height
-        local.coachName = profileDD.coachName
+        local.UserId = profileDD.id
+        local.Email = profileDD.email
+        local.Gender = profileDD.gender
+//        local.Birthday = TDate().dateToString(date: profileDD.birthday)
+        local.Username = profileDD.username
+        local.Weight = Double(profileDD.weight)
+        local.Height = Double(profileDD.height)
+//        local.coachName = profileDD.coachName
         
         SharedUser.shared.UserData = local
     }

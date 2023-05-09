@@ -14,7 +14,7 @@ class HNetwork{
     ///Account token
     var token = ""
     ///Endpoint base url
-    let baseURL = "http://http://203.194.113.74/api/"
+    let baseURL = "http://203.194.113.74/api/"
     
     init(){
         self.token = SharedToken.shared.SignInToken
@@ -23,7 +23,7 @@ class HNetwork{
     ///Use when send request to API
     ///Parameter will consist of:
     ///requestName, endpoint url, request method, token if available, is Print Status, request parameter
-    func request(requestName:String,endpointURL: String, method: String, withToken: String = "", isPrintStatus:Bool = false, parameters: [String: String], completion: @escaping (Result<Data, ErrorMessage>) -> ()){
+    func request(requestName:String,endpointURL: String, method: String, body: [String: String],isPrintStatus:Bool = false, completion: @escaping (Result<Data, ErrorMessage>) -> ()){
         let urlString = self.baseURL+endpointURL
         ///Prevent nil url
         guard let url=URL(string: urlString)else{
@@ -44,11 +44,6 @@ class HNetwork{
         request.httpMethod = method
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        //TODO: Set token
-//        if (!withToken.isEmpty) {
-//            request.setValue(withToken, forHTTPHeaderField: "maccrotoken")
-//        }
-        
         ///Define request method
         if method == "GET"{
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -68,12 +63,11 @@ class HNetwork{
 
                     ///Handle response
                     if (responseCode == 200 || responseCode == 201) {
+                        if(isPrintStatus){
+                            print(">> [" + requestName + "] : size : \(responseData)")
+                        }
+                        
                         completion(.success(responseData))
-                    }
-                    //TODO: Token Handler
-                    else if responseCode == 401 {
-//                        AppSetting.shared.token = ""
-//                        AppSetting.shared.tokenPushNotif = ""
                     }
                     else {
                         do {
@@ -87,7 +81,9 @@ class HNetwork{
             task.resume()
         }
         else{
-            let data = try! JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+            let data = try! JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
+            
+            let responseObject = try? JSONDecoder().decode(ProfileData.self, from: data)
 
             let task = URLSession.shared.uploadTask(with: request, from: data) { data, response, error in
                 if let responseCode = (response as? HTTPURLResponse)?.statusCode {
@@ -105,12 +101,11 @@ class HNetwork{
                     }
 
                     if (responseCode == 200 || responseCode == 201) {
+                        ///Print response data
+                        if(isPrintStatus){
+                            print(">> [" + requestName + "] : return : \(responseData)")
+                        }
                         completion(.success(responseData))
-                    }
-                    //TODO: Token Handler
-                    else if responseCode == 401 {
-//                        AppSetting.shared.token = ""
-//                        AppSetting.shared.tokenPushNotif = ""
                     }
                     else {
                         do {
