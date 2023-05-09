@@ -41,33 +41,26 @@ struct ContentView: View {
             }
         }
         .task{
-            var temp = FeedbackData()
-            temp.SessionId = 1
-            temp.SenderId = "1"
-            temp.Content = "Bertaring lah dragonball"
-            temp.SentDate = "2023-10-20"
-            temp.Status = 0
-            sapi.getSessionFeedback(sessionId: 1){result in
-                switch result{
-                case .failure(_):
-                    print("Broken")
-                case .success(let data):
-                    
-                    print(data.count)
-                    for d in data{
-                        print(d.Content)
-                    }
+            var temp = SessionData()
+            temp.UserId = "1"
+            temp.CoachId = "4"
+            temp.SessionDate = "2023-5-10"
+            temp.Name = "roti bakar"
+            temp.Description = "des"
+            temp.Status = 3
+            temp.Duration = 10
+            temp.Distance = 10
+            temp.Pace = 10
+            temp.Intensity = 70
+            
+            tapi.dismissTrainee(traineeId:"4", coachId: "1"){success in
+                if success{
+                    print("Berhasil")
+                }else{
+                    print("Gagal")
                 }
             }
-            
-//            sapi.getUserSession(userId:"1"){res in
-//                switch res{
-//                case .success(let data):
-//                    print(data[0].SessionId)
-//                case .failure(_):
-//                    print("Failed")
-//                }
-//            }
+            tapi.getTraineeSession(traineeId: <#T##String#>, completion: <#T##(Result<[SessionData], ErrorMessage>) -> Void#>)
         }
         .environment(\.selectedView, $curView)
     }

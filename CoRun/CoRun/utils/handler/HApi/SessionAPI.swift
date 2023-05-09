@@ -18,7 +18,7 @@ class SessionAPI: HNetwork{
         
         let jsonDictionary: [String:String] = ["":""]
         
-        request(requestName: "Get Session", endpointURL: url, method: "GET", body: jsonDictionary,isPrintStatus: true){result in
+        request(requestName: "Get Session", endpointURL: url, method: "GET", body: jsonDictionary){result in
             
             switch result{
             case .failure(let error):
@@ -98,7 +98,7 @@ class SessionAPI: HNetwork{
         
         let jsonDictionary: [String:String] = ["":""]
         
-        request(requestName: "Get Feedback", endpointURL: url, method: "GET", body: jsonDictionary,isPrintStatus: true){result in
+        request(requestName: "Get Feedback", endpointURL: url, method: "GET", body: jsonDictionary){result in
             switch result{
             case .failure(let error):
                 print(error)
@@ -123,7 +123,7 @@ class SessionAPI: HNetwork{
         
         let jsonDictionary: [String: String] = [:]
 
-        request(requestName: "GetAllSession", endpointURL: url, method: "GET", body: jsonDictionary, isPrintStatus: true){ result in
+        request(requestName: "GetAllSession", endpointURL: url, method: "GET", body: jsonDictionary){ result in
             
             switch result{
             case .failure(let error):
