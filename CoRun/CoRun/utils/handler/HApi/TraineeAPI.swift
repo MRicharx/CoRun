@@ -12,7 +12,7 @@ import Foundation
 class TraineeAPI:HNetwork{
     ///Return all user trainee
     func getTrainee(userId:String, completion:@escaping(Result<[ProfileData],ErrorMessage>)->Void){
-        let url = "trainee?coach=\(userId)"
+        let url = "trainee/\(userId)"
         
         let jsonDictionary: [String:String] = [
             "":""

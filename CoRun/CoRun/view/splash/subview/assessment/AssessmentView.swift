@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AssessmentView: View {
     @Environment(\.selectedView) var curView
+    @EnvironmentObject private var own:ProfileData
     
     ///Define current view model
     @StateObject var vm = AssessmentViewModel()
@@ -20,7 +21,7 @@ struct AssessmentView: View {
             
             VStack(alignment:.leading, spacing: 36){
                 //MARK: Title
-                Text("My Personal\nInformation")
+                Text("Input Your\nBiodata")
                     .modifier(MColor.Text())
                     .modifier(MFont.Title2())
                 
@@ -35,48 +36,44 @@ struct AssessmentView: View {
                     CDatePicker(title: "Birthday", input: $vm.dateOfBirth)
                     
                     //MARK: Height TF
-                    CTextfield(title: "Height", hint: "160", unit: "cm", type: .number,input: $vm.height)
+                    CTextfield(title: "Height", hint: "160", unit: "cm",maxChar: 3, type: .number,input: $vm.height)
                     //MARK: Weight TF
-                    CTextfield(title: "Weight", hint: "65", unit: "kg", type:.number,input: $vm.weight)
+                    CTextfield(title: "Weight", hint: "65", unit: "kg",maxChar: 3, type:.number,input: $vm.weight)
                 }
                 
                 Spacer()
                 
                 //MARK: Confirm Button
-                if(vm.username == "" || vm.height == "" || vm.weight == "" ){
-                    Button{
-                        ///Do NOTHING
-                    }label:{
+                Button{
+                    if vm.isValid(){
+                        vm.setPersonalData(current:own)
+                    }
+                }label:{
+                    if vm.isLoading{
+                        ProgressView()
+                            .progressViewStyle(.circular)
+                    }else{
                         Text("Confirm")
                             .modifier(MFont.Headline())
                             .modifier(MColor.Base())
-                    }.buttonStyle(MButton.DefaultButton(isActive: false))
-                }else{
-                    Button{
-                        if !(vm.isLoading){
-                            //TODO: Set Function here
-                            vm.setPersonalData()
-                            
-                            curView.wrappedValue = vm.defineNextView()
-                        }
-                    }label:{
-                        if vm.isLoading{
-                            ProgressView()
-                                .progressViewStyle(.circular)
-                        }else{
-                            Text("Confirm")
-                                .modifier(MFont.Headline())
-                                .modifier(MColor.Base())
-                        }
-                    }.buttonStyle(MButton.DefaultButton(isActive: true))
-                }
+                    }
+                }.buttonStyle(MButton.DefaultButton(isActive: true))
             }
             .padding(EdgeInsets(top: 0, leading: 24, bottom: 24, trailing: 24))
             .modifier(MView.FillFrame())
         }
-        .onAppear {
-            curView.wrappedValue = vm.defineNextView()
+        .alert(vm.invalidMessage, isPresented: $vm.invalidDataAlert){
+            Button("OK",role: .cancel) {}
         }
+        .onChange(of: vm.pushSuccess){ _ in
+            withAnimation{
+                vm.getProfileData(id:own.UserId){ res in
+                    own.set(new: res)
+                    curView.wrappedValue = vm.defineNextView(userData: own)
+                }
+            }
+        }
+        
     }
 }
 

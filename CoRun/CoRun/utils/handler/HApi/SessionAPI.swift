@@ -14,7 +14,7 @@ class SessionAPI: HNetwork{
     //TODO: Error 400
     ///Return all session for a particular userid
     func getUserSession(userId:String, completion:@escaping(Result<[SessionData],ErrorMessage>)->Void){
-        let url = "session?user=\(userId)"
+        let url = "session/\(userId)"
         
         let jsonDictionary: [String:String] = ["":""]
         
@@ -94,7 +94,7 @@ class SessionAPI: HNetwork{
     
     ///Get session feedback from particular sessionid
     func getSessionFeedback(sessionId:Int,completion:@escaping(Result<[FeedbackData],ErrorMessage>)->Void){
-        let url = "session/feedback?session=\(sessionId)"
+        let url = "session/feedback/\(sessionId)"
         
         let jsonDictionary: [String:String] = ["":""]
         

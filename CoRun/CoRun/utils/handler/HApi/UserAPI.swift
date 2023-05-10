@@ -39,7 +39,7 @@ class UserAPI : HNetwork{
     
     ///Returning single instance of user data based on user id
     func GetUserData(userId: String, completion:@escaping(Result<ProfileData,ErrorMessage>)->Void){
-        let url = "user/get-profile?user=\(userId)"
+        let url = "user/get-profile/\(userId)"
         
         let jsonDictionary: [String: String] = [
             "":""

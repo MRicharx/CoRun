@@ -16,7 +16,7 @@ struct CDatePicker: View {
     ///Binded input value
     @Binding var input:Date
     
-    @State var textColor = MColor.ColorPalette().textDisabled
+    @State var textColor = MColor.ColorPalette().textDefault
     @State private var showPicker = false
     @State private var pickerValue = Date.now
     

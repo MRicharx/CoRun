@@ -10,56 +10,69 @@ import _AuthenticationServices_SwiftUI
 
 struct SplashView: View {
     @Environment(\.selectedView) private var curView
+    @EnvironmentObject private var own:ProfileData
     
-    ///Define sign in behavior
-    @State private var showSignInButton = false
     ///Define Self ViewModel
-    @State private var vm = SplashViewModel()
+    @StateObject private var vm = SplashViewModel()
+    ///Define sign in status
+    @State var isSigned = false
     
     var body: some View {
-        NavigationStack{
-            VStack(spacing: 72){
-                VStack(spacing: 0){
-                    //MARK: App Logo
-                    Image("LogoCropped")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: 120)
-                    
-                    Text("CoRun")
-                        .modifier(MFont.Title(size: 36))
-                        .modifier(MColor.Primary())
+        VStack(spacing: 72){
+            VStack(spacing: 0){
+                //MARK: App Logo
+                Image("LogoCropped")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: 120)
+                
+                Text("CoRun")
+                    .modifier(MFont.Title(size: 36))
+                    .modifier(MColor.Primary())
+            }
+            
+            if vm.isLoading{
+                ProgressView()
+                    .progressViewStyle(.circular)
+            }else{
+                CSignInButton(isSigned: $isSigned)
+                    .frame(maxHeight: 48)
+            }
+        }
+        .onChange(of: isSigned){ new in
+            if new{
+                vm.isLoading = true
+                vm.getProfileData(id: SharedToken.shared.SignInToken){ result in
+                    own.set(new: result)
+                    curView.wrappedValue = vm.defineNextView(userData: own)
+                    vm.isLoading = false
                 }
-
-                if (showSignInButton){
-                    CSignInButton()
-                        .frame(maxHeight: 48)
-                        .onTapGesture{
-                            //TODO: Sign In Feature
-                            vm.signIn()
-                            
+            }
+        }
+        //MARK: Check if token existed
+        .task{
+            vm.isLoading = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
+                if SharedToken.shared.SignInToken == ""{
+                    withAnimation{
+                        if vm.defineNextView() != ViewList.splash{
                             curView.wrappedValue = vm.defineNextView()
                         }
-                }else{
-                    ProgressView()
-                        .progressViewStyle(.circular)
-                }
-            }
-            .task{
-                vm.toggleLoading()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
-                    if !(vm.isSignedIn()){
-                        withAnimation{
-                            showSignInButton = true
+                        else{
+                            vm.isLoading = false
                         }
                     }
-                    else{
-                        curView.wrappedValue = vm.defineNextView()
+                }
+                else{
+                    vm.getProfileData(id: SharedToken.shared.SignInToken){ result in
+                        own.set(new: result)
+                        vm.isLoading = false
+                        curView.wrappedValue = vm.defineNextView(userData: own)
                     }
                 }
             }
-            .padding(36)
         }
+        .padding(36)
     }
 }
 

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HealthPermissionView: View {
     @Environment(\.selectedView) var curView
+    @EnvironmentObject private var own:ProfileData
     
     //Define self view model
     @StateObject var vm = HealthPermissionViewModel()
@@ -43,14 +44,7 @@ struct HealthPermissionView: View {
                 Button{
                     //TODO: DO Thing
                     if !(vm.isLoading){
-                        vm.requestHealthPermission{ status in
-                            if status{
-                                curView.wrappedValue = vm.defineNextView()
-                            }else{
-                                print(">> HealthKit request permission ERROR")
-                            }
-                            vm.toggleLoading()
-                        }
+                        vm.requestHealthPermission()
                     }
                 }label:{
                     Group{
@@ -64,6 +58,11 @@ struct HealthPermissionView: View {
                     }
                     .modifier(MFont.Headline())
                 }.buttonStyle(MButton.DefaultButton(isActive: true))
+            }
+        }
+        .onChange(of: vm.askDone){_ in
+            withAnimation{
+                curView.wrappedValue = vm.defineNextView(userData: own)
             }
         }
         .padding(EdgeInsets(top: 0, leading: 24, bottom: 24, trailing: 24))

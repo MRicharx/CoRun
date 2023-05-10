@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ProfileData:Codable{
+class ProfileData:Codable,ObservableObject{
     ///Define user id
     var UserId = ""
     ///Define user registered email
@@ -24,14 +24,15 @@ class ProfileData:Codable{
     var CoachId = ""
     ///Define date of birth
     var Birthday = ""
-//    ///Define user's coach's name
-//    var coachName = ""
-}
-
-class UserList:Codable{
-    var list = [ProfileData]()
     
-    init(){
-        list.removeAll()
+    func set(new:ProfileData){
+        UserId = new.UserId
+        Email = new.Email
+        Username = new.Username
+        Gender = new.Gender
+        Height = new.Height
+        Weight = new.Weight
+        CoachId = new.CoachId
+        Birthday = new.Birthday
     }
 }

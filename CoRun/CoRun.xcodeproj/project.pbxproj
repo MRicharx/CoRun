@@ -48,6 +48,7 @@
 		83A4223529E5AF4000D4DE8F /* CompletionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A4223429E5AF4000D4DE8F /* CompletionStatus.swift */; };
 		83A4223A29E5B1F400D4DE8F /* TrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A4223929E5B1F400D4DE8F /* TrainingView.swift */; };
 		83A4223C29E5B33000D4DE8F /* CTabControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A4223B29E5B33000D4DE8F /* CTabControl.swift */; };
+		83B47F0C2A0B811C007B0ECA /* SharedHealthPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B47F0B2A0B811C007B0ECA /* SharedHealthPermission.swift */; };
 		83C6FC5029C455EF00B0026C /* MColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6FC4F29C455EF00B0026C /* MColor.swift */; };
 		83C6FC5229C45B5B00B0026C /* MView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C6FC5129C45B5B00B0026C /* MView.swift */; };
 		83D31B7B29C70DED00B47F8C /* HHealth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D31B7A29C70DED00B47F8C /* HHealth.swift */; };
@@ -113,6 +114,7 @@
 		83E85A4729F4021800ED118C /* TraineeSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E85A4629F4021800ED118C /* TraineeSummaryViewModel.swift */; };
 		83E85A4929F4022B00ED118C /* TraineeCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E85A4829F4022B00ED118C /* TraineeCalendarViewModel.swift */; };
 		83EA9FEE29C8459D000B7A02 /* HealthTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EA9FED29C8459D000B7A02 /* HealthTemplate.swift */; };
+		83EB16392A0BC28500B7B9B1 /* UserDataKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EB16382A0BC28500B7B9B1 /* UserDataKey.swift */; };
 		83F2C81929C30187004E3270 /* CoRunApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F2C81829C30187004E3270 /* CoRunApp.swift */; };
 		83F2C81B29C30187004E3270 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F2C81A29C30187004E3270 /* ContentView.swift */; };
 		83F2C81D29C30190004E3270 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83F2C81C29C30190004E3270 /* Assets.xcassets */; };
@@ -202,6 +204,7 @@
 		83A4223429E5AF4000D4DE8F /* CompletionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionStatus.swift; sourceTree = "<group>"; };
 		83A4223929E5B1F400D4DE8F /* TrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingView.swift; sourceTree = "<group>"; };
 		83A4223B29E5B33000D4DE8F /* CTabControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTabControl.swift; sourceTree = "<group>"; };
+		83B47F0B2A0B811C007B0ECA /* SharedHealthPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedHealthPermission.swift; sourceTree = "<group>"; };
 		83C6FC4F29C455EF00B0026C /* MColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MColor.swift; sourceTree = "<group>"; };
 		83C6FC5129C45B5B00B0026C /* MView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MView.swift; sourceTree = "<group>"; };
 		83D31B7A29C70DED00B47F8C /* HHealth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HHealth.swift; sourceTree = "<group>"; };
@@ -267,6 +270,7 @@
 		83E85A4629F4021800ED118C /* TraineeSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeSummaryViewModel.swift; sourceTree = "<group>"; };
 		83E85A4829F4022B00ED118C /* TraineeCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeCalendarViewModel.swift; sourceTree = "<group>"; };
 		83EA9FED29C8459D000B7A02 /* HealthTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTemplate.swift; sourceTree = "<group>"; };
+		83EB16382A0BC28500B7B9B1 /* UserDataKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataKey.swift; sourceTree = "<group>"; };
 		83F2C81529C30187004E3270 /* CoRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83F2C81829C30187004E3270 /* CoRunApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoRunApp.swift; sourceTree = "<group>"; };
 		83F2C81A29C30187004E3270 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -387,6 +391,7 @@
 				8369325F29EB141B007994D6 /* SelectedViewKey.swift */,
 				83E4336F29ED285F00D00AFC /* NotificationPermissionAlertKey.swift */,
 				83E4337A29ED6C7C00D00AFC /* SessionDataKey.swift */,
+				83EB16382A0BC28500B7B9B1 /* UserDataKey.swift */,
 			);
 			path = "data-environment";
 			sourceTree = "<group>";
@@ -442,6 +447,7 @@
 				8369325B29EAD3DE007994D6 /* SharedToken.swift */,
 				83E4336529EC1FD600D00AFC /* SharedReminder.swift */,
 				83E4336829EC31A900D00AFC /* SharedUser.swift */,
+				83B47F0B2A0B811C007B0ECA /* SharedHealthPermission.swift */,
 			);
 			path = "data-shared";
 			sourceTree = "<group>";
@@ -1072,6 +1078,7 @@
 				8368FFD529D423E6007DBCDF /* TraineeListModel.swift in Sources */,
 				8369325E29EAD80E007994D6 /* SplashStatus.swift in Sources */,
 				83DCE1CD29CDB68C0007E73D /* CSessionResult.swift in Sources */,
+				83EB16392A0BC28500B7B9B1 /* UserDataKey.swift in Sources */,
 				83F2C82529C30190004E3270 /* CoRun.xcdatamodeld in Sources */,
 				83DCE19229C867F70007E73D /* AssessmentModel.swift in Sources */,
 				834DD25629C6F51A00CD59EB /* HNetwork.swift in Sources */,
@@ -1132,6 +1139,7 @@
 				832AB22629D991BD00904AA3 /* CSignInButton.swift in Sources */,
 				834DD25A29C6FAA500CD59EB /* UserAPI.swift in Sources */,
 				8331EA2829F6E58300CFCC18 /* DashboardDisplayData.swift in Sources */,
+				83B47F0C2A0B811C007B0ECA /* SharedHealthPermission.swift in Sources */,
 				8369324929E7E225007994D6 /* CChatBubble.swift in Sources */,
 				8368FFDD29D42FDF007DBCDF /* TraineeView.swift in Sources */,
 			);
@@ -1302,7 +1310,6 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "Your camera will be used to scan QR Code";
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Your workout data, and health data related to running and general fitness will be accessed, compared to your training plan and calculated to provide summary";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Your workout data, and health data related to running and general fitness will be able to be accessed by your coach and this application as reference";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
@@ -1341,7 +1348,6 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "Your camera will be used to scan QR Code";
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Your workout data, and health data related to running and general fitness will be accessed, compared to your training plan and calculated to provide summary";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Your workout data, and health data related to running and general fitness will be able to be accessed by your coach and this application as reference";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";

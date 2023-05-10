@@ -12,8 +12,6 @@ class SharedUser{
     static let shared = SharedUser()
     fileprivate init() { }
     
-    let userDefaults = UserDefaults.standard
-    
     var UserData: ProfileData {
         get {
             if let data = UserDefaults.standard.data(forKey: "ProfileData"){
@@ -22,6 +20,7 @@ class SharedUser{
                     let decoder = JSONDecoder()
                     // Decode Note
                     let result = try decoder.decode(ProfileData.self, from: data)
+                    print(">> de JSON: \(data)")
                     
                     return result
                 } catch {
@@ -37,6 +36,8 @@ class SharedUser{
                 let encoder = JSONEncoder()
                 // Encode Note
                 let data = try encoder.encode(_data)
+                print(">> e JSON: \(data)")
+                
                 // Write Data
                 UserDefaults.standard.set(data, forKey: "ProfileData")
                 UserDefaults.standard.synchronize()

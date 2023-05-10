@@ -11,10 +11,8 @@ import CoreData
 struct ContentView: View {
     ///Define selected View
     @State var curView = ViewList.splash
-    
-    let api = UserAPI()
-    let sapi = SessionAPI()
-    let tapi = TraineeAPI()
+    ///Define user profile data
+    @StateObject var own = ProfileData()
     
     var body: some View {
         ZStack{
@@ -40,29 +38,8 @@ struct ContentView: View {
                 }
             }
         }
-        .task{
-            var temp = SessionData()
-            temp.UserId = "1"
-            temp.CoachId = "4"
-            temp.SessionDate = "2023-5-10"
-            temp.Name = "roti bakar"
-            temp.Description = "des"
-            temp.Status = 3
-            temp.Duration = 10
-            temp.Distance = 10
-            temp.Pace = 10
-            temp.Intensity = 70
-            
-            tapi.dismissTrainee(traineeId:"4", coachId: "1"){success in
-                if success{
-                    print("Berhasil")
-                }else{
-                    print("Gagal")
-                }
-            }
-            tapi.getTraineeSession(traineeId: <#T##String#>, completion: <#T##(Result<[SessionData], ErrorMessage>) -> Void#>)
-        }
         .environment(\.selectedView, $curView)
+        .environmentObject(own)
     }
 }
 

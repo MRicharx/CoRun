@@ -14,50 +14,37 @@ class SplashViewModel:ObservableObject{
     ///Define if query being processed
     @Published var isLoading = false
     
+    private var uapi = UserAPI()
+    
     ///Toogle Loading state
     func toggleLoading(){
         isLoading.toggle()
     }
     
-    ///Check if user already signed in
-    func isSignedIn()->Bool{
-//        if SharedToken.shared.SignInToken == ""{
-//            return false
-//        }else{
-//            return true
-//        }
-        
-        //MARK: for testing purpose
-        return true
-    }
-    
-    ///Sign In to retrieve user account data and or Create account at endpoint
-    func signIn(){
-        //TODO: Sign Feature
-        isLoading = true
-    }
-    
-    ///Check if user already filled first assessment
-    private func isAssessmentDone()->Bool{
-        //TODO: Check Assessment condition
-        return true
-    }
-    ///Check if health have access permission
-    private func isHealthAllowed()->Bool{
-        //TODO: Check Health Permission
-        return true
-    }
-    
-    ///Define next case need to be completed
-    func defineNextView()->ViewList{
-        if !(isAssessmentDone()){
-            return .assessment
+    func getProfileData(id:String, completion:@escaping(ProfileData)->Void){
+        uapi.GetUserData(userId: id){ result in
+            switch result{
+            case .failure(_):
+                completion(ProfileData())
+            case .success(let data):
+                completion(data)
+            }
         }
-        else if !(isHealthAllowed()){
-            return .healthPermission
+    }
+    
+    ///Define next view
+    func defineNextView(userData:ProfileData = ProfileData())->ViewList{
+        if SharedToken.shared.SignInToken == ""{
+            return ViewList.splash
+        }
+        else if userData.Username == ""{
+            return ViewList.assessment
+        }
+        else if SharedHealthPermission.shared.ishealthPermissionAsked != "asked"{
+            return ViewList.healthPermission
         }
         else{
-            return .home
+            return ViewList.home
         }
     }
 }

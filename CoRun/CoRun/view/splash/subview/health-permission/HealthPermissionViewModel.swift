@@ -10,16 +10,28 @@ import Foundation
 class HealthPermissionViewModel:SplashViewModel{
     @Published var hk = HHealth()
     
+    ///Define if asking permission success
+    @Published var askDone = false
+    
     override init() {
-        
+        super.init()
+        isLoading = false
     }
     
-    func requestHealthPermission(completion: @escaping ((_ status: Bool) -> Void)){
-        toggleLoading()
+    func requestHealthPermission(){
+        isLoading = true
         
         //TODO: Test this function
-        hk.requestPermission{status in
-            completion(status)
+        hk.requestPermission{isAsked in
+            if isAsked{
+                self.askDone = true
+                SharedHealthPermission.shared.ishealthPermissionAsked = "asked"
+            }
+            else{
+                self.askDone = false
+            }
+            
+            self.isLoading = false
         }
     }
 }

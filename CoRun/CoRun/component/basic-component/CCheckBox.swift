@@ -41,12 +41,12 @@ struct CCheckBox: View {
                             //TODO: Do function
                             ///Do NOTHING I GUESS
                         } label:{
-                            Group{
-                                Circle()
-                                    .frame(width: 16, height: 16)
-                                Text(opt)
-                                    .modifier(MFont.Body())
-                            }.modifier(MColor.DisabledText())
+                            Circle()
+                                .frame(width: 16, height: 16)
+                                .modifier(MColor.Primary())
+                            Text(opt)
+                                .modifier(MFont.Body())
+                                .modifier(MColor.Text())
                         }
                     }
                     else{
