@@ -8,14 +8,14 @@
 import SwiftUI
 
 ///Store user own data
-private struct UserDataKey:EnvironmentKey{
-    static let defaultValue:ProfileData = ProfileData()
-}
-
-extension EnvironmentValues {
-    var profile: ProfileData{
-        get { self[UserDataKey.self] }
-        set { self[UserDataKey.self] = newValue }
-    }
-}
+//private struct UserDataKey:EnvironmentKey{
+//    static let defaultValue:ProfileData = ProfileData()
+//}
+//
+//extension EnvironmentValues {
+//    var profile: ProfileData{
+//        get { self[UserDataKey.self] }
+//        set { self[UserDataKey.self] = newValue }
+//    }
+//}
 

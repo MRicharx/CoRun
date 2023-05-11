@@ -11,7 +11,7 @@ class PlanViewModel: TrainingViewModel{
     ///Define session passed/done
     @Published var sessionPassed = 0
     ///Define total to do session this week
-    @Published var sessionThisWeek = 0
+    @Published var sessionThisWeek = 1
     ///Define display data
     @Published var sessionDD = [SessionDisplayData()]
     
@@ -20,22 +20,39 @@ class PlanViewModel: TrainingViewModel{
         sessionDD.removeAll()
     }
     
-    override func refresh() {
-        //TODO: Refresh Data
-    }
-    
-    func loadSession(){
-        //TODO: Get session data and load to display data
-        getDummy()
+    func loadSession(session: [SessionData]){
+        sessionDD.removeAll()
+        
+//        getDummy()
+        for data in session{
+            let d = SessionDisplayData()
+            
+            d.id = String(data.SessionId)
+            d.coachName = "Coach --"
+            d.date = TDate().stringToDate(date: data.SessionDate,format: "YYYY-MM-dd")
+            d.activityName = data.Name
+            d.target = [
+                TargetDisplayData(type: 0 ,amount: data.Duration),
+                TargetDisplayData(type: 1 , amount: data.Distance),
+                TargetDisplayData(type: 2, amount: data.Pace),
+                TargetDisplayData(type: 3, amount: data.Intensity)
+            ]
+            
+            d.desc = data.Description
+            d.isUnread = false
+            
+            d.status = CompletionStatus(status: data.Status)
+            if d.status.int != 3{
+                sessionPassed+=1
+            }
+            
+            sessionDD.append(d)
+        }
         
         sessionThisWeek = sessionDD.count
         
-        //TODO: Check this thing validity
-        for data in sessionDD{
-            if data.status.enume != .planNotDone{
-                sessionPassed+=1
-            }
-        }
+//        print(">> PlanViewModel: session this week: \(sessionThisWeek)")
+//        print(">> PlanViewModel: session done: \(sessionPassed)")
     }
     
     private func getDummy(){

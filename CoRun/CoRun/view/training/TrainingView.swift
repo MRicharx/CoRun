@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct TrainingView: View {
+    @Environment(\.onLoading) var isOnLoading
+    
     ///Define selected tab
-    @State var selectedTab  = "Plan"
+    @State var selectedTab  = "Loading"
+    ///Define own view vm
+    @StateObject var vm = TrainingViewModel()
     
     var body: some View {
         NavigationStack{
@@ -24,10 +28,23 @@ struct TrainingView: View {
                 case "Summary":
                     SummaryView()
                 default:
-                    Text("NaN")
+                    ProgressView()
+                        .progressViewStyle(.circular)
+                    Spacer()
                 }
             }
         }
+        .task {
+            isOnLoading.wrappedValue = true
+            
+            await vm.getSession()
+            await vm.matchSessionWithHealth()
+            vm.loadBuffer()
+            
+            isOnLoading.wrappedValue = false
+            selectedTab = "Plan"
+        }
+        .environmentObject(vm)
     }
 }
 

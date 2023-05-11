@@ -16,6 +16,8 @@ struct SplashView: View {
     @StateObject private var vm = SplashViewModel()
     ///Define sign in status
     @State var isSigned = false
+    ///Define is system on loading and show loading screen
+    @State var showLoadingScreen = false
     
     var body: some View {
         VStack(spacing: 72){

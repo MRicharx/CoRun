@@ -12,6 +12,8 @@ class CCalendarViewModel:ObservableObject{
     @Published var curMonth = Date.now
     ///Define date
     @Published var date = [DayData]()
+    ///Define is data updated
+    @Published var reload = false
     
     ///return session if exist
     func findSession(data: [SessionDisplayData],byDate:Date)->CompletionStatus{
@@ -27,6 +29,7 @@ class CCalendarViewModel:ObservableObject{
     func getDate(sessionData:ListSessionDisplayData){
         let dates = generateDate(month: curMonth)
         date.removeAll()
+        reload = true
         
         for d in dates{
             let temp = DayData()
@@ -40,6 +43,8 @@ class CCalendarViewModel:ObservableObject{
             }
             date.append(temp)
         }
+        
+        reload = false
     }
     
     ///Increment date to next month

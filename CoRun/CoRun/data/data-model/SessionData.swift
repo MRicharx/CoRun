@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SessionData:Codable{
+class SessionData:Codable,ObservableObject{
     ///Define session id
     var SessionId = 0
     ///Define session creator id
@@ -49,6 +49,7 @@ class SessionData:Codable{
     ///Define ground time duration
     var GroundTime = 0.0
 }
+
 
 //class SessionTarget:Codable{
 //    var targetType = -1

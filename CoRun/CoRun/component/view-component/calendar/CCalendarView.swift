@@ -33,6 +33,7 @@ struct CCalendarView: View {
                     Image(systemName: "chevron.left")
                         .onTapGesture{
                             vm.lastMonth()
+                            vm.getDate(sessionData: data)
                         }
                         .modifier(MColor.Primary())
                     
@@ -43,45 +44,55 @@ struct CCalendarView: View {
                     Image(systemName: "chevron.right")
                         .onTapGesture{
                             vm.nextMonth()
+                            vm.getDate(sessionData: data)
                         }
                         .modifier(MColor.Primary())
                 }.modifier(MFont.SubBody())
             }.padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
             
-            VStack{
-                //MARK: Day Name
-                HStack{
-                    Group{
-                        Text("Su")
-                        Text("M")
-                        Text("Tu")
-                        Text("W")
-                        Text("Th")
-                        Text("F")
-                        Text("Sa")
-                    }
-                    .modifier(MFont.Headline(size:12))
-                    .modifier(MColor.DisabledText())
-                    .modifier(MView.FillFrame())
-                }
-                
-                //MARK: Calendar Implementation
-                LazyVGrid(columns: columns){
-                    ForEach(vm.date.indices,id:\.self){i in
+            if vm.date.count > 0{
+                VStack{
+                    //MARK: Day Name
+                    HStack{
                         Group{
-                            Day(day: vm.date[i])
+                            Text("Su")
+                            Text("M")
+                            Text("Tu")
+                            Text("W")
+                            Text("Th")
+                            Text("F")
+                            Text("Sa")
                         }
-                        .onTapGesture{
-                            selected.wrappedValue = vm.date[i].date
-//                            self.updateDate(date)
+                        .modifier(MFont.Headline(size:12))
+                        .modifier(MColor.DisabledText())
+                        .modifier(MView.FillFrame())
+                    }
+                    
+                    //MARK: Calendar Implementation
+                    LazyVGrid(columns: columns){
+                        ForEach(vm.date.indices,id:\.self){i in
+                            Group{
+                                Day(day: vm.date[i])
+                            }
+                            .onTapGesture{
+                                selected.wrappedValue = vm.date[i].date
+    //                            self.updateDate(date)
+                            }
                         }
                     }
                 }
-            
+            }else{
+                ProgressView()
+                    .progressViewStyle(.circular)
             }
             }
         .padding(18)
         .modifier(MView.Card())
+        .onChange(of: vm.reload){ new in
+            if new{
+                vm.getDate(sessionData: data)
+            }
+        }
         .onAppear{
             vm.getDate(sessionData: data)
         }
@@ -172,6 +183,10 @@ struct Day:View{
                         case 2:
                             Circle()
                                 .fill(MColor.ColorPalette().primary)
+                                .frame(width: 8,height: 8)
+                        case 3:
+                            Circle()
+                                .fill(MColor.ColorPalette().textDisabled)
                                 .frame(width: 8,height: 8)
                         default:
                             Circle()

@@ -16,8 +16,8 @@ class TargetDisplayData:ObservableObject{
         amount = 0
     }
     
-//    init(targetData:SessionTarget){
-//        type = TargetType(status: targetData.targetType)
-//        amount = targetData.amount
-//    }
+    init(type: Int, amount: Double){
+        self.type = TargetType(status: type)
+        self.amount=amount
+    }
 }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PlanView: View {
+    @EnvironmentObject private var pvm : TrainingViewModel
     @StateObject var vm = PlanViewModel()
     
     var body: some View {
@@ -25,7 +26,7 @@ struct PlanView: View {
                         .modifier(MColor.DisabledText())
                 }
                 HStack{
-                    ForEach(0...vm.sessionThisWeek,id:\.self){ i in
+                    ForEach(0...vm.sessionThisWeek-1,id:\.self){ i in
                         if i < vm.sessionPassed{
                             CDivider(weight:4,color: MColor.ColorPalette().primary, cornerRadius: 4)
                         }else{
@@ -42,13 +43,18 @@ struct PlanView: View {
                 VStack(spacing: 24){
                     Spacer()
                         .frame(height:6)
-                    
-                    ForEach(vm.sessionDD.indices, id: \.self){ i in
-                        NavigationLink{
-                            SessionDetailView(data: vm.sessionDD[i])
-                        }label: {
-                            CSessionCard(data:vm.sessionDD[i])
+                    if pvm.pubSes.count>0{
+                        ForEach(vm.sessionDD.indices, id: \.self){ i in
+                            NavigationLink{
+                                SessionDetailView(data: vm.sessionDD[i])
+                            }label: {
+                                CSessionCard(data:vm.sessionDD[i])
+                            }
                         }
+                    }else{
+                        Text("No session for this week")
+                            .modifier(MColor.DisabledText())
+                            .modifier(MFont.SubBody())
                     }
                     Spacer()
                 }
@@ -56,10 +62,8 @@ struct PlanView: View {
             }
             .modifier(MView.Card())
         }
-        .onAppear{
-            if vm.sessionDD.count == 0{
-                vm.loadSession()
-            }
+        .task {
+            vm.loadSession(session: pvm.pubSes)
         }
     }
 }

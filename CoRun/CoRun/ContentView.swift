@@ -11,6 +11,8 @@ import CoreData
 struct ContentView: View {
     ///Define selected View
     @State var curView = ViewList.splash
+    ///Define is app onloading state
+    @State var isOnLoading = false
     ///Define user profile data
     @StateObject var own = ProfileData()
     
@@ -39,6 +41,7 @@ struct ContentView: View {
             }
         }
         .environment(\.selectedView, $curView)
+        .environment(\.onLoading, $isOnLoading)
         .environmentObject(own)
     }
 }

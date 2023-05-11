@@ -9,27 +9,50 @@ import Foundation
 
 class CalendarViewModel: TrainingViewModel{
     ///Define display data
-    @Published var sessionDD = [SessionDisplayData()]
+    @Published var sessionDD = [SessionDisplayData]()
     ///Define selected date
     @Published var selectedDate = Date.now
     ///Define if selected date have session
     @Published var isSessionExist = false
     ///Define selected session display data
     @Published var selectedSession = SessionDisplayData()
+    ///Define is data loaded
+    @Published var isLoaded = false
+    
+    private let sapi = SessionAPI()
     
     override init(){
         super.init()
         sessionDD.removeAll()
     }
     
-    override func refresh() {
-        //TODO: Refresh Data
-    }
-    
-    func loadSession(){
-        //TODO: Get session data and load to display data
-        getDummy()
-
+    func loadSession(session: [SessionData]){
+        isLoaded = false
+        sessionDD.removeAll()
+        
+        for data in session{
+            let d = SessionDisplayData()
+            
+            d.id = String(data.SessionId)
+            d.coachName = "Coach --"
+            d.date = TDate().stringToDate(date: data.SessionDate,format: "YYYY-MM-dd")
+            d.activityName = data.Name
+            d.target = [
+                TargetDisplayData(type: 0 ,amount: data.Duration),
+                TargetDisplayData(type: 1 , amount: data.Distance),
+                TargetDisplayData(type: 2, amount: data.Pace),
+                TargetDisplayData(type: 3, amount: data.Intensity)
+            ]
+            
+            d.desc = data.Description
+            d.isUnread = false
+            
+            d.status = CompletionStatus(status: data.Status)
+            
+            sessionDD.append(d)
+        }
+        
+        isLoaded = true
     }
     func findSession(byDate:Date){
         if let session = sessionDD.first(where: {TDate().compare(first: $0.date, second: selectedDate, format: "dd MMMM YYYY")}){

@@ -18,7 +18,7 @@ class CompletionStatus:ObservableObject{
     @Published var enume:enumCompletionStatus
     
     init(){
-        int = 0
+        int = 4
         enume = .planNotDone
     }
     

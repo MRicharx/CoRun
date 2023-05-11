@@ -13,7 +13,7 @@ struct TraineeCalendarView: View {
     
     var body: some View {
         VStack(spacing:12){
-            CCalendarView(data: ListSessionDisplayData(list: vm.sessionDD))
+//            CCalendarView(data: ListSessionDisplayData(list: vm.sessionDD))
             
             if !(isPreview){
                 //MARK: Session View
@@ -82,7 +82,7 @@ struct TraineeCalendarView: View {
         }
         .onAppear{
             if vm.sessionDD.isEmpty{
-                vm.loadSession()
+//                vm.loadSession()
             }
         }
         .environment(\.selectedDate, $vm.selectedDate) //Set environment object

@@ -10,6 +10,10 @@ import Foundation
 class ListSessionDisplayData:ObservableObject{
     @Published var list:[SessionDisplayData]
     
+    init(){
+        list = [SessionDisplayData]()
+    }
+    
     init(list:[SessionDisplayData]){
         self.list=list
     }

@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct CalendarView: View {
+    @EnvironmentObject private var pvm : TrainingViewModel
     @StateObject var vm = CalendarViewModel()
     
     var body: some View {
         VStack(spacing:12){
-            CCalendarView(data: ListSessionDisplayData(list: vm.sessionDD))
+            if vm.isLoaded{
+                CCalendarView(data: ListSessionDisplayData(list: vm.sessionDD))
+            }
             
             //MARK: Session View
             VStack{
@@ -22,7 +25,11 @@ struct CalendarView: View {
                         NavigationLink{
                             SessionDetailView(data: vm.selectedSession)
                         }label: {
-                            CSessionCard(data: vm.selectedSession)
+                            HStack{
+                                CSessionCard(data: vm.selectedSession)
+                                Image(systemName: "chevron.right")
+                                    .modifier(MColor.Primary())
+                            }
                         }
                     }
                     else{
@@ -31,24 +38,6 @@ struct CalendarView: View {
                 }
                 .padding(24)
                 
-                //MARK: Button List
-                if vm.isSessionExist{
-                    VStack{
-                        Button{
-                            //TODO: Navigate to Feedback
-                        }label:{
-                            HStack{
-                                Text("Feedback")
-                                    .modifier(MFont.SubBody())
-                                    .modifier(MColor.Text())
-                                    .modifier(MView.FillToLeftFrame())
-                                Image(systemName: "chevron.right")
-                                    .modifier(MFont.SubBody())
-                                    .modifier(MColor.DisabledText())
-                            }
-                        }.buttonStyle(MButton.ListButton())
-                }
-                }
             }.modifier(MView.Card())
             Spacer()
             
@@ -57,10 +46,8 @@ struct CalendarView: View {
             let d = newDate
             vm.findSession(byDate: d)
         }
-        .onAppear{
-            if vm.sessionDD.isEmpty{
-                vm.loadSession()
-            }
+        .task{
+            vm.loadSession(session: pvm.pubSes)
         }
         .environment(\.selectedDate, $vm.selectedDate) //Set environment object
     }
