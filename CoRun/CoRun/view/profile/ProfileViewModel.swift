@@ -9,8 +9,13 @@ import Foundation
 import SwiftUI
 
 class ProfileViewModel:ObservableObject{
-    var health = HHealth()
+    private var health = HHealth()
+    var notif = HNotification()
     @Published var profileDD = ProfileDisplayData()
+    private var bufferProfile = ProfileData()
+    private var bufferCoachName = ""
+    
+    private let uapi = UserAPI()
     
     ///State Edit Biodata Pop Up Status
     @Published var showEditData = false
@@ -30,39 +35,91 @@ class ProfileViewModel:ObservableObject{
     @Published var healthAlertMessage = ""
     @Published var isHealthPermissionLoading = false
     
+    ///Define if currently updating data
+    @Published var isUploadingData = false
+    ///Define alert message for invalid data alert
+    @Published var invalidDataMessage = ""
+    ///Define to use placeholder on marked component
+    @Published var isRedacting = true
+    
     init(){
-        let local = SharedUser.shared.UserData
-        if(local.UserId != ""){
-            profileDD.id = local.UserId
-            profileDD.username = local.Username
-            profileDD.email = local.Email
-            profileDD.height = Int(local.Height)
-            profileDD.weight = Int(local.Weight)
-            profileDD.gender = local.Gender
-//            profileDD.birthday = TDate().stringToDate(date: local.Birthday)
-
-//            profileDD.coachName = local.coachName
-        }else{
-            loadDummy()
+    }
+    
+    func refreshDisplayData(){
+        profileDD.id = bufferProfile.UserId
+        profileDD.username = bufferProfile.Username
+        profileDD.email = bufferProfile.Email
+        profileDD.height = Int(bufferProfile.Height)
+        profileDD.weight = Int(bufferProfile.Weight)
+        profileDD.gender = bufferProfile.Gender
+        
+        profileDD.coachName = bufferCoachName
+        objectWillChange.send()
+    }
+    
+    ///Load user data and get coach name
+    func loadBuffer(user:ProfileData, completion:@escaping()->Void) {
+        bufferProfile = user
+        isRedacting = true
+        
+        uapi.GetUserData(userId: bufferProfile.UserId){ res in
+            switch res{
+            case .success(let data):
+                self.bufferCoachName = data.Username
+            case .failure(_):
+                print(">> Retrieve coach data failed")
+            }
+            self.refreshDisplayData()
+            self.isRedacting = false
+            completion()
         }
     }
     
-    func updateUserData(){
-        let local = SharedUser.shared.UserData
-        local.UserId = profileDD.id
-        local.Email = profileDD.email
-        local.Gender = profileDD.gender
-//        local.Birthday = TDate().dateToString(date: profileDD.birthday)
-        local.Username = profileDD.username
-        local.Weight = Double(profileDD.weight)
-        local.Height = Double(profileDD.height)
-//        local.coachName = profileDD.coachName
+    func updateUserData() async{
+        let d = bufferProfile
+        d.Username = profileDD.username
+        d.Weight = Double(profileDD.weight)
+        d.Height = Double(profileDD.height)
+        d.Birthday = TDate().dateToString(date: profileDD.birthday,format: "YYYY-MM-dd")
         
-        SharedUser.shared.UserData = local
+        await withCheckedContinuation{ continuation in
+            uapi.UpdateUserData(body: d){ success in
+                if !(success){
+                    print(">> ProfileViewModel: Update User Data Failed")
+                }
+                else{
+                    print("Updating user data")
+                }
+                continuation.resume()
+            }
+        }
+    }
+    
+    func isUserDataValid(newName:String,newHeight:String,newWeight:String,newBD:Date)->Bool{
+        let h = Double(newHeight) ?? 0
+        let w = Double(newWeight) ?? 0
+        
+        if newName == "" || newHeight == "" || newWeight == ""{
+            invalidDataMessage = "Not all forms are filled"
+        }
+        else if newName.count<4 && newName.count>12{
+            invalidDataMessage = "Username is not valid"
+        }
+        else if w <= 0 && w > 900{
+            invalidDataMessage = "Weight is not valid"
+        }
+        else if h <= 0 && h > 400{
+            invalidDataMessage = "Height is not valid"
+        }
+        else{
+            invalidDataMessage = ""
+            return true
+        }
+        return false
     }
     func dismissCoach(){
         profileDD.coachName = ""
-        updateUserData()
+//        updateUserData()
     }
     func requestHealthPermission(completion: @escaping ((_ status: Bool) -> Void)){
         //TODO: Toggle Health Permission

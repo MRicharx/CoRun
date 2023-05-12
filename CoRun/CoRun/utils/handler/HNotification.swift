@@ -48,6 +48,27 @@ class HNotification:ObservableObject{
         
     }
     
+    func scheduleDummyNotification(){
+        let center = UNUserNotificationCenter.current()
+//        center.removeAllPendingNotificationRequests()
+        
+        var dateComponents = DateComponents()
+        dateComponents.hour = 00
+        dateComponents.minute = 15
+//        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Title goes here"
+        content.body = "Main text goes here"
+        content.categoryIdentifier = "customIdentifier"
+        content.userInfo = ["customData": "fizzbuzz"]
+        content.sound = UNNotificationSound.default
+        
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+            center.add(request)
+    }
+    
     func pushDummyNotification(){
         
         let content = UNMutableNotificationContent()

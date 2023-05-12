@@ -33,7 +33,8 @@ class CalendarViewModel: TrainingViewModel{
         for data in session{
             let d = SessionDisplayData()
             
-            d.id = String(data.SessionId)
+            d.id = data.SessionId
+            d.coachId = data.CoachId
             d.coachName = "Coach --"
             d.date = TDate().stringToDate(date: data.SessionDate,format: "YYYY-MM-dd")
             d.activityName = data.Name
@@ -51,6 +52,7 @@ class CalendarViewModel: TrainingViewModel{
             
             sessionDD.append(d)
         }
+        findSession(byDate: selectedDate)
         
         isLoaded = true
     }
@@ -73,7 +75,7 @@ class CalendarViewModel: TrainingViewModel{
             var comp = DateComponents()
             comp.day = -(i)
             
-            temp.id = String(i)
+            temp.id = i
             temp.coachName = "Coach \(i)"
             temp.date = Calendar.current.date(byAdding: comp, to: Date.now) ?? Date.now
             temp.activityName = "Activity \(i)"

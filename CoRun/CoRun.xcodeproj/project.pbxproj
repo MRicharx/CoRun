@@ -27,7 +27,6 @@
 		8368FFDF29D42FF3007DBCDF /* TraineeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8368FFDE29D42FF3007DBCDF /* TraineeModel.swift */; };
 		8368FFE129D43000007DBCDF /* TraineeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8368FFE029D43000007DBCDF /* TraineeViewModel.swift */; };
 		8368FFE429D59412007DBCDF /* CDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8368FFE329D59412007DBCDF /* CDashboardView.swift */; };
-		8368FFE629D5A6BD007DBCDF /* HNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8368FFE529D5A6BD007DBCDF /* HNavigation.swift */; };
 		8369322D29E5E594007994D6 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369322C29E5E594007994D6 /* CalendarView.swift */; };
 		8369322F29E5E63E007994D6 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369322E29E5E63E007994D6 /* CalendarViewModel.swift */; };
 		8369323129E5E64B007994D6 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369323029E5E64B007994D6 /* CalendarModel.swift */; };
@@ -109,6 +108,7 @@
 		83E4338F29F160EC00D00AFC /* ResultDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4338E29F160EC00D00AFC /* ResultDisplayData.swift */; };
 		83E4339129F1610300D00AFC /* TargetDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4339029F1610300D00AFC /* TargetDisplayData.swift */; };
 		83E4339429F172F200D00AFC /* CSessionCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4339329F172F200D00AFC /* CSessionCardViewModel.swift */; };
+		83E50C602A0E3ACF005DE5CC /* ScanQRViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E50C5F2A0E3ACF005DE5CC /* ScanQRViewModel.swift */; };
 		83E85A4329F29A5700ED118C /* GraphDisplayDataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E85A4229F29A5700ED118C /* GraphDisplayDataList.swift */; };
 		83E85A4529F2C29400ED118C /* TraineeDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E85A4429F2C29400ED118C /* TraineeDisplayData.swift */; };
 		83E85A4729F4021800ED118C /* TraineeSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E85A4629F4021800ED118C /* TraineeSummaryViewModel.swift */; };
@@ -184,7 +184,6 @@
 		8368FFDE29D42FF3007DBCDF /* TraineeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeModel.swift; sourceTree = "<group>"; };
 		8368FFE029D43000007DBCDF /* TraineeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeViewModel.swift; sourceTree = "<group>"; };
 		8368FFE329D59412007DBCDF /* CDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDashboardView.swift; sourceTree = "<group>"; };
-		8368FFE529D5A6BD007DBCDF /* HNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNavigation.swift; sourceTree = "<group>"; };
 		8369322C29E5E594007994D6 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		8369322E29E5E63E007994D6 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		8369323029E5E64B007994D6 /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
@@ -266,6 +265,7 @@
 		83E4338E29F160EC00D00AFC /* ResultDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDisplayData.swift; sourceTree = "<group>"; };
 		83E4339029F1610300D00AFC /* TargetDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetDisplayData.swift; sourceTree = "<group>"; };
 		83E4339329F172F200D00AFC /* CSessionCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSessionCardViewModel.swift; sourceTree = "<group>"; };
+		83E50C5F2A0E3ACF005DE5CC /* ScanQRViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRViewModel.swift; sourceTree = "<group>"; };
 		83E85A4229F29A5700ED118C /* GraphDisplayDataList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphDisplayDataList.swift; sourceTree = "<group>"; };
 		83E85A4429F2C29400ED118C /* TraineeDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeDisplayData.swift; sourceTree = "<group>"; };
 		83E85A4629F4021800ED118C /* TraineeSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeSummaryViewModel.swift; sourceTree = "<group>"; };
@@ -662,6 +662,7 @@
 			isa = PBXGroup;
 			children = (
 				83DCE1E529D0631F0007E73D /* ScanQRPopUp.swift */,
+				83E50C5F2A0E3ACF005DE5CC /* ScanQRViewModel.swift */,
 			);
 			path = "scan-qr";
 			sourceTree = "<group>";
@@ -855,7 +856,6 @@
 				834DD25529C6F51A00CD59EB /* HNetwork.swift */,
 				83D31B7A29C70DED00B47F8C /* HHealth.swift */,
 				83EA9FED29C8459D000B7A02 /* HealthTemplate.swift */,
-				8368FFE529D5A6BD007DBCDF /* HNavigation.swift */,
 				83E4336A29EC75B200D00AFC /* HNotification.swift */,
 			);
 			path = handler;
@@ -1036,7 +1036,6 @@
 				8369324629E7DFD0007994D6 /* CChatView.swift in Sources */,
 				8369323829E6B9A5007994D6 /* CCalendarView.swift in Sources */,
 				83DCE1DF29D048AA0007E73D /* QRPopUp.swift in Sources */,
-				8368FFE629D5A6BD007DBCDF /* HNavigation.swift in Sources */,
 				83DCE1C229CDAEB30007E73D /* SessionDetailModel.swift in Sources */,
 				83DCE19929C8685C0007E73D /* HealthPermissionModel.swift in Sources */,
 				83DCE1B829CCC94D0007E73D /* CSessionCard.swift in Sources */,
@@ -1105,6 +1104,7 @@
 				83DCE1A229CC98410007E73D /* SummaryModel.swift in Sources */,
 				83DCE1B229CCC4360007E73D /* PlanView.swift in Sources */,
 				83EF80A52A0D1FDC004D535B /* LoadingScreenKey.swift in Sources */,
+				83E50C602A0E3ACF005DE5CC /* ScanQRViewModel.swift in Sources */,
 				83D31B7F29C70E9F00B47F8C /* TQr.swift in Sources */,
 				83E4336929EC31A900D00AFC /* SharedUser.swift in Sources */,
 				8369322D29E5E594007994D6 /* CalendarView.swift in Sources */,

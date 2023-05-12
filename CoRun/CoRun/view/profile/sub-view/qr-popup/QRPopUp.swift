@@ -47,7 +47,7 @@ struct QRPopUp: View {
             }.modifier(MView.safePadding())
             
             //MARK: Copy ID Section
-            VStack(spacing: 12){
+            VStack(spacing: 18){
                 Text("Your Coach ID: ")
                     .modifier(MFont.Headline(size:18))
                     .modifier(MColor.Text())
@@ -55,6 +55,7 @@ struct QRPopUp: View {
                 HStack(spacing: 18){
                     Group{
                         Text(id)
+                            .multilineTextAlignment(.trailing)
                         Button{
                             //TODO: Copy ID to clipboard
                             UIPasteboard.general.string = id
@@ -65,7 +66,7 @@ struct QRPopUp: View {
                                 .modifier(MFont.Body())
                         }
                     }
-                    .modifier(MFont.Title(size:28))
+                    .modifier(MFont.SubBody())
                 }
                 
                 Text("Ask trainee to input this Code")

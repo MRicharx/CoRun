@@ -8,20 +8,16 @@
 import SwiftUI
 
 struct CChatView: View {
-    ///Define display option
+    @EnvironmentObject var own: ProfileData
+    @EnvironmentObject var pvm: SessionDetailViewModel
+    
     @State var displayOption:chatDisplayOption
     enum chatDisplayOption{
         case widget
         case full
     }
     ///Define user data
-    let myName = "Me"
-    ///Define opponent data
-    let oppName = "CoachBudi"
-    ///Define Chat conversation
-    @State var messageList = ["Selamat Pagi","Selamat Pagi Juga","Lari lagi hari ini","Bagus-bagus, masih aman kah?","Aman gan, cuma agak linu-linu beberapa hari terakhir, agak maksa buat lari yang tempo hari lalu"]
-    @State var messageDate = ["1 March - 12.37","1 March - 12.39","1 March - 12.40","1 March - 12.50","1 March - 13.00"]
-    @State var messageSender = ["Me","Coach Budi","Me","Me","Coach Budi"]
+    private let myName = "Me"
     
     var body: some View {
         switch(displayOption){
@@ -29,14 +25,23 @@ struct CChatView: View {
             VStack(spacing:24){
                 //MARK: Message List
                 VStack(spacing:12){
-                    ForEach(messageList.indices){i in
-                        if(i>=messageList.count-3){
-                            if(messageSender[i]=="Me"){
-                                CChatBubble(sender: messageSender[i], time: messageDate[i], message: messageList[i], style: .home)
+                    if pvm.feedback.count<=0{
+                        Text("No Feedback Available")
+                            .modifier(MFont.Caption1(isItalic:true))
+                            .modifier(MColor.DisabledText())
+                    }
+                    else{
+                        ForEach(pvm.feedback.indices, id:\.self){ i in
+                            if(pvm.feedback.count>3 && i<pvm.feedback.count-3){
+                                
+                            }
+                            else if(pvm.feedback[i].SenderId == own.UserId){
+                                CChatBubble(sender: myName, time: pvm.feedback[i].SentDate, message: pvm.feedback[i].Content, style: .home)
                             }
                             else{
-                                CChatBubble(sender: messageSender[i], time: messageDate[i], message: messageList[i], style: .away)
+                                CChatBubble(sender: pvm.session.coachName, time: pvm.feedback[i].SentDate, message: pvm.feedback[i].Content, style: .away)
                             }
+                           
                         }
                     }
                 }
@@ -50,14 +55,21 @@ struct CChatView: View {
                 ///Set content to bottom up orientation
                 GeometryReader{ proxy in
                     ScrollView{
-                        VStack(spacing:12){
-                            Spacer()
-                            ForEach(messageList.indices){i in
-                                if(messageSender[i]=="Me"){
-                                    CChatBubble(sender: messageSender[i], time: messageDate[i], message: messageList[i], style: .home)
-                                }
-                                else{
-                                    CChatBubble(sender: messageSender[i], time: messageDate[i], message: messageList[i], style: .away)
+                        VStack(alignment:.center, spacing:12){
+                            if pvm.feedback.count<=0{
+                                Text("No Feedback Available")
+                                    .modifier(MFont.Caption1(isItalic:true))
+                                    .modifier(MColor.DisabledText())
+                                    .modifier(MView.FillFrame())
+                            }
+                            else{
+                                ForEach(pvm.feedback.indices, id: \.self){ i in
+                                    if(pvm.feedback[i].SenderId == own.UserId){
+                                        CChatBubble(sender: myName, time: pvm.feedback[i].SentDate, message: pvm.feedback[i].Content, style: .home)
+                                    }
+                                    else{
+                                        CChatBubble(sender: pvm.session.coachName, time: pvm.feedback[i].SentDate, message: pvm.feedback[i].Content, style: .away)
+                                    }
                                 }
                             }
                         }
@@ -78,8 +90,8 @@ struct CChatView: View {
     }
 }
 
-struct CChatView_Previews: PreviewProvider {
-    static var previews: some View {
-        CChatView(displayOption: .full)
-    }
-}
+//struct CChatView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CChatView(displayOption: .full)
+//    }
+//}

@@ -37,7 +37,7 @@ struct CSessionCard: View {
                     .modifier(MFont.Headline(size: 14))
                     .modifier(MColor.DisabledText())
                 
-                if data.id.isEmpty{
+                if data.activityName == ""{
                     Text("No Session")
                         .modifier(MFont.Headline(size:18))
                         .modifier(MColor.DisabledText())

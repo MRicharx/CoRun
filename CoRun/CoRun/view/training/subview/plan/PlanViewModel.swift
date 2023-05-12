@@ -22,12 +22,13 @@ class PlanViewModel: TrainingViewModel{
     
     func loadSession(session: [SessionData]){
         sessionDD.removeAll()
-        
+
 //        getDummy()
         for data in session{
             let d = SessionDisplayData()
             
-            d.id = String(data.SessionId)
+            d.id = data.SessionId
+            d.coachId = data.CoachId
             d.coachName = "Coach --"
             d.date = TDate().stringToDate(date: data.SessionDate,format: "YYYY-MM-dd")
             d.activityName = data.Name
@@ -59,7 +60,7 @@ class PlanViewModel: TrainingViewModel{
         for i in 1...6{
             let temp = SessionDisplayData()
             
-            temp.id = String(i)
+            temp.id = i
             temp.coachName = "Coach \(i)"
             temp.date = Date.now
             temp.activityName = "Activity \(i)"

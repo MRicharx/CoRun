@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EditBiodataPopUp: View {
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var own : ProfileData
     ///Define parent vm
     @ObservedObject var vm:ProfileViewModel
     
@@ -17,11 +18,8 @@ struct EditBiodataPopUp: View {
     @State var newWeight = ""
     @State var newBirthday = Date.now
     
-    
-    ///Define save alert display behavior
-    @State var showSaveAlert = false
-    ///Define discard alert display behavior
-    @State var showDiscardAlert = false
+    ///Define invalid data for edit data
+    @State var showInvalidAlert = false
     
     var body: some View {
         VStack(spacing:36){
@@ -69,21 +67,44 @@ struct EditBiodataPopUp: View {
                 //MARK: Update Button
                 Button{
                     //TODO: Update biodata
-                    showSaveAlert = true
+                    if vm.isUserDataValid(newName: newUsername, newHeight: newHeight, newWeight: newWeight, newBD: newBirthday) && !(vm.isUploadingData){
+                        vm.isUploadingData = true
+                    }
+                    else{
+                        showInvalidAlert = true
+                    }
                 }label: {
-                    Text("Update")
-                        .modifier(MFont.Headline(size:18))
+                    if vm.isUploadingData{
+                        ProgressView()
+                            .progressViewStyle(.circular)
+                    }
+                    else{
+                        Text("Update")
+                            .modifier(MFont.Headline(size:18))
+                    }
                 }.buttonStyle(MButton.DefaultButton(isActive: true,padding: 14))
                 
                 
                 //MARK: Discard Button
                 Button{
-                    //TODO: Discard edited biodata
-                    showDiscardAlert = true
+                    //MARK: Discard edited biodata
+                    dismiss()
                 }label: {
                     Text("Discard")
                         .modifier(MFont.Headline(size: 18))
                 }.buttonStyle(MButton.DefaultButton(isActive: true,invert: true,padding:14))
+            }
+        }
+        .onChange(of: vm.isUploadingData){ isUploading in
+            Task{
+                vm.profileDD.username = newUsername
+                vm.profileDD.height = Int(newHeight) ?? 0
+                vm.profileDD.weight = Int(newWeight) ?? 0
+                vm.profileDD.birthday = newBirthday
+                
+                await vm.updateUserData()
+                vm.refreshDisplayData()
+                dismiss()
             }
         }
         .onAppear{
@@ -94,42 +115,10 @@ struct EditBiodataPopUp: View {
             newBirthday = vm.profileDD.birthday
         }
         .padding(24)
-        //MARK: Save Alert
-        .alert(
-            "Do you want to update you data?",
-            isPresented: $showSaveAlert){
-                //MARK: Proceed
-                Button{
-                    //TODO: Update biodata at endpoint and local
-                    vm.profileDD.username = newUsername
-                    vm.profileDD.height = Int(newHeight) ?? 99
-                    vm.profileDD.weight = Int(newWeight) ?? 99
-                    vm.profileDD.birthday = newBirthday
-                    
-                    vm.updateUserData()
-                    dismiss()
-                }label:{
-                    Text("Update")
-                    
-                }
-                //MARK: Cancel
-                Button(role:.cancel){
-                    ///DO NOTHING
-                }label:{
-                    Text("Cancel")
-                        .modifier(MFont.Headline())
-                }
-            }
-        //MARK: Discard Alert
-            .alert(
-                "Do you want to discard the edit?",
-                isPresented: $showDiscardAlert){
-                    Button(role:.destructive){
-                        dismiss()
-                    }label:{
-                        Text("Discard")
-                    }
-                }
+        //MARK: Data Invalid Alert
+        .alert(vm.invalidDataMessage,isPresented: $showInvalidAlert){
+            Button("OK", role: .cancel){}
+        }
     }
 }
 

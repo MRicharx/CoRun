@@ -29,7 +29,7 @@ struct CSessionGoal: View {
                             case .distance:
                                 Image(systemName: "ruler.fill")
                                     .modifier(MColor.Primary())
-                                Text("\(data.target[i].amount, specifier: "%.2f") km")
+                                Text("\(data.target[i].amount/1000, specifier: "%.2f") km")
                             case .pace:
                                 Image(systemName: "bolt.fill")
                                     .modifier(MColor.Primary())

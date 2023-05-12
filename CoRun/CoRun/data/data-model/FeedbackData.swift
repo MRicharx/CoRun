@@ -21,3 +21,18 @@ class FeedbackData:Codable{
     ///Define if feedback is read
     var Status = 0
 }
+
+//class FeedbackList:ObservableObject{
+//    @Published var list = [FeedbackData]()
+//    
+//    init(){
+//    }
+//    
+//    init(data:[FeedbackData]){
+//        list = data
+//    }
+//    
+//    func set(data:[FeedbackData]){
+//        list = data
+//    }
+//}

@@ -9,6 +9,7 @@ import Foundation
 
 class AssessmentViewModel:SplashViewModel{
     private let model = AssessmentModel()
+    private var notification = HNotification()
     
     ///Username input
     @Published var username:String = ""
@@ -62,6 +63,11 @@ class AssessmentViewModel:SplashViewModel{
             invalidDataAlert = true
         }
         return false
+    }
+    
+    ///Check for notification permission and toggle picker status
+    func requestNotificationPermission(){
+        notification.requestPermission()
     }
     
     ///Push inputed personal data to endpoint

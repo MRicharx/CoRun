@@ -9,11 +9,11 @@ import SwiftUI
 
 struct CChatBubble: View {
     ///Define sender
-    let sender:String
+    @State var sender:String
     ///Define sent date
-    let time:String
+    @State var time:String
     ///Define message content
-    let message:String
+    @State var message:String
     
     ///Define bubble style
     @State var style:bubbleStyleOption
@@ -23,54 +23,59 @@ struct CChatBubble: View {
     }
     
     var body: some View {
-        switch(style){
-        case .home:
-            VStack(alignment:.trailing,spacing:4){
-                HStack{
-                    Text(time)
-                        .modifier(MFont.Body(size: 16))
-                        .modifier(MColor.DisabledText())
-                    Text(sender)
-                        .modifier(MFont.Headline(size: 16))
-                        .modifier(MColor.Text())
+        Group{
+            switch(style){
+            case .home:
+                VStack(alignment:.trailing,spacing:4){
+                    HStack{
+                        Text(time)
+                            .modifier(MFont.Body(size: 16))
+                            .modifier(MColor.DisabledText())
+                        Text(sender)
+                            .modifier(MFont.Headline(size: 16))
+                            .modifier(MColor.Text())
+                    }
+                    VStack{
+                        Text(message)
+                            .modifier(MFont.Body(size: 18))
+                            .modifier(MColor.Base())
+                    }
+                    .padding(EdgeInsets(top: 8, leading: 18, bottom: 8, trailing: 18))
+                    .background(
+                        CRRectangle(color: MColor.ColorPalette().primary,
+                                   tl: 18,tr: 0,bl: 18,br: 18)
+                    )
                 }
-                VStack{
-                    Text(message)
-                        .modifier(MFont.Body(size: 18))
-                        .modifier(MColor.Base())
+                .padding(EdgeInsets(top: 0, leading: 36, bottom: 0, trailing: 0))
+                .modifier(MView.FillToRightFrame())
+                
+            case .away:
+                VStack(alignment:.leading,spacing:4){
+                    HStack{
+                        Text(sender)
+                            .modifier(MFont.Headline(size: 16))
+                            .modifier(MColor.Text())
+                        Text(time)
+                            .modifier(MFont.Body(size: 16))
+                            .modifier(MColor.DisabledText())
+                    }
+                    VStack{
+                        Text(message)
+                            .modifier(MFont.Body(size: 18))
+                            .modifier(MColor.Text())
+                    }
+                    .padding(EdgeInsets(top: 8, leading: 18, bottom: 8, trailing: 18))
+                    .background(
+                        CRRectangle(color: MColor.ColorPalette().primaryDisabled,
+                                   tl: 0,tr: 18,bl: 18,br: 18)
+                    )
                 }
-                .padding(EdgeInsets(top: 8, leading: 18, bottom: 8, trailing: 18))
-                .background(
-                    CRRectangle(color: MColor.ColorPalette().primary,
-                               tl: 18,tr: 0,bl: 18,br: 18)
-                )
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 36))
+                .modifier(MView.FillToLeftFrame())
             }
-            .padding(EdgeInsets(top: 0, leading: 36, bottom: 0, trailing: 0))
-            .modifier(MView.FillToRightFrame())
-            
-        case .away:
-            VStack(alignment:.leading,spacing:4){
-                HStack{
-                    Text(sender)
-                        .modifier(MFont.Headline(size: 16))
-                        .modifier(MColor.Text())
-                    Text(time)
-                        .modifier(MFont.Body(size: 16))
-                        .modifier(MColor.DisabledText())
-                }
-                VStack{
-                    Text(message)
-                        .modifier(MFont.Body(size: 18))
-                        .modifier(MColor.Text())
-                }
-                .padding(EdgeInsets(top: 8, leading: 18, bottom: 8, trailing: 18))
-                .background(
-                    CRRectangle(color: MColor.ColorPalette().primaryDisabled,
-                               tl: 0,tr: 18,bl: 18,br: 18)
-                )
-            }
-            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 36))
-            .modifier(MView.FillToLeftFrame())
+        }.onAppear{
+            let t = TDate().stringToDate(date: time, format: "YYYY-MM-dd'T'HH:mm:ss'Z'")
+            time = TDate().dateToString(date: t,format: "dd MMMM, HH:mm")
         }
     }
 }

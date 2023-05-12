@@ -10,6 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     @Environment(\.selectedView) var curView
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var own : ProfileData
     
     @StateObject var vm = ProfileViewModel()
     
@@ -23,9 +24,11 @@ struct ProfileView: View {
                         Text(vm.profileDD.username)
                             .modifier(MFont.Headline())
                             .modifier(MColor.Text())
+                            .redacted(reason: vm.isRedacting ? .placeholder : [])
                         Text(vm.profileDD.email)
                             .tint(MColor.ColorPalette().textDisabled)
                             .modifier(MFont.SubBody())
+                            .redacted(reason: vm.isRedacting ? .placeholder : [])
                     }.modifier(MView.FillToLeftFrame())
                     .padding(EdgeInsets(top: 0, leading: 24, bottom: 12, trailing: 24))
                     
@@ -90,7 +93,7 @@ struct ProfileView: View {
                             if vm.profileDD.coachName == ""{
                                 vm.showScanQR=true
                             }else{
-                                vm.showCoachAlert=true
+//                                vm.showCoachAlert=true
                             }
                         }label:{
                             HStack(alignment:.top, spacing:12){
@@ -107,11 +110,13 @@ struct ProfileView: View {
                                                 .modifier(MFont.Body())
                                                 .modifier(MColor.DisabledText())
                                                 .modifier(MView.FillToLeftFrame())
+                                                .redacted(reason: vm.isRedacting ? .placeholder : [])
                                         }else{
                                             Text(vm.profileDD.coachName)
                                                 .modifier(MFont.Headline())
                                                 .modifier(MColor.Text())
                                                 .modifier(MView.FillToLeftFrame())
+                                                .redacted(reason: vm.isRedacting ? .placeholder : [])
                                         }
                                         
                                     }
@@ -175,7 +180,8 @@ struct ProfileView: View {
                 
                 //MARK: Sign Out
                 Button{
-                    vm.showSignOUtAlert = true
+                    vm.notif.pushDummyNotification()
+//                    vm.showSignOUtAlert = true
                 }label:{
                     VStack{
                         Text("Sign Out")
@@ -185,10 +191,25 @@ struct ProfileView: View {
                 }
             }
         }
+//        .onChange(of: vm.isUploadingData){ now in
+//            Task{
+//                if now{
+//                    await vm.updateUserData()
+//                    await vm.loadBuffer(user: own)
+//                    vm.refreshDisplayData()
+//                }
+//            }
+//        }
+        .onAppear{
+            Task{
+                vm.loadBuffer(user:own){
+                    vm.refreshDisplayData()
+                }
+            }
+        }
         .environment(\.notificationPermissionAlert, $vm.showPermissionAlert)
         //MARK: Edit Controller
         .sheet(isPresented: $vm.showEditData){
-            //TODO: Create proper edit data passement
             EditBiodataPopUp(vm:vm)
         }
         //MARK: QR Controller

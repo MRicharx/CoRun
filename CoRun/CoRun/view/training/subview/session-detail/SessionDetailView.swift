@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SessionDetailView: View {
+    @EnvironmentObject var own:ProfileData
+    
     @StateObject private var vm = SessionDetailViewModel()
     @ObservedObject var data: SessionDisplayData
     
@@ -16,24 +18,31 @@ struct SessionDetailView: View {
             Color("Base")
                 .ignoresSafeArea()
             
-            VStack(spacing:12){
+            VStack(spacing:8){
                 CSessionTitle(data:data)
                 
                 ScrollView{
                     VStack(spacing: 12){
                         CSessionGoal(data: data)
                         CSessionResult(vm:vm, result: data.result)
-                        CSessionFeedback(showAll: $vm.showAllFeedback)
+                        CSessionFeedback(
+                            showAll: $vm.showAllFeedback)
                     }.padding(EdgeInsets(top: 12, leading: 0, bottom: 12, trailing: 0))
                 }
             }
         }
         .onAppear{
-            vm.checkResult(data: data)
+            vm.session = data
+            Task{
+                vm.loadBuffer(coachId: data.coachId,session: data){
+                    vm.checkResult(data: data)
+                }
+            }
         }
         .sheet(isPresented: $vm.showAllFeedback){
             CChatView(displayOption: .full)
         }
+        .environmentObject(vm)
     }
 }
 

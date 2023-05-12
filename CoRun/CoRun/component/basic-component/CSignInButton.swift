@@ -25,7 +25,7 @@ struct CSignInButton: View{
                 if let appleIdCredential = authResults.credential as? ASAuthorizationAppleIDCredential {
                     let signData = SignInData()
                     signData.uuid = appleIdCredential.user
-                    signData.email = appleIdCredential.email ?? "No Data"
+                    signData.email = appleIdCredential.email ?? "- - -"
                     
                     //MARK: ASSIGN DATA to user defaultHERE
                   api.SignInWithAppleID(body: signData){result in

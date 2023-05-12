@@ -20,7 +20,8 @@ class ListSessionDisplayData:ObservableObject{
 }
 
 class SessionDisplayData:ObservableObject{
-    @Published var id:String
+    @Published var id:Int
+    @Published var coachId:String
     @Published var coachName:String
     @Published var date:Date
     @Published var activityName:String
@@ -32,7 +33,8 @@ class SessionDisplayData:ObservableObject{
     @Published var result :ResultDisplayData
     
     init(){
-        id = ""
+        id = 0
+        coachId = ""
         coachName = ""
         date = Date.now
         activityName = ""
@@ -45,7 +47,9 @@ class SessionDisplayData:ObservableObject{
     }
     
     func initialize(sessionData:SessionData){
-        id = String(sessionData.SessionId)
+        id = sessionData.SessionId
+        coachId = sessionData.CoachId
+        coachName = ""
         date = TDate().stringToDate(date: sessionData.SessionDate, format: "YYYY-MM-DD")
         activityName = sessionData.Name
         

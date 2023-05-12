@@ -17,7 +17,7 @@ class CSessionCardViewModel:ObservableObject{
             case .duration:
                 result += "\(data.amount/60) min  \u{2022} "
             case .distance:
-                result += "\(data.amount) km  \u{2022} "
+                result += "\(data.amount/1000) km  \u{2022} "
             case .pace:
                 result += ""
             case .intensity:

@@ -9,17 +9,14 @@ import SwiftUI
 
 struct ScanQRPopUp: View {
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var own : ProfileData
     
     ///Define Coach ID from TextField input
     @State var id = ""
     ///Define Coach ID from Scanner Input
     @State var scanResult = ""
     
-    ///Define Target Coach
-    @State var coachName = "Budiman"
-    
-    ///Define Request Alert Behavior
-    @State var showRequestAlert = false
+    @StateObject var vm = ScanQRViewModel()
     
     var body: some View {
         ZStack{
@@ -55,6 +52,7 @@ struct ScanQRPopUp: View {
                         //MARK: Search Button
                         Button{
                             //TODO: Search coach
+                            scanResult = id
                         }label:{
                             Text("Search Coach")
                                 .modifier(MFont.Headline(size:18))
@@ -74,20 +72,27 @@ struct ScanQRPopUp: View {
             }
             .padding(0)
             //MARK: Scan Result Alert
-            .onChange(of: scanResult,perform: { _ in
-                //TODO: Check if coach Exist
-                if(!(coachName.isEmpty)){
-                    coachName = scanResult
-                    showRequestAlert = true
+            .onChange(of: scanResult){ res in
+                Task{
+                    await vm.retrieveCoach(id:scanResult)
+                    vm.showRequestAlert = true
                 }
-            })
+            }
             //MARK: Send Request Alert
-                .alert("Send request to\nCoach \(coachName)", isPresented: $showRequestAlert){
+            .alert("Are you sure want to send request to\nCoach \(vm.coachName)?", isPresented: $vm.showRequestAlert){
                     Button("Send"){
                         //TODO: Send Request Feature
+                        Task{
+                            await vm.sendRequest(ownId: own.UserId, coachId: scanResult)
+                        }
                     }
                     Button("Cancel",role: .cancel){
                         scanResult = ""
+                    }
+                }
+            .alert("Request to Coach \(vm.coachName) Sent", isPresented: $vm.showSuccessAlert){
+                    Button("OK",role: .cancel){
+                        dismiss()
                     }
                 }
         }

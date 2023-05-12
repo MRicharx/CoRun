@@ -62,6 +62,9 @@ struct AssessmentView: View {
             .padding(EdgeInsets(top: 0, leading: 24, bottom: 24, trailing: 24))
             .modifier(MView.FillFrame())
         }
+        .onAppear{
+            //vm.requestNotificationPermission()
+        }
         .alert(vm.invalidMessage, isPresented: $vm.invalidDataAlert){
             Button("OK",role: .cancel) {}
         }

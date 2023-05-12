@@ -198,6 +198,13 @@ struct Day:View{
             }
             .padding(4)
         }
+        .onAppear{
+            if TDate().compare(first: day.date, second: Date.now, format: "dd MMMM YYYY"){
+                self.isSelected = true
+            }else{
+                self.isSelected = false
+            }
+        }
         .onChange(of: selected.wrappedValue){newDate in
             if TDate().compare(first: day.date, second: newDate, format: "dd MMMM YYYY"){
                 self.isSelected = true

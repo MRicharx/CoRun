@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct CSessionFeedback: View {
+    @EnvironmentObject var pvm: SessionDetailViewModel
     @Binding var showAll:Bool
     
     var body: some View {
         VStack(alignment: .leading, spacing: 18){
             HStack(alignment:.firstTextBaseline){
-                Text("Result")
+                Text("Feedback")
                     .modifier(MFont.Headline(size: 18))
                     .modifier(MColor.DisabledText())
                     .modifier(MView.FillToLeftFrame())
@@ -36,6 +37,7 @@ struct CSessionFeedback: View {
         .padding(24)
         .modifier(MView.FillToLeftFrame())
         .modifier(MView.Card())
+
     }
 }
 

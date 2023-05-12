@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct CChatSendBar: View {
+    @EnvironmentObject var own:ProfileData
+    @EnvironmentObject var pvm: SessionDetailViewModel
+    
     ///Define textfield input value
     @State var input:String = ""
     ///Define Hint Value
     let hint = "Send feedback"
+    
+    @State var isSending = false
     
     var body: some View {
         //MARK: TEXTFIELD
@@ -46,17 +51,36 @@ struct CChatSendBar: View {
             }else{
                 Button{
                     //TODO: Send Feat
+                    if !(isSending){
+                        isSending = true
+                    }
                 }label:{
-                    Image(systemName: "paperplane.fill")
-                        .modifier(MFont.Headline(size:16))
+                    if isSending{
+                        ProgressView()
+                            .progressViewStyle(.circular)
+                    }
+                    else{
+                        Image(systemName: "paperplane.fill")
+                            .modifier(MFont.Headline(size:16))
+                    }
                 }.buttonStyle(MButton.SquareButton(isActive: true))
+            }
+        }
+        .onChange(of: isSending){ cur in
+            if cur{
+                Task{
+                    await pvm.pushFeedback(ownId: own.UserId,input: input)
+                    input = ""
+                    isSending = false
+                    pvm.refreshDisplayData()
+                }
             }
         }
     }
 }
 
-struct CChatSendBar_Previews: PreviewProvider {
-    static var previews: some View {
-        CChatSendBar()
-    }
-}
+//struct CChatSendBar_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CChatSendBar()
+//    }
+//}
