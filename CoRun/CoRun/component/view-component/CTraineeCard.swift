@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct CTraineeCard: View {
+    @EnvironmentObject var pvm: TraineeListViewModel
+    @EnvironmentObject var own: ProfileData
+    
     ///Define to display card as request or default
     @ObservedObject var traineeData : TraineeDisplayData
+    
+    @State var isAccepting = false
+    @State var isDeclining = false
     
     var body: some View {
         HStack(spacing: 24){
@@ -29,20 +35,61 @@ struct CTraineeCard: View {
                 HStack(spacing:12){
                     //MARK: Decline
                     Button{
-                        //TODO: Decline Function
+                        //MARK: Trigger Decline Function
+                        if !isDeclining{
+                            isDeclining = true
+                        }
                     }label: {
-                        Image(systemName: "xmark")
-                            .modifier(MFont.Headline(size:18))
-                            .modifier(MColor.Base())
+                        if isDeclining{
+                            ProgressView()
+                                .progressViewStyle(.circular)
+                        }
+                        else{
+                            Image(systemName: "xmark")
+                                .modifier(MFont.Headline(size:18))
+                                .modifier(MColor.Base())
+                        }
                     }.buttonStyle(MButton.SquareButton(isActive: true,color: MColor.ColorPalette().danger))
                     
                     //MARK: Accept
                     Button{
-                        //TODO: Accept Function
+                        //MARK: Trigger Accept Function
+                        if !isAccepting{
+                            isAccepting = true
+                        }
                     }label: {
-                        Image(systemName: "checkmark")
-                            .modifier(MFont.Headline(size:18))
+                        if isAccepting{
+                            ProgressView()
+                                .progressViewStyle(.circular)
+                        }
+                        else{
+                            Image(systemName: "checkmark")
+                                .modifier(MFont.Headline(size:18))
+                        }
                     }.buttonStyle(MButton.SquareButton(isActive: true))
+                }
+            }
+        }
+        .onChange(of: isAccepting){ acc in
+            if acc{
+                Task{
+                    await pvm.acceptReq(traineeId: traineeData.id,ownId:own.UserId)
+                    await pvm.loadBuffer(userId: own.UserId)
+                    
+                    isAccepting = false
+                    pvm.refreshDisplayData()
+                }
+            }
+        }
+        .onChange(of: isDeclining){ dec in
+            if dec{
+                Task{
+                    await pvm.declineReq(traineeId: traineeData.id,ownId:own.UserId)
+                    await pvm.loadBuffer(userId: own.UserId)
+                    
+                    isDeclining = false
+                    
+                    pvm.refreshDisplayData()
                 }
             }
         }

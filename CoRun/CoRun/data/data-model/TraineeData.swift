@@ -8,10 +8,17 @@
 import Foundation
 
 class TraineeData:Codable{
-    var id = ""
-    var name = ""
-    var gender = ""
-    var age = 0
+    var ListId = 0
+    var TraineeId = ""
+    var Status = 1
+    ///Same with Trainee Id
+    var UserId = ""
+    var Email = ""
+    var Username = ""
+    var Gender = "Male"
+    var Weight = 0
+    var Height = 0
+    var CoachId = ""
+    var Birthday = ""
     
-    var isAccepted = true
 }

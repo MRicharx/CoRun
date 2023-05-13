@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TraineeListView: View {
+    @EnvironmentObject var own:ProfileData
+    
     @StateObject var vm = TraineeListViewModel()
     
     var body: some View {
@@ -81,10 +83,16 @@ struct TraineeListView: View {
             }
             .modifier(MView.Card())
         }
-        .navigationTitle("My Trainee")
-        .onAppear{
-            vm.loadData()
+        .onChange(of: vm.searchInput){q in
+            vm.refreshDisplayData()
         }
+        .navigationTitle("My Trainee")
+        .task{
+            await vm.loadBuffer(userId: own.UserId)
+            
+            vm.refreshDisplayData()
+        }
+        .environmentObject(vm)
     }
 }
 

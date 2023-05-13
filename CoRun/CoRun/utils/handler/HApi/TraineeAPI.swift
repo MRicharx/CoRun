@@ -11,7 +11,7 @@ import Foundation
 ///This contain func that handle directly trainee related  to endpoint
 class TraineeAPI:HNetwork{
     ///Return all user trainee
-    func getTrainee(userId:String, completion:@escaping(Result<[ProfileData],ErrorMessage>)->Void){
+    func getTrainee(userId:String, completion:@escaping(Result<[TraineeData],ErrorMessage>)->Void){
         let url = "trainee/\(userId)"
         
         let jsonDictionary: [String:String] = [
@@ -27,12 +27,12 @@ class TraineeAPI:HNetwork{
             case .success(let data):
                 do {
                     ///Do Success Thing
-                    if let responseObject = try? JSONDecoder().decode([ProfileData].self, from: data){
+                    if let responseObject = try? JSONDecoder().decode([TraineeData].self, from: data){
                         completion(.success(responseObject))
                     }
                     else{
                         print(">> Get User Trainee failed parsing")
-                        completion(.success([ProfileData]()))
+                        completion(.success([TraineeData]()))
                     }
                 }
             }
