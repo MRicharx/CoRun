@@ -35,6 +35,7 @@ struct SessionDetailView: View {
             vm.session = data
             Task{
                 vm.loadBuffer(coachId: data.coachId,session: data){
+                    data.coachName = vm.session.coachName
                     vm.checkResult(data: data)
                 }
             }

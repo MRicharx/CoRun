@@ -45,52 +45,53 @@ class TrainingViewModel:ObservableObject{
     
     ///Match workout with session
     func matchSession(age:Int){
-        ///Check if today have a session
-        if let data = bufferSes.first(where: {
-            let date = TDate().stringToDate(date: $0.SessionDate)
-            return TDate().compare(first: date, second: Date.now, format: "YYYY-MM-dd")}){
-            
-            ///Pick best workout data
-            var bestResult = SessionResultData()
-            for wk in bufferWorkout{
-                var wScore = 100
-                
-                ///Minus 1 per 100 meter miss
-                if data.Distance > 0{
-                    wScore -= Int((data.Distance - wk.distance))/100
+        ///Find today session
+        for data in bufferSes{
+            let date = TDate().stringToDate(date: data.SessionDate,format: "YYYY-MM-dd")
+            if TDate().compare(first: date, second: Date.now, format: "YYYY-MM-dd"){
+    
+                ///Pick best workout data
+                var bestResult = SessionResultData()
+                for wk in bufferWorkout{
+                    var wScore = 100
+    
+                    ///Minus 1 per 100 meter miss
+                    if data.Distance > 0{
+                        wScore -= abs(Int((data.Distance - wk.distance))/100)
+                    }
+                    ///Minus 1 per 5 minute miss
+                    if data.Duration > 0{
+                        wScore -= abs(Int((data.Duration - wk.duration))/60)
+                    }
+                    ///Minus 1 per 10 second miss
+                    if data.Pace > 0{
+                        let p = wk.duration/wk.distance
+                        wScore -= abs(Int((data.Pace - p))/10)
+                    }
+                    ///Minus 1 per 0.5% miss
+                    if data.Intensity > 0{
+                        let i = Double(Int(wk.avgBPM) / (220 - age) * 100)
+                        wScore -= 2 * abs(Int(data.Intensity) - Int(i))
+                    }
+    
+                    ///Check if current result better
+                    if data.Score < wScore{
+                        bestResult = wk
+                        bestResult.score = wScore
+                    }
                 }
-                ///Minus 1 per 5 minute miss
-                if data.Duration > 0{
-                    wScore -= Int((data.Duration - wk.duration))/60
-                }
-                ///Minus 1 per 15 second miss
-                if data.Pace > 0{
-                    let p = wk.duration/wk.distance
-                    wScore -= Int((data.Pace - p))/15
-                }
-                ///Minus 1 per 1% miss
-                if data.Intensity > 0{
-                    let i = Double(Int(wk.avgBPM) / (220 - age) * 100)
-                    wScore -= Int(data.Intensity) - Int(i)
+    
+    
+                ///Compare existing result with new best result score
+                if data.Score < bestResult.score{
+                    updateResult = true
+
+                    print(">> TrainingViewModel: Found better result: with score: [\(bestResult.score)]")
+
+                    newResult = bestResult
+                    newResult.id = data.SessionId
                 }
                 
-                print(">> TrainingViewModel: Matching: [\(wScore)]")
-                
-                ///Check if current result better
-                if data.Score < wScore{
-                    bestResult = wk
-                    bestResult.score = wScore
-                }
-            }
-            
-            
-            ///Compare existing result with new result score
-            if data.Score < bestResult.score{
-                updateResult = true
-                
-                print(">> TrainingViewModel: Found better result: with score: [\(bestResult.score)]")
-                
-                newResult = bestResult
             }
         }
     }

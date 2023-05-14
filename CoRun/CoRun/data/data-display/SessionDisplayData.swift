@@ -28,7 +28,7 @@ class SessionDisplayData:ObservableObject{
     @Published var target:[TargetDisplayData]
     @Published var status:CompletionStatus
     @Published var desc:String
-    @Published var isUnread:Bool
+    @Published var score:Int
     
     @Published var result :ResultDisplayData
     
@@ -41,30 +41,30 @@ class SessionDisplayData:ObservableObject{
         target = [TargetDisplayData]()
         status = CompletionStatus()
         desc = ""
-        isUnread = false
+        score = 0
         
         result = ResultDisplayData()
     }
     
-    func initialize(sessionData:SessionData){
-        id = sessionData.SessionId
-        coachId = sessionData.CoachId
-        coachName = ""
-        date = TDate().stringToDate(date: sessionData.SessionDate, format: "YYYY-MM-DD")
-        activityName = sessionData.Name
-        
-//        target = [TargetDisplayData]()
-        
-        status = CompletionStatus(status: sessionData.Status)
-        desc = sessionData.Description
-        
-//        result = ResultDisplayData(resultData: sessionData.result)
-        
-//        target.removeAll()
+//    func initialize(sessionData:SessionData){
+//        id = sessionData.SessionId
+//        coachId = sessionData.CoachId
+//        coachName = ""
+//        date = TDate().stringToDate(date: sessionData.SessionDate, format: "YYYY-MM-DD")
+//        activityName = sessionData.Name
 //
-//        for data in sessionData.target{
-//            let t = TargetDisplayData(targetData: data)
-//            target.append(t)
-//        }
-    }
+////        target = [TargetDisplayData]()
+//
+//        status = CompletionStatus(status: sessionData.Status)
+//        desc = sessionData.Description
+//
+////        result = ResultDisplayData(resultData: sessionData.result)
+//
+////        target.removeAll()
+////
+////        for data in sessionData.target{
+////            let t = TargetDisplayData(targetData: data)
+////            target.append(t)
+////        }
+//    }
 }

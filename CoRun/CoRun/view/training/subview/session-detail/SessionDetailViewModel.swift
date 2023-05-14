@@ -68,7 +68,7 @@ class SessionDetailViewModel:ObservableObject{
     }
     
     func checkResult(data:SessionDisplayData){
-        if data.result.distance <= 0{
+        if data.score <= 0{
             isResultExist = false
         }else{
             ///Calculate intensity

@@ -46,7 +46,7 @@ class CalendarViewModel: TrainingViewModel{
             ]
             
             d.desc = data.Description
-            d.isUnread = false
+            d.score = data.Score
             
             d.status = CompletionStatus(status: data.Status)
             
@@ -67,45 +67,5 @@ class CalendarViewModel: TrainingViewModel{
             selectedSession = temp
         }
     }
-    
-    private func getDummy(){
-        for i in 1...6{
-            let temp = SessionDisplayData()
-            ///Define Component
-            var comp = DateComponents()
-            comp.day = -(i)
-            
-            temp.id = i
-            temp.coachName = "Coach \(i)"
-            temp.date = Calendar.current.date(byAdding: comp, to: Date.now) ?? Date.now
-            temp.activityName = "Activity \(i)"
-//            temp.target = [
-//                TargetDisplayData(targetData: SessionTarget(targetType: 0, amount: Double(600*i))),
-//                TargetDisplayData(targetData: SessionTarget(targetType: 1, amount: Double(i))),
-//                TargetDisplayData(targetData: SessionTarget(targetType: 2, amount: Double(60*i))),
-//                TargetDisplayData(targetData: SessionTarget(targetType: 3, amount: 60))
-//            ]
-            
-            if(i<3){
-                temp.status.set(newStatus: .planReachAllGoal)
-            }
-            else if i == 3{
-                temp.status.set(newStatus: .planPartlyReachGoal)
-            }
-            else{
-                temp.status.set(newStatus: .planNotDone)
-            }
-            
-            temp.desc = "This is dummy session"
-            temp.isUnread = false
-            
-            temp.result = ResultDisplayData()
-            if i<4{
-                temp.result.distance = Double(i)
-                temp.result.avgBPM = 100
-            }
-            
-            sessionDD.append(temp)
-        }
-    }
+
 }

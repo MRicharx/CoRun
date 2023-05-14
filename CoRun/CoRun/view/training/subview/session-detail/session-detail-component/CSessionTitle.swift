@@ -10,7 +10,6 @@ import SwiftUI
 struct CSessionTitle: View {
     @ObservedObject var data:SessionDisplayData
     
-    
     var body: some View {
         HStack{
             VStack(alignment:.leading){

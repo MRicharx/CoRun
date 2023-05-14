@@ -108,6 +108,7 @@
 		83E4339129F1610300D00AFC /* TargetDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4339029F1610300D00AFC /* TargetDisplayData.swift */; };
 		83E4339429F172F200D00AFC /* CSessionCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4339329F172F200D00AFC /* CSessionCardViewModel.swift */; };
 		83E50C602A0E3ACF005DE5CC /* ScanQRViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E50C5F2A0E3ACF005DE5CC /* ScanQRViewModel.swift */; };
+		83E50C622A113BF9005DE5CC /* HBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E50C612A113BF9005DE5CC /* HBackground.swift */; };
 		83E85A4329F29A5700ED118C /* GraphDisplayDataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E85A4229F29A5700ED118C /* GraphDisplayDataList.swift */; };
 		83E85A4529F2C29400ED118C /* TraineeDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E85A4429F2C29400ED118C /* TraineeDisplayData.swift */; };
 		83E85A4729F4021800ED118C /* TraineeSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E85A4629F4021800ED118C /* TraineeSummaryViewModel.swift */; };
@@ -263,6 +264,7 @@
 		83E4339029F1610300D00AFC /* TargetDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetDisplayData.swift; sourceTree = "<group>"; };
 		83E4339329F172F200D00AFC /* CSessionCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSessionCardViewModel.swift; sourceTree = "<group>"; };
 		83E50C5F2A0E3ACF005DE5CC /* ScanQRViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRViewModel.swift; sourceTree = "<group>"; };
+		83E50C612A113BF9005DE5CC /* HBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HBackground.swift; sourceTree = "<group>"; };
 		83E85A4229F29A5700ED118C /* GraphDisplayDataList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphDisplayDataList.swift; sourceTree = "<group>"; };
 		83E85A4429F2C29400ED118C /* TraineeDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeDisplayData.swift; sourceTree = "<group>"; };
 		83E85A4629F4021800ED118C /* TraineeSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeSummaryViewModel.swift; sourceTree = "<group>"; };
@@ -851,6 +853,7 @@
 				834DD25529C6F51A00CD59EB /* HNetwork.swift */,
 				83D31B7A29C70DED00B47F8C /* HHealth.swift */,
 				83E4336A29EC75B200D00AFC /* HNotification.swift */,
+				83E50C612A113BF9005DE5CC /* HBackground.swift */,
 			);
 			path = handler;
 			sourceTree = "<group>";
@@ -1109,6 +1112,7 @@
 				83DCE1AB29CCA6C30007E73D /* CDivider.swift in Sources */,
 				83F2C81929C30187004E3270 /* CoRunApp.swift in Sources */,
 				8369324D29E7E63F007994D6 /* CChatSendBar.swift in Sources */,
+				83E50C622A113BF9005DE5CC /* HBackground.swift in Sources */,
 				8369323129E5E64B007994D6 /* CalendarModel.swift in Sources */,
 				83DCE1AF29CCBE6F0007E73D /* CActivityCard.swift in Sources */,
 				83A4223529E5AF4000D4DE8F /* CompletionStatus.swift in Sources */,
@@ -1306,6 +1310,8 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "Your camera will be used to scan QR Code";
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Your workout data, and health data related to running and general fitness will be accessed, compared to your training plan and calculated to provide summary";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Your workout data, and health data related to running and general fitness will be able to be accessed by your coach and this application as reference";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "This app will write your workout data to app ";
+				INFOPLIST_KEY_NSSiriUsageDescription = "Allow siri to control notification behavior";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
@@ -1314,7 +1320,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mricharx.ckdemo.CoRun;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1344,6 +1350,8 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "Your camera will be used to scan QR Code";
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Your workout data, and health data related to running and general fitness will be accessed, compared to your training plan and calculated to provide summary";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Your workout data, and health data related to running and general fitness will be able to be accessed by your coach and this application as reference";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "This app will write your workout data to app ";
+				INFOPLIST_KEY_NSSiriUsageDescription = "Allow siri to control notification behavior";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
@@ -1352,7 +1360,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mricharx.ckdemo.CoRun;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

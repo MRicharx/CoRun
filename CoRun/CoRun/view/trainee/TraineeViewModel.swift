@@ -51,7 +51,7 @@ class TraineeViewModel:ObservableObject{
                 TargetDisplayData(type: 3, amount: data.Intensity)
             ]
 
-            s.isUnread = false
+            s.score = data.Score
             
             s.status = CompletionStatus(status: data.Status)
             

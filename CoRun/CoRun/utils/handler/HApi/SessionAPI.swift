@@ -56,7 +56,7 @@ class SessionAPI: HNetwork{
             "score":String(describing: body.score)
         ]
         
-        request(requestName: "Post session result", endpointURL: url, method: "POST", body: jsonDictionary){result in
+        request(requestName: "Post session result", endpointURL: url, method: "POST", body: jsonDictionary,isPrintStatus: true){result in
             
             switch result{
             case .failure(let error):
