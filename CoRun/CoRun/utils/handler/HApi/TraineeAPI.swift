@@ -67,6 +67,21 @@ class TraineeAPI:HNetwork{
         }
     }
     
+    ///Delete trainee's sesison
+    func deleteTraineeSession(sessionId:Int,completion:@escaping(Bool)->Void){
+        let url = "trainee/session/\(sessionId)"
+        
+        request(requestName: "Delete Session", endpointURL: url, method: "DELETE", body: ["":""]){ result in
+            switch result{
+            case.failure(_):
+                print(">> Delete Trainee Session Failed")
+                completion(false)
+            case .success(_):
+                completion(true)
+            }
+        }
+    }
+    
     ///Dismiss trainee
     func dismissTrainee(traineeId:String, coachId:String, completion:@escaping(Bool)->Void){
         let url = "trainee/dismiss"

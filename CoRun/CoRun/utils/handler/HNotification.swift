@@ -21,15 +21,15 @@ class HNotification:ObservableObject{
             if settings.authorizationStatus == .notDetermined {
                 // Notification permission has not been asked
                 self.permissionStatus = .yetAsked
-                print(">> HNotification: Asking Permission")
+//                print(">> HNotification: Asking Permission")
             } else if settings.authorizationStatus == .denied {
                 // Notification permission was previously denied, go to settings & privacy to re-enable
                 self.permissionStatus = .denied
-                print(">> HNotification: Permission DENIED")
+//                print(">> HNotification: Permission DENIED")
             } else if settings.authorizationStatus == .authorized {
                 // Notification permission was already granted
                 self.permissionStatus = .granted
-                print(">> HNotification: Permission GRANTED")
+//                print(">> HNotification: Permission GRANTED")
 
             }
         })
@@ -44,8 +44,39 @@ class HNotification:ObservableObject{
         }
     }
     
-    func scheduleNotification(){
+    func scheduleNotification(time: Date){
+        let content = UNMutableNotificationContent()
+        content.title = "You can do it!!"
+        content.subtitle = "Don't forget to train today as well"
+        content.sound = UNNotificationSound.default
         
+        let calendar = Calendar.current
+        
+        //Receive with date
+            var dateInfo = DateComponents()
+        dateInfo.hour = calendar.component(.hour, from: time) //Put your hour
+        dateInfo.minute = calendar.component(.minute, from: time) //Put your minutes
+        
+        // show this notification five seconds from now
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: true)
+
+        // choose a random identifier
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+
+        // Clear and add our notification request
+        let center = UNUserNotificationCenter.current()
+        center.removeAllPendingNotificationRequests()
+        
+        UNUserNotificationCenter.current().add(request)
+        print(">> HNotification: Schedule Notification at \(dateInfo.hour ?? 99):\(dateInfo.minute ?? 99)")
+    }
+    
+    func clearScheduledNotification(){
+        let center = UNUserNotificationCenter.current()
+        
+        center.removeAllPendingNotificationRequests()
+        
+        print(">> HNotification: Scheduled Notification Cleared")
     }
     
     func scheduleDummyNotification(){
@@ -77,7 +108,7 @@ class HNotification:ObservableObject{
         content.sound = UNNotificationSound.default
 
         // show this notification five seconds from now
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
 
         // choose a random identifier
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)

@@ -104,7 +104,7 @@ class UserAPI : HNetwork{
             "coachId": String(describing: coachId)
         ]
      
-        request(requestName: "Send Coach Request", endpointURL: url, method: "POST", body: jsonDictionary){ result in
+        request(requestName: "Send Coach Request", endpointURL: url, method: "POST", body: jsonDictionary,isPrintStatus: true){ result in
             
             switch result{
             case .failure(let error):

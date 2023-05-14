@@ -53,6 +53,15 @@ struct TDate:TDateProtocol{
         return age
     }
     
+    ///Return date today at 00:01 right after midnight
+    func getStartDate()->Date{
+        var calendar = Calendar(identifier: .gregorian)
+//        calendar.timeZone = TimeZone(secondsFromGMT: 0)!
+        let startOfDate = calendar.startOfDay(for: Date())
+        
+        return startOfDate
+    }
+    
     func getFirstDayOfMonth(month: Date) -> Date {
         ///Define Component
         let comp: DateComponents = Calendar.current.dateComponents([.year, .month], from: month)

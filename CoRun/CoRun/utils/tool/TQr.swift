@@ -65,7 +65,8 @@ class ScannerCoordinator: NSObject, AVCaptureMetadataOutputObjectsDelegate {
  
         // Check if the metadataObjects array is not nil and it contains at least one object.
         if metadataObjects.count == 0 {
-            scanResult = "No QR code detected"
+//            scanResult = "No QR code detected"
+            print("No QR Detected")
             return
         }
  

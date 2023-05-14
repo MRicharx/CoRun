@@ -32,6 +32,7 @@ struct CTextfield: View {
     enum KeyboardType{
         case normal
         case number
+        case decimal
     }
     
     var body: some View {
@@ -65,6 +66,10 @@ struct CTextfield: View {
                             case .number:
                                 TextField("", text: $input)
                                 .keyboardType(.numberPad)
+                                .modifier(MFont.Body())
+                            case .decimal:
+                                TextField("", text: $input)
+                                .keyboardType(.decimalPad)
                                 .modifier(MFont.Body())
                             }
                         }

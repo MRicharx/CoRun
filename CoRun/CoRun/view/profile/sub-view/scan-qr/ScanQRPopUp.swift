@@ -74,7 +74,7 @@ struct ScanQRPopUp: View {
             //MARK: Scan Result Alert
             .onChange(of: scanResult){ res in
                 Task{
-                    await vm.retrieveCoach(id:scanResult)
+                    await vm.retrieveCoach(id:res)
                     vm.showRequestAlert = true
                 }
             }

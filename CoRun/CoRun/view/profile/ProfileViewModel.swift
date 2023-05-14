@@ -62,13 +62,19 @@ class ProfileViewModel:ObservableObject{
         bufferProfile = user
         isRedacting = true
         
-        uapi.GetUserData(userId: bufferProfile.UserId){ res in
-            switch res{
-            case .success(let data):
-                self.bufferCoachName = data.Username
-            case .failure(_):
-                print(">> Retrieve coach data failed")
+        if bufferProfile.CoachId != ""{
+            uapi.GetUserData(userId: bufferProfile.CoachId){ res in
+                switch res{
+                case .success(let data):
+                    self.bufferCoachName = data.Username
+                case .failure(_):
+                    print(">> Retrieve coach data failed")
+                }
+                self.refreshDisplayData()
+                self.isRedacting = false
+                completion()
             }
+        }else{
             self.refreshDisplayData()
             self.isRedacting = false
             completion()

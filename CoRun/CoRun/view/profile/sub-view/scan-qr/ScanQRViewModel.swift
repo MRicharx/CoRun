@@ -23,11 +23,11 @@ class ScanQRViewModel:ObservableObject{
             uapi.SendCoachRequest(userId: ownId, coachId: coachId){success in
                 if success{
                     print(">> Sending coach request to \(coachId) success")
+                    self.showSuccessAlert = true
                 }
                 else{
-                    print(">> Sending coach rewuest failed")
+                    print(">> Sending coach request failed")
                 }
-                self.showSuccessAlert = true
                 send.resume()
             }
         }

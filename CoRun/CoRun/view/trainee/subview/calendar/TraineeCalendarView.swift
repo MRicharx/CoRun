@@ -8,12 +8,17 @@
 import SwiftUI
 
 struct TraineeCalendarView: View {
+    @EnvironmentObject var own:ProfileData
+    @EnvironmentObject var pvm:TraineeViewModel
+    
     @Binding var isPreview : Bool
     @StateObject var vm = TraineeCalendarViewModel()
     
     var body: some View {
         VStack(spacing:12){
-//            CCalendarView(data: ListSessionDisplayData(list: vm.sessionDD))
+            if vm.isLoaded{
+                CCalendarView(data: ListSessionDisplayData(list: vm.sessionDD))
+            }
             
             if !(isPreview){
                 //MARK: Session View
@@ -26,39 +31,11 @@ struct TraineeCalendarView: View {
                     
                     //MARK: Button List
                     VStack(spacing:0){
-                        if vm.selectedSession.status.enume != .planNotDone{
-                            //MARK: Feedback
-                            Button{
-                                //TODO: Navigate to Feedback
-                            }label:{
-                                HStack{
-                                    Text("Feedback")
-                                        .modifier(MFont.SubBody())
-                                        .modifier(MColor.Text())
-                                        .modifier(MView.FillToLeftFrame())
-                                    Image(systemName: "chevron.right")
-                                        .modifier(MFont.SubBody())
-                                        .modifier(MColor.DisabledText())
-                                }
-                            }.buttonStyle(MButton.ListButton())
-                        }
-                        if vm.selectedSession.status.enume != .planNotDone && vm.selectedSession.date >= Date.now{
-                            //MARK: Delete
-                            Button{
-                                //TODO: Delete Feature
-                            }label:{
-                                HStack{
-                                    Text("Delete Session")
-                                        .modifier(MFont.Headline(size:18))
-                                        .modifier(MColor.Danger())
-                                        .modifier(MView.FillToLeftFrame())
-                                }
-                            }.buttonStyle(MButton.ListButton())
-                        }
-                        if vm.selectedDate >= Date.now{
+                        if vm.selectedDate >= vm.today{
                             //MARK: Create/Edit
                             NavigationLink{
-                                CDashboardView(date: vm.selectedDate)
+                                CDashboardView(ownId: own.UserId, traineeId: pvm.pubTrainee.id)
+                                    .environmentObject(vm)
                             }label:{
                                 VStack(spacing:12){
                                     CDivider()
@@ -76,14 +53,25 @@ struct TraineeCalendarView: View {
                 Spacer()
             }
         }
+        .onAppear{
+            vm.sessionDD = pvm.pubSes
+            vm.refreshDisplayData()
+        }
+        .onChange(of: vm.updateSession){ val in
+            if val{
+                Task{
+                    vm.isLoaded = false
+                    pvm.loadBuffer(traineeId: pvm.pubTrainee.id){
+                        vm.sessionDD = pvm.pubSes
+                        vm.updateSession = false
+                        vm.isLoaded = true
+                    }
+                }
+            }
+        }
         .onChange(of: vm.selectedDate){ newDate in
             let d = newDate
             vm.findSession(byDate: d)
-        }
-        .onAppear{
-            if vm.sessionDD.isEmpty{
-//                vm.loadSession()
-            }
         }
         .environment(\.selectedDate, $vm.selectedDate) //Set environment object
     }

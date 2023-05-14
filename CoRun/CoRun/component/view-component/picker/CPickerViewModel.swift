@@ -59,8 +59,13 @@ class CPickerViewModel:ObservableObject{
     func scheduleReminder(){
         //TODO: Set scheduler
         reminderValue = pickerValue
+        if isReminderActive{
+            notification.scheduleNotification(time: reminderValue)
+        }
+        else{
+            notification.clearScheduledNotification()
+        }
         SharedReminder.shared.ReminderValue = pickerValue
-//        notification.pushDummyNotification()
         
         showPicker = false
     }

@@ -26,11 +26,16 @@ struct PlanView: View {
                         .modifier(MColor.DisabledText())
                 }
                 HStack{
-                    ForEach(0...vm.sessionThisWeek-1,id:\.self){ i in
-                        if i < vm.sessionPassed{
-                            CDivider(weight:4,color: MColor.ColorPalette().primary, cornerRadius: 4)
-                        }else{
-                            CDivider(weight:4,color: MColor.ColorPalette().textDisabled, cornerRadius: 4)
+                    if vm.sessionThisWeek <= 0 {
+                        CDivider(weight:4,color: MColor.ColorPalette().textDisabled, cornerRadius: 4)
+                    }
+                    else{
+                        ForEach(0...vm.sessionThisWeek-1,id:\.self){ i in
+                            if i < vm.sessionPassed{
+                                CDivider(weight:4,color: MColor.ColorPalette().primary, cornerRadius: 4)
+                            }else{
+                                CDivider(weight:4,color: MColor.ColorPalette().textDisabled, cornerRadius: 4)
+                            }
                         }
                     }
                 }

@@ -86,6 +86,9 @@ struct CPickerView: View {
                 vm.checkPermission()
             }
         }
+        .onChange(of: vm.isReminderActive){ active in
+            vm.scheduleReminder()
+        }
     }
     
 }

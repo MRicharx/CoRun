@@ -104,6 +104,7 @@ struct EditBiodataPopUp: View {
                 
                 await vm.updateUserData()
                 vm.refreshDisplayData()
+                vm.isUploadingData = false
                 dismiss()
             }
         }

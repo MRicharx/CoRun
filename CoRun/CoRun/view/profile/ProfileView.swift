@@ -191,15 +191,6 @@ struct ProfileView: View {
                 }
             }
         }
-//        .onChange(of: vm.isUploadingData){ now in
-//            Task{
-//                if now{
-//                    await vm.updateUserData()
-//                    await vm.loadBuffer(user: own)
-//                    vm.refreshDisplayData()
-//                }
-//            }
-//        }
         .onAppear{
             Task{
                 vm.loadBuffer(user:own){

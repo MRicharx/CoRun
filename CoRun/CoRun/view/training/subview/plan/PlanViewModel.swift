@@ -29,7 +29,7 @@ class PlanViewModel: TrainingViewModel{
             
             d.id = data.SessionId
             d.coachId = data.CoachId
-            d.coachName = "Coach --"
+            d.coachName = "-"
             d.date = TDate().stringToDate(date: data.SessionDate,format: "YYYY-MM-dd")
             d.activityName = data.Name
             d.target = [
@@ -51,7 +51,7 @@ class PlanViewModel: TrainingViewModel{
         }
         
         sessionThisWeek = sessionDD.count
-        
+
 //        print(">> PlanViewModel: session this week: \(sessionThisWeek)")
 //        print(">> PlanViewModel: session done: \(sessionPassed)")
     }

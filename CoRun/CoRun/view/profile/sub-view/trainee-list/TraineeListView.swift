@@ -9,7 +9,6 @@ import SwiftUI
 
 struct TraineeListView: View {
     @EnvironmentObject var own:ProfileData
-    
     @StateObject var vm = TraineeListViewModel()
     
     var body: some View {
@@ -52,7 +51,7 @@ struct TraineeListView: View {
                             ForEach(vm.requestList.indices, id:\.self){ i in
                                 Group{
                                     NavigationLink{
-                                        TraineeView(isDisplayingPreview: true)
+                                        TraineeView(traineeId: vm.requestList[i].id,traineeName: vm.requestList[i].username,isDisplayingPreview: true)
                                     }label:{
                                         CTraineeCard(traineeData: vm.requestList[i])
                                     }
@@ -72,7 +71,7 @@ struct TraineeListView: View {
                     ForEach(vm.traineeList.indices, id:\.self){ i in
                         Group{
                             NavigationLink{
-                                TraineeView()
+                                TraineeView(traineeId: vm.traineeList[i].id,traineeName: vm.traineeList[i].username)
                             }label:{
                                 CTraineeCard(traineeData: vm.traineeList[i])
                             }
