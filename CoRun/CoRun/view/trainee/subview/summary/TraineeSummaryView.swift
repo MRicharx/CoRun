@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct TraineeSummaryView: View {
+    @EnvironmentObject var pvm : TraineeViewModel
+    @EnvironmentObject var own: ProfileData
+    @Environment(\.dismiss) var dismiss
+    
     @Binding var isPreview : Bool
     @StateObject var vm = TraineeSummaryViewModel()
     
@@ -22,11 +26,11 @@ struct TraineeSummaryView: View {
                 
                 //MARK: Data
                 VStack(spacing: 12){
-                    HStack{
-                        Text(vm.traineeData.username)
-                            .modifier(MFont.Headline(size:18))
+                    HStack(alignment:.firstTextBaseline){
+                        Text(pvm.pubTrainee.username)
+                            .modifier(MFont.Headline(size:24))
                             .modifier(MColor.Text())
-                        Text("\(TDate().getUserAge(birth: vm.traineeData.birthday)) Years Old")
+                        Text(" - \(TDate().getUserAge(birth: pvm.pubTrainee.birthday)) Years Old")
                             .modifier(MFont.Body(size:18))
                             .modifier(MColor.Text())
                     }.modifier(MView.FillToLeftFrame())
@@ -34,20 +38,20 @@ struct TraineeSummaryView: View {
                         HStack{
                             Image(systemName: "scalemass.fill")
                                 .modifier(MColor.Primary())
-                            Text("\(vm.traineeData.weight) kg")
+                            Text("\(pvm.pubTrainee.weight) kg")
                                 .modifier(MColor.Text())
                         }.modifier(MView.FillToLeftFrame())
                         HStack{
                             Image(systemName: "ruler.fill")
                                 .modifier(MColor.Primary())
-                            Text("\(vm.traineeData.height) cm")
+                            Text("\(pvm.pubTrainee.height) cm")
                                 .modifier(MColor.Text())
                         }.modifier(MView.FillToLeftFrame())
                         HStack{
                             Text("BMI")
                                 .modifier(MFont.Title(size:18))
                                 .modifier(MColor.Primary())
-                            Text("\(vm.countBMI(height: vm.traineeData.height, weight: vm.traineeData.weight))")
+                            Text("\(vm.countBMI(height: pvm.pubTrainee.height, weight: pvm.pubTrainee.weight))")
                                 .modifier(MColor.Text())
                         }.modifier(MView.FillToLeftFrame())
                     }
@@ -58,20 +62,33 @@ struct TraineeSummaryView: View {
                         //MARK: Accept Button
                         Button{
                             //TODO: Accept Request
+                            vm.isAccepting = true
                         }label:{
-                            Text("Accept")
-                                .modifier(MFont.Headline(size:18))
-                                .modifier(MColor.Primary())
-                                .modifier(MView.FillToLeftFrame())
+                            if vm.isAccepting{
+                                ProgressView()
+                                    .progressViewStyle(.circular)
+                            }else{
+                                Text("Accept")
+                                    .modifier(MFont.Headline(size:18))
+                                    .modifier(MColor.Primary())
+                                    .modifier(MView.FillToLeftFrame())
+                            }
                         }.buttonStyle(MButton.ListButton())
                         //MARK: Decline Button
                         Button{
                             //TODO: Decline Request
+                            vm.isDeclining = true
                         }label:{
-                            Text("Decline")
-                                .modifier(MFont.Headline(size:18))
-                                .modifier(MColor.Danger())
-                                .modifier(MView.FillToLeftFrame())
+                            if vm.isDeclining{
+                                ProgressView()
+                                    .progressViewStyle(.circular)
+                            }
+                            else{
+                                Text("Decline")
+                                    .modifier(MFont.Headline(size:18))
+                                    .modifier(MColor.Danger())
+                                    .modifier(MView.FillToLeftFrame())
+                            }
                         }.buttonStyle(MButton.ListButton())
                     }
                 }
@@ -79,11 +96,18 @@ struct TraineeSummaryView: View {
                     //MARK: Dismiss Button
                     Button{
                         //TODO: Dismiss Trainee
+                        vm.showDismissAlert = true
                     }label:{
-                        Text("Dismiss")
-                            .modifier(MFont.Headline(size:18))
-                            .modifier(MColor.DisabledText())
-                            .modifier(MView.FillToLeftFrame())
+                        if vm.isDismissing{
+                            ProgressView()
+                                .progressViewStyle(.circular)
+                        }
+                        else{
+                            Text("Dismiss")
+                                .modifier(MFont.Headline(size:18))
+                                .modifier(MColor.Danger())
+                                .modifier(MView.FillToLeftFrame())
+                        }
                     }.buttonStyle(MButton.ListButton())
                 }
             }
@@ -179,6 +203,39 @@ struct TraineeSummaryView: View {
             }
             .padding(24)
             .modifier(MView.Card())
+        }
+        .onChange(of: vm.isAccepting){ val in
+            if val{
+                Task{
+                    await pvm.acceptReq(traineeId: pvm.pubTrainee.id, ownId: own.UserId)
+                    vm.isAccepting = false
+                    dismiss()
+                }
+            }
+        }
+        .onChange(of: vm.isDeclining){ val in
+            if val{
+                Task{
+                    await pvm.declineReq(traineeId: pvm.pubTrainee.id, ownId: own.UserId)
+                    vm.isDeclining = false
+                    dismiss()
+                }
+            }
+        }
+        .onChange(of: vm.isDismissing){ val in
+            if val{
+                Task{
+                    await pvm.declineReq(traineeId: pvm.pubTrainee.id, ownId: own.UserId)
+                    vm.isDismissing = false
+                    dismiss()
+                }
+            }
+        }
+        .alert("Are you Sure want to dismiss\n\(pvm.pubTrainee.username)", isPresented: $vm.showDismissAlert){
+            Button("Dismiss", role: .destructive){
+                vm.isDismissing = true
+            }
+            Button("Cancel", role: .cancel){}
         }
     }
 }

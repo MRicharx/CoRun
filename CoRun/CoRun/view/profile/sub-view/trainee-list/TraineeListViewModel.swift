@@ -92,10 +92,10 @@ class TraineeListViewModel:ObservableObject{
         await withCheckedContinuation{ decline in
             tapi.declineTrainee(traineeId: traineeId, coachId: ownId){ success in
                 if success{
-                    print(">> TraineeListViewModel: acceptReq: [\(traineeId)] request declined")
+                    print(">> TraineeListViewModel: declineReq: [\(traineeId)] request declined")
                 }
                 else{
-                    print(">> TraineeListViewModel: acceptReq: failed declining")
+                    print(">> TraineeListViewModel: declineReq: failed declining")
                 }
                 
                 decline.resume()

@@ -8,7 +8,11 @@
 import Foundation
 
 class TraineeSummaryViewModel:SummaryViewModel{
-    @Published var traineeData = ProfileDisplayData()
+    @Published var isAccepting = false
+    @Published var isDeclining = false
+    @Published var isDismissing = false
+    
+    @Published var showDismissAlert = false
     
     func countBMI(height:Int, weight:Int)->Int{
         return weight / (height*height)

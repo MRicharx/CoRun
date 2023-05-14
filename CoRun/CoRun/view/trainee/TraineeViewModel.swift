@@ -27,6 +27,7 @@ class TraineeViewModel:ObservableObject{
         let p = ProfileDisplayData()
         
         p.id = bufferTrainee.UserId
+        p.username = bufferTrainee.Username
         p.weight = Int(bufferTrainee.Weight)
         p.height = Int(bufferTrainee.Height)
         p.gender = bufferTrainee.Gender
@@ -92,5 +93,34 @@ class TraineeViewModel:ObservableObject{
             completion()
         }
         //generateDummy()
+    }
+    
+    func acceptReq(traineeId:String, ownId:String) async{
+        await withCheckedContinuation{ accept in
+            tapi.acceptTrainee(traineeId: traineeId, coachId: ownId){ success in
+                if success{
+                    print(">> TraineeViewModel: acceptReq: [\(traineeId)] request accepted")
+                }
+                else{
+                    print(">> TraineeViewModel: acceptReq: failed accepting")
+                }
+
+                accept.resume()
+            }
+        }
+    }
+    func declineReq(traineeId:String, ownId:String) async{
+        await withCheckedContinuation{ decline in
+            tapi.declineTrainee(traineeId: traineeId, coachId: ownId){ success in
+                if success{
+                    print(">> TraineeViewModel: declineReq: [\(traineeId)] request declined")
+                }
+                else{
+                    print(">> TraineeViewModel: declineReq: failed declining")
+                }
+                
+                decline.resume()
+            }
+        }
     }
 }

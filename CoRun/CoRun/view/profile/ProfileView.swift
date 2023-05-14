@@ -180,8 +180,8 @@ struct ProfileView: View {
                 
                 //MARK: Sign Out
                 Button{
-                    vm.notif.pushDummyNotification()
-//                    vm.showSignOUtAlert = true
+//                    vm.notif.pushDummyNotification()
+                    vm.showSignOUtAlert = true
                 }label:{
                     VStack{
                         Text("Sign Out")
