@@ -53,6 +53,7 @@ class SessionAPI: HNetwork{
             "verOsc": String(describing:body.verOsc),
             "elevGain": String(describing:body.elevGain),
             "groundTime": String(describing:body.groundTime),
+            "score":String(describing: body.score)
         ]
         
         request(requestName: "Post session result", endpointURL: url, method: "POST", body: jsonDictionary){result in

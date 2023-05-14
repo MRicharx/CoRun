@@ -31,12 +31,12 @@ class HHealth{
         let read: Set = [
             .workoutType(),
             HKSeriesType.workoutType(), //Workout Type
-            HKQuantityType.init(HKQuantityTypeIdentifier.appleExerciseTime), //Exercise Time
+//            HKQuantityType.init(HKQuantityTypeIdentifier.appleExerciseTime), //Exercise Time
             HKQuantityType.init(HKQuantityTypeIdentifier.distanceWalkingRunning), //Distance
             
-            HKQuantityType.init(HKQuantityTypeIdentifier.bodyMass), //Body Mass
-            HKQuantityType.init(HKQuantityTypeIdentifier.height), //Body Height
-            HKQuantityType.init(HKQuantityTypeIdentifier.bodyMassIndex), //Body Mass Index
+//            HKQuantityType.init(HKQuantityTypeIdentifier.bodyMass), //Body Mass
+//            HKQuantityType.init(HKQuantityTypeIdentifier.height), //Body Height
+//            HKQuantityType.init(HKQuantityTypeIdentifier.bodyMassIndex), //Body Mass Index
             
             HKQuantityType.init(HKQuantityTypeIdentifier.heartRate), //Heart Rate
             HKQuantityType.init(HKQuantityTypeIdentifier.vo2Max), //VO2Max
@@ -57,45 +57,50 @@ class HHealth{
     }//Check n Request HealthKit Permission
     
     ///Return All Session Result from workout data
-//    func getSessionResult(start:Date, end:Date,completion: @escaping ((_ data: [SessionResultData]) -> Void)){
-//        
-//        ///Define returned array
-//        var session = [SessionResultData]()
-//        
-//        getWorkoutData(start: start, end: end){ workoutData in
-//            workoutData?.forEach{ data in
-//                
-//                ///Define Workout Meta data
-//                let meta = data.metadata
-//                let elev = meta?["HKElevationAscended"] as? HKQuantity
-//                
-//                ///Append data to returned array
-//                session.append(SessionResultData(
-//                    start: data.startDate,
-//                    end: data.endDate,
-//                    distance: data.statistics(for: HKQuantityType.init(HKQuantityTypeIdentifier.distanceWalkingRunning))?.sumQuantity()?.doubleValue(for: HKUnit.meter()),
-//                    avgBPM: data.statistics(for: HKQuantityType.init(HKQuantityTypeIdentifier.distanceWalkingRunning))?.averageQuantity()?.doubleValue(for: HKUnit.hertz()),
-//                    vo2M: data.statistics(for: HKQuantityType.init(HKQuantityTypeIdentifier.vo2Max))?.averageQuantity()?.doubleValue(for: HKUnit.liter()),
-//                    verOscillation: data.statistics(for: HKQuantityType.init(HKQuantityTypeIdentifier.runningVerticalOscillation))?.averageQuantity()?.doubleValue(for: HKUnit.meter()),
-//                    stride: data.statistics(for: HKQuantityType.init(HKQuantityTypeIdentifier.runningStrideLength))?.averageQuantity()?.doubleValue(for: HKUnit.meter()),
-//                    elevGain: elev?.doubleValue(for: HKUnit.meter()),
-//                    groundTime: data.statistics(for: HKQuantityType.init(HKQuantityTypeIdentifier.runningGroundContactTime))?.averageQuantity()?.doubleValue(for: HKUnit.second())
-//                ))
-//            }
-//        }
-//        
-//        ///Query completed
-//        if(session.isEmpty){
-//            print(">> HHealth: getSessionResult Resulted with NIL")
-//        }
-//        completion(session)
-//    }
+    func getSessionResult(start:Date, end:Date,completion: @escaping ((_ data: [SessionResultData]) -> Void)){
+        
+        ///Define returned array
+        var session = [SessionResultData]()
+        
+        getWorkoutData(start: start, end: end){ workoutData in
+            workoutData?.forEach{ data in
+                
+                ///Define Workout Meta data
+                let meta = data.metadata
+                let elev = meta?["HKElevationAscended"] as? HKQuantity
+                
+                let time = TDate().dateToString(date:  data.startDate)
+                
+                ///Append data to returned array
+                session.append(SessionResultData(
+                    id: 0,
+                    resultDate: time,
+                    duration: data.duration,
+                    distance: data.statistics(for: HKQuantityType.init(HKQuantityTypeIdentifier.distanceWalkingRunning))?.sumQuantity()?.doubleValue(for: HKUnit.meter()) ?? 0,
+                    avgBPM: data.statistics(for: HKQuantityType.init(HKQuantityTypeIdentifier.distanceWalkingRunning))?.averageQuantity()?.doubleValue(for: HKUnit.hertz()) ?? 00,
+                    avgVo2: data.statistics(for: HKQuantityType.init(HKQuantityTypeIdentifier.vo2Max))?.averageQuantity()?.doubleValue(for: HKUnit.liter()) ?? 0,
+                    stride: data.statistics(for: HKQuantityType.init(HKQuantityTypeIdentifier.runningStrideLength))?.averageQuantity()?.doubleValue(for: HKUnit.meter()) ?? 0,
+                    verOsc: data.statistics(for: HKQuantityType.init(HKQuantityTypeIdentifier.runningVerticalOscillation))?.averageQuantity()?.doubleValue(for: HKUnit.meter()) ?? 0,
+                    elevGain: elev?.doubleValue(for: HKUnit.meter()) ?? 0,
+                    groundTime: data.statistics(for: HKQuantityType.init(HKQuantityTypeIdentifier.runningGroundContactTime))?.averageQuantity()?.doubleValue(for: HKUnit.second()) ?? 0,
+                    score: 0
+                ))
+            }
+            
+            ///Query completed
+            if(session.isEmpty){
+                print(">> HHealth: getSessionResult Resulted with NIL")
+            }
+            completion(session)
+        }
+    }
     
     
     ///Return all workout data with date  predicate
     private func getWorkoutData(start:Date, end:Date,completion: @escaping ((_ result: [HKWorkout]?) -> Void)){
         
         ///Define workout type predicate
+//        let type = HKQuery.predicateForWorkouts(with: .running)
         let type = HKQuery.predicateForWorkouts(with: .running)
         ///Define workout time interval predicate
         let interval = HKQuery.predicateForSamples(withStart: start, end: end)

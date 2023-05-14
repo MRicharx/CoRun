@@ -29,8 +29,11 @@ struct SessionResultData : Codable{
     var elevGain = 0.0
     ///Duration of ground time in second
     var groundTime = 0.0
+    
+    ///Session Score
+    var score = 0
 
-    init(id: Int = 0, resultDate: String = "", duration: Double = 0.0, distance: Double = 0.0, avgBPM: Double = 0.0, avgVo2: Double = 0.0, stride: Double = 0.0, verOsc: Double = 0.0, elevGain: Double = 0.0, groundTime: Double = 0.0) {
+    init(id: Int = 0, resultDate: String = "", duration: Double = 0.0, distance: Double = 0.0, avgBPM: Double = 0.0, avgVo2: Double = 0.0, stride: Double = 0.0, verOsc: Double = 0.0, elevGain: Double = 0.0, groundTime: Double = 0.0, score: Int=0) {
         self.id = id
         self.resultDate = resultDate
         self.duration = duration
@@ -41,6 +44,7 @@ struct SessionResultData : Codable{
         self.verOsc = verOsc
         self.elevGain = elevGain
         self.groundTime = groundTime
+        self.score = score
     }
 }
 

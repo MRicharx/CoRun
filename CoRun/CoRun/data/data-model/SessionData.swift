@@ -48,6 +48,9 @@ class SessionData:Codable,ObservableObject{
     var ElevGain = 0.0
     ///Define ground time duration
     var GroundTime = 0.0
+    
+    ///Define session score
+    var Score = 0
 }
 
 

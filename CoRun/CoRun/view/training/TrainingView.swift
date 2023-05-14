@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TrainingView: View {
     @Environment(\.onLoading) var isOnLoading
+    @EnvironmentObject var own: ProfileData
     
     ///Define selected tab
     @State var selectedTab  = "Loading"
@@ -34,15 +35,26 @@ struct TrainingView: View {
                 }
             }
         }
-        .task {
+        .onAppear{
             isOnLoading.wrappedValue = true
             
-            await vm.getSession()
-            await vm.matchSessionWithHealth()
-            vm.loadBuffer()
-            
-            isOnLoading.wrappedValue = false
-            selectedTab = "Plan"
+            Task{
+                await vm.getSession()
+                await vm.getWorkoutData()
+                
+                vm.matchSession(age: TDate().getUserAge(birth: TDate().stringToDate(date: own.Birthday)))
+                
+                if vm.updateResult{
+                    await vm.postResult()
+                    await vm.getSession()
+                    vm.updateResult = true
+                }
+                
+                vm.loadBuffer()
+                
+                isOnLoading.wrappedValue = false
+                selectedTab = "Plan"
+            }
         }
         .environmentObject(vm)
     }
