@@ -20,15 +20,20 @@ class PlanViewModel: TrainingViewModel{
         sessionDD.removeAll()
     }
     
-    ///Sort object based on date in ascending order
-    func sort(){
-        pubSes = pubSes.sorted { $0.SessionDate < $1.SessionDate}
-    }
-    
     func loadSession(session: [SessionData]){
         sessionDD.removeAll()
         sessionPassed=0
 
+        ///Set this week interval
+        var start = TDate().getStartDate()
+        var end = TDate().getEndDate()
+        if TDate().dateToString(date: Date.now,format: "EEEE") != "Sunday"{
+            start = start.previous(.sunday)
+        }
+        if TDate().dateToString(date: Date.now,format: "EEEE") != "Saturday"{
+            end = end.next(.saturday)
+        }
+        
         for data in session{
             let d = SessionDisplayData()
             
@@ -44,15 +49,31 @@ class PlanViewModel: TrainingViewModel{
                 TargetDisplayData(type: 3, amount: data.Intensity)
             ]
             
+            d.result.start = TDate().stringToDate(date: data.ResultDate)
+            d.result.duration = data.ResultDuration
+            d.result.distance = data.ResultDistance
+            d.result.avgBPM = data.AvgBPM
+            d.result.vo2M = data.AvgVo2
+            d.result.verticalOsc = data.VerOsc
+            d.result.stride = data.Stride
+            d.result.elevGain = data.ElevGain
+            d.result.groundTime = data.GroundTime
             d.desc = data.Description
+            
             d.score = data.Score
             
             d.status = CompletionStatus(status: data.Status)
-            if d.status.int != 3{
-                sessionPassed+=1
-            }
             
-            sessionDD.append(d)
+            print(">> Start Week : \(start)")
+            print(">> End Week : \(end)")
+            if start <= d.date && d.date <= end{
+                
+                if d.status.int != 3{
+                    sessionPassed+=1
+                }
+                
+                sessionDD.append(d)
+            }
         }
         
 //        sort()
@@ -61,42 +82,5 @@ class PlanViewModel: TrainingViewModel{
 //        print(">> PlanViewModel: session this week: \(sessionThisWeek)")
 //        print(">> PlanViewModel: session done: \(sessionPassed)")
     }
-    
-//    private func getDummy(){
-//        for i in 1...6{
-//            let temp = SessionDisplayData()
-//
-//            temp.id = i
-//            temp.coachName = "Coach \(i)"
-//            temp.date = Date.now
-//            temp.activityName = "Activity \(i)"
-////            temp.target = [
-////                TargetDisplayData(targetData: SessionTarget(targetType: 0, amount: Double(600*i))),
-////                TargetDisplayData(targetData: SessionTarget(targetType: 1, amount: Double(i))),
-////                TargetDisplayData(targetData: SessionTarget(targetType: 2, amount: Double(60*i))),
-////                TargetDisplayData(targetData: SessionTarget(targetType: 3, amount: 60))
-////            ]
-//
-//            if(i<3){
-//                temp.status.set(newStatus: .planReachAllGoal)
-//            }
-//            else if i == 3{
-//                temp.status.set(newStatus: .planPartlyReachGoal)
-//            }
-//            else{
-//                temp.status.set(newStatus: .planNotDone)
-//            }
-//
-//            temp.desc = "This is dummy session"
-//            temp.isUnread = false
-//
-//            temp.result = ResultDisplayData()
-//            if i<4{
-//                temp.result.distance = Double(i)
-//                temp.result.avgBPM = 100
-//            }
-//
-//            sessionDD.append(temp)
-//        }
-//    }
+
 }

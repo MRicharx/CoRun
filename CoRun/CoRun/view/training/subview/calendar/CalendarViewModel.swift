@@ -44,6 +44,16 @@ class CalendarViewModel: TrainingViewModel{
             ]
             
             d.desc = data.Description
+            
+            d.result.start = TDate().stringToDate(date: data.ResultDate)
+            d.result.duration = data.ResultDuration
+            d.result.distance = data.ResultDistance
+            d.result.avgBPM = data.AvgBPM
+            d.result.vo2M = data.AvgVo2
+            d.result.verticalOsc = data.VerOsc
+            d.result.stride = data.Stride
+            d.result.elevGain = data.ElevGain
+            d.result.groundTime = data.GroundTime
             d.score = data.Score
             
             d.status = CompletionStatus(status: data.Status)

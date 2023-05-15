@@ -204,6 +204,15 @@ struct TraineeSummaryView: View {
             .padding(24)
             .modifier(MView.Card())
         }
+        .onAppear{
+            vm.loadData(session: pvm.bufferSes)
+        }
+        .onChange(of:vm.displayOption){ new in
+            vm.loadData(session: pvm.bufferSes)
+        }
+        .onChange(of:vm.currentDate){ new in
+            vm.loadData(session: pvm.bufferSes)
+        }
         .onChange(of: vm.isAccepting){ val in
             if val{
                 Task{

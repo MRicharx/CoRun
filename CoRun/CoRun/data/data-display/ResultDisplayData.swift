@@ -9,7 +9,7 @@ import Foundation
 
 class ResultDisplayData:ObservableObject{
     @Published var start:Date
-    @Published var end:Date
+    @Published var duration:Double
     
     @Published var distance:Double
     @Published var avgBPM:Double
@@ -21,7 +21,7 @@ class ResultDisplayData:ObservableObject{
     
     init(){
         start = Date.now
-        end = Date.now
+        duration = 0
         
         distance = 0
         avgBPM = 0

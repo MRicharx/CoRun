@@ -25,14 +25,11 @@ class SessionAPI: HNetwork{
                 print(error)
             case .success(let data):
                 do {
-                    ///Do Success Thing
-                    if let responseObject: [SessionData] = try? JSONDecoder().decode([SessionData].self, from: data){
-                        completion(.success(responseObject))
-                    }
-                    else{
-                        print(">> Get User Session failed parsing")
-                        completion(.success([SessionData]()))
-                    }
+                    let responseObject: [SessionData] = try JSONDecoder().decode([SessionData].self, from: data)
+                    completion(.success(responseObject))
+                }catch{
+                    print(">> Error Parsing: Get User Session: \(error)")
+                    //                    completion(.failure(error))
                 }
             }
         }

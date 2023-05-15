@@ -9,12 +9,11 @@ import SwiftUI
 
 struct CSessionResult: View {
     @ObservedObject var vm:SessionDetailViewModel
-    @ObservedObject var result : ResultDisplayData
-    @State var status:CompletionStatus
+    @ObservedObject var data : SessionDisplayData
     
     var body: some View {
         VStack(alignment: .leading, spacing: 18){
-            if status.enume != .planNotDone{
+            if data.status.enume == .planNotDone{
                 Text("No Result Available")
                     .modifier(MFont.Headline(size: 18))
                     .modifier(MColor.DisabledText())
@@ -23,11 +22,10 @@ struct CSessionResult: View {
                 Text("Result")
                     .modifier(MFont.Headline(size: 18))
                     .modifier(MColor.DisabledText())
-                
                 VStack(spacing: 12){
                     //MARK: Duration
                     VStack(alignment:.leading){
-                        Text(TDate().getStringinHMS(seconds: TDate().getSecondBetweenDate(start: result.start, end: result.end)))
+                        Text(TDate().getStringinHMS(seconds: data.result.duration))
                             .modifier(MFont.Headline())
                             .modifier(MColor.Text())
                         Text("Duration")
@@ -40,7 +38,7 @@ struct CSessionResult: View {
                     HStack{
                         //MARK: Distance
                         VStack(alignment:.leading){
-                            Text("\(result.distance, specifier: "%.2f") km")
+                            Text("\(data.result.distance/1000, specifier: "%.2f") km")
                                 .modifier(MFont.Headline())
                                 .modifier(MColor.Text())
                             Text("Distance")
@@ -50,7 +48,7 @@ struct CSessionResult: View {
                         
                         //MARK: Elevation
                         VStack(alignment:.leading){
-                            Text("\(result.elevGain, specifier: "%.2f") m")
+                            Text("\(data.result.elevGain, specifier: "%.2f") m")
                                 .modifier(MFont.Headline())
                                 .modifier(MColor.Text())
                             Text("Elevation Gain")
@@ -64,7 +62,7 @@ struct CSessionResult: View {
                     HStack{
                         //MARK: Avg BPM
                         VStack(alignment:.leading){
-                            Text(String(result.avgBPM))
+                            Text(String(data.result.avgBPM))
                                 .modifier(MFont.Headline())
                                 .modifier(MColor.Text())
                             Text("Avg. BPM")
@@ -88,7 +86,7 @@ struct CSessionResult: View {
                     HStack{
                         //MARK: VO2Max
                         VStack(alignment:.leading){
-                            Text("\(result.vo2M , specifier: "%.1f")")
+                            Text("\(data.result.vo2M , specifier: "%.1f")")
                                 .modifier(MFont.Headline())
                                 .modifier(MColor.Text())
                             Text("VO2 Max")
@@ -98,7 +96,7 @@ struct CSessionResult: View {
                         
                         //MARK: Vertical Oscillation
                         VStack(alignment:.leading){
-                            Text("\(result.verticalOsc , specifier: "%.1f") cM")
+                            Text("\(data.result.verticalOsc , specifier: "%.1f") cM")
                                 .modifier(MFont.Headline())
                                 .modifier(MColor.Text())
                             Text("Vertical Oscillation")
@@ -112,7 +110,7 @@ struct CSessionResult: View {
                     HStack{
                         //MARK: Stride
                         VStack(alignment:.leading){
-                            Text("\(result.stride, specifier: "%.1f") cM")
+                            Text("\(data.result.stride, specifier: "%.1f") cM")
                                 .modifier(MFont.Headline())
                                 .modifier(MColor.Text())
                             Text("Stride")
@@ -122,7 +120,7 @@ struct CSessionResult: View {
                         
                         //MARK: Ground Time
                         VStack(alignment:.leading){
-                            Text("\(result.groundTime, specifier: "%.1f") ms")
+                            Text("\(data.result.groundTime, specifier: "%.1f") ms")
                                 .modifier(MFont.Headline())
                                 .modifier(MColor.Text())
                             Text("Ground Time")

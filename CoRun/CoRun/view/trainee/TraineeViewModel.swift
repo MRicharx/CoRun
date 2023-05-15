@@ -20,7 +20,7 @@ class TraineeViewModel:ObservableObject{
     private var bufferTrainee = ProfileData()
     
     @Published var pubSes = [SessionDisplayData()]
-    private var bufferSes = [SessionData()]
+    var bufferSes = [SessionData()]
     
     
     func refreshDisplayData(){
@@ -50,7 +50,17 @@ class TraineeViewModel:ObservableObject{
                 TargetDisplayData(type: 2, amount: data.Pace),
                 TargetDisplayData(type: 3, amount: data.Intensity)
             ]
-
+            
+            s.result.start = TDate().stringToDate(date: data.ResultDate)
+            s.result.duration = data.ResultDuration
+            s.result.distance = data.ResultDistance
+            s.result.avgBPM = data.AvgBPM
+            s.result.vo2M = data.AvgVo2
+            s.result.verticalOsc = data.VerOsc
+            s.result.stride = data.Stride
+            s.result.elevGain = data.ElevGain
+            s.result.groundTime = data.GroundTime
+            
             s.score = data.Score
             
             s.status = CompletionStatus(status: data.Status)

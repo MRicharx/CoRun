@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SummaryView: View {
+    @EnvironmentObject var pvm: TrainingViewModel
+    
     ///Define View's ViewModel
     @StateObject var vm = SummaryViewModel()
     
@@ -91,7 +93,7 @@ struct SummaryView: View {
                                 .modifier(MColor.DisabledText())
                                 .modifier(MFont.Body(size:16))
                         }
-                        Text(String(vm.distanceRan))
+                        Text(String(format: "%.2f", vm.distanceRan/1000))
                             .modifier(MFont.Headline())
                             .modifier(MColor.Text())
                         
@@ -105,10 +107,13 @@ struct SummaryView: View {
             }
         }
         .onAppear{
-            vm.loadData()
+            vm.loadData(session: pvm.pubSes)
         }
         .onChange(of:vm.displayOption){ new in
-            vm.updateDisplayOption(dp: new)
+            vm.loadData(session: pvm.pubSes)
+        }
+        .onChange(of:vm.currentDate){ new in
+            vm.loadData(session: pvm.pubSes)
         }
     }
 }
