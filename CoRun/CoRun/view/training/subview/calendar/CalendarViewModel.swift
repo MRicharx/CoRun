@@ -12,8 +12,6 @@ class CalendarViewModel: TrainingViewModel{
     @Published var sessionDD = [SessionDisplayData]()
     ///Define selected date
     @Published var selectedDate = Date.now
-    ///Define if selected date have session
-    @Published var isSessionExist = false
     ///Define selected session display data
     @Published var selectedSession = SessionDisplayData()
     ///Define is data loaded
@@ -58,14 +56,13 @@ class CalendarViewModel: TrainingViewModel{
     }
     func findSession(byDate:Date){
         if let session = sessionDD.first(where: {TDate().compare(first: $0.date, second: selectedDate, format: "dd MMMM YYYY")}){
-            isSessionExist = true
             selectedSession = session
         }else{
             let temp = SessionDisplayData()
             temp.date = selectedDate
-            isSessionExist = false
             selectedSession = temp
         }
+        
+        print(">> CalendarViewModel: Selected Session ID, CoachId: [\n\(selectedSession.id)\n\(selectedSession.coachId)]")
     }
-
 }

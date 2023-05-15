@@ -10,12 +10,11 @@ import SwiftUI
 struct CSessionResult: View {
     @ObservedObject var vm:SessionDetailViewModel
     @ObservedObject var result : ResultDisplayData
-    
-    @State var noResult = false
+    @State var status:CompletionStatus
     
     var body: some View {
         VStack(alignment: .leading, spacing: 18){
-            if noResult{
+            if status.enume != .planNotDone{
                 Text("No Result Available")
                     .modifier(MFont.Headline(size: 18))
                     .modifier(MColor.DisabledText())
@@ -132,11 +131,6 @@ struct CSessionResult: View {
                         }.modifier(MView.FillToLeftFrame())
                     }
                 }
-            }
-        }
-        .onAppear{
-            if result.distance <= 0{
-                noResult = true
             }
         }
         .padding(24)

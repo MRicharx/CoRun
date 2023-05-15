@@ -25,13 +25,26 @@ struct TraineeCalendarView: View {
                 VStack{
                     //MARK: Session Detail
                     VStack{
-                        CSessionCard(data: vm.selectedSession)
+                        if vm.selectedSession.status.int < 4{
+                            NavigationLink{
+                                SessionDetailView(data: vm.selectedSession)
+                            }label: {
+                                HStack{
+                                    CSessionCard(data: vm.selectedSession)
+                                    Image(systemName: "chevron.right")
+                                        .modifier(MColor.Primary())
+                                }
+                            }
+                        }
+                        else{
+                            CSessionCard(data: vm.selectedSession)
+                        }
                     }
                     .padding(24)
                     
                     //MARK: Button List
                     VStack(spacing:0){
-                        if vm.selectedDate >= vm.today{
+                        if vm.selectedDate >= vm.today && vm.selectedSession.status.enume == .planNotDone{
                             //MARK: Create/Edit
                             NavigationLink{
                                 CDashboardView(ownId: own.UserId, traineeId: pvm.pubTrainee.id)

@@ -50,37 +50,8 @@ class TrainingViewModel:ObservableObject{
             let date = TDate().stringToDate(date: data.SessionDate,format: "YYYY-MM-dd")
             if TDate().compare(first: date, second: Date.now, format: "YYYY-MM-dd"){
     
-                ///Pick best workout data
-                var bestResult = SessionResultData()
-                for wk in bufferWorkout{
-                    var wScore = 100
-    
-                    ///Minus 1 per 100 meter miss
-                    if data.Distance > 0{
-                        wScore -= abs(Int((data.Distance - wk.distance))/100)
-                    }
-                    ///Minus 1 per 5 minute miss
-                    if data.Duration > 0{
-                        wScore -= abs(Int((data.Duration - wk.duration))/60)
-                    }
-                    ///Minus 1 per 10 second miss
-                    if data.Pace > 0{
-                        let p = wk.duration/wk.distance
-                        wScore -= abs(Int((data.Pace - p))/10)
-                    }
-                    ///Minus 1 per 0.5% miss
-                    if data.Intensity > 0{
-                        let i = Double(Int(wk.avgBPM) / (220 - age) * 100)
-                        wScore -= 2 * abs(Int(data.Intensity) - Int(i))
-                    }
-    
-                    ///Check if current result better
-                    if data.Score < wScore{
-                        bestResult = wk
-                        bestResult.score = wScore
-                    }
-                }
-    
+                ///Get best workout out session closest to session target
+                let bestResult = TScore().scoreSession(data: data, result: bufferWorkout, age: age)
     
                 ///Compare existing result with new best result score
                 if data.Score < bestResult.score{

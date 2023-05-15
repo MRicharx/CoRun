@@ -54,6 +54,8 @@ class TraineeViewModel:ObservableObject{
             s.score = data.Score
             
             s.status = CompletionStatus(status: data.Status)
+            s.coachId = data.CoachId
+            s.coachName = ""
             
             pubSes.append(s)
         }

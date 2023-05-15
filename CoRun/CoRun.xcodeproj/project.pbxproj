@@ -108,7 +108,9 @@
 		83E4339129F1610300D00AFC /* TargetDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4339029F1610300D00AFC /* TargetDisplayData.swift */; };
 		83E4339429F172F200D00AFC /* CSessionCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E4339329F172F200D00AFC /* CSessionCardViewModel.swift */; };
 		83E50C602A0E3ACF005DE5CC /* ScanQRViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E50C5F2A0E3ACF005DE5CC /* ScanQRViewModel.swift */; };
-		83E50C622A113BF9005DE5CC /* HBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E50C612A113BF9005DE5CC /* HBackground.swift */; };
+		83E50C672A123DBB005DE5CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E50C662A123DBB005DE5CC /* AppDelegate.swift */; };
+		83E50C692A124106005DE5CC /* TScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E50C682A124106005DE5CC /* TScore.swift */; };
+		83E50C6B2A125786005DE5CC /* HBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E50C6A2A125786005DE5CC /* HBackground.swift */; };
 		83E85A4329F29A5700ED118C /* GraphDisplayDataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E85A4229F29A5700ED118C /* GraphDisplayDataList.swift */; };
 		83E85A4529F2C29400ED118C /* TraineeDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E85A4429F2C29400ED118C /* TraineeDisplayData.swift */; };
 		83E85A4729F4021800ED118C /* TraineeSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E85A4629F4021800ED118C /* TraineeSummaryViewModel.swift */; };
@@ -264,7 +266,9 @@
 		83E4339029F1610300D00AFC /* TargetDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetDisplayData.swift; sourceTree = "<group>"; };
 		83E4339329F172F200D00AFC /* CSessionCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSessionCardViewModel.swift; sourceTree = "<group>"; };
 		83E50C5F2A0E3ACF005DE5CC /* ScanQRViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRViewModel.swift; sourceTree = "<group>"; };
-		83E50C612A113BF9005DE5CC /* HBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HBackground.swift; sourceTree = "<group>"; };
+		83E50C662A123DBB005DE5CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		83E50C682A124106005DE5CC /* TScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TScore.swift; sourceTree = "<group>"; };
+		83E50C6A2A125786005DE5CC /* HBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HBackground.swift; sourceTree = "<group>"; };
 		83E85A4229F29A5700ED118C /* GraphDisplayDataList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphDisplayDataList.swift; sourceTree = "<group>"; };
 		83E85A4429F2C29400ED118C /* TraineeDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeDisplayData.swift; sourceTree = "<group>"; };
 		83E85A4629F4021800ED118C /* TraineeSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeSummaryViewModel.swift; sourceTree = "<group>"; };
@@ -737,6 +741,7 @@
 				83F2C84929C30365004E3270 /* data */,
 				83F2C84B29C30386004E3270 /* utils */,
 				83F2C81829C30187004E3270 /* CoRunApp.swift */,
+				83E50C662A123DBB005DE5CC /* AppDelegate.swift */,
 				83F2C81A29C30187004E3270 /* ContentView.swift */,
 				83F2C81C29C30190004E3270 /* Assets.xcassets */,
 				83F2C82129C30190004E3270 /* Persistence.swift */,
@@ -842,6 +847,7 @@
 			children = (
 				83D31B7C29C70DFC00B47F8C /* TDate.swift */,
 				83D31B7E29C70E9F00B47F8C /* TQr.swift */,
+				83E50C682A124106005DE5CC /* TScore.swift */,
 			);
 			path = tool;
 			sourceTree = "<group>";
@@ -853,7 +859,7 @@
 				834DD25529C6F51A00CD59EB /* HNetwork.swift */,
 				83D31B7A29C70DED00B47F8C /* HHealth.swift */,
 				83E4336A29EC75B200D00AFC /* HNotification.swift */,
-				83E50C612A113BF9005DE5CC /* HBackground.swift */,
+				83E50C6A2A125786005DE5CC /* HBackground.swift */,
 			);
 			path = handler;
 			sourceTree = "<group>";
@@ -1043,6 +1049,7 @@
 				8369324329E73047007994D6 /* CGraph.swift in Sources */,
 				83DCE19429C868060007E73D /* AssessmentViewModel.swift in Sources */,
 				8369323A29E6B9AF007994D6 /* CCalendarViewModel.swift in Sources */,
+				83E50C6B2A125786005DE5CC /* HBackground.swift in Sources */,
 				83E85A4929F4022B00ED118C /* TraineeCalendarViewModel.swift in Sources */,
 				83E4335D29EC135A00D00AFC /* TrainingViewModel.swift in Sources */,
 				8316301429D993FB00B3322E /* SplashViewModel.swift in Sources */,
@@ -1084,6 +1091,7 @@
 				83C6FC5029C455EF00B0026C /* MColor.swift in Sources */,
 				83E85A4329F29A5700ED118C /* GraphDisplayDataList.swift in Sources */,
 				83E4335F29EC136600D00AFC /* TrainingModel.swift in Sources */,
+				83E50C672A123DBB005DE5CC /* AppDelegate.swift in Sources */,
 				83DCE1CB29CDB6810007E73D /* CSessionFeedback.swift in Sources */,
 				83F2C81B29C30187004E3270 /* ContentView.swift in Sources */,
 				83E4338129ED750E00D00AFC /* TargetType.swift in Sources */,
@@ -1112,7 +1120,6 @@
 				83DCE1AB29CCA6C30007E73D /* CDivider.swift in Sources */,
 				83F2C81929C30187004E3270 /* CoRunApp.swift in Sources */,
 				8369324D29E7E63F007994D6 /* CChatSendBar.swift in Sources */,
-				83E50C622A113BF9005DE5CC /* HBackground.swift in Sources */,
 				8369323129E5E64B007994D6 /* CalendarModel.swift in Sources */,
 				83DCE1AF29CCBE6F0007E73D /* CActivityCard.swift in Sources */,
 				83A4223529E5AF4000D4DE8F /* CompletionStatus.swift in Sources */,
@@ -1132,6 +1139,7 @@
 				8369324B29E7E3FF007994D6 /* CRRectangle.swift in Sources */,
 				83DCE1A529CC98D90007E73D /* CSegmented.swift in Sources */,
 				83E4338729ED7B4600D00AFC /* TraineeData.swift in Sources */,
+				83E50C692A124106005DE5CC /* TScore.swift in Sources */,
 				8369326029EB141B007994D6 /* SelectedViewKey.swift in Sources */,
 				83DCE1E329D055250007E73D /* EditBiodataPopUp.swift in Sources */,
 				83E4336229EC17BD00D00AFC /* CoreUser.swift in Sources */,

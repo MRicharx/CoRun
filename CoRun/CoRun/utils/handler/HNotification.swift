@@ -44,6 +44,54 @@ class HNotification:ObservableObject{
         }
     }
     
+    ///Schedule sync daily task
+    func scheduleTask(){
+        let center = UNUserNotificationCenter.current()
+        ///Ger notification permission status
+        center.requestAuthorization(options: [.alert, .sound]) { granted, error in
+            ///Check if permission granted
+            if granted {
+                ///Get pending notification, check if scheduled task exist
+                center.getPendingNotificationRequests { requests in
+                    let isTaskScheduled = requests.contains { request in
+                        return request.identifier == "BackgroundTask"
+                    }
+                    
+//                    let isTaskScheduled = false
+                    
+                    ///If task yet scheduled, schedule the task
+                    if !isTaskScheduled{
+                        let content = UNMutableNotificationContent()
+                        content.title = "Synchronizing Your Workout"
+                        content.body = "Updating you training plan"
+                        
+                        // Set the time for your background task (e.g., 23:59)
+                        var dateComponents = DateComponents()
+                        dateComponents.hour = 23
+                        dateComponents.minute = 59
+                        
+                        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+                        
+                        // Pass the function identifier in the userInfo dictionary
+                        let userInfo = ["functionIdentifier": "SynchronizeWorkout"]
+                        content.userInfo = userInfo
+                        
+                        let request = UNNotificationRequest(identifier: "BackgroundTask", content: content, trigger: trigger)
+                        
+                        center.add(request) { error in
+                            if let error = error {
+                                print(">> Error scheduling background task: \(error.localizedDescription)")
+                            }
+                        }
+                    }
+                }
+            } else if let error = error {
+                print(">> Error requesting authorization for notifications: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    ///Schedule daily reminder
     func scheduleNotification(time: Date){
         let content = UNMutableNotificationContent()
         content.title = "You can do it!!"
@@ -61,7 +109,7 @@ class HNotification:ObservableObject{
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: true)
 
         // choose a random identifier
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "DailyReminder", content: content, trigger: trigger)
 
         // Clear and add our notification request
         let center = UNUserNotificationCenter.current()
@@ -74,7 +122,8 @@ class HNotification:ObservableObject{
     func clearScheduledNotification(){
         let center = UNUserNotificationCenter.current()
         
-        center.removeAllPendingNotificationRequests()
+//        center.removeAllPendingNotificationRequests()
+        center.removePendingNotificationRequests(withIdentifiers: ["DailyReminder"])
         
         print(">> HNotification: Scheduled Notification Cleared")
     }
@@ -100,22 +149,21 @@ class HNotification:ObservableObject{
             center.add(request)
     }
     
-    func pushDummyNotification(){
+    func pushDummyNotification(message:String){
         
         let content = UNMutableNotificationContent()
-        content.title = "You can do it"
-        content.subtitle = "Keep your best fo today training as well"
+        content.title = "Dummy"
+        content.subtitle = message
         content.sound = UNNotificationSound.default
 
         // show this notification five seconds from now
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
 
         // choose a random identifier
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "Dummy", content: content, trigger: trigger)
 
         // add our notification request
         UNUserNotificationCenter.current().add(request)
-        print(">> HNotification: Dummy Notification sent")
     }
 }
 

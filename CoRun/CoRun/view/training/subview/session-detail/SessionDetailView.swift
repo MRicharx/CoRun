@@ -24,7 +24,7 @@ struct SessionDetailView: View {
                 ScrollView{
                     VStack(spacing: 12){
                         CSessionGoal(data: data)
-                        CSessionResult(vm:vm, result: data.result)
+                        CSessionResult(vm:vm, result: data.result,status: data.status)
                         CSessionFeedback(
                             showAll: $vm.showAllFeedback)
                     }.padding(EdgeInsets(top: 12, leading: 0, bottom: 12, trailing: 0))

@@ -21,7 +21,7 @@ struct CSessionTitle: View {
                         .modifier(MFont.Headline(size:14))
                     Text("by "+data.coachName)
                         .modifier(MFont.Body(size:12))
-                        .redacted(reason: data.coachName == "Coach --" ? .placeholder: [])
+                        .redacted(reason: data.coachName == "" ? .placeholder: [])
                 }.modifier(MColor.DisabledText())
             }.modifier(MView.FillToLeftFrame())
             

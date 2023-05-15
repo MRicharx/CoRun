@@ -20,10 +20,15 @@ class PlanViewModel: TrainingViewModel{
         sessionDD.removeAll()
     }
     
+    ///Sort object based on date in ascending order
+    func sort(){
+        pubSes = pubSes.sorted { $0.SessionDate < $1.SessionDate}
+    }
+    
     func loadSession(session: [SessionData]){
         sessionDD.removeAll()
+        sessionPassed=0
 
-//        getDummy()
         for data in session{
             let d = SessionDisplayData()
             
@@ -50,6 +55,7 @@ class PlanViewModel: TrainingViewModel{
             sessionDD.append(d)
         }
         
+//        sort()
         sessionThisWeek = sessionDD.count
 
 //        print(">> PlanViewModel: session this week: \(sessionThisWeek)")
