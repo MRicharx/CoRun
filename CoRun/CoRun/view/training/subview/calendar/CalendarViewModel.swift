@@ -73,6 +73,6 @@ class CalendarViewModel: TrainingViewModel{
             selectedSession = temp
         }
         
-        print(">> CalendarViewModel: Selected Session ID, CoachId: [\n\(selectedSession.id)\n\(selectedSession.coachId)]")
+//        print(">> CalendarViewModel: Selected Session ID, CoachId: [\n\(selectedSession.id)\n\(selectedSession.coachId)]")
     }
 }

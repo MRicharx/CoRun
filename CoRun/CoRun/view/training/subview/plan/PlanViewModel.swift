@@ -64,8 +64,8 @@ class PlanViewModel: TrainingViewModel{
             
             d.status = CompletionStatus(status: data.Status)
             
-            print(">> Start Week : \(start)")
-            print(">> End Week : \(end)")
+//            print(">> Start Week : \(start)")
+//            print(">> End Week : \(end)")
             if start <= d.date && d.date <= end{
                 
                 if d.status.int != 3{

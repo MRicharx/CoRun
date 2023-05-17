@@ -16,9 +16,13 @@ class UserAPI : HNetwork{
     func SignInWithAppleID(body: SignInData, completion:@escaping(Result<ProfileData, ErrorMessage>)->Void){
         let url = "user/sign-in"
         
+        let token = SharedToken.shared.NotificationToken
+        print(">> Notification Token: \(token)")
+        
         let jsonDictionary: [String: String] = [
             "uuid": String(describing: body.uuid),
-            "email": String(describing: body.email)
+            "email": String(describing: body.email),
+            "notifToken":String(describing: token)
         ]
         
         request(requestName: "SignIn", endpointURL: url, method: "POST", body: jsonDictionary){ result in

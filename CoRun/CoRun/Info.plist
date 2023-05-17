@@ -4,7 +4,7 @@
 <dict>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
-		<string>com.mricharx.ckdemo.CoRun.daily-update</string>
+		<string>com.mricharx.ckdemo.CoRun</string>
 	</array>
 	<key>CFBundleGetInfoString</key>
 	<string></string>

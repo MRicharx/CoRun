@@ -144,7 +144,7 @@ class ProfileViewModel:ObservableObject{
     
     func deleteToken(){
         SharedToken.shared.SignInToken = ""
-        SharedToken.shared.NotificationToken = ""
+//        SharedToken.shared.NotificationToken = ""
     }
     
     private func loadDummy(){

@@ -31,7 +31,7 @@ class SharedToken{
     
     var NotificationToken: String {
         get {
-            var result = ""
+            var result = "-"
             if let r = UserDefaults.standard.string(forKey: "NotificationToken") as String? {
                 result = r
             }
@@ -40,21 +40,6 @@ class SharedToken{
         
         set(_token) {
             UserDefaults.standard.set(_token, forKey: "NotificationToken")
-            UserDefaults.standard.synchronize()
-        }
-    }
-    
-    var RefreshToken: String {
-        get {
-            var result = ""
-            if let r = UserDefaults.standard.string(forKey: "RefreshToken") as String? {
-                result = r
-            }
-            return result
-        }
-        
-        set(_token) {
-            UserDefaults.standard.set(_token, forKey: "RefreshToken")
             UserDefaults.standard.synchronize()
         }
     }

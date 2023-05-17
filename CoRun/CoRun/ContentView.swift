@@ -9,8 +9,6 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    private let notification = HNotification()
-    
     ///Define selected View
     @State var curView = ViewList.splash
     ///Define is app onloading state
@@ -41,9 +39,6 @@ struct ContentView: View {
                         }
                 }
             }
-        }
-        .onAppear{
-            notification.scheduleTask()
         }
         .environment(\.selectedView, $curView)
         .environment(\.onLoading, $isOnLoading)

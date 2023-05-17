@@ -16,6 +16,8 @@ struct SplashView: View {
     @StateObject private var vm = SplashViewModel()
     ///Define sign in status
     @State var isSigned = false
+    ///Define if device getting registered
+    @State var isRegistered = false
     ///Define is system on loading and show loading screen
     @State var showLoadingScreen = false
     
@@ -33,7 +35,16 @@ struct SplashView: View {
                     .modifier(MColor.Primary())
             }
             
-            if vm.isLoading{
+            if isRegistered{
+                VStack{
+                    ProgressView()
+                        .progressViewStyle(.circular)
+                    Text("Progress View")
+                        .modifier(MFont.Caption1())
+                        .modifier(MColor.DisabledText())
+                }
+            }
+            else if vm.isLoading{
                 ProgressView()
                     .progressViewStyle(.circular)
             }else{
@@ -61,6 +72,7 @@ struct SplashView: View {
                             curView.wrappedValue = vm.defineNextView()
                         }
                         else{
+                            print(">> Notification token: \(SharedToken.shared.NotificationToken)")
                             vm.isLoading = false
                         }
                     }
