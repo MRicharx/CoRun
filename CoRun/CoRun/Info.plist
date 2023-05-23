@@ -8,11 +8,13 @@
 	</array>
 	<key>CFBundleGetInfoString</key>
 	<string></string>
-	<key>NSUserActivityType</key>
-	<dict>
-		<key>INSendMessageIntent</key>
-		<string>This app will push notification as reminder and notifier</string>
-	</dict>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>INStartCallIntent</string>
+		<string>INSendMessageIntent</string>
+	</array>
+	<key>NSUserNotificationsUsageDescription</key>
+	<string>This app will push notification as reminder and notifier</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SF-Pro-Display-UltralightItalic.otf</string>

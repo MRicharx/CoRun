@@ -26,7 +26,7 @@ struct CSignInButton: View{
                     let signData = SignInData()
                     signData.uuid = appleIdCredential.user
                     signData.email = appleIdCredential.email ?? "- - -"
-                    
+
                     //MARK: ASSIGN DATA to user defaultHERE
                   api.SignInWithAppleID(body: signData){result in
                     switch result{
@@ -34,7 +34,6 @@ struct CSignInButton: View{
                         print("SIGN IN ERROR")
                     case .success(let data):
                         SharedToken.shared.SignInToken = data.UserId
-                        
                         //MARK: Signing in Success
                         if data.UserId != ""{
                             isSigned = true

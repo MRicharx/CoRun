@@ -13,7 +13,10 @@ struct CGraph: View {
     @ObservedObject var data: GraphDisplayDataList
     ///Define Bar Color
     let colors = [MColor.ColorPalette().primary,MColor.ColorPalette().danger]
-
+    ///Define graph display mode
+    var displayMode: GraphDisplayMode
+    
+    
     private var gradient: LinearGradient {
         LinearGradient(gradient: Gradient(colors: colors), startPoint: .top, endPoint: .bottom)
       }
@@ -21,23 +24,28 @@ struct CGraph: View {
       var body: some View {
           Chart{
               ForEach(data.label.indices,id:\.self){ i in
-                  BarMark(
-                    x: .value("Label",data.label[i]),
-                    y: .value("Amount", data.amount[i]))
+                  if displayMode == .bar{
+                      BarMark(
+                        x: .value("Label",data.label[i]),
+                        y: .value("Amount", data.amount[i]))
+                  }
+                  else if displayMode == .line{
+                      LineMark(
+                        x: .value("Label",data.label[i]),
+                        y: .value("Amount", data.amount[i]))
+                  }
               }
           }
       }
 }
 
 enum GraphDisplayMode{
-    case week
-    case month
-    case year
-    case  all
+    case bar
+    case line
 }
 
-struct CGraph_Previews: PreviewProvider {
-    static var previews: some View {
-        CGraph(data:GraphDisplayDataList(amount: [10,21,13,14,2,5,12,8,8,15],label:["J","F","M","A","M","Jn","Jl","Aug","Sep","Okt"]))
-    }
-}
+//struct CGraph_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CGraph(data:GraphDisplayDataList(amount: [10,21,13,14,2,5,12,8,8,15],label:["J","F","M","A","M","Jn","Jl","Aug","Sep","Okt"]))
+//    }
+//}

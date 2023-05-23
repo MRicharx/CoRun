@@ -18,52 +18,56 @@ struct TraineeCalendarView: View {
         VStack(spacing:12){
             if vm.isLoaded{
                 CCalendarView(data: ListSessionDisplayData(list: vm.sessionDD))
-            }
-            
-            if !(isPreview){
-                //MARK: Session View
-                VStack{
-                    //MARK: Session Detail
+                
+                if !(isPreview){
+                    //MARK: Session View
                     VStack{
-                        if vm.selectedSession.status.int < 4{
-                            NavigationLink{
-                                SessionDetailView(data: vm.selectedSession)
-                            }label: {
-                                HStack{
-                                    CSessionCard(data: vm.selectedSession)
-                                    Image(systemName: "chevron.right")
-                                        .modifier(MColor.Primary())
+                        //MARK: Session Detail
+                        VStack{
+                            if vm.selectedSession.status.int < 4{
+                                NavigationLink{
+                                    SessionDetailView(data: vm.selectedSession)
+                                }label: {
+                                    HStack{
+                                        CSessionCard(data: vm.selectedSession)
+                                        Image(systemName: "chevron.right")
+                                            .modifier(MColor.Primary())
+                                    }
+                                }
+                            }
+                            else{
+                                CSessionCard(data: vm.selectedSession)
+                            }
+                        }
+                        .padding(24)
+                        
+                        //MARK: Button List
+                        VStack(spacing:0){
+                            if vm.selectedDate >= vm.today && vm.selectedSession.status.enume == .planNotDone{
+                                //MARK: Create/Edit
+                                NavigationLink{
+                                    CDashboardView(ownId: own.UserId, traineeId: pvm.pubTrainee.id)
+                                        .environmentObject(vm)
+                                }label:{
+                                    VStack(spacing:12){
+                                        CDivider()
+                                        Text("Create/Edit Session")
+                                            .modifier(MFont.Headline(size:18))
+                                            .modifier(MColor.Primary())
+                                            .modifier(MView.FillToLeftFrame())
+                                            .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
+                                        CDivider()
+                                    }
                                 }
                             }
                         }
-                        else{
-                            CSessionCard(data: vm.selectedSession)
-                        }
-                    }
-                    .padding(24)
-                    
-                    //MARK: Button List
-                    VStack(spacing:0){
-                        if vm.selectedDate >= vm.today && vm.selectedSession.status.enume == .planNotDone{
-                            //MARK: Create/Edit
-                            NavigationLink{
-                                CDashboardView(ownId: own.UserId, traineeId: pvm.pubTrainee.id)
-                                    .environmentObject(vm)
-                            }label:{
-                                VStack(spacing:12){
-                                    CDivider()
-                                    Text("Create/Edit Session")
-                                        .modifier(MFont.Headline(size:18))
-                                        .modifier(MColor.Primary())
-                                        .modifier(MView.FillToLeftFrame())
-                                        .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
-                                    CDivider()
-                                }
-                            }
-                        }
-                    }
-                }.modifier(MView.Card())
-                Spacer()
+                    }.modifier(MView.Card())
+                    Spacer()
+                }
+            }
+            else{
+                ProgressView()
+                    .progressViewStyle(.circular)
             }
         }
         .onAppear{

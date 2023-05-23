@@ -21,6 +21,22 @@ class SplashViewModel:ObservableObject{
         isLoading.toggle()
     }
     
+    ///Check if device token is up to date
+    ///Update it if neccessary
+    func checkDeviceToken(current:String, ownId:String){
+        if current != SharedToken.shared.NotificationToken{
+            uapi.updateDeviceToken(newToken: current, userId: ownId){ success in
+                if success{
+                    print(">> Device Token Updated")
+                }else{
+                    print(">> Device Token Failed Updating")
+                }
+            }
+        } else{
+            print(">> Device Token is Up To Date")
+        }
+    }
+    
     func getProfileData(id:String, completion:@escaping(ProfileData)->Void){
         uapi.GetUserData(userId: id){ result in
             switch result{

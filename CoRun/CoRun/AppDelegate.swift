@@ -35,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let deviceTokenString = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
         SharedToken.shared.NotificationToken = deviceTokenString
+        print(">> Current Device Token: \(deviceTokenString)")
         }
     ///Handle register remote notification failure
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {

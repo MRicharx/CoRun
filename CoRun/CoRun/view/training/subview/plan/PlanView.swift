@@ -48,7 +48,7 @@ struct PlanView: View {
                 VStack(spacing: 24){
                     Spacer()
                         .frame(height:6)
-                    if pvm.pubSes.count>0{
+                    if vm.sessionThisWeek > 0{
                         ForEach(vm.sessionDD.indices, id: \.self){ i in
                             NavigationLink{
                                 SessionDetailView(data: vm.sessionDD[i])

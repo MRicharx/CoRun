@@ -146,16 +146,4 @@ class ProfileViewModel:ObservableObject{
         SharedToken.shared.SignInToken = ""
 //        SharedToken.shared.NotificationToken = ""
     }
-    
-    private func loadDummy(){
-        print(">> ProfileViewModel: LoadDummy()")
-        profileDD.id = "Sembarang"
-        profileDD.username = "Budiman"
-        profileDD.email = "email@mail.com"
-        profileDD.height = 170
-        profileDD.weight = 70
-        profileDD.gender = "Male"
-        
-        profileDD.coachName = "Bambang"
-    }
 }

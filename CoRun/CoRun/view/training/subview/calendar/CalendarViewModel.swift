@@ -72,7 +72,5 @@ class CalendarViewModel: TrainingViewModel{
             temp.date = selectedDate
             selectedSession = temp
         }
-        
-//        print(">> CalendarViewModel: Selected Session ID, CoachId: [\n\(selectedSession.id)\n\(selectedSession.coachId)]")
     }
 }

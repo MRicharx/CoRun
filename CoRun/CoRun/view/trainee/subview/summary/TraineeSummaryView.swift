@@ -51,7 +51,7 @@ struct TraineeSummaryView: View {
                             Text("BMI")
                                 .modifier(MFont.Title(size:18))
                                 .modifier(MColor.Primary())
-                            Text("\(vm.countBMI(height: pvm.pubTrainee.height, weight: pvm.pubTrainee.weight))")
+                            Text(String(format: "%.2f", vm.bmi))
                                 .modifier(MColor.Text())
                         }.modifier(MView.FillToLeftFrame())
                     }
@@ -149,6 +149,8 @@ struct TraineeSummaryView: View {
                     }.modifier(MFont.SubBody())
                 }.padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 24))
                 
+                CDivider()
+                
                 //MARK: Summary Data
                 HStack{
                     //MARK: Total Run
@@ -192,13 +194,27 @@ struct TraineeSummaryView: View {
                             .modifier(MColor.DisabledText())
                             .modifier(MFont.Body(size:16))
                     }
-                    Text(String(vm.distanceRan))
+                    Text(String(format: "%.2f", vm.distanceRan))
                         .modifier(MFont.Headline())
                         .modifier(MColor.Text())
                     
                     //MARK: Distance Graph
-                    CGraph(data: vm.graphData)
+                    CGraph(data: vm.graphData,displayMode: .bar)
                         .frame(maxHeight: 240)
+                }
+                
+                //MARK: Score Data
+                VStack(alignment: .leading,spacing: 12){
+                    CDivider()
+                    HStack{
+                        Text("Progress")
+                            .modifier(MColor.Text())
+                            .modifier(MFont.Headline(size:16))
+                    }
+                    
+                    //MARK: Distance Graph
+                    CGraph(data: vm.scoreData,displayMode: .line)
+                        .frame(maxHeight: 180)
                 }
             }
             .padding(24)
@@ -206,6 +222,7 @@ struct TraineeSummaryView: View {
         }
         .onAppear{
             vm.loadData(session: pvm.bufferSes)
+            vm.updateBMI(height: pvm.pubTrainee.height, weight: pvm.pubTrainee.weight)
         }
         .onChange(of:vm.displayOption){ new in
             vm.loadData(session: pvm.bufferSes)

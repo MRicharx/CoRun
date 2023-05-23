@@ -91,13 +91,17 @@ struct TDate:TDateProtocol{
     func getFirstDayOfYear(year: Date) -> Date {
         ///Define component
         let comp:DateComponents = Calendar.current.dateComponents([.year], from: year)
-        return Calendar.current.date(from: comp)!
+        var c = DateComponents()
+        c.day = 1
+        
+        let d = Calendar.current.date(from: comp) ?? Date.now
+        return Calendar.current.date(byAdding: c, to: d) ?? Date.now
     }
     func getLastDayOfYear(year: Date) -> Date {
         ///Define Component
         var comp = DateComponents()
         comp.year = 1
-        comp.second = -1
+        comp.day = -1
         
         ///Increment first day of year with date component and return value
         return Calendar.current.date(byAdding: comp, to: getFirstDayOfYear(year: year)) ?? Date.now

@@ -35,7 +35,7 @@ struct TrainingView: View {
                 }
             }
         }
-        .onAppear{
+        .task{
             isOnLoading.wrappedValue = true
             
             Task{

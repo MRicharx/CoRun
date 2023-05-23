@@ -26,7 +26,7 @@ class UserAPI : HNetwork{
         ]
         
         request(requestName: "SignIn", endpointURL: url, method: "POST", body: jsonDictionary){ result in
-            
+            print(">> Signing")
             switch result{
             case .failure(let error):
                 print(error)
@@ -37,6 +37,26 @@ class UserAPI : HNetwork{
                         completion(.success(responseObject[0]))
                     }
                 }
+            }
+        }
+    }
+    
+    ///Update device token
+    func updateDeviceToken(newToken:String, userId:String, completion:@escaping(Bool)->Void){
+        let url = "user/update-token"
+        
+        let jsonDictionary: [String:String] = [
+            "id": String(userId),
+            "token": String(newToken)
+        ]
+        
+        request(requestName: "Updating Token", endpointURL: url, method: "PUT", body: jsonDictionary){ result in
+            switch result{
+            case .success(_):
+                completion(true)
+            case.failure(let error):
+                print(error)
+                completion(false)
             }
         }
     }

@@ -15,32 +15,35 @@ struct CalendarView: View {
         VStack(spacing:12){
             if vm.isLoaded{
                 CCalendarView(data: ListSessionDisplayData(list: vm.sessionDD))
-            }
-            
-            //MARK: Session View
-            VStack{
-                //MARK: Session Detail
+                
+                //MARK: Session View
                 VStack{
-                    if vm.selectedSession.status.int < 4{
-                        NavigationLink{
-                            SessionDetailView(data: vm.selectedSession)
-                        }label: {
-                            HStack{
-                                CSessionCard(data: vm.selectedSession)
-                                Image(systemName: "chevron.right")
-                                    .modifier(MColor.Primary())
+                    //MARK: Session Detail
+                    VStack{
+                        if vm.selectedSession.status.int < 4{
+                            NavigationLink{
+                                SessionDetailView(data: vm.selectedSession)
+                            }label: {
+                                HStack{
+                                    CSessionCard(data: vm.selectedSession)
+                                    Image(systemName: "chevron.right")
+                                        .modifier(MColor.Primary())
+                                }
                             }
                         }
+                        else{
+                            CSessionCard(data: vm.selectedSession)
+                        }
                     }
-                    else{
-                        CSessionCard(data: vm.selectedSession)
-                    }
-                }
-                .padding(24)
-                
-            }.modifier(MView.Card())
-            Spacer()
-            
+                    .padding(24)
+                    
+                }.modifier(MView.Card())
+                Spacer()
+            }
+            else{
+                ProgressView()
+                    .progressViewStyle(.circular)
+            }
         }
         .onChange(of: vm.selectedDate){ newDate in
             let d = newDate

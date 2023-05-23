@@ -19,18 +19,11 @@ class HNotification:ObservableObject{
         let current = UNUserNotificationCenter.current()
         current.getNotificationSettings(completionHandler: { (settings) in
             if settings.authorizationStatus == .notDetermined {
-                // Notification permission has not been asked
                 self.permissionStatus = .yetAsked
-//                print(">> HNotification: Asking Permission")
             } else if settings.authorizationStatus == .denied {
-                // Notification permission was previously denied, go to settings & privacy to re-enable
                 self.permissionStatus = .denied
-//                print(">> HNotification: Permission DENIED")
             } else if settings.authorizationStatus == .authorized {
-                // Notification permission was already granted
                 self.permissionStatus = .granted
-//                print(">> HNotification: Permission GRANTED")
-
             }
         })
     }

@@ -14,8 +14,8 @@ struct SummaryView: View {
     @StateObject var vm = SummaryViewModel()
     
     var body: some View {
-        ScrollView{
-            VStack(spacing:12){
+        VStack{
+            ScrollView{
                 VStack(spacing:24){
                     //MARK: Segmented Control
                     CSegmented(option: vm.listOption, selected: $vm.displayOption)
@@ -98,8 +98,8 @@ struct SummaryView: View {
                             .modifier(MColor.Text())
                         
                         //MARK: Distance Graph
-                        CGraph(data: vm.graphData)
-                            .frame(minHeight: 360,maxHeight: 360)
+                        CGraph(data: vm.graphData, displayMode: .bar)
+                            .frame(minHeight: 240,maxHeight: 240)
                     }
                 }
                 .padding(24)

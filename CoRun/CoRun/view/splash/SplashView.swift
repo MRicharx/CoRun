@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import _AuthenticationServices_SwiftUI
 
 struct SplashView: View {
     @Environment(\.selectedView) private var curView
@@ -54,12 +53,19 @@ struct SplashView: View {
         }
         .onChange(of: isSigned){ new in
             if new{
+                print(">> Sign Success")
                 vm.isLoading = true
                 vm.getProfileData(id: SharedToken.shared.SignInToken){ result in
                     own.set(new: result)
+                    
+                    vm.checkDeviceToken(current: SharedToken.shared.NotificationToken, ownId: own.UserId)
+                    
                     curView.wrappedValue = vm.defineNextView(userData: own)
                     vm.isLoading = false
                 }
+            }
+            else{
+                print(">> Sign Failed")
             }
         }
         //MARK: Check if token existed
@@ -72,7 +78,6 @@ struct SplashView: View {
                             curView.wrappedValue = vm.defineNextView()
                         }
                         else{
-                            print(">> Notification token: \(SharedToken.shared.NotificationToken)")
                             vm.isLoading = false
                         }
                     }

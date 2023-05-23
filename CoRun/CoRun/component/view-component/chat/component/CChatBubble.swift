@@ -74,7 +74,8 @@ struct CChatBubble: View {
                 .modifier(MView.FillToLeftFrame())
             }
         }.onAppear{
-            let t = TDate().stringToDate(date: time, format: "YYYY-MM-dd'T'HH:mm:ss'Z'")
+            print(">> \(time)")
+            let t = TDate().stringToDate(date: time, format: "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
             time = TDate().dateToString(date: t,format: "dd MMMM, HH:mm")
         }
     }

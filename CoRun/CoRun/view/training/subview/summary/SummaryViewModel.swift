@@ -8,7 +8,6 @@
 import Foundation
 
 class SummaryViewModel: ObservableObject{
-    var model = SummaryModel()
     
     ///Define selected option
     @Published var displayOption:String = "Week"
@@ -29,20 +28,19 @@ class SummaryViewModel: ObservableObject{
     ///Define graph data
     @Published var graphData = GraphDisplayDataList(amount: [],label:[])
     
+    internal var start = Date.now
+    internal var end = Date.now
+    internal var label = [String]()
+    
     ///Load data
     func loadData(session: [SessionData]){
         ///Empty all display data
         graphData.clear()
+        label.removeAll()
         distanceRan = 0
         totalRun = 0
         avgPace = 0
         runTime = 0
-        
-        var pCounter=0
-        
-        ///Define summary date range
-        var start = Date.now
-        var end = Date.now
         
         ///Define the date range based on displayed option
         switch displayOption{
@@ -54,42 +52,71 @@ class SummaryViewModel: ObservableObject{
                 end = currentDate.next(.saturday)
             }
             
+            //Define week label
+            var date = start
+            label.append(TDate().dateToString(date: date, format: "EE"))
+            while(!(TDate().compare(first: date, second: end, format: "dd-MMMM-YYYY"))){
+                date = Calendar.current.date(byAdding: .day, value: 1, to: date) ?? date
+                label.append(TDate().dateToString(date: date, format: "EE"))
+            }
+            
+            
         case "Month":
             start = TDate().getFirstDayOfMonth(month: currentDate)
             end = TDate().getLastDayOfMonth(month: currentDate)
             
+            //Define month label
+            var date = start
+            label.append(TDate().dateToString(date: date, format: "d"))
+            while(!(TDate().compare(first: date, second: end, format: "dd-MMMM-YYYY"))){
+                date = Calendar.current.date(byAdding: .day, value: 1, to: date) ?? date
+                label.append(TDate().dateToString(date: date, format: "d"))
+            }
+            
         case "Year":
             start = TDate().getFirstDayOfYear(year: currentDate)
             end = TDate().getLastDayOfYear(year: currentDate)
+            
+            //Define year label
+            var date = start
+            while(!(TDate().compare(first: date, second: end, format: "MMMM-YYYY"))){
+                label.append(TDate().dateToString(date: date, format: "MMM"))
+
+                date = Calendar.current.date(byAdding: .month, value: 1, to: date) ?? date
+            }
+            
         default://MARK: by year here
             break
         }
         
+        ///Input Empty Array
+        for data in label{
+            graphData.amount.append(0)
+            graphData.label.append(data)
+        }
         
         ///Re Calculate all display data
         for data in session{
-            let date = TDate().stringToDate(date: data.ResultDate)
+            let date = TDate().stringToDate(date: data.SessionDate, format: "yyyy-MM-dd")
             
             ///Check if data satisfied the date range
             ///and append to graph data
             if start < date && date < end{
                 ///If session have result
                 if data.Status != 3{
-                    distanceRan += data.ResultDuration
+                    distanceRan += data.ResultDistance/1000
                     totalRun += 1
                     runTime += data.ResultDuration
-
-                    pCounter+=1
                     
                     ///Append data to graph array
-                    graphData.amount.append(data.ResultDistance)
+                    graphData.amount.append(data.ResultDistance/1000)
                     switch displayOption{
                     case "Week":
-                        graphData.label.append(TDate().dateToString(date: date,format: "EEEE"))
+                        graphData.label.append(TDate().dateToString(date: date,format: "EE"))
                     case "Month":
-                        graphData.label.append(TDate().dateToString(date: date,format: "dd"))
+                        graphData.label.append(TDate().dateToString(date: date,format: "d"))
                     case "Year":
-                        graphData.label.append(TDate().dateToString(date: date,format: "MMMM"))
+                        graphData.label.append(TDate().dateToString(date: date,format: "MMM"))
                     default:
                         break
                     }
@@ -98,7 +125,7 @@ class SummaryViewModel: ObservableObject{
         }
         
         if distanceRan>0 && runTime>0{
-            avgPace = runTime/(distanceRan/1000)
+            avgPace = runTime/(distanceRan)
         }
 //        generateDummy()
     }
@@ -155,24 +182,4 @@ class SummaryViewModel: ObservableObject{
         
         currentDate = Calendar.current.date(byAdding: comp, to: currentDate) ?? Date.now
     }
-    
-    func updateDisplayOption(dp:String){
-        displayOption = dp
-        graphData.clear()
-        
-        //TODO: Load session data by displayOption
-        switch dp{
-        case "Week":
-            graphData = GraphDisplayDataList(amount: [1,3,2,4,12,2],label:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"])
-        case "Month":
-            graphData = GraphDisplayDataList(amount: [10,21,13,14,2],label:["W1","W2","W3","W4","W5"])
-            
-        case "Year":
-            graphData = GraphDisplayDataList(amount: [10,21,13,14,2,5,12,8,8,15,10,12],label:["Jan","Feb","Mar","Apr","May","Jn","Jl","Aug","Sep","Okt","Nov","Des"])
-        default:
-            graphData.clear()
-            break
-        }
-    }
-    
 }
