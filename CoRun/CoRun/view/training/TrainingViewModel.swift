@@ -47,12 +47,13 @@ class TrainingViewModel:ObservableObject{
     func matchSession(age:Int){
         ///Find today session
         for data in bufferSes{
-            let date = TDate().stringToDate(date: data.SessionDate,format: "YYYY-MM-dd")
-            if TDate().compare(first: date, second: Date.now, format: "YYYY-MM-dd"){
-    
+            let date = TDate().stringToDate(date: data.SessionDate,format: "yyyy-MM-dd")
+            
+            if TDate().compare(first: date, second: Date.now, format: "yyyy-MM-dd"){
+                
                 ///Get best workout out session closest to session target
                 let bestResult = TScore().scoreSession(data: data, result: bufferWorkout, age: age)
-    
+                
                 ///Compare existing result with new best result score
                 if data.Score < bestResult.score{
                     updateResult = true

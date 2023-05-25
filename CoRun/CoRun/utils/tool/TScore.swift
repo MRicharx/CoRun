@@ -31,12 +31,13 @@ class TScore{
                 let p = wk.duration/wk.distance
                 wScore -= abs(Int((data.Pace - p))/10)
             }
-            ///Minus 1 per 0.5% miss
+            ///Minus 1 per 1% miss
             if data.Intensity > 0{
-                let i = Double(Int(wk.avgBPM) / (220 - age) * 100)
-                wScore -= 2 * abs(Int(data.Intensity) - Int(i))
+                let maxBPM = 220.0 - Double(age)
+                let i = wk.avgBPM / maxBPM * 100
+                wScore -= abs(Int(data.Intensity) - Int(i))
             }
-
+            
             ///Check if current result better
             if data.Score < wScore{
                 bestResult = wk

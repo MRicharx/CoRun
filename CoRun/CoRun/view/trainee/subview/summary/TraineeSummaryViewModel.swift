@@ -109,6 +109,12 @@ class TraineeSummaryViewModel:SummaryViewModel{
             if scoreData.amount.count<=0{
                 scoreData.amount.append(0)
                 scoreData.label.append("-")
+                scoreData.amount.append(0)
+                scoreData.label.append(">")
+            }
+            else if scoreData.label.count==1{
+                scoreData.amount.append(scoreData.amount.last ?? 0)
+                scoreData.label.append(">")
             }
         }
     }

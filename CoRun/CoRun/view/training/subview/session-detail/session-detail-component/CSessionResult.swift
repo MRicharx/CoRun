@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct CSessionResult: View {
+    @EnvironmentObject var own: ProfileData
+    
     @ObservedObject var vm:SessionDetailViewModel
     @ObservedObject var data : SessionDisplayData
+    @State var intensity = 0.0
     
     var body: some View {
         VStack(alignment: .leading, spacing: 18){
@@ -62,7 +65,7 @@ struct CSessionResult: View {
                     HStack{
                         //MARK: Avg BPM
                         VStack(alignment:.leading){
-                            Text(String(data.result.avgBPM))
+                            Text(String(format: "%.0f",data.result.avgBPM))
                                 .modifier(MFont.Headline())
                                 .modifier(MColor.Text())
                             Text("Avg. BPM")
@@ -72,7 +75,7 @@ struct CSessionResult: View {
                         
                         //MARK: Intensity
                         VStack(alignment:.leading){
-                            Text("\(vm.intensity) %")
+                            Text("\(intensity, specifier: "%.0f") %")
                                 .modifier(MFont.Headline())
                                 .modifier(MColor.Text())
                             Text("Avg. Intensity")
@@ -130,6 +133,11 @@ struct CSessionResult: View {
                     }
                 }
             }
+        }
+        .onAppear{
+            let age = TDate().getUserAge(birth: TDate().stringToDate(date: own.Birthday, format: "yyyy-MM-dd"))
+            let maxBPM = 220.0 - Double(age)
+            intensity = data.result.avgBPM / maxBPM * 100
         }
         .padding(24)
         .modifier(MView.FillToLeftFrame())

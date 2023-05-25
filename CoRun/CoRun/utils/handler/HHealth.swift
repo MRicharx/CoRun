@@ -34,10 +34,6 @@ class HHealth{
 //            HKQuantityType.init(HKQuantityTypeIdentifier.appleExerciseTime), //Exercise Time
             HKQuantityType.init(HKQuantityTypeIdentifier.distanceWalkingRunning), //Distance
             
-//            HKQuantityType.init(HKQuantityTypeIdentifier.bodyMass), //Body Mass
-//            HKQuantityType.init(HKQuantityTypeIdentifier.height), //Body Height
-//            HKQuantityType.init(HKQuantityTypeIdentifier.bodyMassIndex), //Body Mass Index
-            
             HKQuantityType.init(HKQuantityTypeIdentifier.heartRate), //Heart Rate
             HKQuantityType.init(HKQuantityTypeIdentifier.vo2Max), //VO2Max
             HKQuantityType.init(HKQuantityTypeIdentifier.runningVerticalOscillation), //Vertical Ocillation
@@ -77,7 +73,7 @@ class HHealth{
                     resultDate: time,
                     duration: data.duration,
                     distance: data.statistics(for: HKQuantityType.init(HKQuantityTypeIdentifier.distanceWalkingRunning))?.sumQuantity()?.doubleValue(for: HKUnit.meter()) ?? 0,
-                    avgBPM: data.statistics(for: HKQuantityType.init(HKQuantityTypeIdentifier.distanceWalkingRunning))?.averageQuantity()?.doubleValue(for: HKUnit.hertz()) ?? 00,
+                    avgBPM: (data.statistics(for: HKQuantityType.init(HKQuantityTypeIdentifier.heartRate))?.averageQuantity()?.doubleValue(for: HKUnit.hertz()) ?? 00) * 60,
                     avgVo2: data.statistics(for: HKQuantityType.init(HKQuantityTypeIdentifier.vo2Max))?.averageQuantity()?.doubleValue(for: HKUnit.liter()) ?? 0,
                     stride: data.statistics(for: HKQuantityType.init(HKQuantityTypeIdentifier.runningStrideLength))?.averageQuantity()?.doubleValue(for: HKUnit.meter()) ?? 0,
                     verOsc: data.statistics(for: HKQuantityType.init(HKQuantityTypeIdentifier.runningVerticalOscillation))?.averageQuantity()?.doubleValue(for: HKUnit.meter()) ?? 0,

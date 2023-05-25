@@ -41,8 +41,8 @@ struct TrainingView: View {
             Task{
                 await vm.getSession()
                 await vm.getWorkoutData()
-                
-                vm.matchSession(age: TDate().getUserAge(birth: TDate().stringToDate(date: own.Birthday)))
+
+                vm.matchSession(age: TDate().getUserAge(birth: TDate().stringToDate(date: own.Birthday, format: "yyyy-MM-dd")))
                 
                 if vm.updateResult{
                     await vm.postResult()

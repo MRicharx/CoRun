@@ -93,7 +93,7 @@ struct SummaryView: View {
                                 .modifier(MColor.DisabledText())
                                 .modifier(MFont.Body(size:16))
                         }
-                        Text(String(format: "%.2f", vm.distanceRan/1000))
+                        Text(String(format: "%.2f", vm.distanceRan))
                             .modifier(MFont.Headline())
                             .modifier(MColor.Text())
                         

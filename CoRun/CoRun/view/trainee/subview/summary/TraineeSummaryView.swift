@@ -207,7 +207,7 @@ struct TraineeSummaryView: View {
                 VStack(alignment: .leading,spacing: 12){
                     CDivider()
                     HStack{
-                        Text("Progress")
+                        Text("Score")
                             .modifier(MColor.Text())
                             .modifier(MFont.Headline(size:16))
                     }

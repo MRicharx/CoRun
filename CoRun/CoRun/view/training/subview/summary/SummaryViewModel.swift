@@ -37,7 +37,7 @@ class SummaryViewModel: ObservableObject{
         ///Empty all display data
         graphData.clear()
         label.removeAll()
-        distanceRan = 0
+        distanceRan = 0.0
         totalRun = 0
         avgPace = 0
         runTime = 0
@@ -104,12 +104,12 @@ class SummaryViewModel: ObservableObject{
             if start < date && date < end{
                 ///If session have result
                 if data.Status != 3{
-                    distanceRan += data.ResultDistance/1000
+                    distanceRan += data.ResultDistance
                     totalRun += 1
                     runTime += data.ResultDuration
                     
                     ///Append data to graph array
-                    graphData.amount.append(data.ResultDistance/1000)
+                    graphData.amount.append(Double(data.ResultDistance)/1000)
                     switch displayOption{
                     case "Week":
                         graphData.label.append(TDate().dateToString(date: date,format: "EE"))
@@ -125,7 +125,8 @@ class SummaryViewModel: ObservableObject{
         }
         
         if distanceRan>0 && runTime>0{
-            avgPace = runTime/(distanceRan)
+            distanceRan = distanceRan/1000
+            avgPace = runTime/distanceRan
         }
 //        generateDummy()
     }
