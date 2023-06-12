@@ -91,7 +91,6 @@ class HHealth{
         }
     }
     
-    
     ///Return all workout data with date  predicate
     private func getWorkoutData(start:Date, end:Date,completion: @escaping ((_ result: [HKWorkout]?) -> Void)){
         

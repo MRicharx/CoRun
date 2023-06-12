@@ -99,7 +99,7 @@ struct CSessionResult: View {
                         
                         //MARK: Vertical Oscillation
                         VStack(alignment:.leading){
-                            Text("\(data.result.verticalOsc , specifier: "%.1f") cM")
+                            Text("\(data.result.verticalOsc , specifier: "%.1f") M")
                                 .modifier(MFont.Headline())
                                 .modifier(MColor.Text())
                             Text("Vertical Oscillation")
@@ -113,7 +113,7 @@ struct CSessionResult: View {
                     HStack{
                         //MARK: Stride
                         VStack(alignment:.leading){
-                            Text("\(data.result.stride, specifier: "%.1f") cM")
+                            Text("\(data.result.stride, specifier: "%.1f") M")
                                 .modifier(MFont.Headline())
                                 .modifier(MColor.Text())
                             Text("Stride")
