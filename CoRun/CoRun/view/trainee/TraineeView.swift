@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TraineeView: View {
     @EnvironmentObject var own:ProfileData
-    let traineeId: String
+    @State var traineeId: String
     let traineeName: String
     
     @State var isDisplayingPreview = false
@@ -28,6 +28,8 @@ struct TraineeView: View {
                         TraineeCalendarView(isPreview: $isDisplayingPreview)
                     case "Summary":
                         TraineeSummaryView(isPreview: $isDisplayingPreview)
+                    case "Record":
+                        TraineeRecordView(traineeId: $traineeId)
                     default:
                         Text("NaN")
                     }

@@ -15,6 +15,13 @@
 		8331EA2C29FFDC3B00CFCC18 /* SignInData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8331EA2B29FFDC3B00CFCC18 /* SignInData.swift */; };
 		8331EA2E2A0919FE00CFCC18 /* SessionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8331EA2D2A0919FE00CFCC18 /* SessionAPI.swift */; };
 		8331EA302A0950DB00CFCC18 /* TraineeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8331EA2F2A0950DB00CFCC18 /* TraineeAPI.swift */; };
+		834C5B322A4035AC00612873 /* TraineeRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834C5B312A4035AC00612873 /* TraineeRecordView.swift */; };
+		834C5B342A4035B500612873 /* TraineeRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834C5B332A4035B500612873 /* TraineeRecordViewModel.swift */; };
+		834C5B362A4039A000612873 /* CRecordCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834C5B352A4039A000612873 /* CRecordCard.swift */; };
+		834C5B382A403F6A00612873 /* RecordData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834C5B372A403F6A00612873 /* RecordData.swift */; };
+		834C5B3A2A40410600612873 /* RecordDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834C5B392A40410600612873 /* RecordDisplayData.swift */; };
+		834C5B3D2A41987300612873 /* EditRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834C5B3C2A41987300612873 /* EditRecordView.swift */; };
+		834C5B402A4198C000612873 /* EditRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834C5B3F2A4198C000612873 /* EditRecordViewModel.swift */; };
 		834DD25629C6F51A00CD59EB /* HNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834DD25529C6F51A00CD59EB /* HNetwork.swift */; };
 		834DD25A29C6FAA500CD59EB /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834DD25929C6FAA500CD59EB /* UserAPI.swift */; };
 		8368FFD329D423DA007DBCDF /* TraineeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8368FFD229D423DA007DBCDF /* TraineeListView.swift */; };
@@ -164,6 +171,13 @@
 		8331EA2B29FFDC3B00CFCC18 /* SignInData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInData.swift; sourceTree = "<group>"; };
 		8331EA2D2A0919FE00CFCC18 /* SessionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionAPI.swift; sourceTree = "<group>"; };
 		8331EA2F2A0950DB00CFCC18 /* TraineeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeAPI.swift; sourceTree = "<group>"; };
+		834C5B312A4035AC00612873 /* TraineeRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeRecordView.swift; sourceTree = "<group>"; };
+		834C5B332A4035B500612873 /* TraineeRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeRecordViewModel.swift; sourceTree = "<group>"; };
+		834C5B352A4039A000612873 /* CRecordCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRecordCard.swift; sourceTree = "<group>"; };
+		834C5B372A403F6A00612873 /* RecordData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordData.swift; sourceTree = "<group>"; };
+		834C5B392A40410600612873 /* RecordDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDisplayData.swift; sourceTree = "<group>"; };
+		834C5B3C2A41987300612873 /* EditRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRecordView.swift; sourceTree = "<group>"; };
+		834C5B3F2A4198C000612873 /* EditRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRecordViewModel.swift; sourceTree = "<group>"; };
 		834DD25529C6F51A00CD59EB /* HNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNetwork.swift; sourceTree = "<group>"; };
 		834DD25929C6FAA500CD59EB /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		8368FFD229D423DA007DBCDF /* TraineeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeListView.swift; sourceTree = "<group>"; };
@@ -327,8 +341,36 @@
 				83E4338429ED79DA00D00AFC /* FeedbackData.swift */,
 				83E4338629ED7B4600D00AFC /* TraineeData.swift */,
 				8331EA2B29FFDC3B00CFCC18 /* SignInData.swift */,
+				834C5B372A403F6A00612873 /* RecordData.swift */,
 			);
 			path = "data-model";
+			sourceTree = "<group>";
+		};
+		834C5B302A40358100612873 /* record */ = {
+			isa = PBXGroup;
+			children = (
+				834C5B3B2A41985B00612873 /* subview */,
+				834C5B312A4035AC00612873 /* TraineeRecordView.swift */,
+				834C5B332A4035B500612873 /* TraineeRecordViewModel.swift */,
+			);
+			path = record;
+			sourceTree = "<group>";
+		};
+		834C5B3B2A41985B00612873 /* subview */ = {
+			isa = PBXGroup;
+			children = (
+				834C5B3E2A4198A500612873 /* edit-record */,
+			);
+			path = subview;
+			sourceTree = "<group>";
+		};
+		834C5B3E2A4198A500612873 /* edit-record */ = {
+			isa = PBXGroup;
+			children = (
+				834C5B3C2A41987300612873 /* EditRecordView.swift */,
+				834C5B3F2A4198C000612873 /* EditRecordViewModel.swift */,
+			);
+			path = "edit-record";
 			sourceTree = "<group>";
 		};
 		8368FFD029D42234007DBCDF /* trainee */ = {
@@ -402,6 +444,7 @@
 		8369325329E97C04007994D6 /* subview */ = {
 			isa = PBXGroup;
 			children = (
+				834C5B302A40358100612873 /* record */,
 				8369325529E97C1C007994D6 /* summary */,
 				8369325429E97C16007994D6 /* calendar */,
 			);
@@ -562,6 +605,7 @@
 				83DCE1AE29CCBE6F0007E73D /* CActivityCard.swift */,
 				8368FFD829D42418007DBCDF /* CTraineeCard.swift */,
 				83A4223B29E5B33000D4DE8F /* CTabControl.swift */,
+				834C5B352A4039A000612873 /* CRecordCard.swift */,
 			);
 			path = "view-component";
 			sourceTree = "<group>";
@@ -670,6 +714,7 @@
 				83E4339029F1610300D00AFC /* TargetDisplayData.swift */,
 				83E85A4429F2C29400ED118C /* TraineeDisplayData.swift */,
 				8331EA2729F6E58300CFCC18 /* DashboardDisplayData.swift */,
+				834C5B392A40410600612873 /* RecordDisplayData.swift */,
 			);
 			path = "data-display";
 			sourceTree = "<group>";
@@ -1030,11 +1075,13 @@
 				8368FFDB29D428F3007DBCDF /* CSearchBar.swift in Sources */,
 				83E4337929ED6C1D00D00AFC /* SessionData.swift in Sources */,
 				83E4338B29F15EF400D00AFC /* PlanDisplayData.swift in Sources */,
+				834C5B342A4035B500612873 /* TraineeRecordViewModel.swift in Sources */,
 				8369325729E97D1E007994D6 /* TraineeSummaryView.swift in Sources */,
 				83DCE1D029D03CAC0007E73D /* ProfileView.swift in Sources */,
 				8331EA2C29FFDC3B00CFCC18 /* SignInData.swift in Sources */,
 				83E4338D29F15FDD00D00AFC /* SessionDisplayData.swift in Sources */,
 				83DCE18B29C850CC0007E73D /* CCheckBox.swift in Sources */,
+				834C5B3A2A40410600612873 /* RecordDisplayData.swift in Sources */,
 				8369325C29EAD3DE007994D6 /* SharedToken.swift in Sources */,
 				83E4336429EC1D7300D00AFC /* ProfileDisplayData.swift in Sources */,
 				83DCE19B29C8686C0007E73D /* HealthPermissionViewModel.swift in Sources */,
@@ -1048,6 +1095,7 @@
 				8369322F29E5E63E007994D6 /* CalendarViewModel.swift in Sources */,
 				83D31B7B29C70DED00B47F8C /* HHealth.swift in Sources */,
 				83E85A4729F4021800ED118C /* TraineeSummaryViewModel.swift in Sources */,
+				834C5B322A4035AC00612873 /* TraineeRecordView.swift in Sources */,
 				8368FFD729D423F3007DBCDF /* TraineeListViewModel.swift in Sources */,
 				83DCE1C929CDB6720007E73D /* CSessionGoal.swift in Sources */,
 				8369325E29EAD80E007994D6 /* SplashStatus.swift in Sources */,
@@ -1064,6 +1112,7 @@
 				83F2C81B29C30187004E3270 /* ContentView.swift in Sources */,
 				83E4338129ED750E00D00AFC /* TargetType.swift in Sources */,
 				8368FFE429D59412007DBCDF /* CDashboardView.swift in Sources */,
+				834C5B402A4198C000612873 /* EditRecordViewModel.swift in Sources */,
 				8369325929E97D30007994D6 /* TraineeCalendarView.swift in Sources */,
 				83E4339129F1610300D00AFC /* TargetDisplayData.swift in Sources */,
 				83A4223C29E5B33000D4DE8F /* CTabControl.swift in Sources */,
@@ -1078,6 +1127,7 @@
 				83E4336929EC31A900D00AFC /* SharedUser.swift in Sources */,
 				8369322D29E5E594007994D6 /* CalendarView.swift in Sources */,
 				83E4336629EC1FD600D00AFC /* SharedReminder.swift in Sources */,
+				834C5B3D2A41987300612873 /* EditRecordView.swift in Sources */,
 				83DCE1B429CCC4440007E73D /* PlanViewModel.swift in Sources */,
 				83DCE1E629D0631F0007E73D /* ScanQRPopUp.swift in Sources */,
 				8331EA2629F6E4E700CFCC18 /* CDashboardViewModel.swift in Sources */,
@@ -1104,6 +1154,7 @@
 				83DCE1A529CC98D90007E73D /* CSegmented.swift in Sources */,
 				83E4338729ED7B4600D00AFC /* TraineeData.swift in Sources */,
 				83E50C692A124106005DE5CC /* TScore.swift in Sources */,
+				834C5B362A4039A000612873 /* CRecordCard.swift in Sources */,
 				8369326029EB141B007994D6 /* SelectedViewKey.swift in Sources */,
 				83DCE1E329D055250007E73D /* EditBiodataPopUp.swift in Sources */,
 				83E4336229EC17BD00D00AFC /* CoreUser.swift in Sources */,
@@ -1111,6 +1162,7 @@
 				832AB22629D991BD00904AA3 /* CSignInButton.swift in Sources */,
 				834DD25A29C6FAA500CD59EB /* UserAPI.swift in Sources */,
 				8331EA2829F6E58300CFCC18 /* DashboardDisplayData.swift in Sources */,
+				834C5B382A403F6A00612873 /* RecordData.swift in Sources */,
 				83B47F0C2A0B811C007B0ECA /* SharedHealthPermission.swift in Sources */,
 				8369324929E7E225007994D6 /* CChatBubble.swift in Sources */,
 				8368FFDD29D42FDF007DBCDF /* TraineeView.swift in Sources */,

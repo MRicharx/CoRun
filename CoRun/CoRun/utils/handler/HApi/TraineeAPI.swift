@@ -142,6 +142,76 @@ class TraineeAPI:HNetwork{
         }
     }
     
+    ///Post Record
+    func postRecord(body:RecordData, traineeId:String,completion:@escaping(Bool)->Void){
+        let url = "trainee/record"
+        
+        let jsonDictionary: [String:String] = [
+            "id": String(describing: body.recordId),
+            "userId": String(describing: traineeId),
+            "content": String(describing: body.content),
+            "date": String(describing: body.date),
+            "writer":String(describing: body.writer)
+        ]
+        
+        request(requestName: "Post Record", endpointURL: url, method: "POST", body: jsonDictionary){result in
+            switch result{
+            case .failure(let error):
+                print(error)
+                completion(false)
+            case.success(_):
+                completion(true)
+            }
+        }
+    }
+    
+    ///Get Record
+    func getRecord(traineeId:String, completion:@escaping(Result<[RecordData],ErrorMessage>)->Void){
+        let url = "trainee/record/\(traineeId)"
+        
+        let jsonDictionary: [String:String] = [
+            "":""
+        ]
+        
+        request(requestName: "Get Record", endpointURL: url, method: "GET", body: jsonDictionary){result in
+            
+            switch result{
+            case .failure(let error):
+                print(error)
+                completion(.failure(error))
+            case .success(let data):
+                do {
+                    ///Do Success Thing
+                    if let responseObject = try? JSONDecoder().decode([RecordData].self, from: data){
+                        completion(.success(responseObject))
+                    }
+                    else{
+                        print(">> Get User Trainee failed parsing")
+                        completion(.success([RecordData()]))
+                    }
+                }
+            }
+        }
+    }
+    
+    ///Delete Record
+    func deleteRecord(recordId:Int,completion:@escaping(Bool)->Void){
+        let url = "trainee/record/\(recordId)"
+        
+        let jsonDictionary: [String:String] = [
+            "":""
+        ]
+        
+        request(requestName: "Delete Record", endpointURL: url, method: "DELETE", body: jsonDictionary){result in
+            switch result{
+            case .failure(let error):
+                print(error)
+                completion(false)
+            case.success(_):
+                completion(true)
+            }
+        }
+    }
     
 //    ///Return trainee session
 //    func getTraineeSession(traineeId:String, completion:@escaping(Result<[SessionData],ErrorMessage>)->Void){

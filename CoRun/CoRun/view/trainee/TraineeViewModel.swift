@@ -14,7 +14,7 @@ class TraineeViewModel:ObservableObject{
     private let group = DispatchGroup()
     
     @Published var selectedTab = "Summary"
-    @Published var tabList = ["Calendar", "Summary"]
+    @Published var tabList = ["Summary","Calendar","Record"]
     
     @Published var pubTrainee = ProfileDisplayData()
     private var bufferTrainee = ProfileData()
