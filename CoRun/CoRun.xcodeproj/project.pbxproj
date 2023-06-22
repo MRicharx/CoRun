@@ -22,6 +22,9 @@
 		834C5B3A2A40410600612873 /* RecordDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834C5B392A40410600612873 /* RecordDisplayData.swift */; };
 		834C5B3D2A41987300612873 /* EditRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834C5B3C2A41987300612873 /* EditRecordView.swift */; };
 		834C5B402A4198C000612873 /* EditRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834C5B3F2A4198C000612873 /* EditRecordViewModel.swift */; };
+		834C5B432A41B10100612873 /* DifficultyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834C5B422A41B10100612873 /* DifficultyView.swift */; };
+		834C5B452A41B10D00612873 /* DifficultyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834C5B442A41B10D00612873 /* DifficultyViewModel.swift */; };
+		834C5B472A41B1DA00612873 /* SharedDifficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834C5B462A41B1DA00612873 /* SharedDifficulty.swift */; };
 		834DD25629C6F51A00CD59EB /* HNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834DD25529C6F51A00CD59EB /* HNetwork.swift */; };
 		834DD25A29C6FAA500CD59EB /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834DD25929C6FAA500CD59EB /* UserAPI.swift */; };
 		8368FFD329D423DA007DBCDF /* TraineeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8368FFD229D423DA007DBCDF /* TraineeListView.swift */; };
@@ -178,6 +181,9 @@
 		834C5B392A40410600612873 /* RecordDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDisplayData.swift; sourceTree = "<group>"; };
 		834C5B3C2A41987300612873 /* EditRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRecordView.swift; sourceTree = "<group>"; };
 		834C5B3F2A4198C000612873 /* EditRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRecordViewModel.swift; sourceTree = "<group>"; };
+		834C5B422A41B10100612873 /* DifficultyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyView.swift; sourceTree = "<group>"; };
+		834C5B442A41B10D00612873 /* DifficultyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyViewModel.swift; sourceTree = "<group>"; };
+		834C5B462A41B1DA00612873 /* SharedDifficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDifficulty.swift; sourceTree = "<group>"; };
 		834DD25529C6F51A00CD59EB /* HNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNetwork.swift; sourceTree = "<group>"; };
 		834DD25929C6FAA500CD59EB /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		8368FFD229D423DA007DBCDF /* TraineeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraineeListView.swift; sourceTree = "<group>"; };
@@ -373,6 +379,15 @@
 			path = "edit-record";
 			sourceTree = "<group>";
 		};
+		834C5B412A41B0E800612873 /* difficulty-setting */ = {
+			isa = PBXGroup;
+			children = (
+				834C5B422A41B10100612873 /* DifficultyView.swift */,
+				834C5B442A41B10D00612873 /* DifficultyViewModel.swift */,
+			);
+			path = "difficulty-setting";
+			sourceTree = "<group>";
+		};
 		8368FFD029D42234007DBCDF /* trainee */ = {
 			isa = PBXGroup;
 			children = (
@@ -476,6 +491,7 @@
 				83E4336529EC1FD600D00AFC /* SharedReminder.swift */,
 				83E4336829EC31A900D00AFC /* SharedUser.swift */,
 				83B47F0B2A0B811C007B0ECA /* SharedHealthPermission.swift */,
+				834C5B462A41B1DA00612873 /* SharedDifficulty.swift */,
 			);
 			path = "data-shared";
 			sourceTree = "<group>";
@@ -653,6 +669,7 @@
 		83DCE1DC29D048880007E73D /* sub-view */ = {
 			isa = PBXGroup;
 			children = (
+				834C5B412A41B0E800612873 /* difficulty-setting */,
 				8368FFD129D42247007DBCDF /* trainee-list */,
 				83DCE1E429D062470007E73D /* scan-qr */,
 				83DCE1E129D0550C0007E73D /* edit-biodata */,
@@ -1088,6 +1105,7 @@
 				83F2C85329C328A7004E3270 /* MFont.swift in Sources */,
 				83DCE1A029CC98360007E73D /* SummaryViewModel.swift in Sources */,
 				83E4338329ED787200D00AFC /* ProfileData.swift in Sources */,
+				834C5B472A41B1DA00612873 /* SharedDifficulty.swift in Sources */,
 				83E4336E29ED1D5C00D00AFC /* CPickerViewModel.swift in Sources */,
 				83DCE18129C846FF0007E73D /* SplashView.swift in Sources */,
 				83DCE18629C847DB0007E73D /* CTextField.swift in Sources */,
@@ -1147,6 +1165,7 @@
 				83E4338F29F160EC00D00AFC /* ResultDisplayData.swift in Sources */,
 				8331EA2E2A0919FE00CFCC18 /* SessionAPI.swift in Sources */,
 				83DCE19E29CC98290007E73D /* SummaryView.swift in Sources */,
+				834C5B452A41B10D00612873 /* DifficultyViewModel.swift in Sources */,
 				83E4337B29ED6C7C00D00AFC /* SessionDataKey.swift in Sources */,
 				83D31B7D29C70DFC00B47F8C /* TDate.swift in Sources */,
 				83E4336B29EC75B200D00AFC /* HNotification.swift in Sources */,
@@ -1164,6 +1183,7 @@
 				8331EA2829F6E58300CFCC18 /* DashboardDisplayData.swift in Sources */,
 				834C5B382A403F6A00612873 /* RecordData.swift in Sources */,
 				83B47F0C2A0B811C007B0ECA /* SharedHealthPermission.swift in Sources */,
+				834C5B432A41B10100612873 /* DifficultyView.swift in Sources */,
 				8369324929E7E225007994D6 /* CChatBubble.swift in Sources */,
 				8368FFDD29D42FDF007DBCDF /* TraineeView.swift in Sources */,
 			);

@@ -128,26 +128,20 @@ struct ProfileView: View {
                         //MARK: Daily Reminder
                         CPickerView()
                         
-                        //MARK: Apple Health
+                        //MARK: Difficulty
                         Button{
                             //TODO: Toggle health permission
-                            vm.requestHealthPermission{_ in }
+                            vm.showDifficultySetting = true
                         }label:{
                             HStack(spacing:12){
-                                Image("health")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(maxWidth: 28)
+                                Image(systemName: "scalemass.fill")
+                                    .modifier(MColor.Primary())
                                 Group{
-                                    Text("Apple Health")
+                                    Text("Difficulty")
                                         .modifier(MColor.Text())
                                         .modifier(MView.FillToLeftFrame())
                                 }
                                 .modifier(MFont.SubBody())
-                                if vm.isHealthPermissionLoading{
-                                    ProgressView()
-                                        .progressViewStyle(.circular)
-                                }
                             }
                         }.buttonStyle(MButton.ListButton())
                     }
@@ -199,6 +193,10 @@ struct ProfileView: View {
             }
         }
         .environment(\.notificationPermissionAlert, $vm.showPermissionAlert)
+        //MARK: Set Difficulty
+        .sheet(isPresented: $vm.showDifficultySetting){
+            DifficultyView()
+        }
         //MARK: Edit Controller
         .sheet(isPresented: $vm.showEditData){
             EditBiodataPopUp(vm:vm)
@@ -220,10 +218,6 @@ struct ProfileView: View {
                     /// DO NOTHING
                 }
             }
-        //MARK: Health Alert
-            .alert(isPresented: $vm.showHealthAlert){
-                Alert(title: Text(vm.healthAlertMessage), message: Text("If health feature not working properly, you may check permission for CoRun"), dismissButton: .default(Text("Ok")))
-            }
         //MARK: SignOut Alert
         .alert(
             "Are you sure want to SIGN OUT",
@@ -231,6 +225,13 @@ struct ProfileView: View {
                 Button("SIGN OUT", role:.destructive){
                     //TODO: Create SIGN OUT feature
                     vm.deleteToken()
+                    curView.wrappedValue = ViewList.splash
+                }
+                Button("DELETE ACCOUNT", role:.destructive){
+                    //MARK: Delete Account Feature
+                    vm.deleteAccount(userId: own.UserId){
+                        vm.deleteToken()
+                    }
                     curView.wrappedValue = ViewList.splash
                 }
             }

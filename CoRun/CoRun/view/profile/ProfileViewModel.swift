@@ -23,17 +23,14 @@ class ProfileViewModel:ObservableObject{
     @Published var showQRPopUp = false
     ///State Scan QR View  Status
     @Published var showScanQR = false
+    ///State Difficulty Setting View Status
+    @Published var showDifficultySetting = false
     ///Define Sign Out Alert Behavior
     @Published var showSignOUtAlert = false
     ///State Coach status alert
     @Published var showCoachAlert = false
     ///State Notification Permission is denied alert
     @Published var showPermissionAlert = false
-    ///State Health Permission is requested
-    @Published var showHealthAlert = false
-    ///Define Health Alert message
-    @Published var healthAlertMessage = ""
-    @Published var isHealthPermissionLoading = false
     
     ///Define if currently updating data
     @Published var isUploadingData = false
@@ -127,23 +124,21 @@ class ProfileViewModel:ObservableObject{
         profileDD.coachName = ""
 //        updateUserData()
     }
-    func requestHealthPermission(completion: @escaping ((_ status: Bool) -> Void)){
-        //TODO: Toggle Health Permission
-        isHealthPermissionLoading = true
-        health.requestPermission{ result in
-            if result{
-                self.healthAlertMessage = "Permission have been requested"
-            }
-            else{
-                self.healthAlertMessage = "Error have occured"
-            }
-            self.isHealthPermissionLoading = false
-            completion(true)
-        }
-    }
     
     func deleteToken(){
         SharedToken.shared.SignInToken = ""
 //        SharedToken.shared.NotificationToken = ""
+    }
+    
+    func deleteAccount(userId:String, completion:@escaping()->Void){
+        uapi.deleteAccount(userId: userId){ result in
+            if result{
+                completion()
+            }
+            else{
+                print(">> ProfileViewModel: DeleteAccount: FAILED")
+                completion()
+            }
+        }
     }
 }

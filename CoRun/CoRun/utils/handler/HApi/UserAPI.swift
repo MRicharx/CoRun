@@ -168,4 +168,25 @@ class UserAPI : HNetwork{
         }
         
     }
+    
+    func deleteAccount(userId:String, completion:@escaping(Bool)->Void){
+        let url = "user/delete"
+        
+        let jsonDictionary: [String:String] = [
+            "userIdd": String(userId)
+        ]
+        
+        request(requestName: "Delete Account", endpointURL: url, method: "PUT", body: jsonDictionary){ result in
+            
+            switch result{
+            case .failure(let error):
+                print(error)
+                completion(false)
+            case .success( _):
+                do {
+                    completion(true)
+                }
+            }
+        }
+    }
 }
